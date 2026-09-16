@@ -18,7 +18,7 @@ def test_frozen_constants(alpha90):
 def test_sha256_path_is_stable(alpha90, tmp_path):
     p = tmp_path / "artifact.bin"
     p.write_bytes(b"SynBioCrow")
-    assert alpha90.sha256_path(p) == "cefd1cc13b3a6d2a88f1ff2e6d07a2a4372fbe76040b68d379d2af87d4fd645d"
+    assert alpha90.sha256_path(p) == "85efefc4056ca4be1406d899fc9e00a4eb1e43e9b8a4decdc1a3e62bc480ffcf"
     assert alpha90.sha256_path(p) == alpha90.sha256_path(p)
 
 

@@ -1,0 +1,56 @@
+name: SynBioCrow CI
+
+on:
+  push:
+    branches: [main, alpha90-refresh]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  fast-tests:
+    name: Fast tests (Python ${{ matrix.python-version }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.10", "3.11", "3.12"]
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: pip
+
+      - name: Install test dependencies
+        run: python -m pip install --upgrade pip && python -m pip install -r requirements-dev.txt
+
+      - name: Unit tests
+        run: pytest tests/unit
+
+      - name: Frozen contract tests
+        run: pytest tests/contracts
+
+      - name: Small integration tests
+        run: pytest tests/integration
+
+      - name: Packaged Alpha90 smoke tests
+        run: python releases/alpha90_1_2_3/tests/test_alpha90_1_2_3.py
+
+  scientific-validation-boundary:
+    name: Verify scientific validation stays opt-in
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: python -m pip install -r requirements-dev.txt
+      - name: Collect routine tests without scientific campaigns
+        run: pytest --collect-only -m "not scientific_validation"

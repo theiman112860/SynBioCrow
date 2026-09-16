@@ -1,0 +1,9 @@
+{
+  "version": "1.0",
+  "frozen_engine": "Alpha87.11",
+  "canonical_lane": ["Golden-20"],
+  "case_studies": ["vanillin", "naringenin", "styrene", "1,4-Butanediol"],
+  "ablations": ["A0:frozen_default", "A1:no_patent_hybrid", "A2:no_auto_select"],
+  "exact_pathway_scoring": "WITHHELD_PENDING_VALIDATED_SCORER",
+  "alpha90_2_allowed": false
+}

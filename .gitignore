@@ -1,0 +1,31 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# OS/editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# SynBioCrow generated artifacts
+ALL_OUTPUTS*.zip
+*_ALL_OUTPUTS.zip
+*_REVIEW_PACKAGE.zip
+*_RELEASE_BUNDLE.zip
+outputs/
+artifacts/generated/
+checkpoints/
+cache/
+*.log
+
+# Large external/canonical data should be referenced by manifest/hash, not committed
+benchmark_data/
+rbc2_data/
+tool_cache/

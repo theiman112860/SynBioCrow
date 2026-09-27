@@ -20,7 +20,7 @@ Implemented:
 
 Status: **live bounded adapter implemented**.
 
-- current upstream DORAnet 0.5.7a1 optional extra
+- DORAnet 0.5.7a1 optional runtime target
 - live enzymatic `generate_network` API binding
 - one-generation retro direct-rule probe
 - deterministic normalization to `PathwayCandidate`
@@ -28,14 +28,31 @@ Status: **live bounded adapter implemented**.
 - Candidate-only lifecycle
 - explicit refusal of multi-generation search until graph reconstruction is migrated
 - hermetic fake-network tests
-- real upstream API CI smoke
+- real upstream API smoke script
 
 See [DORANET_ADAPTER.md](DORANET_ADAPTER.md).
+
+## Phase 2 — RetroBioCat2
+
+Status: **native bounded MCTS adapter implemented**.
+
+- pinned upstream source lineage at commit `c5f32561...`
+- native `MCTS` + `get_expanders(["retrobiocat"])` binding
+- bounded search settings for time, iterations, and pathway length
+- solved RBC2 pathways normalized into `PathwayCandidate`
+- deterministic IDs independent of RBC2 random UUIDs
+- reaction score/template/precedent provenance retained
+- successful zero-route search represented as bounded no-hit
+- installed-but-broken runtime represented as `BackendExecutionError`
+- Candidate-only lifecycle
+- hermetic native-contract tests and real API smoke script
+
+See [RETROBIOCAT2_ADAPTER.md](RETROBIOCAT2_ADAPTER.md).
 
 ## Remaining migration order
 
 1. ~~DORAnet adapter~~
-2. RetroBioCat2 adapter
+2. ~~RetroBioCat2 adapter~~
 3. RetroPath2 / RetroRules adapter
 4. reaction-level ensemble union with per-engine provenance
 5. Rhea / thermodynamic / enzyme evidence adapters

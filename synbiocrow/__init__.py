@@ -9,4 +9,4 @@ __all__=[
     "DesignRequest","DesignResult","RunStateStore","design",
     "LearningPolicy","TestOutcome","PolicyUpdate",
 ]
-__version__="2.2.0.dev0"
+__version__="2.2.0rc1"

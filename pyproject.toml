@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "synbiocrow"
-version = "2.2.0.dev0"
+version = "2.2.0rc1"
 description = "SynBioCrow computational synthetic-biology engine"
 requires-python = ">=3.10"
 license = {text = "Research release; see LICENSE.txt"}

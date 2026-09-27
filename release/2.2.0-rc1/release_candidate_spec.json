@@ -1,0 +1,17 @@
+{
+  "schema": "synbiocrow.release_candidate.spec.v1",
+  "release": "2.2.0-rc1",
+  "release_kind": "release_candidate",
+  "frozen_baseline": "2.1.0",
+  "paper1_baseline_modified": false,
+  "benchmark_v2_truth_accessed": false,
+  "required_ci": "SynBioCrow CI",
+  "required_artifacts": [
+    "notebooks/SynBioCrow_2_2_RC1_ALL_GENERATORS.ipynb",
+    "scripts/build_m9_release.py",
+    "scripts/m7_release_readiness.py",
+    "paper/2.2/METHODS.md",
+    "paper/2.2/RESULTS.md"
+  ],
+  "lifecycle_policy": "Candidate/Mature/Certified remain separate"
+}

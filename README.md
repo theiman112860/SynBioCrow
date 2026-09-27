@@ -1,148 +1,111 @@
-# SynBioCrow 2.1.1
+# SynBioCrow 2.2.0-rc1
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22999039.svg)](https://doi.org/10.5281/zenodo.22999039)
 
-**SynBioCrow** is a computational synthetic-biology design framework for moving from a target molecule to evidence-aware biosynthetic pathway candidates and provenance-backed DNA construct candidates.
+**SynBioCrow** is a computational synthetic-biology design framework for moving from a target molecule to evidence-aware biosynthetic pathway Candidates and provenance-backed DNA construct Candidates.
 
-**2.1.1 is the archival/repository-maintenance release.** It reorganizes and documents the repository for long-term use and Zenodo archiving. The underlying **scientific payload is unchanged from the sealed 2.1.0 release**.
+> **Release-candidate status:** 2.2.0-rc1 is the consolidated engine release candidate. Candidate pathways and constructs are computational designs, not experimental certifications. The DOI above is the archived 2.1.1 record; a new archival version should be minted when 2.2 is formally released.
 
-> **Release status:** computational research release. Candidate pathways and constructs are **not experimental certifications**.
+## What changed in 2.2
 
-## What SynBioCrow does
+SynBioCrow 2.2 consolidates the development lineage into one engine: DORAnet, RetroBioCat2, RetroPath2/RetroRules, BioPKS/RetroTide, reaction-level cross-engine graph union, evidence/thermodynamics, sequence/construct design, unified execution, Test/reproducibility, and bounded auditable Learn/DBTL.
 
-SynBioCrow combines multiple complementary pathway-generation and evidence systems rather than relying on a single retrosynthesis engine.
+The frozen Paper-1/v0.21 baseline and benchmark-v2 truth boundary remain unchanged.
 
-```mermaid
-flowchart LR
-    T[Target molecule] --> G[Generator ensemble]
-    G --> D[DORAnet]
-    G --> R2[RetroBioCat2]
-    G --> RP[RetroPath2 / RetroRules]
-    G --> PKS[RetroTide / BioPKS]
-    D --> U[Reaction-graph union]
-    R2 --> U
-    RP --> U
-    PKS --> U
-    U --> E[Evidence / closure gates]
-    RH[Rhea] --> E
-    E --> TH[Thermodynamics]
-    TH --> ENZ[Enzyme evidence]
-    ENZ --> SEQ[Protein / CDS provenance]
-    SEQ --> CAS[Expression cassette assembly]
-    CAS --> L[Candidate → Mature → Certified]
-```
-
-The central design principle is that **generation and validation are separate**. A backend can propose chemistry, but it cannot promote its own output through the scientific lifecycle.
-
-## Engine roles
-
-| Component | Role in SynBioCrow 2.1 |
-|---|---|
-| **DORAnet** | General biosynthetic reaction-network generation |
-| **RetroBioCat2** | Enzyme-centered biocatalytic retrosynthesis |
-| **RetroPath2 / RetroRules** | Rule-based pathway generation and reaction-space expansion |
-| **RetroTide** | Bounded specialized PKS design |
-| **BioPKS** | PKS + post-PKS biological transformation workflow |
-| **Rhea** | Reaction evidence / closure support — **not an independent generator** |
-| **DORA-XGB** | Reaction-feasibility scoring within the BioPKS branch |
-| **UniProt / RefSeq** | Protein and CDS provenance resolution |
-| **iGEM Registry / SBOL resources** | Provenance-backed expression-part acquisition |
-
-## Scientific lifecycle
-
-**Candidate** — computationally generated route or construct satisfying the relevant structural/data contract.
-
-**Mature** — Candidate that has passed stronger evidence gates such as reaction support, enzyme evidence, closure, and other required checks.
-
-**Certified** — result satisfying the full certification contract for the release.
-
-**SynBioCrow never promotes a result merely because a generator produced it or a model assigned it a high score.**
-
-## Sealed scientific state
-
-The 2.1 scientific release retains:
-
-- **19 unique provenance-backed Candidate DNA constructs**
-- **6 normalized BioPKS / RetroTide specialized-generator Candidate pathways**
-- **0 specialized Mature pathways**
-- **0 specialized Certified pathways**
-- frozen **Paper-1 / v0.21** baseline
-- preserved **benchmark-v2 blind-truth isolation**
-- no fabricated chemistry, enzyme evidence, thermodynamics, or biological sequences
-
-The leading bounded BioPKS candidate uses `rule0024_21`:
-
-```text
-O=C(O)C(O)Cc1ccccc1  →  O=C=O + OCCc1ccccc1
-```
-
-It remains **CANDIDATE / NOT_CERTIFIED** because direct independent reaction evidence, verified enzyme identity, and quantitative thermodynamics remain unresolved.
-
-## Stable Python release API
-
-```python
-from synbiocrow import SynBioCrowRelease
-
-release = SynBioCrowRelease(".")
-print(release.status())
-print(release.policies())
-print(release.specialized_summary())
-```
-
-Install from the repository root:
+## Install the release-candidate core
 
 ```bash
 pip install -e .
 ```
 
-The lightweight `synbiocrow/` package is the stable release-state/API surface. Generator backends remain separate upstream scientific dependencies and are not vendored here.
+This installs **SynBioCrow core plus RDKit**. It does **not** silently install every generator runtime.
 
-## Repository layout
+Optional extras:
 
-```text
-SynBioCrow/
-├── README.md
-├── CITATION.cff
-├── LICENSE.txt
-├── pyproject.toml
-├── RELEASE_NOTES.md
-├── synbiocrow/                       # stable release API
-├── docs/                             # architecture/API/limitations/reproducibility
-├── release/
-│   └── 2.1.0/                       # sealed scientific release manifests
-└── development_history/
-    ├── README.md
-    ├── notebooks/                    # early notebook-era development
-    └── scripts/                      # early supporting scripts
+```bash
+pip install -e ".[doranet]"
+pip install -e ".[thermo]"
 ```
 
-Formal releases are preserved by **Git tags + GitHub Releases + Zenodo**. The `development_history/` directory contains pre-release development lineage and historical artifacts, not current release files.
+### Generator/runtime requirements
 
-## Reproducibility
+| Component | Current upstream location | Installation/runtime notes |
+|---|---|---|
+| **DORAnet** | https://github.com/wsprague-nu/doranet | Optional SynBioCrow extra pins the validated 0.5.7a1 API. |
+| **RetroBioCat2** | https://github.com/willfinnigan/RetroBioCat-2 | Separate pinned research runtime; RBC2 scientific data assets are required for real searches. |
+| **RetroPath2 wrapper** | https://github.com/brsynth/retropath2-wrapper | Python wrapper plus KNIME runtime. |
+| **rp2paths** | https://github.com/brsynth/rp2paths | Enumerates complete pathways from RetroPath2 scope output. |
+| **RetroRules** | https://retrorules.org | Reaction-rule resource used by RetroPath2; rules/sink remain explicit inputs. |
+| **RetroTide** | https://github.com/JBEI/RetroTide | Specialized PKS generator; installed separately. |
+| **BioPKS Pipeline** | https://github.com/JBEI/BioPKS-Pipeline | External specialized runtime. Review/accept upstream license before use. SynBioCrow does not vendor it. |
+| **KNIME** | https://www.knime.com/ | Required by the current RetroPath2 workflow. |
+| **eQuilibrator** | https://github.com/equilibrator/equilibrator-api | Optional thermodynamics via `.[thermo]`. |
 
-The sealed 2.1.0 scientific state is stored under [release/2.1.0](release/2.1.0/). The 2.1.1 repository update reorganizes those artifacts without changing their scientific content.
+Check readiness:
 
-- [Reproducibility](docs/REPRODUCIBILITY.md)
-- [Release manifest](release/2.1.0/release_manifest.json)
-- [Integrated regression](release/2.1.0/integrated_regression.json)
-- [Evidence abstention ledger](release/2.1.0/specialized_generator_abstention_ledger.json)
+```bash
+synbiocrow readiness
+synbiocrow bootstrap
+```
 
-## Limitations
+## All-generators Jupyter/Colab notebook
 
-SynBioCrow 2.1 is a computational research system. It does **not** claim that a Candidate expresses successfully, has experimentally validated enzyme activity, produces useful flux, is nontoxic, is manufacturable, or is experimentally certified.
+Reference notebook:
 
-See [docs/LIMITATIONS.md](docs/LIMITATIONS.md).
+`notebooks/SynBioCrow_2_2_RC1_ALL_GENERATORS.ipynb`
 
-## Citation
+It installs/imports SynBioCrow, DORAnet, RetroBioCat2, RetroPath2 wrapper, rp2paths, RetroTide, BioPKS Pipeline (after explicit license acknowledgement), and eQuilibrator. It distinguishes **importable**, **configured**, and **execution-ready**.
 
-Please cite the archived repository release as:
+## Quick API
+
+```python
+from synbiocrow import DesignRequest, design
+result = design(
+    DesignRequest(
+        target_smiles="CCO",
+        mode="biosynthesis",
+        backend_ids=("doranet", "retrobiocat2"),
+        sink_smiles=("CC",),
+    ),
+    state_root=".synbiocrow_runs",
+)
+```
+
+## CLI
+
+```bash
+synbiocrow readiness
+synbiocrow bootstrap
+synbiocrow design "CCO" --backend doranet --sink "CC"
+synbiocrow learn --outcomes outcomes.json --output learned_policy.json --audit-log learning_audit.jsonl
+```
+
+## Design-Build-Test-Learn
+
+- **Design:** multi-generator pathway discovery and cross-engine graph assembly
+- **Build:** verified CDS selection, synonymous nucleotide optimization, cassette assembly
+- **Test:** evidence gates, thermodynamics, reproducibility, runtime/construct validation
+- **Learn:** bounded versioned ranking-policy updates with append-only audit
+
+Learning changes prioritization only; it cannot create evidence or promote Candidate → Mature → Certified.
+
+## Release-candidate verification
+
+```bash
+python -m unittest discover -s tests -v
+python scripts/m7_release_readiness.py
+python scripts/build_m9_release.py --check
+python scripts/build_m9_release.py --output-dir dist_m9
+```
+
+See [M9 release candidate](docs/M9_RELEASE_CANDIDATE.md), [M7 Test](docs/M7_TEST_REPRODUCIBILITY.md), [M8 Learn](docs/M8_LEARN_DBTL.md), and [limitations](docs/LIMITATIONS.md).
+
+## Historical release and citation
+
+The sealed 2.1 scientific release remains under `release/2.1.0/`.
+
+Archived 2.1.1 DOI: **10.5281/zenodo.22999039**
+
+Until the final 2.2 Zenodo record is minted, cite:
 
 **Heiman, Thomas J. (2026). SynBioCrow 2.1.1: computational synthetic-biology pathway and construct design framework. Zenodo. https://doi.org/10.5281/zenodo.22999039**
-
-Machine-readable citation metadata is available in [CITATION.cff](CITATION.cff).
-
-## DOI
-
-**10.5281/zenodo.22999039**
-
-https://doi.org/10.5281/zenodo.22999039

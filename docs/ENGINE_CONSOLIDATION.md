@@ -2,63 +2,66 @@
 
 This branch converts the accumulated development lineage into a maintainable package without changing the sealed 2.1 scientific release.
 
-## Phase 0 — contracts and CI
+## Completed foundations
 
-Implemented:
 - core immutable data contracts
-- generator adapter registry
-- reaction-path union contract
+- generator registry
 - fail-closed evidence gates
 - Candidate / Mature / Certified promotion policy
-- protein/CDS and cassette records
-- JSON persistence
+- sequence/CDS and cassette records
+- persistence helpers
 - engine shell
-- hermetic contract tests
-- GitHub Actions CI
+- hermetic tests and GitHub Actions CI
 
-## Phase 1 — DORAnet
+## DORAnet
 
-Status: **live bounded adapter implemented**.
+**Live bounded adapter implemented.**
 
-- DORAnet 0.5.7a1 optional runtime target
-- live enzymatic `generate_network` API binding
-- one-generation retro direct-rule probe
-- deterministic normalization to `PathwayCandidate`
+- one-generation enzymatic retro direct-rule probe
+- deterministic `PathwayCandidate` normalization
 - rule/version/index provenance
 - Candidate-only lifecycle
-- explicit refusal of multi-generation search until graph reconstruction is migrated
-- hermetic fake-network tests
-- real upstream API smoke script
+- multi-generation blocked until graph reconstruction is migrated
 
-See [DORANET_ADAPTER.md](DORANET_ADAPTER.md).
+## RetroBioCat2
 
-## Phase 2 — RetroBioCat2
+**Native bounded MCTS adapter implemented.**
 
-Status: **native bounded MCTS adapter implemented**.
-
-- pinned upstream source lineage at commit `c5f32561...`
-- native `MCTS` + `get_expanders(["retrobiocat"])` binding
-- bounded search settings for time, iterations, and pathway length
-- solved RBC2 pathways normalized into `PathwayCandidate`
+- native `MCTS` + RetroBioCat expander
+- bounded time/iterations/path length
+- solved pathways normalized into `PathwayCandidate`
 - deterministic IDs independent of RBC2 random UUIDs
-- reaction score/template/precedent provenance retained
-- successful zero-route search represented as bounded no-hit
-- installed-but-broken runtime represented as `BackendExecutionError`
-- Candidate-only lifecycle
-- hermetic native-contract tests and real API smoke script
+- precedent/template/score provenance retained
+- successful zero-route search separated from runtime failure
 
-See [RETROBIOCAT2_ADAPTER.md](RETROBIOCAT2_ADAPTER.md).
+## RetroPath2 / RetroRules
+
+**Live two-stage adapter implemented.**
+
+- current `retropath2_wrapper` Python API for metabolic-scope generation
+- explicit RetroRules/sink resource configuration
+- RDKit SMILES → InChI source preparation
+- current `rp2paths` pathway enumeration
+- `out_paths.csv` normalization into Candidate pathways
+- return code 11 handled as successful bounded no-hit
+- execution/configuration failures surfaced as `BackendExecutionError`
+- RetroPath compound identifiers preserved explicitly pending graph identity resolution
+- no arbitrary scope reaction is mislabeled as a complete route
 
 ## Remaining migration order
 
 1. ~~DORAnet adapter~~
 2. ~~RetroBioCat2 adapter~~
-3. RetroPath2 / RetroRules adapter
-4. reaction-level ensemble union with per-engine provenance
-5. Rhea / thermodynamic / enzyme evidence adapters
-6. UniProt/RefSeq sequence and cassette pipeline
-7. proven BioPKS / RetroTide adapter from the 2.1 lineage
-8. CLI, Colab runner, and public execution API
+3. ~~RetroPath2 / RetroRules adapter~~
+4. **reaction-level ensemble graph + per-engine provenance**
+5. Rhea evidence / closure adapter
+6. thermodynamic adapter
+7. enzyme evidence
+8. UniProt / RefSeq sequence/CDS pipeline
+9. cassette/construct pipeline
+10. BioPKS / RetroTide proven 2.1 adapter
+11. CLI / Colab runner / public execution API
+12. integrated regression against frozen policies
 
 ## Frozen scientific policies
 

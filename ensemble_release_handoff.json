@@ -1,0 +1,9 @@
+{
+  "candidate_pathways": 6,
+  "mature_pathways": 0,
+  "certified_pathways": 0,
+  "leading_candidate_id": "BIOPKS-98ad0b2ff61121ed",
+  "candidate_mature_certified_separation": "PRESERVED",
+  "benchmark_v2_truth_accessed": false,
+  "specialized_evidence_abstention": "822a4a42ca5388b7eb942f8520eb525aa85a0d84e3b36964524b9f4024afe005"
+}

@@ -1,0 +1,2 @@
+SynBioCrow 2.1 research release package.
+This repository preserves upstream component licenses; review upstream DORAnet, RetroTide, BioPKS, RDKit, DORA-XGB and database/resource licenses before redistribution.

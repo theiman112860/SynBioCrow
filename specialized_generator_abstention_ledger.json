@@ -1,0 +1,24 @@
+{
+  "schema": "synbiocrow.specialized_generator_abstention.v1",
+  "source_release": "EngineCore-vNext0.3.52.1",
+  "leading_candidate_id": "BIOPKS-98ad0b2ff61121ed",
+  "leading_rule": "rule0024_21",
+  "leading_reaction": "O=C(O)C(O)Cc1ccccc1 = O=C=O + OCCc1ccccc1",
+  "state": "CANDIDATE",
+  "certification": "NOT_CERTIFIED",
+  "closure": "PASS",
+  "direct_reaction_evidence": "NOT_ESTABLISHED",
+  "verified_enzyme_evidence": "NOT_ESTABLISHED",
+  "quantitative_thermodynamics": "NOT_QUANTIFIED",
+  "exact_rhea_match_count": 0,
+  "decision": "FREEZE_AS_EXPLICIT_EVIDENCE_ABSTENTION",
+  "reason_codes": [
+    "DIRECT_REACTION_EVIDENCE_MISSING",
+    "VERIFIED_ENZYME_EVIDENCE_MISSING",
+    "QUANTITATIVE_THERMODYNAMICS_MISSING"
+  ],
+  "search_expansion_authorized": false,
+  "candidate_mature_certified_separation": "PRESERVED",
+  "benchmark_v2_truth_accessed": false,
+  "content_sha256": "822a4a42ca5388b7eb942f8520eb525aa85a0d84e3b36964524b9f4024afe005"
+}

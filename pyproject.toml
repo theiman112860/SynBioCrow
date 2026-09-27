@@ -1,0 +1,15 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "synbiocrow"
+version = "2.1.0"
+description = "SynBioCrow 2.1 stable release-state API"
+requires-python = ">=3.10"
+license = {text = "Research release; see LICENSE.txt"}
+readme = "README.md"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["synbiocrow*"]

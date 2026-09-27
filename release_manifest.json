@@ -1,0 +1,37 @@
+{
+  "api_package": "PASS",
+  "documentation": "PASS",
+  "frozen_policies": {
+    "benchmark_v2_truth_accessed": false,
+    "candidate_mature_certified_separation": "PRESERVED",
+    "evidence_abstention_preserved": true,
+    "no_fabricated_chemistry_or_sequences": true,
+    "paper1_baseline": "FROZEN_UNMODIFIED",
+    "search_breadth_changed": false,
+    "specialized_generator_outputs_default_state": "CANDIDATE"
+  },
+  "github_release_assembly": "PASS",
+  "integrated_regression": "PASS",
+  "next_gate": "MANUAL_GITHUB_PUBLICATION",
+  "promoted_from": "SynBioCrow-2.1-RC1",
+  "promoted_from_version": "2.1.0rc1",
+  "provenance": {
+    "leading_rule": "rule0024_21",
+    "leading_specialized_candidate_id": "BIOPKS-98ad0b2ff61121ed",
+    "source_release": "EngineCore-vNext0.3.53.0",
+    "source_version": "2.1.0.rc0",
+    "specialized_abstention_sha256": "822a4a42ca5388b7eb942f8520eb525aa85a0d84e3b36964524b9f4024afe005"
+  },
+  "release": "SynBioCrow-2.1.0",
+  "release_status": "FINAL",
+  "scientific_payload_changed": false,
+  "scientific_search_rerun": false,
+  "scientific_state": {
+    "specialized_candidate_pathways": 6,
+    "specialized_certified_pathways": 0,
+    "specialized_mature_pathways": 0,
+    "unique_candidate_constructs": 19
+  },
+  "tag": "v2.1.0",
+  "version": "2.1.0"
+}

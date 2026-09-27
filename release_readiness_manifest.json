@@ -1,0 +1,18 @@
+{
+  "release": "EngineCore-vNext0.3.53.0",
+  "version": "2.1.0.rc0",
+  "milestone": "FINAL_ENSEMBLE_INTEGRATION_RELEASE_CANDIDATE",
+  "specialized_generator_integration": "PASS",
+  "biopks_retrotide_runtime": "PASS",
+  "biopks_normalization": "PASS",
+  "specialized_candidate_pathways": 6,
+  "specialized_mature_pathways": 0,
+  "specialized_certified_pathways": 0,
+  "specialized_evidence_abstention_frozen": true,
+  "rc1_unique_candidate_constructs": 19,
+  "candidate_mature_certified_separation": "PRESERVED",
+  "benchmark_v2_truth_accessed": false,
+  "search_breadth_changed": false,
+  "frozen_paper1_baseline_modified": false,
+  "release_ready_for_final_regression": true
+}

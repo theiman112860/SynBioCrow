@@ -1,0 +1,29 @@
+{
+  "benchmark_v2_truth_accessed": false,
+  "candidate_pathways": 6,
+  "certified_pathways": 0,
+  "checks": {
+    "abstention_candidate": true,
+    "abstention_frozen": true,
+    "abstention_no_search_expand": true,
+    "benchmark_isolation": true,
+    "biopks_normalization": true,
+    "biopks_runtime": true,
+    "breadth_frozen": true,
+    "candidate_count": true,
+    "certified_zero": true,
+    "constructs_19": true,
+    "handoff_consistent": true,
+    "lifecycle_separation": true,
+    "mature_zero": true,
+    "paper1_frozen": true,
+    "release_ready": true,
+    "specialized_integration": true
+  },
+  "mature_pathways": 0,
+  "release": "SynBioCrow-2.1.0",
+  "scientific_search_rerun": false,
+  "status": "PASS",
+  "unique_candidate_constructs": 19,
+  "version": "2.1.0"
+}

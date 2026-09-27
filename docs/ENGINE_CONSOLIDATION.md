@@ -16,11 +16,25 @@ Implemented:
 - hermetic contract tests
 - GitHub Actions CI
 
-Unmigrated scientific backends intentionally raise `BackendUnavailableError`.
+## Phase 1 — DORAnet
 
-## Migration order
+Status: **live bounded adapter implemented**.
 
-1. DORAnet adapter
+- current upstream DORAnet 0.5.7a1 optional extra
+- live enzymatic `generate_network` API binding
+- one-generation retro direct-rule probe
+- deterministic normalization to `PathwayCandidate`
+- rule/version/index provenance
+- Candidate-only lifecycle
+- explicit refusal of multi-generation search until graph reconstruction is migrated
+- hermetic fake-network tests
+- real upstream API CI smoke
+
+See [DORANET_ADAPTER.md](DORANET_ADAPTER.md).
+
+## Remaining migration order
+
+1. ~~DORAnet adapter~~
 2. RetroBioCat2 adapter
 3. RetroPath2 / RetroRules adapter
 4. reaction-level ensemble union with per-engine provenance

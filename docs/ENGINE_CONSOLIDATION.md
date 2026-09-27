@@ -2,66 +2,84 @@
 
 This branch converts the accumulated development lineage into a maintainable package without changing the sealed 2.1 scientific release.
 
-## Completed foundations
+## Milestone status
 
-- core immutable data contracts
-- generator registry
-- fail-closed evidence gates
-- Candidate / Mature / Certified promotion policy
-- sequence/CDS and cassette records
-- persistence helpers
-- engine shell
-- hermetic tests and GitHub Actions CI
+### M0 — release preservation and package contracts — COMPLETE
+- sealed 2.1 scientific release untouched
+- typed core contracts
+- Candidate / Mature / Certified lifecycle
+- fail-closed evidence semantics
+- persistence and CI foundation
 
-## DORAnet
+### M1 — independent generator adapters — COMPLETE
+- DORAnet live bounded adapter
+- RetroBioCat2 native bounded MCTS adapter
+- RetroPath2 / RetroRules two-stage adapter
 
-**Live bounded adapter implemented.**
+### M2 — reaction-level ensemble graph — COMPLETE
+- canonical molecular identity for structural SMILES
+- conservative source-scoped identity for unresolved tokens
+- retrosynthetic reaction hyperedges
+- per-edge backend, candidate, rule, and provenance retention
+- duplicate transformation provenance merge
+- bounded composite route discovery from target to sink
+- cross-engine route recovery demonstrated in hermetic tests
 
-- one-generation enzymatic retro direct-rule probe
-- deterministic `PathwayCandidate` normalization
-- rule/version/index provenance
-- Candidate-only lifecycle
-- multi-generation blocked until graph reconstruction is migrated
+This is the first implementation of the central SynBioCrow ensemble hypothesis:
+reaction edges from independent generators can be joined into a complete route
+that no single generator returned independently.
 
-## RetroBioCat2
+See [REACTION_GRAPH.md](REACTION_GRAPH.md).
 
-**Native bounded MCTS adapter implemented.**
+## Next milestones
 
-- native `MCTS` + RetroBioCat expander
-- bounded time/iterations/path length
-- solved pathways normalized into `PathwayCandidate`
-- deterministic IDs independent of RBC2 random UUIDs
-- precedent/template/score provenance retained
-- successful zero-route search separated from runtime failure
+### M3 — evidence and closure
+- RetroPath identifier-to-structure resolution
+- Rhea evidence / reaction closure adapter
+- thermodynamic adapter
+- enzyme evidence adapter
+- evidence-aware composite route scoring without lifecycle auto-promotion
 
-## RetroPath2 / RetroRules
+### M4 — sequence and construct completion
+- UniProt / RefSeq protein/CDS provenance
+- cassette/construct pipeline
+- preserve source organism vs chassis distinction
+- construct Candidate / Mature / Certified contracts
 
-**Live two-stage adapter implemented.**
+### M5 — specialized generators
+- migrate proven BioPKS / RetroTide 2.1 adapter
+- retain specialized outputs as Candidate by default
+- integrate specialized edges into reaction graph
 
-- current `retropath2_wrapper` Python API for metabolic-scope generation
-- explicit RetroRules/sink resource configuration
-- RDKit SMILES → InChI source preparation
-- current `rp2paths` pathway enumeration
-- `out_paths.csv` normalization into Candidate pathways
-- return code 11 handled as successful bounded no-hit
-- execution/configuration failures surfaced as `BackendExecutionError`
-- RetroPath compound identifiers preserved explicitly pending graph identity resolution
-- no arbitrary scope reaction is mislabeled as a complete route
+### M6 — user-facing execution
+- public engine execution API
+- CLI
+- top-to-bottom Colab runner
+- bounded lineage-aware persistence/resume
+- backend readiness and diagnostics
 
-## Remaining migration order
+### M7 — release regression and benchmark
+- integrated frozen-policy regression
+- reproducibility target panel independent of protected holdout
+- performance/provenance report
+- 2.2 release candidate
 
-1. ~~DORAnet adapter~~
-2. ~~RetroBioCat2 adapter~~
-3. ~~RetroPath2 / RetroRules adapter~~
-4. **reaction-level ensemble graph + per-engine provenance**
-5. Rhea evidence / closure adapter
-6. thermodynamic adapter
-7. enzyme evidence
-8. UniProt / RefSeq sequence/CDS pipeline
-9. cassette/construct pipeline
-10. BioPKS / RetroTide proven 2.1 adapter
-11. CLI / Colab runner / public execution API
-12. integrated regression against frozen policies
+## Backend installation policy
+
+`pip install synbiocrow` installs the SynBioCrow core package, not every
+scientific backend.
+
+Scientific generators remain optional because they have large and sometimes
+conflicting dependency/runtime requirements:
+
+- **DORAnet**: explicit optional extra currently available as `.[doranet]`.
+- **RetroBioCat2**: separate pinned research runtime; not installed by core.
+- **RetroPath2 / RetroRules**: separate runtime requiring wrapper, rp2paths,
+  RDKit, KNIME, rules, and sink resources; not installed by core.
+- **BioPKS / RetroTide**: will remain optional when migrated.
+
+`SynBioCrowEngine.backend_readiness()` provides one programmatic report of
+which registered backends are actually available/configured.
 
 ## Frozen scientific policies
 

@@ -22,11 +22,7 @@ class UniProtRheaClient:
         self.timeout = timeout
         self.user_agent = user_agent
 
-    def reviewed_for_rhea(self, rhea_id: str, *, size: int = 25) -> list[UniProtEnzymeHit]:
-        rid = str(rhea_id).upper()
-        if not rid.startswith("RHEA:"):
-            rid = "RHEA:" + rid
-        query = f'(cc_catalytic_activity:"{rid.lower()}" AND reviewed:true AND fragment:false)'
+    def _search(self, query: str, *, size: int = 25) -> list[UniProtEnzymeHit]:
         params = urllib.parse.urlencode({
             "query": query,
             "fields": "accession,id,protein_name,organism_name,length",
@@ -56,6 +52,22 @@ class UniProtRheaClient:
             ))
         return hits
 
+    def reviewed_for_rhea(self, rhea_id: str, *, size: int = 25) -> list[UniProtEnzymeHit]:
+        rid = str(rhea_id).upper()
+        if not rid.startswith("RHEA:"):
+            rid = "RHEA:" + rid
+        return self._search(
+            f'(cc_catalytic_activity:"{rid.lower()}" AND reviewed:true AND fragment:false)',
+            size=size,
+        )
+
+    def reviewed_for_ec(self, ec_number: str, *, size: int = 25) -> list[UniProtEnzymeHit]:
+        ec = str(ec_number).upper().replace("EC:", "")
+        return self._search(
+            f'(ec:{ec} AND reviewed:true AND fragment:false)',
+            size=size,
+        )
+
 def enzyme_evidence_for_exact_rhea(rhea_ids: list[str], client: UniProtRheaClient) -> tuple[GateResult, list[UniProtEnzymeHit]]:
     if not rhea_ids:
         return (
@@ -66,7 +78,6 @@ def enzyme_evidence_for_exact_rhea(rhea_ids: list[str], client: UniProtRheaClien
             ),
             [],
         )
-
     all_hits = []
     errors = []
     for rid in sorted(set(rhea_ids)):
@@ -74,7 +85,6 @@ def enzyme_evidence_for_exact_rhea(rhea_ids: list[str], client: UniProtRheaClien
             all_hits.extend(client.reviewed_for_rhea(rid))
         except Exception as exc:
             errors.append(f"{rid}: {type(exc).__name__}: {exc}")
-
     unique = {h.accession: h for h in all_hits if h.accession}
     hits = [unique[k] for k in sorted(unique)]
     if hits:
@@ -101,6 +111,54 @@ def enzyme_evidence_for_exact_rhea(rhea_ids: list[str], client: UniProtRheaClien
             "verified_enzyme_evidence",
             GateDecision.ABSTAIN,
             "No reviewed UniProtKB entries were found for the exact Rhea reaction.",
+        ),
+        [],
+    )
+
+def enzyme_context_for_ecs(ec_numbers: list[str], client: UniProtRheaClient) -> tuple[GateResult, list[UniProtEnzymeHit]]:
+    ecs=sorted({str(x).upper().replace("EC:","") for x in ec_numbers if x})
+    if not ecs:
+        return (
+            GateResult(
+                "enzyme_context_evidence",
+                GateDecision.ABSTAIN,
+                "No EC classification is available for contextual enzyme-family evidence.",
+            ),
+            [],
+        )
+    hits=[]
+    errors=[]
+    for ec in ecs:
+        try:
+            hits.extend(client.reviewed_for_ec(ec))
+        except Exception as exc:
+            errors.append(f"EC:{ec}: {type(exc).__name__}: {exc}")
+    unique={h.accession:h for h in hits if h.accession}
+    hits=[unique[k] for k in sorted(unique)]
+    if hits:
+        return (
+            GateResult(
+                "enzyme_context_evidence",
+                GateDecision.PASS,
+                "Reviewed UniProtKB proteins exist for the associated EC class; this is family/context evidence, not exact reaction-enzyme proof.",
+                tuple(h.accession for h in hits),
+            ),
+            hits,
+        )
+    if errors:
+        return (
+            GateResult(
+                "enzyme_context_evidence",
+                GateDecision.ABSTAIN,
+                "Contextual EC query unavailable or incomplete: " + "; ".join(errors),
+            ),
+            [],
+        )
+    return (
+        GateResult(
+            "enzyme_context_evidence",
+            GateDecision.ABSTAIN,
+            "No reviewed UniProtKB proteins found for the associated EC class.",
         ),
         [],
     )

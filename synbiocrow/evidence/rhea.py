@@ -1,10 +1,11 @@
 from __future__ import annotations
 import csv
 import io
+import re
 import urllib.parse
 import urllib.request
 from dataclasses import dataclass
-from typing import Any, Iterable, Mapping
+from typing import Iterable
 
 from synbiocrow.ensemble.graph import ReactionEdge, EnsembleGraph
 from .gates import GateDecision, GateResult
@@ -20,12 +21,6 @@ class RheaHit:
     pubmed: tuple[str, ...] = ()
 
 class RheaClient:
-    """Small stdlib REST client for Rhea search.
-
-    Rhea participant searches are contextual by default. They become exact
-    evidence only when the edge already carries an explicit Rhea identifier
-    that is confirmed by the query result.
-    """
     def __init__(self, *, timeout: float = 20.0, user_agent: str = "SynBioCrow/2.2"):
         self.timeout = timeout
         self.user_agent = user_agent
@@ -72,6 +67,19 @@ def _explicit_rhea_ids(edge: ReactionEdge) -> set[str]:
                 ids.add("RHEA:" + s)
     return ids
 
+def _explicit_rhea_equations(edge: ReactionEdge) -> set[str]:
+    eqs=set()
+    for item in edge.provenance:
+        value=item.get("rhea_equation")
+        if value:
+            eqs.add(_normalize_equation(str(value)))
+    return eqs
+
+def _normalize_equation(value: str) -> str:
+    value=value.replace("<=>","=").replace("=>","=").replace("->","=")
+    value=re.sub(r"\s+"," ",value.strip())
+    return value
+
 def rhea_evidence_for_edge(graph: EnsembleGraph, edge: ReactionEdge, client: RheaClient) -> tuple[GateResult, list[RheaHit]]:
     compound_keys = [edge.parent_key, *edge.precursor_keys]
     identities = [graph.compounds[k] for k in compound_keys if k in graph.compounds]
@@ -108,14 +116,38 @@ def rhea_evidence_for_edge(graph: EnsembleGraph, edge: ReactionEdge, client: Rhe
             [],
         )
 
-    explicit = _explicit_rhea_ids(edge)
-    exact = [h for h in hits if h.rhea_id in explicit]
+    explicit_ids = _explicit_rhea_ids(edge)
+    id_hits = [h for h in hits if h.rhea_id in explicit_ids]
+    if not id_hits:
+        return (
+            GateResult(
+                "rhea_reaction_evidence",
+                GateDecision.ABSTAIN,
+                "Rhea contains reactions with all participants, but no explicit edge Rhea identifier was confirmed.",
+                tuple(h.rhea_id for h in hits),
+            ),
+            hits,
+        )
+
+    explicit_eqs = _explicit_rhea_equations(edge)
+    if not explicit_eqs:
+        return (
+            GateResult(
+                "rhea_reaction_evidence",
+                GateDecision.ABSTAIN,
+                "Explicit Rhea identifier was confirmed, but no exact Rhea equation/direction contract is attached to the edge.",
+                tuple(h.rhea_id for h in id_hits),
+            ),
+            id_hits,
+        )
+
+    exact = [h for h in id_hits if _normalize_equation(h.equation) in explicit_eqs]
     if exact:
         return (
             GateResult(
                 "rhea_reaction_evidence",
                 GateDecision.PASS,
-                "Explicit Rhea mapping confirmed by Rhea participant search.",
+                "Explicit Rhea identifier and exact Rhea equation/direction were confirmed.",
                 tuple(h.rhea_id for h in exact),
             ),
             exact,
@@ -125,8 +157,8 @@ def rhea_evidence_for_edge(graph: EnsembleGraph, edge: ReactionEdge, client: Rhe
         GateResult(
             "rhea_reaction_evidence",
             GateDecision.ABSTAIN,
-            "Rhea contains reactions with all participants, but participant co-occurrence alone is not treated as exact reaction evidence.",
-            tuple(h.rhea_id for h in hits),
+            "Rhea identifier was confirmed but the returned equation/direction did not match the explicit edge contract.",
+            tuple(h.rhea_id for h in id_hits),
         ),
-        hits,
+        id_hits,
     )

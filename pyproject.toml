@@ -12,6 +12,7 @@ readme = "README.md"
 
 [project.optional-dependencies]
 doranet = ["doranet==0.5.7a1"]
+thermo = ["equilibrator-api>=0.8,<0.9; python_version >= '3.11'"]
 
 [tool.setuptools.packages.find]
 where = ["."]

@@ -18,10 +18,12 @@ def _sha256_file(path: Path) -> str:
     return h.hexdigest()
 
 class SynBioCrowRelease:
-    """Read-only stable API over a sealed SynBioCrow 2.1 release bundle."""
+    """Read-only stable API over the sealed SynBioCrow 2.1 scientific release."""
 
     def __init__(self, release_dir: str | Path):
-        self.release_dir = Path(release_dir)
+        root = Path(release_dir)
+        nested = root / "release" / "2.1.0"
+        self.release_dir = nested if (nested / "release_manifest.json").exists() else root
         self.manifest = _load(self.release_dir / "release_manifest.json")
         self.readiness = _load(self.release_dir / "release_readiness_manifest.json")
         self.abstention = _load(self.release_dir / "specialized_generator_abstention_ledger.json")

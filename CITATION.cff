@@ -1,0 +1,12 @@
+cff-version: 1.2.0
+message: "If you use SynBioCrow, please cite the archived software release below."
+title: "SynBioCrow: computational synthetic-biology pathway and construct design framework"
+type: software
+version: 2.1.1
+date-released: 2026-09-27
+authors:
+  - family-names: Heiman
+    given-names: Thomas J.
+doi: 10.5281/zenodo.22999039
+url: "https://github.com/theiman112860/SynBioCrow"
+repository-code: "https://github.com/theiman112860/SynBioCrow"

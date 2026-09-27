@@ -1,12 +1,12 @@
-# SynBioCrow 2.1.0
+# SynBioCrow 2.1.1
+
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22999039.svg)](https://doi.org/10.5281/zenodo.22999039)
 
 **SynBioCrow** is a computational synthetic-biology design framework for moving from a target molecule to evidence-aware biosynthetic pathway candidates and provenance-backed DNA construct candidates.
 
-Version **2.1.0** consolidates the current SynBioCrow architecture, adds bounded **BioPKS / RetroTide** specialization, preserves the frozen Paper-1 baseline, and keeps a strict distinction between generated candidates and scientifically supported or certified results.
+**2.1.1 is the archival/repository-maintenance release.** It reorganizes and documents the repository for long-term use and Zenodo archiving. The underlying **scientific payload is unchanged from the sealed 2.1.0 release**.
 
-> **Release status:** SynBioCrow 2.1.0 is a computational research release. Candidate pathways and constructs are **not experimental certifications**.
-
----
+> **Release status:** computational research release. Candidate pathways and constructs are **not experimental certifications**.
 
 ## What SynBioCrow does
 
@@ -15,17 +15,14 @@ SynBioCrow combines multiple complementary pathway-generation and evidence syste
 ```mermaid
 flowchart LR
     T[Target molecule] --> G[Generator ensemble]
-
     G --> D[DORAnet]
     G --> R2[RetroBioCat2]
     G --> RP[RetroPath2 / RetroRules]
     G --> PKS[RetroTide / BioPKS]
-
     D --> U[Reaction-graph union]
     R2 --> U
     RP --> U
     PKS --> U
-
     U --> E[Evidence / closure gates]
     RH[Rhea] --> E
     E --> TH[Thermodynamics]
@@ -37,8 +34,6 @@ flowchart LR
 
 The central design principle is that **generation and validation are separate**. A backend can propose chemistry, but it cannot promote its own output through the scientific lifecycle.
 
----
-
 ## Engine roles
 
 | Component | Role in SynBioCrow 2.1 |
@@ -48,35 +43,24 @@ The central design principle is that **generation and validation are separate**.
 | **RetroPath2 / RetroRules** | Rule-based pathway generation and reaction-space expansion |
 | **RetroTide** | Bounded specialized PKS design |
 | **BioPKS** | PKS + post-PKS biological transformation workflow |
-| **Rhea** | Reaction evidence / closure support — **not counted as an independent generator** |
+| **Rhea** | Reaction evidence / closure support — **not an independent generator** |
 | **DORA-XGB** | Reaction-feasibility scoring within the BioPKS branch |
 | **UniProt / RefSeq** | Protein and CDS provenance resolution |
 | **iGEM Registry / SBOL resources** | Provenance-backed expression-part acquisition |
 
-SynBioCrow can combine independent generator outputs at the **reaction-graph level**, which is intended to recover pathways that no single engine can necessarily recover on its own.
-
----
-
 ## Scientific lifecycle
 
-SynBioCrow deliberately keeps three states separate:
+**Candidate** — computationally generated route or construct satisfying the relevant structural/data contract.
 
-### Candidate
-A computationally generated route or construct that satisfies the relevant structural/data contract.
+**Mature** — Candidate that has passed stronger evidence gates such as reaction support, enzyme evidence, closure, and other required checks.
 
-### Mature
-A Candidate that has passed stronger evidence gates such as reaction support, enzyme evidence, closure, and other required checks.
-
-### Certified
-A result that satisfies the full certification contract for the release.
+**Certified** — result satisfying the full certification contract for the release.
 
 **SynBioCrow never promotes a result merely because a generator produced it or a model assigned it a high score.**
 
----
+## Sealed scientific state
 
-## SynBioCrow 2.1.0 scientific state
-
-The sealed 2.1 release retains:
+The 2.1 scientific release retains:
 
 - **19 unique provenance-backed Candidate DNA constructs**
 - **6 normalized BioPKS / RetroTide specialized-generator Candidate pathways**
@@ -86,178 +70,79 @@ The sealed 2.1 release retains:
 - preserved **benchmark-v2 blind-truth isolation**
 - no fabricated chemistry, enzyme evidence, thermodynamics, or biological sequences
 
-### BioPKS / RetroTide result
-
-The specialized PKS branch is now operational and integrated into the normal SynBioCrow evidence lifecycle.
-
 The leading bounded BioPKS candidate uses `rule0024_21`:
 
 ```text
 O=C(O)C(O)Cc1ccccc1  →  O=C=O + OCCc1ccccc1
 ```
 
-The pathway is stoichiometrically closed and computationally feasible, but it remains:
-
-**CANDIDATE / NOT_CERTIFIED**
-
-because the following are still unresolved for the exact transformation:
-
-- direct independent reaction evidence
-- verified enzyme identity
-- quantitative thermodynamics
-
-This is recorded explicitly in `specialized_generator_abstention_ledger.json`.
-
----
+It remains **CANDIDATE / NOT_CERTIFIED** because direct independent reaction evidence, verified enzyme identity, and quantitative thermodynamics remain unresolved.
 
 ## Stable Python release API
-
-SynBioCrow 2.1 includes a small read-only API for inspecting the sealed release state.
 
 ```python
 from synbiocrow import SynBioCrowRelease
 
 release = SynBioCrowRelease(".")
-
 print(release.status())
 print(release.policies())
 print(release.specialized_summary())
 ```
 
-The API validates the frozen release contract when it loads and raises an error if required release invariants have drifted.
-
-### Install the release-state package
-
-From the repository root:
+Install from the repository root:
 
 ```bash
 pip install -e .
 ```
 
-Then:
-
-```python
-from synbiocrow import SynBioCrowRelease
-
-r = SynBioCrowRelease(".")
-print(r.status())
-```
-
-> The lightweight `synbiocrow/` package in this repository is the **stable release-state/API surface**. Generator backends such as DORAnet, RetroBioCat2, RetroPath2, RetroTide, and BioPKS remain separate upstream scientific dependencies and are not vendored into this repository.
-
----
+The lightweight `synbiocrow/` package is the stable release-state/API surface. Generator backends remain separate upstream scientific dependencies and are not vendored here.
 
 ## Repository layout
 
 ```text
 SynBioCrow/
-├── synbiocrow/                         # stable 2.1 release API
-├── docs/
-│   ├── API.md
-│   ├── ARCHITECTURE.md
-│   ├── LIMITATIONS.md
-│   └── REPRODUCIBILITY.md
-├── release_manifest.json
-├── release_readiness_manifest.json
-├── ensemble_release_handoff.json
-├── integrated_regression.json
-├── specialized_generator_abstention_ledger.json
-├── RELEASE_NOTES.md
+├── README.md
+├── CITATION.cff
+├── LICENSE.txt
 ├── pyproject.toml
-└── historical notebooks/scripts       # retained for development provenance
+├── RELEASE_NOTES.md
+├── synbiocrow/                       # stable release API
+├── docs/                             # architecture/API/limitations/reproducibility
+├── release/
+│   └── 2.1.0/                       # sealed scientific release manifests
+└── development_history/
+    ├── README.md
+    ├── notebooks/                    # early notebook-era development
+    └── scripts/                      # early supporting scripts
 ```
 
-The earlier notebook-era SynBioCrow files remain in the repository intentionally. They document the project's development history, but the **2.1 release API and manifests are the current release surface**.
-
----
-
-## Frozen release policies
-
-SynBioCrow 2.1.0 preserves the following contracts:
-
-- Paper-1 baseline remains frozen and unmodified
-- benchmark-v2 truth is not accessed during release development
-- Candidate / Mature / Certified states remain separate
-- specialized generators default to Candidate
-- Rhea is evidence/closure infrastructure rather than an independent generator
-- missing chemistry, enzyme evidence, cofactors, thermodynamics, kinetics, or sequences are not fabricated
-- evidence abstentions are preserved rather than converted into positive claims
-
----
+Formal releases are preserved by **Git tags + GitHub Releases + Zenodo**. The `development_history/` directory contains pre-release development lineage and historical artifacts, not current release files.
 
 ## Reproducibility
 
-The final release was promoted from the sealed 2.1 RC lineage without rerunning the scientific search.
-
-The release package records:
-
-- scientific state and counts
-- frozen-policy assertions
-- integrated regression results
-- specialized-generator abstention provenance
-- source-lineage metadata
-- SHA-256 provenance fields
-
-See:
+The sealed 2.1.0 scientific state is stored under [release/2.1.0](release/2.1.0/). The 2.1.1 repository update reorganizes those artifacts without changing their scientific content.
 
 - [Reproducibility](docs/REPRODUCIBILITY.md)
-- [Release manifest](release_manifest.json)
-- [Integrated regression](integrated_regression.json)
-
----
+- [Release manifest](release/2.1.0/release_manifest.json)
+- [Integrated regression](release/2.1.0/integrated_regression.json)
+- [Evidence abstention ledger](release/2.1.0/specialized_generator_abstention_ledger.json)
 
 ## Limitations
 
-SynBioCrow 2.1 is a computational research system.
+SynBioCrow 2.1 is a computational research system. It does **not** claim that a Candidate expresses successfully, has experimentally validated enzyme activity, produces useful flux, is nontoxic, is manufacturable, or is experimentally certified.
 
-It does **not** claim that a Candidate:
-
-- expresses successfully in a chosen chassis
-- has experimentally validated enzyme activity
-- produces useful metabolic flux
-- is nontoxic
-- is manufacturable
-- is experimentally viable
-- has been laboratory certified
-
-See [docs/LIMITATIONS.md](docs/LIMITATIONS.md) for the release-level limitations.
-
----
-
-## Documentation
-
-- [Architecture](docs/ARCHITECTURE.md)
-- [API](docs/API.md)
-- [Limitations](docs/LIMITATIONS.md)
-- [Reproducibility](docs/REPRODUCIBILITY.md)
-- [Release notes](RELEASE_NOTES.md)
-
----
-
-## Historical development
-
-SynBioCrow began as a notebook-driven retrosynthesis / bioretrosynthesis project and evolved into an ensemble framework with explicit scientific lifecycle contracts, provenance-backed sequence resolution, construct assembly, and specialized PKS integration.
-
-The historical notebooks and scripts are intentionally retained so earlier work is not erased as the project becomes more modular and reproducible.
-
----
+See [docs/LIMITATIONS.md](docs/LIMITATIONS.md).
 
 ## Citation
 
-A formal SynBioCrow paper/citation is still being prepared.
+Please cite the archived repository release as:
 
-For now, when referring specifically to this repository, please cite:
+**Heiman, Thomas J. (2026). SynBioCrow 2.1.1: computational synthetic-biology pathway and construct design framework. Zenodo. https://doi.org/10.5281/zenodo.22999039**
 
-**SynBioCrow 2.1.0 — computational synthetic-biology pathway and construct design framework.**
+Machine-readable citation metadata is available in [CITATION.cff](CITATION.cff).
 
-The eventual publication citation and DOI can replace this section when the manuscript/repository archive is finalized.
+## DOI
 
----
+**10.5281/zenodo.22999039**
 
-## Release
-
-Current release: **SynBioCrow 2.1.0**
-
-Suggested Git tag: **`v2.1.0`**
-
-See [RELEASE_NOTES.md](RELEASE_NOTES.md) for the release summary.
+https://doi.org/10.5281/zenodo.22999039

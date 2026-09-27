@@ -1,10 +1,8 @@
 # SynBioCrow 2.2 engine consolidation
 
-This branch converts the accumulated development lineage into a maintainable package without changing the sealed 2.1 scientific release.
+## Completed milestones
 
-## Milestone status
-
-### M0 — release preservation and package contracts — COMPLETE
+### M0 — release preservation and core contracts — COMPLETE
 - sealed 2.1 scientific release untouched
 - typed core contracts
 - Candidate / Mature / Certified lifecycle
@@ -18,68 +16,64 @@ This branch converts the accumulated development lineage into a maintainable pac
 
 ### M2 — reaction-level ensemble graph — COMPLETE
 - canonical molecular identity for structural SMILES
-- conservative source-scoped identity for unresolved tokens
-- retrosynthetic reaction hyperedges
-- per-edge backend, candidate, rule, and provenance retention
-- duplicate transformation provenance merge
-- bounded composite route discovery from target to sink
-- cross-engine route recovery demonstrated in hermetic tests
+- conservative source-scoped unresolved identities
+- reaction hyperedges with per-engine provenance
+- bounded composite route discovery
 
-This is the first implementation of the central SynBioCrow ensemble hypothesis:
-reaction edges from independent generators can be joined into a complete route
-that no single generator returned independently.
+### M3 — evidence and closure — IN PROGRESS
+Implemented:
+- RetroPath identifier→structure remapping contract
+- stoichiometric atom/formal-charge closure
+- Rhea participant/evidence client
+- exact-Rhea confirmation policy
+- reviewed UniProt evidence only for exact Rhea mappings
+- route-level evidence aggregation
+- no automatic lifecycle promotion
 
-See [REACTION_GRAPH.md](REACTION_GRAPH.md).
+Pending:
+- quantitative thermodynamics
+- richer exact reaction-direction/stoichiometry matching
+- enzyme family/context layer
+- evidence-aware ranking
 
-## Next milestones
+See [EVIDENCE_LAYER.md](EVIDENCE_LAYER.md).
 
-### M3 — evidence and closure
-- RetroPath identifier-to-structure resolution
-- Rhea evidence / reaction closure adapter
-- thermodynamic adapter
-- enzyme evidence adapter
-- evidence-aware composite route scoring without lifecycle auto-promotion
+## Future milestones
 
-### M4 — sequence and construct completion
-- UniProt / RefSeq protein/CDS provenance
-- cassette/construct pipeline
-- preserve source organism vs chassis distinction
-- construct Candidate / Mature / Certified contracts
+### M4 — sequence + construct design optimization
+- evidence-backed enzyme sequence selection
+- verified CDS acquisition
+- amino-acid/CDS consistency
+- nucleotide optimization while preserving protein sequence by default
+- chassis-aware codon optimization
+- promoter/RBS/terminator selection and cassette assembly
+- construct QC and provenance
 
 ### M5 — specialized generators
-- migrate proven BioPKS / RetroTide 2.1 adapter
-- retain specialized outputs as Candidate by default
-- integrate specialized edges into reaction graph
+- migrate proven BioPKS / RetroTide branch
+- integrate specialized edges into ensemble graph
+- keep specialized outputs Candidate by default
 
 ### M6 — user-facing execution
-- public engine execution API
+- public engine API
 - CLI
-- top-to-bottom Colab runner
-- bounded lineage-aware persistence/resume
-- backend readiness and diagnostics
+- Colab runner
+- backend bootstrap/readiness
+- persistence/resume
 
-### M7 — release regression and benchmark
-- integrated frozen-policy regression
-- reproducibility target panel independent of protected holdout
-- performance/provenance report
-- 2.2 release candidate
+### M7 — computational Test layer
+- integrated regression
+- reproducibility panel
+- route/construct validation
+- performance/provenance reports
 
-## Backend installation policy
+### M8 — Learn / closed-loop DBTL
+- consume structured Test outcomes
+- update ranking and backend weighting
+- update route/design priorities
+- preserve evidence-gated lifecycle policy
 
-`pip install synbiocrow` installs the SynBioCrow core package, not every
-scientific backend.
-
-Scientific generators remain optional because they have large and sometimes
-conflicting dependency/runtime requirements:
-
-- **DORAnet**: explicit optional extra currently available as `.[doranet]`.
-- **RetroBioCat2**: separate pinned research runtime; not installed by core.
-- **RetroPath2 / RetroRules**: separate runtime requiring wrapper, rp2paths,
-  RDKit, KNIME, rules, and sink resources; not installed by core.
-- **BioPKS / RetroTide**: will remain optional when migrated.
-
-`SynBioCrowEngine.backend_readiness()` provides one programmatic report of
-which registered backends are actually available/configured.
+### M9 — 2.2 release candidate + paper/reproducibility package
 
 ## Frozen scientific policies
 

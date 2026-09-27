@@ -85,8 +85,8 @@ def _split_reaction(step:ReactionStep)->tuple[list[str],list[str]]:
     if "=" not in step.reaction:
         raise ValueError(f"ReactionStep lacks '=' separator: {step.reaction!r}")
     left,right=step.reaction.split("=",1)
-    return ([x.strip() for x in left.split("+") if x.strip()],
-            [x.strip() for x in right.split("+") if x.strip()])
+    return ([x.strip() for x in left.split(" + ") if x.strip()],
+            [x.strip() for x in right.split(" + ") if x.strip()])
 
 def _parent_side(step:ReactionStep)->str:
     explicit=step.metadata.get("retrosynthetic_parent_side") if step.metadata else None

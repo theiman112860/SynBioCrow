@@ -9,6 +9,7 @@ description = "SynBioCrow computational synthetic-biology engine"
 requires-python = ">=3.10"
 license = {text = "Research release; see LICENSE.txt"}
 readme = "README.md"
+dependencies = ["rdkit>=2025.3"]
 
 [project.scripts]
 synbiocrow = "synbiocrow.cli:main"

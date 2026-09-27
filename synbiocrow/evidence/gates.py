@@ -13,8 +13,10 @@ class GateResult:
     reason:str
     evidence:tuple[str,...]=()
 
-def require_all(results:Iterable[GateResult])->GateDecision:
-    values=[r.decision for r in results]
+def require_all(results:Iterable[GateResult|GateDecision])->GateDecision:
+    values=[]
+    for item in results:
+        values.append(item if isinstance(item,GateDecision) else item.decision)
     if GateDecision.FAIL in values:return GateDecision.FAIL
     if GateDecision.ABSTAIN in values:return GateDecision.ABSTAIN
     return GateDecision.PASS

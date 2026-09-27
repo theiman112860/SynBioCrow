@@ -9,39 +9,34 @@
 - M4 sequence + construct optimization
 - M5 BioPKS / RetroTide specialized integration
 - M6 unified execution API / CLI / Colab / resume
+- M7 computational Test / reproducibility / release-readiness
 
-### M6 components
-- public `DesignRequest` / `DesignResult`
-- top-level `design(...)` execution API
-- deterministic request-derived run IDs
-- backend readiness and per-backend status
-- bounded multi-backend Candidate generation
-- shared graph construction
-- bounded target-to-sink route reconstruction
-- atomic JSON stage persistence
-- checkpoint resume without rerunning completed Candidate generation
-- `synbiocrow readiness` CLI
-- `synbiocrow design` CLI
-- backend bootstrap advice
-- Google Colab runner with Drive persistence and rescue ZIP
+### M7 components
+- frozen 2.1 policy regression
+- hermetic reproducibility panel
+- deterministic panel digest
+- backend/runtime readiness matrix
+- optional-backend warnings separated from core blockers
+- machine-readable release-readiness report
+- CI release-readiness gate
+- CI integration repair discovered by the M6 workflow
 
-See [M6_EXECUTION.md](M6_EXECUTION.md).
+See [M7_TEST_REPRODUCIBILITY.md](M7_TEST_REPRODUCIBILITY.md).
 
 ## Next
 
-### M7 — computational Test layer
-- integrated frozen-policy regression
-- reproducibility target panel
-- backend/runtime matrix
-- deterministic serialization checks
-- route/construct validation
-- performance/provenance report
-- CI gates for 2.2 release readiness
-
 ### M8 — Learn / closed-loop DBTL
-- structured Test outcomes feed ranking and design policy
-- backend weighting and route prioritization
-- sequence/cassette design learning
-- lifecycle remains evidence-gated
+- structured Test outcome schema
+- ranking-policy update contract
+- backend weighting feedback
+- route-priority feedback
+- sequence/cassette design feedback
+- audit trail for every learned policy update
+- no autonomous lifecycle promotion
 
 ### M9 — 2.2 release candidate + paper package
+- finalize documentation
+- release manifests and hashes
+- release archive
+- reproducibility bundle
+- paper methods/results package

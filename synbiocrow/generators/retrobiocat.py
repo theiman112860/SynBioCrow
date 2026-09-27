@@ -22,6 +22,8 @@ def _json_safe(value: Any) -> Any:
         return {str(k): _json_safe(v) for k, v in value.items()}
     if isinstance(value, (list, tuple, set)):
         return [_json_safe(v) for v in value]
+    if hasattr(value, "__dict__"):
+        return {str(k): _json_safe(v) for k, v in vars(value).items()}
     return str(value)
 
 

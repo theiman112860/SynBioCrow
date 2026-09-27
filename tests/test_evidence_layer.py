@@ -59,7 +59,7 @@ class EvidenceLayerTests(unittest.TestCase):
         self.assertEqual(gate.decision, GateDecision.ABSTAIN)
         self.assertEqual(len(hits), 1)
 
-    def test_explicit_rhea_mapping_can_pass(self):
+    def test_explicit_rhea_id_without_equation_abstains(self):
         cand = PathwayCandidate(
             "c1","CCO",
             (ReactionStep(
@@ -75,7 +75,7 @@ class EvidenceLayerTests(unittest.TestCase):
             graph, edge,
             FakeRhea([RheaHit("RHEA:12345","demo")]),
         )
-        self.assertEqual(gate.decision, GateDecision.PASS)
+        self.assertEqual(gate.decision, GateDecision.ABSTAIN)
         self.assertEqual(gate.evidence, ("RHEA:12345",))
 
     def test_exact_rhea_reviewed_uniprot_can_pass(self):

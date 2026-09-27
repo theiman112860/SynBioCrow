@@ -5,6 +5,7 @@ from synbiocrow.lifecycle.policy import PromotionPolicy
 from synbiocrow.core.models import PathwayCandidate
 from synbiocrow.ensemble import build_reaction_graph, EnsembleGraph
 from synbiocrow.evidence import evaluate_route_evidence, RouteEvidenceReport
+from synbiocrow.design import design_expression_construct, ConstructDesignResult
 
 @dataclass
 class SynBioCrowEngine:
@@ -37,3 +38,6 @@ class SynBioCrowEngine:
 
     def evaluate_route(self, graph:EnsembleGraph, edge_ids:Iterable[str], **kwargs)->RouteEvidenceReport:
         return evaluate_route_evidence(graph, edge_ids, **kwargs)
+
+    def design_construct(self, **kwargs)->ConstructDesignResult:
+        return design_expression_construct(**kwargs)

@@ -3,39 +3,49 @@
 ## Completed
 
 - M0 release preservation and core contracts
-- M1 DORAnet, RetroBioCat2, RetroPath2/RetroRules adapters
+- M1 generator adapters
 - M2 reaction-level cross-engine ensemble graph
-- M3 evidence and closure
+- M3 evidence, exact Rhea, enzyme evidence, thermodynamics
+- M4 sequence + construct optimization
 
-### M3 components now implemented
-- RetroPath identifier→structure remapping
-- atom/formal-charge closure
-- Rhea participant search
-- strict exact-Rhea identifier + equation/direction contract
-- reviewed UniProt exact-Rhea enzyme evidence
-- reviewed UniProt EC/context evidence
-- quantitative eQuilibrator standard transformed Gibbs energy
-- route-level evidence aggregation
-- no automatic lifecycle promotion
+### M4 components
+- explicit UniProt protein sequence acquisition
+- coordinate-bounded NCBI CDS acquisition
+- exact CDS -> protein translation validation
+- amino-acid-preserving synonymous codon optimization
+- deterministic sequence QC
+- provenance-only standard regulatory-part references
+- verified-sequence requirement before assembly
+- promoter/RBS/CDS/terminator cassette assembly
+- deterministic multi-gene construct assembly
+- Candidate-only lifecycle
 
-See [EVIDENCE_LAYER.md](EVIDENCE_LAYER.md) and [M3_COMPLETION.md](M3_COMPLETION.md).
+See [M4_SEQUENCE_CONSTRUCTS.md](M4_SEQUENCE_CONSTRUCTS.md).
 
-## Next: M4 — sequence + construct design optimization
+## Next
 
-- evidence-backed enzyme sequence selection
-- verified CDS acquisition
-- amino-acid/CDS consistency
-- nucleotide optimization while preserving amino-acid sequence by default
-- chassis-aware codon optimization
-- motif/restriction/repeat/GC QC
-- promoter/RBS/terminator selection
-- cassette assembly
-- construct scoring and provenance
+### M5 — specialized generators
+- migrate proven BioPKS / RetroTide 2.1 branch
+- integrate specialized edges into the ensemble graph
+- keep specialized outputs Candidate by default
 
-## Later
+### M6 — user-facing execution
+- public engine API
+- CLI
+- Colab runner
+- backend bootstrap/readiness
+- persistence/resume
 
-- M5 BioPKS/RetroTide migration
-- M6 public execution API, CLI, Colab, bootstrap/readiness, resume
-- M7 computational Test layer
-- M8 Learn/closed-loop DBTL
-- M9 2.2 release candidate and paper package
+### M7 — computational Test layer
+- integrated regression
+- reproducibility panel
+- route/construct validation
+- performance/provenance reports
+
+### M8 — Learn / closed-loop DBTL
+- structured Test outcomes feed ranking and design policy
+- backend weighting and route prioritization
+- sequence/cassette design learning
+- lifecycle remains evidence-gated
+
+### M9 — 2.2 release candidate + paper package

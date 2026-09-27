@@ -10,6 +10,9 @@ requires-python = ">=3.10"
 license = {text = "Research release; see LICENSE.txt"}
 readme = "README.md"
 
+[project.scripts]
+synbiocrow = "synbiocrow.cli:main"
+
 [project.optional-dependencies]
 doranet = ["doranet==0.5.7a1"]
 thermo = ["equilibrator-api>=0.8,<0.9; python_version >= '3.11'"]

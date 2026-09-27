@@ -95,6 +95,7 @@ def _parent_side(step:ReactionStep)->str:
     if step.source_backend=="doranet":
         return "left" if step.metadata.get("direction","retro")=="retro" else "right"
     if step.source_backend=="retropath2": return "right"
+    if step.source_backend=="biopks_retrotide": return "left"
     return "left"
 
 def build_reaction_graph(candidates:Iterable[PathwayCandidate])->EnsembleGraph:

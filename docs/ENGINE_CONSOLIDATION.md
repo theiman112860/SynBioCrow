@@ -7,39 +7,36 @@
 - M2 reaction-level cross-engine ensemble graph
 - M3 evidence, exact Rhea, enzyme evidence, thermodynamics
 - M4 sequence + construct optimization
+- M5 BioPKS / RetroTide specialized-generator integration
 
-### M4 components
-- explicit UniProt protein sequence acquisition
-- coordinate-bounded NCBI CDS acquisition
-- exact CDS -> protein translation validation
-- amino-acid-preserving synonymous codon optimization
-- deterministic sequence QC
-- provenance-only standard regulatory-part references
-- verified-sequence requirement before assembly
-- promoter/RBS/CDS/terminator cassette assembly
-- deterministic multi-gene construct assembly
-- Candidate-only lifecycle
+### M5 components
+- external BioPKS bridge contract retained
+- no BioPKS source vendoring
+- explicit upstream license acknowledgement
+- flexible normalization of BioPKS/RetroTide routes
+- architecture-only PKS steps retained as provenance, not fake reactions
+- explicit specialist reactions added to the shared ensemble graph
+- Candidate-only default
+- bounded no-hit distinct from runtime failure
+- hermetic bridge/normalization tests
 
-See [M4_SEQUENCE_CONSTRUCTS.md](M4_SEQUENCE_CONSTRUCTS.md).
+See [M5_BIOPKS_RETROTIDE.md](M5_BIOPKS_RETROTIDE.md).
 
 ## Next
 
-### M5 — specialized generators
-- migrate proven BioPKS / RetroTide 2.1 branch
-- integrate specialized edges into the ensemble graph
-- keep specialized outputs Candidate by default
-
 ### M6 — user-facing execution
-- public engine API
+- public design API
 - CLI
 - Colab runner
 - backend bootstrap/readiness
-- persistence/resume
+- bounded persistence/resume
+- unified progress/diagnostics
 
 ### M7 — computational Test layer
 - integrated regression
 - reproducibility panel
 - route/construct validation
+- backend/runtime matrix
 - performance/provenance reports
 
 ### M8 — Learn / closed-loop DBTL

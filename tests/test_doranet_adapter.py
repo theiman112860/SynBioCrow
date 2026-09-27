@@ -1,5 +1,6 @@
 import unittest
 from unittest.mock import patch
+import synbiocrow.generators.doranet as doranet_module
 
 from synbiocrow.core.errors import ContractViolation
 from synbiocrow.core.models import LifecycleState
@@ -93,13 +94,7 @@ class DORAnetAdapterTests(unittest.TestCase):
                 self.assertEqual(kwargs["direction"], "retro")
                 return FakeNetwork()
 
-        with patch.object(backend, "available", return_value=True), patch(
-            "synbiocrow.generators.doranet.importlib.import_module",
-            return_value=FakeModule,
-        ), patch(
-            "synbiocrow.generators.doranet.importlib_metadata.version",
-            return_value="0.5.7a1",
-        ):
+        with patch.object(backend, "available", return_value=True),              patch.object(doranet_module.importlib, "import_module", return_value=FakeModule),              patch.object(doranet_module.importlib_metadata, "version", return_value="0.5.7a1"):
             out = backend.generate("CCO")
         self.assertEqual(len(out), 1)
         self.assertEqual(out[0].provenance["doranet_version"], "0.5.7a1")

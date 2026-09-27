@@ -144,7 +144,7 @@ class EvidenceLayerTests(unittest.TestCase):
             ]),
         )
         self.assertEqual(report.lifecycle, LifecycleState.CANDIDATE)
-        self.assertEqual(report.overall, GateDecision.PASS)
+        self.assertEqual(report.overall, GateDecision.ABSTAIN)
 
 
 if __name__ == "__main__":

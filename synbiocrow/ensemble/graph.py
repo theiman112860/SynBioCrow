@@ -82,9 +82,9 @@ class EnsembleGraph:
         return routes
 
 def _split_reaction(step:ReactionStep)->tuple[list[str],list[str]]:
-    if "=" not in step.reaction:
-        raise ValueError(f"ReactionStep lacks '=' separator: {step.reaction!r}")
-    left,right=step.reaction.split("=",1)
+    if " = " not in step.reaction:
+        raise ValueError(f"ReactionStep lacks explicit ' = ' separator: {step.reaction!r}")
+    left,right=step.reaction.split(" = ",1)
     return ([x.strip() for x in left.split(" + ") if x.strip()],
             [x.strip() for x in right.split(" + ") if x.strip()])
 

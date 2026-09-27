@@ -1,5 +1,6 @@
 import unittest
 from unittest.mock import patch
+import synbiocrow.generators.retrobiocat as retrobiocat_module
 
 from synbiocrow.core.errors import BackendExecutionError
 from synbiocrow.core.models import LifecycleState
@@ -122,13 +123,7 @@ class RetroBioCatAdapterTests(unittest.TestCase):
         backend = RetroBioCatBackend(
             RBC2Settings(max_search_time=7, max_iterations=33, max_length=3)
         )
-        with patch.object(backend, "available", return_value=True), patch(
-            "synbiocrow.generators.retrobiocat.importlib.import_module",
-            side_effect=fake_import,
-        ), patch(
-            "synbiocrow.generators.retrobiocat.importlib_metadata.version",
-            return_value="2026.2.27",
-        ):
+        with patch.object(backend, "available", return_value=True),              patch.object(retrobiocat_module.importlib, "import_module", side_effect=fake_import),              patch.object(retrobiocat_module.importlib_metadata, "version", return_value="2026.2.27"):
             out = backend.generate("CCO")
         self.assertEqual(len(out), 1)
         self.assertEqual(backend.last_run_stats["status"], "COMPLETE")
@@ -138,13 +133,7 @@ class RetroBioCatAdapterTests(unittest.TestCase):
     def test_zero_solved_is_successful_no_hit(self):
         FakeMCTS.solved = []
         backend = RetroBioCatBackend()
-        with patch.object(backend, "available", return_value=True), patch(
-            "synbiocrow.generators.retrobiocat.importlib.import_module",
-            side_effect=fake_import,
-        ), patch(
-            "synbiocrow.generators.retrobiocat.importlib_metadata.version",
-            return_value="2026.2.27",
-        ):
+        with patch.object(backend, "available", return_value=True),              patch.object(retrobiocat_module.importlib, "import_module", side_effect=fake_import),              patch.object(retrobiocat_module.importlib_metadata, "version", return_value="2026.2.27"):
             out = backend.generate("CCO")
         self.assertEqual(out, [])
         self.assertEqual(backend.last_run_stats["status"], "COMPLETE")
@@ -153,10 +142,7 @@ class RetroBioCatAdapterTests(unittest.TestCase):
     def test_runtime_failure_is_not_no_hit(self):
         FakeMCTS.should_error = True
         backend = RetroBioCatBackend()
-        with patch.object(backend, "available", return_value=True), patch(
-            "synbiocrow.generators.retrobiocat.importlib.import_module",
-            side_effect=fake_import,
-        ):
+        with patch.object(backend, "available", return_value=True),              patch.object(retrobiocat_module.importlib, "import_module", side_effect=fake_import):
             with self.assertRaises(BackendExecutionError):
                 backend.generate("CCO")
         self.assertEqual(backend.last_run_stats["status"], "ERROR")

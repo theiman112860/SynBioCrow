@@ -1,11 +1,13 @@
 from __future__ import annotations
 import argparse
 import json
+from dataclasses import asdict
 from pathlib import Path
 
 from synbiocrow import SynBioCrowEngine
 from synbiocrow.execution import DesignRequest, design, json_safe
 from synbiocrow.bootstrap import bootstrap_advice
+from synbiocrow.learning import LearningPolicy, load_policy, load_outcomes
 
 def _progress(pct:float,msg:str)->None:
     print(f"[SynBioCrow] {pct:5.1f}% | {msg}",flush=True)
@@ -30,6 +32,13 @@ def build_parser()->argparse.ArgumentParser:
     des.add_argument("--max-route-steps",type=int,default=8)
     des.add_argument("--max-routes",type=int,default=100)
     des.add_argument("--output",default=None)
+
+    learn=sub.add_parser("learn",help="apply structured Test outcomes to a bounded ranking policy")
+    learn.add_argument("--outcomes",required=True)
+    learn.add_argument("--policy",default=None)
+    learn.add_argument("--learning-rate",type=float,default=0.10)
+    learn.add_argument("--output",required=True)
+    learn.add_argument("--audit-log",default=None)
     return p
 
 def main(argv=None)->int:
@@ -57,6 +66,24 @@ def main(argv=None)->int:
                 print(f"{row.backend_id:20s} {state:10s} {row.install_hint}")
                 if row.external_requirements:
                     print("  external:",", ".join(row.external_requirements))
+        return 0
+
+    if args.command=="learn":
+        policy=load_policy(args.policy) if args.policy else LearningPolicy()
+        outcomes=load_outcomes(args.outcomes)
+        new_policy,update=engine.learn(
+            policy,
+            outcomes,
+            learning_rate=args.learning_rate,
+            audit_log=args.audit_log,
+        )
+        payload={"policy":asdict(new_policy),"update":asdict(update)}
+        Path(args.output).write_text(
+            json.dumps(payload,indent=2,sort_keys=True)+"\n",
+            encoding="utf-8",
+        )
+        print(f"[SynBioCrow] learned policy v{new_policy.version}: {args.output}")
+        print(f"[SynBioCrow] audit digest: {update.audit_digest}")
         return 0
 
     request=DesignRequest(

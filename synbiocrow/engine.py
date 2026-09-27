@@ -6,10 +6,14 @@ from synbiocrow.core.models import PathwayCandidate
 from synbiocrow.ensemble import build_reaction_graph, EnsembleGraph
 from synbiocrow.evidence import evaluate_route_evidence, RouteEvidenceReport
 from synbiocrow.design import design_expression_construct, ConstructDesignResult
+from synbiocrow.learning import (
+    LearningPolicy, TestOutcome, PolicyUpdate,
+    apply_test_outcomes, rank_routes, rank_constructs, LearningAuditLog,
+)
 
 @dataclass
 class SynBioCrowEngine:
-    """2.2 consolidation engine shell."""
+    """2.2 consolidated engine."""
     backends:BackendRegistry=field(default_factory=default_registry)
     promotion_policy:PromotionPolicy=field(default_factory=PromotionPolicy)
 
@@ -41,3 +45,38 @@ class SynBioCrowEngine:
 
     def design_construct(self, **kwargs)->ConstructDesignResult:
         return design_expression_construct(**kwargs)
+
+    def learn(
+        self,
+        policy:LearningPolicy,
+        outcomes:Iterable[TestOutcome],
+        *,
+        learning_rate:float=0.10,
+        audit_log:str|None=None,
+    )->tuple[LearningPolicy,PolicyUpdate]:
+        outcomes=tuple(outcomes)
+        new_policy,update=apply_test_outcomes(
+            policy,outcomes,learning_rate=learning_rate
+        )
+        if audit_log:
+            LearningAuditLog(audit_log).append(
+                policy_before=policy,
+                policy_after=new_policy,
+                update=update,
+                outcomes=outcomes,
+            )
+        return new_policy,update
+
+    def rank_routes(
+        self,
+        route_features:dict[str,dict[str,float]],
+        policy:LearningPolicy,
+    )->list[tuple[str,float]]:
+        return rank_routes(route_features,policy)
+
+    def rank_constructs(
+        self,
+        construct_features:dict[str,dict[str,float]],
+        policy:LearningPolicy,
+    )->list[tuple[str,float]]:
+        return rank_constructs(construct_features,policy)

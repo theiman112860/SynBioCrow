@@ -6,9 +6,9 @@ from synbiocrow.core.models import ReactionStep
 from .gates import GateDecision, GateResult
 
 def split_reaction_tokens(reaction: str) -> tuple[list[str], list[str]]:
-    if "=" not in reaction:
-        raise ValueError(f"reaction lacks '=' separator: {reaction!r}")
-    left, right = reaction.split("=", 1)
+    if " = " not in reaction:
+        raise ValueError(f"reaction lacks explicit ' = ' separator: {reaction!r}")
+    left, right = reaction.split(" = ", 1)
     # SynBioCrow normalizers emit ' + ' between compounds. Splitting only on
     # spaced separators avoids corrupting charged SMILES such as [NH4+].
     lhs = [x.strip() for x in left.split(" + ") if x.strip()]

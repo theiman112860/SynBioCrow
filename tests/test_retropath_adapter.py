@@ -2,6 +2,7 @@ import tempfile
 import unittest
 from pathlib import Path
 from unittest.mock import patch
+import synbiocrow.generators.retropath as retropath_module
 
 from synbiocrow.core.errors import BackendExecutionError
 from synbiocrow.core.models import LifecycleState
@@ -57,13 +58,7 @@ class RetroPathAdapterTests(unittest.TestCase):
                 @staticmethod
                 def retropath2(**kwargs):
                     return RETROPATH_NO_SOLUTION, {}
-            with patch.object(backend, "available", return_value=True), patch(
-                "synbiocrow.generators.retropath.importlib.import_module",
-                return_value=FakeMod,
-            ), patch(
-                "synbiocrow.generators.retropath._write_source_csv",
-                return_value="InChI=1S/C2H6O",
-            ):
+            with patch.object(backend, "available", return_value=True),                  patch.object(retropath_module.importlib, "import_module", return_value=FakeMod),                  patch.object(retropath_module, "_write_source_csv", return_value="InChI=1S/C2H6O"):
                 out = backend.generate("CCO")
         self.assertEqual(out, [])
         self.assertEqual(backend.last_run_stats["status"], "COMPLETE")
@@ -78,13 +73,7 @@ class RetroPathAdapterTests(unittest.TestCase):
                 @staticmethod
                 def retropath2(**kwargs):
                     return 2, {}
-            with patch.object(backend, "available", return_value=True), patch(
-                "synbiocrow.generators.retropath.importlib.import_module",
-                return_value=FakeMod,
-            ), patch(
-                "synbiocrow.generators.retropath._write_source_csv",
-                return_value="InChI=1S/C2H6O",
-            ):
+            with patch.object(backend, "available", return_value=True),                  patch.object(retropath_module.importlib, "import_module", return_value=FakeMod),                  patch.object(retropath_module, "_write_source_csv", return_value="InChI=1S/C2H6O"):
                 with self.assertRaises(BackendExecutionError):
                     backend.generate("CCO")
         self.assertEqual(backend.last_run_stats["status"], "ERROR")

@@ -2,8 +2,11 @@
 from .api import SynBioCrowRelease, ReleasePolicyError
 from .engine import SynBioCrowEngine
 from .execution import DesignRequest, DesignResult, RunStateStore, design
+from .learning import LearningPolicy, TestOutcome, PolicyUpdate
+
 __all__=[
     "SynBioCrowRelease","ReleasePolicyError","SynBioCrowEngine",
     "DesignRequest","DesignResult","RunStateStore","design",
+    "LearningPolicy","TestOutcome","PolicyUpdate",
 ]
 __version__="2.2.0.dev0"

@@ -10,33 +10,30 @@
 - M5 BioPKS / RetroTide specialized integration
 - M6 unified execution API / CLI / Colab / resume
 - M7 computational Test / reproducibility / release-readiness
+- M8 Learn / closed-loop DBTL
 
-### M7 components
-- frozen 2.1 policy regression
-- hermetic reproducibility panel
-- deterministic panel digest
-- backend/runtime readiness matrix
-- optional-backend warnings separated from core blockers
-- machine-readable release-readiness report
-- CI release-readiness gate
-- CI integration repair discovered by the M6 workflow
-
-See [M7_TEST_REPRODUCIBILITY.md](M7_TEST_REPRODUCIBILITY.md).
-
-## Next
-
-### M8 — Learn / closed-loop DBTL
+### M8 components
 - structured Test outcome schema
-- ranking-policy update contract
-- backend weighting feedback
-- route-priority feedback
-- sequence/cassette design feedback
-- audit trail for every learned policy update
-- no autonomous lifecycle promotion
+- versioned learning policy
+- bounded backend-weight updates
+- bounded route-feature updates
+- bounded construct-feature updates
+- deterministic route/construct ranking
+- deterministic audit digest
+- append-only JSONL learning audit
+- `synbiocrow learn` CLI
+- explicit lifecycle_effect=NONE contract
+- no automatic lifecycle promotion
 
-### M9 — 2.2 release candidate + paper package
-- finalize documentation
-- release manifests and hashes
-- release archive
-- reproducibility bundle
-- paper methods/results package
+See [M8_LEARN_DBTL.md](M8_LEARN_DBTL.md).
+
+## Next: M9 — 2.2 release candidate + paper package
+
+- require green full CI
+- finalize README and architecture docs
+- generate 2.2 release manifest
+- hash release files
+- build source/reproducibility archive
+- create release candidate tag/package
+- prepare paper Methods / Results / reproducibility material
+- merge consolidation PR only after release gate passes

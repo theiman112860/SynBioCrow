@@ -78,6 +78,17 @@ class P2RepositoryProbeTests(unittest.TestCase):
         self.assertIn("--allow-full-update-archive", src)
         self.assertIn("Targeted KNIME 4.6 p2 install failed", src)
 
+    def test_bootstrap_installs_required_ius_not_merely_unavailable_ius(self):
+        src = BOOTSTRAP.read_text(encoding="utf-8")
+        self.assertIn("to_install=sorted(required-base_advertised)", src)
+        self.assertIn("unavailable=sorted(required-(base_advertised|repo_advertised))", src)
+        self.assertIn('"-i",",".join(to_install)', src)
+        self.assertNotIn('"-i",",".join(missing)', src)
+
+    def test_normal_selection_excludes_giant_analytics_archive(self):
+        src = BOOTSTRAP.read_text(encoding="utf-8")
+        self.assertIn('"org.knime.update.analytics-platform" not in low', src)
+
 
 if __name__ == "__main__":
     unittest.main()

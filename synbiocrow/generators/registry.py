@@ -1,8 +1,9 @@
 from __future__ import annotations
+import os
 from collections.abc import Iterable
 from .doranet import DORAnetBackend
 from .retrobiocat import RetroBioCatBackend
-from .retropath import RetroPathBackend
+from .retropath import RetroPathBackend, RetroPathSettings
 from .biopks import BioPKSBackend
 
 class BackendRegistry:
@@ -16,5 +17,21 @@ class BackendRegistry:
     def get(self,backend_id:str): return self._backends[backend_id]
     def ids(self)->tuple[str,...]: return tuple(sorted(self._backends))
 
+def _retropath_from_env()->RetroPathBackend:
+    rules=os.getenv("SYNBIOCROW_RETROPATH_RULES")
+    sink=os.getenv("SYNBIOCROW_RETROPATH_SINK")
+    if not (rules and sink):
+        return RetroPathBackend()
+    return RetroPathBackend(settings=RetroPathSettings(
+        rules_file=rules,
+        sink_file=sink,
+        knime_install=os.getenv("SYNBIOCROW_RETROPATH_KNIME"),
+    ))
+
 def default_registry()->BackendRegistry:
-    return BackendRegistry([DORAnetBackend(),RetroBioCatBackend(),RetroPathBackend(),BioPKSBackend()])
+    return BackendRegistry([
+        DORAnetBackend(),
+        RetroBioCatBackend(),
+        _retropath_from_env(),
+        BioPKSBackend(),
+    ])

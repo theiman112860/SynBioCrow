@@ -103,6 +103,7 @@ def _parse_out_paths(path: Path, *, target_smiles: str, provenance: Mapping[str,
 class RetroPathSettings:
     rules_file: str
     sink_file: str
+    knime_install: str | None = None
     max_steps: int = 5
     topx: int = 50
     dmin: int = 0
@@ -141,14 +142,30 @@ class RetroPathBackend:
         return self.settings is not None
 
     def runtime_info(self) -> dict[str, Any]:
+        knime_exec = None
+        if self.settings is not None and self.settings.knime_install:
+            try:
+                knime_mod = importlib.import_module("retropath2_wrapper.knime")
+                knime_exec = knime_mod.Knime.find_executable(str(self.settings.knime_install))
+            except Exception:
+                knime_exec = None
         return {
             "available": self.available(),
             "configured": self.configured(),
+            "execution_ready": bool(
+                self.available()
+                and self.settings is not None
+                and Path(self.settings.rules_file).is_file()
+                and Path(self.settings.sink_file).is_file()
+                and knime_exec
+            ),
             "backend_id": self.backend_id,
             "retropath2_wrapper": importlib.util.find_spec("retropath2_wrapper") is not None,
             "rp2paths": importlib.util.find_spec("rp2paths") is not None,
             "rules_file": None if self.settings is None else str(self.settings.rules_file),
             "sink_file": None if self.settings is None else str(self.settings.sink_file),
+            "knime_install": None if self.settings is None else self.settings.knime_install,
+            "knime_executable": knime_exec,
         }
 
     def generate(self, target_smiles: str, *, options: Mapping[str, Any] | None = None) -> Sequence[PathwayCandidate]:
@@ -174,6 +191,10 @@ class RetroPathBackend:
         try:
             mod = importlib.import_module("retropath2_wrapper")
             retropath2 = getattr(mod, "retropath2")
+            knime_obj = None
+            if self.settings.knime_install:
+                knime_mod = importlib.import_module("retropath2_wrapper.knime")
+                knime_obj = knime_mod.Knime(kinstall=str(self.settings.knime_install))
         except Exception as exc:
             raise BackendUnavailableError(f"RetroPath2 Python API could not be imported: {exc!r}") from exc
 
@@ -198,7 +219,7 @@ class RetroPathBackend:
                     std_hydrogen=self.settings.std_hydrogen,
                     score_mode=self.settings.score_mode,
                     msc_timeout=timeout_minutes,
-                    knime=None,
+                    knime=knime_obj,
                 )
             except Exception as exc:
                 self.last_run_stats = {"status":"ERROR","stage":"RETROPATH2_SCOPE","error_type":type(exc).__name__,"error":str(exc)}

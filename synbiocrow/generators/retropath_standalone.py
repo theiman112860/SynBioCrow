@@ -213,6 +213,7 @@ class RetroPathStandaloneBackend:
         max_steps = int(options.pop("max_steps", self.settings.max_steps))
         topx = int(options.pop("topx", self.settings.topx))
         timeout_minutes = int(options.pop("timeout_minutes", self.settings.timeout_minutes))
+        equivalence_pass = os.getenv("SYNBIOCROW_RETROPATH_STANDALONE_EQUIVALENCE_PASS") == "1"
         if options:
             raise ValueError("Unsupported RetroPath standalone options: " + ", ".join(sorted(options)))
 

@@ -3,6 +3,7 @@ from __future__ import annotations
 import csv
 import hashlib
 import importlib
+import os
 import importlib.util
 import subprocess
 import sys
@@ -158,6 +159,7 @@ class RetroPathBackend:
                 and Path(self.settings.rules_file).is_file()
                 and Path(self.settings.sink_file).is_file()
                 and knime_exec
+                and os.getenv("SYNBIOCROW_RETROPATH_SMOKE_PASS") == "1"
             ),
             "backend_id": self.backend_id,
             "retropath2_wrapper": importlib.util.find_spec("retropath2_wrapper") is not None,

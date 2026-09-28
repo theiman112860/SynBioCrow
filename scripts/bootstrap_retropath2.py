@@ -14,7 +14,7 @@ def download(url:str,path:Path)->None:
 def main()->int:
     ap=argparse.ArgumentParser()
     ap.add_argument("--root",default="/content/retropath2_runtime")
-    ap.add_argument("--knime-version",default="4.7.0",choices=["4.6.4","4.7.0"])
+    ap.add_argument("--knime-version",default="4.6.4",choices=["4.6.4"])
     ap.add_argument("--smoke-resources",action="store_true")
     args=ap.parse_args()
     root=Path(args.root)
@@ -40,14 +40,35 @@ def main()->int:
     else:
         rules_csv=sink=source=None
 
-    print(f"[RetroPath bootstrap] install/check KNIME {args.knime_version}",flush=True)
+    print("[RetroPath bootstrap] install Colab native libraries required by KNIME headless runtime",flush=True)
+    subprocess.run(["apt-get","update","-qq"],check=True)
+    subprocess.run([
+        "apt-get","install","-y","-qq",
+        "libatk1.0-0","libatk-bridge2.0-0","libgtk-3-0","libnss3",
+        "libx11-xcb1","libxcomposite1","libxdamage1","libxrandr2",
+        "libgbm1","libasound2t64"
+    ],check=True)
+
+    print(f"[RetroPath bootstrap] install/check KNIME {args.knime_version} (matches wrapper's hard-coded 4.6 plugin repositories)",flush=True)
     subprocess.run([
         sys.executable,"-m","retropath2_wrapper.knime","online",
         "--kinstall",str(knime),"--kver",args.knime_version
     ],check=True)
 
+    kexec=None
+    try:
+        from retropath2_wrapper.knime import Knime
+        kexec=Knime.find_executable(path=str(knime))
+    except Exception:
+        kexec=None
+    if not kexec:
+        raise RuntimeError("KNIME bootstrap returned but no executable was found")
+
     payload={
         "knime_install":str(knime),
+        "knime_version":args.knime_version,
+        "knime_executable":str(kexec),
+        "bootstrap_complete":True,
         "rules_file":str(rules_csv) if rules_csv else None,
         "sink_file":str(sink) if sink else None,
         "source_file":str(source) if source else None,

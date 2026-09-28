@@ -1,11 +1,18 @@
 #!/usr/bin/env python3
 from __future__ import annotations
-import argparse, gzip, hashlib, io, json, shutil, subprocess, sys, tarfile, tempfile, urllib.request, zipfile
+import argparse, gzip, hashlib, io, json, os, re, shutil, subprocess, sys, tarfile, tempfile, time, urllib.request, zipfile
 from pathlib import Path
 from xml.etree import ElementTree as ET
 
 BASE="https://raw.githubusercontent.com/brsynth/retropath2-wrapper/master/tests/data"
 KNIME_46_UPDATE_ARCHIVE="https://update.knime.org/analytics-platform/UpdateSite_latest46.zip"
+KNIME_46_CORE_REPO="https://update.knime.com/analytics-platform/4.6/"
+KNIME_46_CHEM_REPO="https://update.knime.com/analytics-platform/4.6/chemistry/"
+
+KNOWN_ARCHIVE_SHA256={
+    "knime_4.6.4.linux.gtk.x86_64.tar.gz":"7a9e1eabbf90e79d5bdfcb7e88b4cdbada33479d0968ae94e323da15fb5aa418",
+    "TrustedCommunityContributions_4.6_202212212136.zip":"dd9b840b9126162a7bc071910c077bc06f201271009fe208ae7de98fc0c977dc",
+}
 
 
 def sha256_file(path:Path)->str:
@@ -34,17 +41,132 @@ def p2_units(path:Path)->set[str]:
     except (OSError, zipfile.BadZipFile, KeyError, ET.ParseError):
         return set()
 
-def download(url:str,path:Path)->None:
+def download(url:str,path:Path,expected_size:int|None=None,expected_sha256:str|None=None)->None:
+    """Resumable download with visible progress and integrity checks."""
     path.parent.mkdir(parents=True,exist_ok=True)
-    print(f"[RetroPath bootstrap] download {url}",flush=True)
-    urllib.request.urlretrieve(url,path)
-    print(f"[RetroPath bootstrap] {path} bytes={path.stat().st_size}",flush=True)
+    part=path.with_suffix(path.suffix+".part")
+
+    def valid_complete()->bool:
+        if not path.exists():
+            return False
+        if expected_size is not None and path.stat().st_size != int(expected_size):
+            return False
+        if expected_sha256 is not None and sha256_file(path) != expected_sha256:
+            return False
+        return True
+
+    if valid_complete():
+        print(f"[RetroPath bootstrap] cache hit {path} bytes={path.stat().st_size}",flush=True)
+        return
+    if path.exists():
+        print(f"[RetroPath bootstrap] discard invalid cached file {path}",flush=True)
+        path.unlink()
+
+    offset=part.stat().st_size if part.exists() else 0
+    req=urllib.request.Request(url)
+    if offset:
+        req.add_header("Range",f"bytes={offset}-")
+    print(f"[RetroPath bootstrap] download {url} resume_from={offset}",flush=True)
+    with urllib.request.urlopen(req,timeout=120) as resp:
+        status=getattr(resp,"status",200)
+        if offset and status != 206:
+            print("[RetroPath bootstrap] server ignored Range; restarting download",flush=True)
+            offset=0
+            if part.exists():
+                part.unlink()
+        mode="ab" if offset else "wb"
+        content_length=resp.headers.get("Content-Length")
+        total=(offset+int(content_length)) if content_length and status==206 else (
+            int(content_length) if content_length else expected_size
+        )
+        got=offset
+        started=time.time()
+        last_report=started
+        with part.open(mode) as out:
+            while True:
+                chunk=resp.read(8*1024*1024)
+                if not chunk:
+                    break
+                out.write(chunk)
+                got += len(chunk)
+                now=time.time()
+                if now-last_report >= 15:
+                    elapsed=max(now-started,0.001)
+                    rate=max((got-offset)/elapsed,1.0)
+                    pct=(100.0*got/total) if total else 0.0
+                    eta=((total-got)/rate/60.0) if total and got < total else 0.0
+                    print(
+                        f"[RetroPath bootstrap] {path.name} {got/1e9:.2f} GB"
+                        + (f"/{total/1e9:.2f} GB {pct:.1f}% ETA {eta:.1f} min" if total else ""),
+                        flush=True,
+                    )
+                    last_report=now
+    part.replace(path)
+    if expected_size is not None and path.stat().st_size != int(expected_size):
+        raise RuntimeError(
+            f"Archive size mismatch for {path.name}: got {path.stat().st_size}, expected {expected_size}"
+        )
+    digest=sha256_file(path)
+    if expected_sha256 is not None and digest != expected_sha256:
+        raise RuntimeError(
+            f"Archive SHA256 mismatch for {path.name}: got {digest}, expected {expected_sha256}"
+        )
+    print(f"[RetroPath bootstrap] {path} bytes={path.stat().st_size} sha256={digest}",flush=True)
+
+
+def installed_ius(knime_root:Path)->set[str]:
+    """Best-effort IU inventory from the extracted/installed KNIME filesystem."""
+    out=set()
+    plugins=knime_root/"plugins"
+    if plugins.exists():
+        for p in plugins.iterdir():
+            m=re.match(r"^(.+?)_(\d[^/]*)?(?:\.jar)?$",p.name)
+            if m:
+                out.add(m.group(1))
+    features=knime_root/"features"
+    if features.exists():
+        for p in features.iterdir():
+            stem=p.name[:-4] if p.name.endswith(".jar") else p.name
+            m=re.match(r"^(.+?)_(\d.*)$",stem)
+            if m:
+                fid=m.group(1)
+                out.add(fid)
+                out.add(fid+".feature.group")
+    return out
+
+
+def required_runtime_lock(knime_root:Path,required:set[str])->dict[str,list[dict[str,object]]]:
+    """Hash files/directories that implement the requested IUs for reproducibility."""
+    lock={iu:[] for iu in sorted(required)}
+    search_roots=[knime_root/"plugins",knime_root/"features"]
+    aliases={iu:{iu,iu.removesuffix(".feature.group")} for iu in required}
+    for root in search_roots:
+        if not root.exists():
+            continue
+        for p in root.iterdir():
+            stem=p.name[:-4] if p.name.endswith(".jar") else p.name
+            for iu,names in aliases.items():
+                if any(stem.startswith(name+"_") for name in names):
+                    if p.is_file():
+                        lock[iu].append({
+                            "path":str(p.relative_to(knime_root)),
+                            "bytes":p.stat().st_size,
+                            "sha256":sha256_file(p),
+                        })
+                    else:
+                        lock[iu].append({
+                            "path":str(p.relative_to(knime_root)),
+                            "kind":"directory",
+                        })
+    return lock
 
 def main()->int:
     ap=argparse.ArgumentParser()
     ap.add_argument("--root",default="/content/retropath2_runtime")
     ap.add_argument("--knime-version",default="4.6.4",choices=["4.6.4"])
     ap.add_argument("--smoke-resources",action="store_true")
+    ap.add_argument("--cache-dir",default=None,help="Persistent cache for the frozen KNIME/Zenodo archives")
+    ap.add_argument("--allow-full-update-archive",action="store_true",help="Last-resort 7.9-GB KNIME update archive fallback")
     args=ap.parse_args()
     root=Path(args.root)
     root.mkdir(parents=True,exist_ok=True)
@@ -100,7 +222,7 @@ def main()->int:
     # nodes into the old KNIME runtime and break the historical workflow.
     print(f"[RetroPath bootstrap] install archived KNIME {args.knime_version} stack from upstream Zenodo record 7515771",flush=True)
     from retropath2_wrapper.knime import Knime
-    archive_dir=root/"knime_archive"
+    archive_dir=Path(args.cache_dir) if args.cache_dir else root/"knime_archive"
     archive_dir.mkdir(parents=True,exist_ok=True)
     meta_url="https://zenodo.org/api/records/7515771"
     with urllib.request.urlopen(meta_url,timeout=60) as fh:
@@ -141,8 +263,12 @@ def main()->int:
     for item in selected:
         key=item["key"]
         dest=archive_dir/Path(key).name
-        if not dest.exists():
-            download(item["links"]["self"],dest)
+        expected_sha=KNOWN_ARCHIVE_SHA256.get(Path(key).name)
+        download(
+            item["links"]["self"],dest,
+            expected_size=item.get("size"),
+            expected_sha256=expected_sha,
+        )
         entry={"key":key,"bytes":dest.stat().st_size,"sha256":sha256_file(dest),"source":"ZENODO_7515771"}
         low=key.lower()
         if "linux" in low and linux_archive is None:
@@ -159,37 +285,9 @@ def main()->int:
         provenance.append(entry)
         print("[RetroPath bootstrap] archive probe "+json.dumps(entry,sort_keys=True),flush=True)
 
-    # Some mirrors of Zenodo 7515771 expose only the platform and Trusted
-    # Community file individually even though the original reproducibility
-    # recipe also used KNIME's UpdateSite_latest46.zip.  If the archived file
-    # list lacks the main p2 site, acquire that official 4.6 archive explicitly
-    # and record its digest.  This stays on the KNIME 4.6 train; no current 5.x
-    # update site is ever consulted.
-    if not any("org.knime.chem.base" in p2_units(p) for p in local):
-        core=archive_dir/"UpdateSite_latest46.zip"
-        if not core.exists():
-            download(KNIME_46_UPDATE_ARCHIVE,core)
-        units=p2_units(core)
-        fallback_entry={
-            "key":core.name,"bytes":core.stat().st_size,"sha256":sha256_file(core),
-            "source":KNIME_46_UPDATE_ARCHIVE,
-            "kind":"P2_REPOSITORY" if units else "ZIP_NON_P2",
-            "iu_count":len(units),
-            "contains_org.knime.chem.base":"org.knime.chem.base" in units,
-            "contains_rdkit_feature":"org.rdkit.knime.feature.feature.group" in units,
-        }
-        provenance.append(fallback_entry)
-        print("[RetroPath bootstrap] official KNIME 4.6 fallback probe "+json.dumps(fallback_entry,sort_keys=True),flush=True)
-        if "org.knime.chem.base" not in units:
-            raise RuntimeError("Official KNIME 4.6 UpdateSite archive does not advertise org.knime.chem.base")
-        local.append(core)
-
-    advertised=set()
-    for p in local:
-        advertised.update(p2_units(p))
-    for required in ("org.knime.chem.base","org.rdkit.knime.feature.feature.group"):
-        if required not in advertised:
-            raise RuntimeError(f"Frozen repository composition is incomplete: missing required IU {required}")
+    # Extract first, then inspect the base runtime.  This avoids downloading the
+    # ~7.9-GB analytics-platform repository merely because an IU is absent from
+    # Trusted Community metadata even when it is already bundled in KNIME.
     if knime.exists():
         shutil.rmtree(knime)
     knime.mkdir(parents=True,exist_ok=True)
@@ -201,25 +299,93 @@ def main()->int:
             tf.extractall(knime)
     else:
         shutil.unpack_archive(str(linux_archive),str(knime))
+
     kexec=Knime.find_executable(path=str(knime))
     p2_dir=Knime.find_p2_dir(path=str(knime))
     if not kexec or not p2_dir:
         raise RuntimeError("Frozen KNIME base extracted but executable/p2 directory was not found")
-    knime_root=str(Path(kexec).parent)
+    knime_root=Path(kexec).parent
+
+    base_advertised=installed_ius(knime_root)
+    repo_advertised=set()
+    for p in local:
+        repo_advertised.update(p2_units(p))
+    required=set(Knime.PLUGINS)
+    available_before=base_advertised | repo_advertised
+    missing=sorted(required-available_before)
+
+    print(
+        "[RetroPath bootstrap] preflight "
+        + json.dumps({
+            "base_iu_count":len(base_advertised),
+            "archived_repo_iu_count":len(repo_advertised),
+            "required_count":len(required),
+            "missing_before_p2":missing,
+            "base_has_org.knime.chem.base":"org.knime.chem.base" in base_advertised,
+            "archive_has_rdkit_feature":"org.rdkit.knime.feature.feature.group" in repo_advertised,
+        },sort_keys=True),
+        flush=True,
+    )
+
+    # Prefer frozen Zenodo base + frozen Trusted Community. If a KNIME-owned IU
+    # is genuinely absent, ask p2 for only that dependency closure from KNIME's
+    # 4.6 version lane. This avoids materializing the complete update-site ZIP.
     repos=["jar:file:"+str(p.resolve())+"!/" for p in local]
-    if not repos:
-        raise RuntimeError("No frozen KNIME update repositories were selected")
-    print("[RetroPath bootstrap] install extensions ONLY from archived repositories",flush=True)
-    subprocess.run([
-        str(kexec),"-nosplash","-consoleLog",
-        "-application","org.eclipse.equinox.p2.director",
-        "-repository",",".join(repos),
-        "-bundlepool",str(p2_dir),"-destination",knime_root,
-        "-i",",".join(Knime.PLUGINS)
-    ],check=True)
-    kexec=Knime.find_executable(path=str(knime))
-    if not kexec:
-        raise RuntimeError("Archived KNIME install returned but no executable was found")
+    repo_mode="ZENODO_7515771_ONLY"
+    p2_online_used=[]
+    if missing:
+        p2_online_used=[KNIME_46_CORE_REPO,KNIME_46_CHEM_REPO]
+        repos.extend(p2_online_used)
+        repo_mode="ZENODO_7515771_PLUS_TARGETED_KNIME_46_P2"
+        print(
+            "[RetroPath bootstrap] targeted KNIME 4.6 p2 acquisition for missing IUs only: "
+            + ",".join(missing),
+            flush=True,
+        )
+        try:
+            subprocess.run([
+                str(kexec),"-nosplash","-consoleLog",
+                "-application","org.eclipse.equinox.p2.director",
+                "-repository",",".join(repos),
+                "-bundlepool",str(p2_dir),"-destination",str(knime_root),
+                "-i",",".join(missing)
+            ],check=True)
+        except subprocess.CalledProcessError:
+            if not args.allow_full_update_archive:
+                raise RuntimeError(
+                    "Targeted KNIME 4.6 p2 install failed. The 7.9-GB full archive was NOT "
+                    "downloaded automatically. Re-run with --allow-full-update-archive only "
+                    "if the targeted version-lane repositories are unavailable."
+                )
+            core=archive_dir/"UpdateSite_latest46.zip"
+            download(KNIME_46_UPDATE_ARCHIVE,core)
+            units=p2_units(core)
+            if not units:
+                raise RuntimeError("Full KNIME 4.6 update archive is not a readable p2 repository")
+            provenance.append({
+                "key":core.name,"bytes":core.stat().st_size,"sha256":sha256_file(core),
+                "source":KNIME_46_UPDATE_ARCHIVE,"kind":"P2_REPOSITORY",
+                "iu_count":len(units),"fallback_reason":"targeted_p2_failed",
+            })
+            repos=["jar:file:"+str(p.resolve())+"!/" for p in local+[core]]
+            repo_mode="ZENODO_7515771_PLUS_RESUMABLE_FULL_46_ARCHIVE"
+            subprocess.run([
+                str(kexec),"-nosplash","-consoleLog",
+                "-application","org.eclipse.equinox.p2.director",
+                "-repository",",".join(repos),
+                "-bundlepool",str(p2_dir),"-destination",str(knime_root),
+                "-i",",".join(missing)
+            ],check=True)
+
+    final_advertised=installed_ius(knime_root)
+    still_missing=sorted(required-final_advertised)
+    if still_missing:
+        raise RuntimeError(
+            "KNIME installation completed but required IUs are still absent: "
+            + ",".join(still_missing)
+        )
+    runtime_lock=required_runtime_lock(knime_root,required)
+    print("[RetroPath bootstrap] required runtime IU lock captured",flush=True)
 
     payload={
         "knime_install":str(knime),
@@ -231,12 +397,16 @@ def main()->int:
         "source_file":str(source) if source else None,
         "resource_kind":"UPSTREAM_FUNCTIONAL_TEST_FIXTURES" if args.smoke_resources else "NONE",
         "workflow_compatibility_aliases":compatibility_aliases,
-        "knime_provenance":"ZENODO_7515771_FROZEN_REPOSITORIES",
+        "knime_provenance":repo_mode,
+        "knime_targeted_online_repositories":p2_online_used,
+        "knime_base_iu_count":len(base_advertised),
+        "knime_missing_before_p2":missing,
+        "knime_required_runtime_lock":runtime_lock,
         "knime_archive_files":[x.get("key","") for x in selected],
         "knime_repository_provenance":provenance,
         "knime_repository_iu_preflight":{
-            "org.knime.chem.base":"org.knime.chem.base" in advertised,
-            "org.rdkit.knime.feature.feature.group":"org.rdkit.knime.feature.feature.group" in advertised,
+            "org.knime.chem.base":"org.knime.chem.base" in final_advertised,
+            "org.rdkit.knime.feature.feature.group":"org.rdkit.knime.feature.feature.group" in final_advertised,
         },
     }
     out=root/"synbiocrow_retropath_bootstrap.json"

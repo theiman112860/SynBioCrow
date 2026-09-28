@@ -40,6 +40,22 @@ def main()->int:
     else:
         rules_csv=sink=source=None
 
+    compatibility_aliases={}
+    if args.smoke_resources:
+        # Older RetroPath KNIME components can retain absolute /content defaults
+        # even when workflow variables are supplied. Provide auditable aliases to
+        # the exact same upstream fixtures; explicit workflow variables remain authoritative.
+        for alias,target in (
+            (Path("/content/rules.csv"),rules_csv),
+            (Path("/content/source.csv"),source),
+            (Path("/content/sink.csv"),sink),
+        ):
+            if alias.exists() or alias.is_symlink():
+                alias.unlink()
+            alias.symlink_to(target)
+            compatibility_aliases[str(alias)]=str(target)
+            print(f"[RetroPath bootstrap] compatibility alias {alias} -> {target}",flush=True)
+
     print("[RetroPath bootstrap] install Colab native libraries required by KNIME headless runtime",flush=True)
     subprocess.run(["apt-get","update","-qq"],check=True)
     subprocess.run([
@@ -73,6 +89,7 @@ def main()->int:
         "sink_file":str(sink) if sink else None,
         "source_file":str(source) if source else None,
         "resource_kind":"UPSTREAM_FUNCTIONAL_TEST_FIXTURES" if args.smoke_resources else "NONE",
+        "workflow_compatibility_aliases":compatibility_aliases,
     }
     out=root/"synbiocrow_retropath_bootstrap.json"
     out.write_text(json.dumps(payload,indent=2,sort_keys=True)+"\n",encoding="utf-8")

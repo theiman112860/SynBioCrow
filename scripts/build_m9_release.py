@@ -5,11 +5,11 @@ from pathlib import Path
 from synbiocrow.execution import json_safe
 from synbiocrow.verification import build_release_readiness_report
 
-RELEASE="2.2.0-rc1"
+RELEASE="2.2.0-rc2"
 REQUIRED=[
     "README.md",
     "pyproject.toml",
-    "RELEASE_NOTES_2_2_RC1.md",
+    "RELEASE_NOTES_2_2_RC2.md",
     "notebooks/SynBioCrow_2_2_RC1_ALL_GENERATORS.ipynb",
     "docs/M9_RELEASE_CANDIDATE.md",
     "docs/RETROPATH_STANDALONE_EQUIVALENCE.md",

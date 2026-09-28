@@ -12,6 +12,7 @@ REQUIRED=[
     "RELEASE_NOTES_2_2_RC1.md",
     "notebooks/SynBioCrow_2_2_RC1_ALL_GENERATORS.ipynb",
     "docs/M9_RELEASE_CANDIDATE.md",
+    "docs/RETROPATH_STANDALONE_EQUIVALENCE.md",
     "paper/2.2/METHODS.md",
     "paper/2.2/RESULTS.md",
     "scripts/m7_release_readiness.py",
@@ -92,6 +93,10 @@ def build(root:Path,outdir:Path,*,check_only:bool=False)->dict:
         "benchmark_v2_truth_accessed":False,
         "paper1_baseline_modified":False,
         "scientific_lifecycle":"CANDIDATE_MATURE_CERTIFIED_SEPARATE",
+        "retropath_primary_runtime":"retropath_standalone",
+        "retropath_knime_required":False,
+        "retropath_equivalence_policy":"EXACT_COMPOUND_TRANSITION_MULTISET",
+        "retropath_equivalence_fixture":"brsynth/retropath2-wrapper r20220104 results.7325.csv",
         "file_count":len(inventory),
         "files":inventory,
     }

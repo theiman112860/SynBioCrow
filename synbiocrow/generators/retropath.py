@@ -222,6 +222,7 @@ class RetroPathBackend:
                     score_mode=self.settings.score_mode,
                     msc_timeout=timeout_minutes,
                     knime=knime_obj,
+                    rp2_version="r20220104",
                 )
             except Exception as exc:
                 self.last_run_stats = {"status":"ERROR","stage":"RETROPATH2_SCOPE","error_type":type(exc).__name__,"error":str(exc)}

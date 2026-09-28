@@ -46,3 +46,7 @@ Environment variables configure the default engine registry:
 - `SYNBIOCROW_BIOPKS_ACK_LICENSE`
 
 The RC notebook runs real bridge/runtime smoke tests before M7/M9 verification.
+
+## RetroPath workflow compatibility pin
+
+For the 2.2 RC Colab runtime, SynBioCrow pins the RetroPath2 KNIME workflow to `r20220104` with KNIME `4.6.4`. This is the wrapper repository's functional-test lineage and avoids coupling the release candidate to the wrapper's moving default workflow (`r20260212` as of RC integration), whose node/flow-variable contract is not compatible with the distributed KNIME 4.6.4 runtime. This is an explicit reproducibility/compatibility pin, not a claim that the older workflow is scientifically superior.

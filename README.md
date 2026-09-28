@@ -1,10 +1,10 @@
-# SynBioCrow 2.2.0-rc1
+# SynBioCrow 2.2.0-rc2
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22999039.svg)](https://doi.org/10.5281/zenodo.22999039)
 
 **SynBioCrow** is a computational synthetic-biology design framework for moving from a target molecule to evidence-aware biosynthetic pathway Candidates and provenance-backed DNA construct Candidates.
 
-> **Release-candidate status:** 2.2.0-rc1 is the consolidated engine release candidate. Candidate pathways and constructs are computational designs, not experimental certifications. The DOI above is the archived 2.1.1 record; a new archival version should be minted when 2.2 is formally released.
+> **Release-candidate status:** 2.2.0-rc2 is the consolidated engine release candidate. Candidate pathways and constructs are computational designs, not experimental certifications. The DOI above is the archived 2.1.1 record; a new archival version should be minted when 2.2 is formally released.
 
 ## What changed in 2.2
 

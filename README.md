@@ -1,10 +1,10 @@
-# SynBioCrow 2.2.0-rc2
+# SynBioCrow 2.2.0
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22999039.svg)](https://doi.org/10.5281/zenodo.22999039)
 
 **SynBioCrow** is a computational synthetic-biology design framework for moving from a target molecule to evidence-aware biosynthetic pathway Candidates and provenance-backed DNA construct Candidates.
 
-> **Release-candidate status:** 2.2.0-rc2 is the consolidated engine release candidate. Candidate pathways and constructs are computational designs, not experimental certifications. The DOI above is the archived 2.1.1 record; a new archival version should be minted when 2.2 is formally released.
+> **Release status:** 2.2.0 is the consolidated engine release. Candidate pathways and constructs are computational designs, not experimental certifications. The DOI above is the archived 2.1.1 record; mint a new archival version for this 2.2.0 release.
 
 ## What changed in 2.2
 
@@ -12,7 +12,7 @@ SynBioCrow 2.2 consolidates the development lineage into one engine: DORAnet, Re
 
 The frozen Paper-1/v0.21 baseline and benchmark-v2 truth boundary remain unchanged.
 
-## Install the release-candidate core
+## Install the release core
 
 ```bash
 pip install -e .
@@ -94,7 +94,7 @@ Learning changes prioritization only; it cannot create evidence or promote Candi
 
 For the archived r20220104 lycopene fixture (`results.7325.csv`), the KNIME-free standalone engine reproduces the historical **compound-transition multiset exactly**: 34/34 transitions, precision=1.0, recall=1.0, Jaccard=1.0, with 0 missing and 0 novel transitions. Rule/evidence serialization differs and is retained as an implementation-level difference rather than treated as chemical equivalence.
 
-## Release-candidate verification
+## Release verification
 
 ```bash
 python -m unittest discover -s tests -v

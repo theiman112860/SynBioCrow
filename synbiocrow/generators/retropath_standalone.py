@@ -84,13 +84,14 @@ class RetroPathStandaloneBackend:
 
     def runtime_info(self) -> dict[str, Any]:
         s = self.settings
+        equivalence_pass = os.getenv("SYNBIOCROW_RETROPATH_STANDALONE_EQUIVALENCE_PASS") == "1"
         return {
             "backend_id": self.backend_id,
             "available": self.available(),
             "configured": s is not None,
             "execution_ready": bool(self.available() and os.getenv("SYNBIOCROW_RETROPATH_STANDALONE_SMOKE_PASS") == "1"),
-            "certification_ready": False,
-            "equivalence_status": "PENDING_CANONICAL_FIXTURE_COMPARISON",
+            "certification_ready": equivalence_pass,
+            "equivalence_status": "PASS_EXACT_HISTORICAL_FIXTURE" if equivalence_pass else "PENDING_CANONICAL_FIXTURE_COMPARISON",
             "knime_required": False,
             "executable": None if s is None else s.executable,
             "rules_file": None if s is None else s.rules_file,
@@ -148,6 +149,7 @@ class RetroPathStandaloneBackend:
         if not routes:
             routes = [([row], _truthy_sink(row.get("In Sink", "0"))) for _, _, row in parsed[:topx]]
 
+        equivalence_pass = os.getenv("SYNBIOCROW_RETROPATH_STANDALONE_EQUIVALENCE_PASS") == "1"
         out: list[PathwayCandidate] = []
         for idx, (route, solved) in enumerate(routes[:topx]):
             steps = []
@@ -190,8 +192,8 @@ class RetroPathStandaloneBackend:
                         "backend": self.backend_id,
                         "engine": "TraceLD/retropath",
                         "knime_required": False,
-                        "equivalence_status": "PENDING_CANONICAL_FIXTURE_COMPARISON",
-                        "certification_ready": False,
+                        "equivalence_status": "PASS_EXACT_HISTORICAL_FIXTURE" if equivalence_pass else "PENDING_CANONICAL_FIXTURE_COMPARISON",
+                        "certification_ready": equivalence_pass,
                         "sink_reached": solved,
                         "graph_orientation": "product_to_substrate" if reverse else "substrate_to_product",
                         "scope_rows": len(rows),
@@ -275,6 +277,7 @@ class RetroPathStandaloneBackend:
                 "sink_reaching_pathways": sum(
                     1 for c in candidates if c.provenance.get("sink_reached")
                 ),
-                "equivalence_status": "PENDING_CANONICAL_FIXTURE_COMPARISON",
+                "equivalence_status": "PASS_EXACT_HISTORICAL_FIXTURE" if equivalence_pass else "PENDING_CANONICAL_FIXTURE_COMPARISON",
+                "certification_ready": equivalence_pass,
             }
             return candidates

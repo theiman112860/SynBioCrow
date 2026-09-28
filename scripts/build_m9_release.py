@@ -5,11 +5,11 @@ from pathlib import Path
 from synbiocrow.execution import json_safe
 from synbiocrow.verification import build_release_readiness_report
 
-RELEASE="2.2.0-rc2"
+RELEASE="2.2.0"
 REQUIRED=[
     "README.md",
     "pyproject.toml",
-    "RELEASE_NOTES_2_2_RC2.md",
+    "RELEASE_NOTES_2_2_0.md",
     "notebooks/SynBioCrow_2_2_RC1_ALL_GENERATORS.ipynb",
     "docs/M9_RELEASE_CANDIDATE.md",
     "docs/RETROPATH_STANDALONE_EQUIVALENCE.md",
@@ -85,7 +85,7 @@ def build(root:Path,outdir:Path,*,check_only:bool=False)->dict:
     manifest={
         "schema":"synbiocrow.release_manifest.v2",
         "release":RELEASE,
-        "release_kind":"release_candidate",
+        "release_kind":"final",
         "git_commit":git_head(root),
         "core_release_ready":readiness.core_release_ready,
         "m7_reproducibility_digest":readiness.reproducibility.digest,

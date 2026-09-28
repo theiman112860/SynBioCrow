@@ -4,6 +4,7 @@ from collections.abc import Iterable
 from .doranet import DORAnetBackend
 from .retrobiocat import RetroBioCatBackend
 from .retropath import RetroPathBackend, RetroPathSettings
+from .retropath_standalone import RetroPathStandaloneBackend, RetroPathStandaloneSettings
 from .biopks import BioPKSBackend
 
 class BackendRegistry:
@@ -28,10 +29,23 @@ def _retropath_from_env()->RetroPathBackend:
         knime_install=os.getenv("SYNBIOCROW_RETROPATH_KNIME"),
     ))
 
+def _retropath_standalone_from_env()->RetroPathStandaloneBackend:
+    exe=os.getenv("SYNBIOCROW_RETROPATH_STANDALONE_EXE")
+    rules=os.getenv("SYNBIOCROW_RETROPATH_RULES")
+    sink=os.getenv("SYNBIOCROW_RETROPATH_SINK")
+    if not (exe and rules and sink):
+        return RetroPathStandaloneBackend()
+    return RetroPathStandaloneBackend(settings=RetroPathStandaloneSettings(
+        executable=exe,
+        rules_file=rules,
+        sink_file=sink,
+    ))
+
 def default_registry()->BackendRegistry:
     return BackendRegistry([
         DORAnetBackend(),
         RetroBioCatBackend(),
         _retropath_from_env(),
+        _retropath_standalone_from_env(),
         BioPKSBackend(),
     ])

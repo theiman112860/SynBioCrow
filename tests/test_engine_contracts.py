@@ -8,7 +8,7 @@ from synbiocrow.core.errors import BackendUnavailableError
 
 class EngineContractTests(unittest.TestCase):
     def test_registry_contains_planned_live_families(self):
-        self.assertEqual(default_registry().ids(),("biopks_retrotide","doranet","retrobiocat2","retropath2"))
+        self.assertEqual(default_registry().ids(),("biopks_retrotide","doranet","retrobiocat2","retropath2","retropath_standalone"))
     def test_unmigrated_backend_fails_closed(self):
         with self.assertRaises(BackendUnavailableError): default_registry().get("doranet").generate("CCO")
     def test_evidence_abstention_blocks_promotion(self):

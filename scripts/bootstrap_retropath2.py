@@ -1,9 +1,38 @@
 #!/usr/bin/env python3
 from __future__ import annotations
-import argparse, gzip, json, shutil, subprocess, sys, tarfile, tempfile, urllib.request
+import argparse, gzip, hashlib, io, json, shutil, subprocess, sys, tarfile, tempfile, urllib.request, zipfile
 from pathlib import Path
+from xml.etree import ElementTree as ET
 
 BASE="https://raw.githubusercontent.com/brsynth/retropath2-wrapper/master/tests/data"
+KNIME_46_UPDATE_ARCHIVE="https://update.knime.org/analytics-platform/UpdateSite_latest46.zip"
+
+
+def sha256_file(path:Path)->str:
+    h=hashlib.sha256()
+    with path.open("rb") as fh:
+        for chunk in iter(lambda: fh.read(1024*1024),b""):
+            h.update(chunk)
+    return h.hexdigest()
+
+
+def p2_units(path:Path)->set[str]:
+    """Return IU ids advertised by an Eclipse p2 repository ZIP."""
+    try:
+        with zipfile.ZipFile(path) as outer:
+            names=set(outer.namelist())
+            xml_bytes=None
+            if "content.xml" in names:
+                xml_bytes=outer.read("content.xml")
+            elif "content.jar" in names:
+                with zipfile.ZipFile(io.BytesIO(outer.read("content.jar"))) as inner:
+                    xml_bytes=inner.read("content.xml")
+            if xml_bytes is None:
+                return set()
+        root=ET.fromstring(xml_bytes)
+        return {u.attrib["id"] for u in root.iter() if u.tag.endswith("unit") and u.attrib.get("id")}
+    except (OSError, zipfile.BadZipFile, KeyError, ET.ParseError):
+        return set()
 
 def download(url:str,path:Path)->None:
     path.parent.mkdir(parents=True,exist_ok=True)
@@ -76,34 +105,91 @@ def main()->int:
     meta_url="https://zenodo.org/api/records/7515771"
     with urllib.request.urlopen(meta_url,timeout=60) as fh:
         meta=json.load(fh)
+    all_files=meta.get("files",[])
+    print("[RetroPath bootstrap] Zenodo 7515771 file inventory:",flush=True)
+    for item in all_files:
+        print(f"  - {item.get('key','')} bytes={item.get('size','?')}",flush=True)
+
+    # The RetroPath maintainer's archived stack contains the KNIME platform plus
+    # p2 repositories.  RDKit alone is not sufficient: org.knime.chem.base is
+    # supplied by KNIME's main 4.6 update site.  Download every plausible p2
+    # repository from the record, not just Trusted Community.
     selected=[]
-    for item in meta.get("files",[]):
+    for item in all_files:
         key=item.get("key","")
         low=key.lower()
-        if (
-            ("linux" in low and ("4.6.4" in low or "knime" in low))
-            or "updatesite_latest46" in low
-            or "trustedcommunitycontributions_4.6" in low
-            or ("chemistry" in low and "4.6" in low)
-        ):
+        is_linux=("linux" in low and ("4.6.4" in low or "knime" in low))
+        is_repo=(
+            key.lower().endswith(".zip")
+            and not any(tag in low for tag in ("win32","windows","macos","macosx"))
+            and any(tag in low for tag in (
+                "updatesite","update-site","org.knime.update","trustedcommunity",
+                "communitycontributions","community-contributions","chemistry"
+            ))
+        )
+        if is_linux or is_repo:
             selected.append(item)
     if not any("linux" in x.get("key","").lower() for x in selected):
         raise RuntimeError("Zenodo 7515771 did not expose a KNIME 4.6.4 Linux archive")
-    if not any("trustedcommunitycontributions_4.6" in x.get("key","").lower() for x in selected):
+    if not any("trustedcommunity" in x.get("key","").lower() for x in selected):
         raise RuntimeError("Zenodo 7515771 did not expose the frozen KNIME 4.6 trusted-community repository")
-    print("[RetroPath bootstrap] archived files: "+", ".join(x.get("key","") for x in selected),flush=True)
+    print("[RetroPath bootstrap] selected archived files: "+", ".join(x.get("key","") for x in selected),flush=True)
+
     local=[]
     linux_archive=None
+    provenance=[]
     for item in selected:
         key=item["key"]
         dest=archive_dir/Path(key).name
         if not dest.exists():
             download(item["links"]["self"],dest)
+        entry={"key":key,"bytes":dest.stat().st_size,"sha256":sha256_file(dest),"source":"ZENODO_7515771"}
         low=key.lower()
         if "linux" in low and linux_archive is None:
             linux_archive=dest
+            entry["kind"]="KNIME_PLATFORM"
         elif dest.suffix.lower()==".zip":
-            local.append(dest)
+            units=p2_units(dest)
+            entry["kind"]="P2_REPOSITORY" if units else "ZIP_NON_P2"
+            entry["iu_count"]=len(units)
+            entry["contains_org.knime.chem.base"]="org.knime.chem.base" in units
+            entry["contains_rdkit_feature"]="org.rdkit.knime.feature.feature.group" in units
+            if units:
+                local.append(dest)
+        provenance.append(entry)
+        print("[RetroPath bootstrap] archive probe "+json.dumps(entry,sort_keys=True),flush=True)
+
+    # Some mirrors of Zenodo 7515771 expose only the platform and Trusted
+    # Community file individually even though the original reproducibility
+    # recipe also used KNIME's UpdateSite_latest46.zip.  If the archived file
+    # list lacks the main p2 site, acquire that official 4.6 archive explicitly
+    # and record its digest.  This stays on the KNIME 4.6 train; no current 5.x
+    # update site is ever consulted.
+    if not any("org.knime.chem.base" in p2_units(p) for p in local):
+        core=archive_dir/"UpdateSite_latest46.zip"
+        if not core.exists():
+            download(KNIME_46_UPDATE_ARCHIVE,core)
+        units=p2_units(core)
+        fallback_entry={
+            "key":core.name,"bytes":core.stat().st_size,"sha256":sha256_file(core),
+            "source":KNIME_46_UPDATE_ARCHIVE,
+            "kind":"P2_REPOSITORY" if units else "ZIP_NON_P2",
+            "iu_count":len(units),
+            "contains_org.knime.chem.base":"org.knime.chem.base" in units,
+            "contains_rdkit_feature":"org.rdkit.knime.feature.feature.group" in units,
+        }
+        provenance.append(fallback_entry)
+        print("[RetroPath bootstrap] official KNIME 4.6 fallback probe "+json.dumps(fallback_entry,sort_keys=True),flush=True)
+        if "org.knime.chem.base" not in units:
+            raise RuntimeError("Official KNIME 4.6 UpdateSite archive does not advertise org.knime.chem.base")
+        local.append(core)
+
+    advertised=set()
+    for p in local:
+        advertised.update(p2_units(p))
+    for required in ("org.knime.chem.base","org.rdkit.knime.feature.feature.group"):
+        if required not in advertised:
+            raise RuntimeError(f"Frozen repository composition is incomplete: missing required IU {required}")
     if knime.exists():
         shutil.rmtree(knime)
     knime.mkdir(parents=True,exist_ok=True)
@@ -147,6 +233,11 @@ def main()->int:
         "workflow_compatibility_aliases":compatibility_aliases,
         "knime_provenance":"ZENODO_7515771_FROZEN_REPOSITORIES",
         "knime_archive_files":[x.get("key","") for x in selected],
+        "knime_repository_provenance":provenance,
+        "knime_repository_iu_preflight":{
+            "org.knime.chem.base":"org.knime.chem.base" in advertised,
+            "org.rdkit.knime.feature.feature.group":"org.rdkit.knime.feature.feature.group" in advertised,
+        },
     }
     out=root/"synbiocrow_retropath_bootstrap.json"
     out.write_text(json.dumps(payload,indent=2,sort_keys=True)+"\n",encoding="utf-8")

@@ -22,8 +22,12 @@ def bootstrap_advice(engine:SynBioCrowEngine|None=None)->tuple[BootstrapAdvice,.
             ("RetroBioCat2","RBC2 scientific data assets"),
         ),
         "retropath2":(
-            "Install/configure retropath2-wrapper + rp2paths in a scientific runtime.",
+            "Legacy/reference backend: install retropath2-wrapper + rp2paths + KNIME only for historical compatibility checks.",
             ("RDKit","KNIME","RetroRules rules file","sink file"),
+        ),
+        "retropath_standalone":(
+            "Use the KNIME-free TraceLD/retropath standalone runtime with explicit RetroRules rules + sink inputs.",
+            ("TraceLD/retropath standalone CLI","RetroRules rules file","sink file"),
         ),
         "biopks_retrotide":(
             "Configure SYNBIOCROW_BIOPKS_RUNNER for an authorized BioPKS runtime.",

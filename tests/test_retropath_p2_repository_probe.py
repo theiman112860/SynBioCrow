@@ -46,6 +46,38 @@ class P2RepositoryProbeTests(unittest.TestCase):
                 z.writestr("README.txt", "not a p2 repository")
             self.assertEqual(MOD.p2_units(p), set())
 
+    def test_installed_ius_reads_plugins_and_features(self):
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            (root / "plugins").mkdir()
+            (root / "features").mkdir()
+            (root / "plugins" / "org.knime.chem.base_4.6.4.v20221201.jar").write_bytes(b"x")
+            (root / "features" / "org.knime.features.chem.types_4.6.4.v20221201").mkdir()
+            got = MOD.installed_ius(root)
+            self.assertIn("org.knime.chem.base", got)
+            self.assertIn("org.knime.features.chem.types.feature.group", got)
+
+    def test_required_runtime_lock_hashes_plugin_file(self):
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            (root / "plugins").mkdir()
+            (root / "features").mkdir()
+            p = root / "plugins" / "org.knime.chem.base_4.6.4.v20221201.jar"
+            p.write_bytes(b"abc")
+            lock = MOD.required_runtime_lock(root, {"org.knime.chem.base"})
+            self.assertEqual(len(lock["org.knime.chem.base"]), 1)
+            row = lock["org.knime.chem.base"][0]
+            self.assertEqual(row["bytes"], 3)
+            self.assertEqual(
+                row["sha256"],
+                "ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad",
+            )
+
+    def test_default_does_not_enable_full_archive_fallback(self):
+        src = BOOTSTRAP.read_text(encoding="utf-8")
+        self.assertIn("--allow-full-update-archive", src)
+        self.assertIn("Targeted KNIME 4.6 p2 install failed", src)
+
 
 if __name__ == "__main__":
     unittest.main()

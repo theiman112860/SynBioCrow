@@ -48,7 +48,7 @@ def _write_source_csv(path: Path, target_smiles: str) -> str:
     inchi = _smiles_to_inchi(target_smiles)
     with path.open("w", newline="", encoding="utf-8") as f:
         w = csv.writer(f)
-        w.writerow(["name", "inchi"])
+        w.writerow(["Name", "InChI"])
         w.writerow(["synbiocrow_target", inchi])
     return inchi
 

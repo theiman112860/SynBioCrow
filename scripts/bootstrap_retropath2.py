@@ -232,10 +232,11 @@ def main()->int:
     for item in all_files:
         print(f"  - {item.get('key','')} bytes={item.get('size','?')}",flush=True)
 
-    # The RetroPath maintainer's archived stack contains the KNIME platform plus
-    # p2 repositories.  RDKit alone is not sufficient: org.knime.chem.base is
-    # supplied by KNIME's main 4.6 update site.  Download every plausible p2
-    # repository from the record, not just Trusted Community.
+    # Download only the frozen KNIME platform plus the frozen community/chemistry
+    # repositories needed for RetroPath. Deliberately EXCLUDE the 7.9-GB archived
+    # analytics-platform repository here; if KNIME-owned IUs are missing after
+    # extracting the base runtime, targeted 4.6 p2 resolution below acquires only
+    # their dependency closure. The giant archive remains an explicit last resort.
     selected=[]
     for item in all_files:
         key=item.get("key","")
@@ -244,9 +245,10 @@ def main()->int:
         is_repo=(
             key.lower().endswith(".zip")
             and not any(tag in low for tag in ("win32","windows","macos","macosx"))
+            and "org.knime.update.analytics-platform" not in low
             and any(tag in low for tag in (
-                "updatesite","update-site","org.knime.update","trustedcommunity",
-                "communitycontributions","community-contributions","chemistry"
+                "trustedcommunity","communitycontributions",
+                "community-contributions","chemistry"
             ))
         )
         if is_linux or is_repo:

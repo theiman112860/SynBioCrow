@@ -4,11 +4,19 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "synbiocrow"
-version = "2.1.1"
-description = "SynBioCrow stable release-state API"
+version = "2.2.0"
+description = "SynBioCrow computational synthetic-biology engine"
 requires-python = ">=3.10"
 license = {text = "Research release; see LICENSE.txt"}
 readme = "README.md"
+dependencies = ["rdkit>=2025.3"]
+
+[project.scripts]
+synbiocrow = "synbiocrow.cli:main"
+
+[project.optional-dependencies]
+doranet = ["doranet==0.5.7a1"]
+thermo = ["equilibrator-api>=0.8,<0.9; python_version >= '3.11'"]
 
 [tool.setuptools.packages.find]
 where = ["."]

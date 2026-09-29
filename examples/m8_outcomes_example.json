@@ -1,0 +1,24 @@
+{
+  "outcomes": [
+    {
+      "outcome_id": "test-001",
+      "kind": "backend",
+      "subject_id": "run-example",
+      "reward": 0.5,
+      "backend_id": "doranet",
+      "source": "computational_test",
+      "notes": "Example only"
+    },
+    {
+      "outcome_id": "test-002",
+      "kind": "route",
+      "subject_id": "route-0000",
+      "reward": 1,
+      "features": {
+        "backend_diversity": 2,
+        "route_length": -2
+      },
+      "source": "computational_test"
+    }
+  ]
+}

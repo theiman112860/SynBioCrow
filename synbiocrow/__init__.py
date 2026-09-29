@@ -1,4 +1,12 @@
-"""Stable release API for SynBioCrow 2.1."""
+"""SynBioCrow public package surface."""
 from .api import SynBioCrowRelease, ReleasePolicyError
-__all__ = ["SynBioCrowRelease", "ReleasePolicyError"]
-__version__ = "2.1.1"
+from .engine import SynBioCrowEngine
+from .execution import DesignRequest, DesignResult, RunStateStore, design
+from .learning import LearningPolicy, TestOutcome, PolicyUpdate
+
+__all__=[
+    "SynBioCrowRelease","ReleasePolicyError","SynBioCrowEngine",
+    "DesignRequest","DesignResult","RunStateStore","design",
+    "LearningPolicy","TestOutcome","PolicyUpdate",
+]
+__version__="2.2.0rc1"

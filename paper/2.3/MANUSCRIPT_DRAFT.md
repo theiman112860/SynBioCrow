@@ -147,11 +147,26 @@ The purpose is to determine where 3D similarity adds information beyond topology
 
 ### 4.1 Initial breadth benchmark
 
-[Insert frozen 24-target results after route-preservation audit.]
+Across the 24-target panel, DORAnet produced candidates for all 24 targets, while RetroBioCat2 and RetroPath standalone each produced candidates for 19 targets. Complete routes were recovered for four targets by at least one individual backend: lactic acid, 3-hydroxypropionic acid, 1,4-butanediol, and putrescine.
+
+The reaction-graph ensemble preserved route-positive coverage for all four of these targets. It returned 23 routes for lactic acid, reached the 100-route enumeration cap for 3-hydroxypropionic acid, returned one route for 1,4-butanediol, and returned two routes for putrescine. These results indicate that the ensemble can substantially expand route diversity for some already-solvable targets, although the present 24-target panel did not contain a target solved exclusively by cross-engine graph integration.
+
+BioPKS/RetroTide is treated separately because repeated focused executions timed out or failed before producing benchmark candidates. This is reported as a runtime limitation rather than a biochemical no-hit.
 
 ### 4.2 Route-preservation audit
 
-[Insert monotonicity versus enumeration result.]
+Because an earlier aggregate summary appeared to show fewer route-positive targets for the ensemble than for RetroBioCat2 alone, we performed an offline route-preservation audit using the persisted candidate checkpoints. No retrosynthesis backend was rerun.
+
+Four targets contained at least one complete individual-engine route. The audit compared each individual route with the union graph at the normalized reaction-edge level. Across all audited routes, the ensemble showed:
+
+- graph-monotonicity violations: 0;
+- missing individual reaction edges after union: 0;
+- individual routes absent from the ensemble enumeration: 0;
+- enumeration/truncation losses at the 100-route cap: 0.
+
+Thus, every complete route found by an individual backend remained present and was returned by the ensemble. The earlier lower ensemble route-coverage figure was therefore an artifact of a damaged intermediate aggregate rather than a property of the reaction graph.
+
+The most pronounced increase in route diversity occurred for 3-hydroxypropionic acid: DORAnet returned one complete route and RetroBioCat2 returned three, whereas the ensemble returned the maximum 100 routes permitted by the benchmark cap. Lactic acid likewise increased from ten individual routes in total (eight DORAnet and two RetroBioCat2) to 23 ensemble routes. These results support a route-diversity benefit of graph integration on some solvable targets, while not yet demonstrating ensemble-only target recovery.
 
 ### 4.3 Literature-grounded pathway recovery
 
@@ -173,7 +188,7 @@ The purpose is to determine where 3D similarity adds information beyond topology
 
 The discussion should distinguish three different questions that are easy to conflate: whether the ensemble broadens reaction coverage, whether it increases route diversity, and whether it makes previously unsolved targets solvable. These are separate outcomes and should be reported separately.
 
-If the ensemble does not produce many ensemble-only route targets, that result should be reported directly. The value of integration may instead lie in broader candidate coverage, alternative routes, fault tolerance, provenance, and downstream evidence integration. The literature-grounded benchmark will determine whether those properties translate into better recovery of biologically useful pathways.
+The initial benchmark does not show ensemble-only target recovery, and that negative result should be reported directly. It does, however, show that graph integration preserves every complete individual route tested and can greatly expand route diversity for some targets. The practical value of the ensemble may therefore lie in broader search coverage, alternative route generation, fault tolerance, provenance, and downstream evidence integration rather than in making every previously unsolved target solvable. The literature-grounded benchmark will determine whether those properties translate into better recovery or ranking of biologically useful pathways.
 
 ## 6. Limitations
 

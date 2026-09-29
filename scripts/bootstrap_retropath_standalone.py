@@ -41,6 +41,8 @@ def main()->int:
     ap.add_argument("--rules",required=True)
     ap.add_argument("--source",required=True)
     ap.add_argument("--sink",required=True)
+    ap.add_argument("--smoke-max-steps",type=int,default=2)
+    ap.add_argument("--smoke-max-structures",type=int,default=20)
     args=ap.parse_args()
 
     root=Path(args.root)
@@ -71,9 +73,9 @@ def main()->int:
         shutil.rmtree(smoke_out)
     cmd=[
         str(exe),str(Path(args.rules).resolve()),str(Path(args.source).resolve()),
-        str(Path(args.sink).resolve()),"3",
+        str(Path(args.sink).resolve()),str(args.smoke_max_steps),
         "--source-mw","1000","--min-diameter","0","--max-diameter","1000",
-        "--max-structures","50","--output-dir",str(smoke_out),
+        "--max-structures",str(args.smoke_max_structures),"--output-dir",str(smoke_out),
     ]
     print("[RetroPath standalone] smoke command: "+" ".join(cmd),flush=True)
     proc=subprocess.run(cmd,text=True,stdout=subprocess.PIPE,stderr=subprocess.STDOUT)
@@ -102,6 +104,8 @@ def main()->int:
         "rules_file":str(Path(args.rules).resolve()),
         "source_file":str(Path(args.source).resolve()),
         "sink_file":str(Path(args.sink).resolve()),
+        "smoke_max_steps":args.smoke_max_steps,
+        "smoke_max_structures":args.smoke_max_structures,
     }
     out=root/"synbiocrow_retropath_standalone.json"
     out.write_text(json.dumps(payload,indent=2,sort_keys=True)+"\n",encoding="utf-8")

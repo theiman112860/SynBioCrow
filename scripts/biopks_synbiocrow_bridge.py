@@ -6,6 +6,7 @@ import json
 import os
 import sys
 import traceback
+import builtins
 from pathlib import Path
 from typing import Any
 
@@ -97,6 +98,19 @@ def main()->int:
         config=Path(options.pop("config_filepath",root/"scripts"/"input_config_file.json"))
         if options:
             raise ValueError("unsupported BioPKS bridge options: "+", ".join(sorted(options)))
+
+        # BioPKS/RetroTide still uses legacy pkg_resources. Some modern
+        # environments omit it from the runtime unless setuptools is explicitly
+        # installed, and some vendored modules reference the name indirectly.
+        # Import it once and expose it through builtins before BioPKS imports.
+        try:
+            import pkg_resources as _pkg_resources
+            builtins.pkg_resources = _pkg_resources
+        except Exception as exc:
+            raise RuntimeError(
+                "BioPKS requires legacy pkg_resources; install setuptools<81 "
+                f"in the isolated runtime ({type(exc).__name__}: {exc})"
+            ) from exc
 
         # BioPKS is verbose. Keep stdout exclusively for the JSON protocol.
         with contextlib.redirect_stdout(sys.stderr):

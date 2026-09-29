@@ -1,0 +1,15 @@
+{
+  "schema": "synbiocrow.benchmark_panel.v1",
+  "description": "Template only. Replace/add targets through a documented curation step before manuscript analysis.",
+  "targets": [
+    {
+      "target_id": "example_ethanol",
+      "target_name": "ethanol",
+      "target_smiles": "CCO",
+      "chemical_class": "small_alcohol",
+      "sink_smiles": ["CC"],
+      "blind_group": null,
+      "notes": "Smoke-test target only; not manuscript evidence."
+    }
+  ]
+}

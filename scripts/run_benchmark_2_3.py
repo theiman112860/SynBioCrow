@@ -52,6 +52,14 @@ def load_panel(path:Path)->list[dict[str,Any]]:
         seen.add(row["target_id"])
         copy=dict(row)
         copy["sink_smiles"]=list(copy.get("sink_smiles") or [])
+        applicable=copy.get("applicable_backends")
+        if applicable is None:
+            applicable=list(PRIMARY_BACKENDS)
+        applicable=tuple(str(x) for x in applicable)
+        unknown=[x for x in applicable if x not in PRIMARY_BACKENDS]
+        if unknown:
+            raise ValueError(f"Unknown applicable_backends {unknown} for {copy['target_id']}")
+        copy["applicable_backends"]=list(applicable)
         out.append(copy)
     return out
 
@@ -189,7 +197,16 @@ def main()->int:
     for i,target in enumerate(targets,1):
         print(f"[BENCHMARK] {i}/{len(targets)} {target['target_id']} {target['target_name']}",flush=True)
         arms={}
+        applicable=set(target.get("applicable_backends") or PRIMARY_BACKENDS)
         for bid in PRIMARY_BACKENDS:
+            if bid not in applicable:
+                arms[bid]={
+                    "status":"NOT_APPLICABLE",
+                    "elapsed_seconds":0.0,
+                    "candidate_count":0,
+                    "route_count":0,
+                }
+                continue
             if bid not in engine.backend_ids():
                 arms[bid]={"status":"UNKNOWN_BACKEND","elapsed_seconds":0.0,"candidate_count":0,"route_count":0}
                 continue
@@ -206,10 +223,11 @@ def main()->int:
                 target,(bid,),engine=engine,state_root=state_root,
                 max_route_steps=args.max_route_steps,max_routes=args.max_routes,
             )
+        ensemble_backends=tuple(b for b in available_primary if b in applicable)
         arms["ensemble"]=run_arm(
-            target,available_primary,engine=engine,state_root=state_root,
+            target,ensemble_backends,engine=engine,state_root=state_root,
             max_route_steps=args.max_route_steps,max_routes=args.max_routes,
-        ) if available_primary else {
+        ) if ensemble_backends else {
             "status":"SKIPPED_UNAVAILABLE","elapsed_seconds":0.0,
             "candidate_count":0,"route_count":0,
         }
@@ -221,6 +239,7 @@ def main()->int:
             "sink_smiles":target.get("sink_smiles",[]),
             "blind_group":target.get("blind_group"),
             "notes":target.get("notes"),
+            "applicable_backends":target.get("applicable_backends"),
             "arms":arms,
         }
         records.append(rec)

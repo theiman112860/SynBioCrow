@@ -209,6 +209,8 @@ def main()->int:
         arms={}
         applicable=set(target.get("applicable_backends") or PRIMARY_BACKENDS)
         for bid in PRIMARY_BACKENDS:
+            print(f"[BENCHMARK]   arm={bid} start",flush=True)
+            arm_t0=time.perf_counter()
             if bid not in applicable:
                 arms[bid]={
                     "status":"NOT_APPLICABLE",
@@ -216,9 +218,11 @@ def main()->int:
                     "candidate_count":0,
                     "route_count":0,
                 }
+                print(f"[BENCHMARK]   arm={bid} status=NOT_APPLICABLE elapsed={time.perf_counter()-arm_t0:.1f}s",flush=True)
                 continue
             if bid not in engine.backend_ids():
                 arms[bid]={"status":"UNKNOWN_BACKEND","elapsed_seconds":0.0,"candidate_count":0,"route_count":0}
+                print(f"[BENCHMARK]   arm={bid} status=UNKNOWN_BACKEND elapsed={time.perf_counter()-arm_t0:.1f}s",flush=True)
                 continue
             if not readiness.get(bid,{}).get("available",False):
                 arms[bid]={
@@ -228,12 +232,16 @@ def main()->int:
                     "route_count":0,
                     "readiness":readiness.get(bid,{})
                 }
+                print(f"[BENCHMARK]   arm={bid} status=SKIPPED_UNAVAILABLE elapsed={time.perf_counter()-arm_t0:.1f}s",flush=True)
                 continue
             arms[bid]=run_arm(
                 target,(bid,),engine=engine,state_root=state_root,
                 max_route_steps=args.max_route_steps,max_routes=args.max_routes,
             )
+            print(f"[BENCHMARK]   arm={bid} status={arms[bid].get('status')} candidates={arms[bid].get('candidate_count',0)} routes={arms[bid].get('route_count',0)} elapsed={arms[bid].get('elapsed_seconds',0):.1f}s",flush=True)
         ensemble_backends=tuple(b for b in available_primary if b in applicable)
+        print(f"[BENCHMARK]   arm=ensemble start backends={list(ensemble_backends)}",flush=True)
+        ensemble_t0=time.perf_counter()
         arms["ensemble"]=run_arm(
             target,ensemble_backends,engine=engine,state_root=state_root,
             max_route_steps=args.max_route_steps,max_routes=args.max_routes,
@@ -241,6 +249,7 @@ def main()->int:
             "status":"SKIPPED_UNAVAILABLE","elapsed_seconds":0.0,
             "candidate_count":0,"route_count":0,
         }
+        print(f"[BENCHMARK]   arm=ensemble status={arms['ensemble'].get('status')} candidates={arms['ensemble'].get('candidate_count',0)} routes={arms['ensemble'].get('route_count',0)} elapsed={arms['ensemble'].get('elapsed_seconds',time.perf_counter()-ensemble_t0):.1f}s",flush=True)
         rec={
             "target_id":target["target_id"],
             "target_name":target["target_name"],
@@ -256,6 +265,7 @@ def main()->int:
         target_path.write_text(
             json.dumps(rec,indent=2,sort_keys=True)+"\n",encoding="utf-8"
         )
+        print(f"[BENCHMARK] {i}/{len(targets)} {target['target_id']} COMPLETE cached={target_path}",flush=True)
 
     aggregate=summarize(records)
     aggregate_path=out/"benchmark_summary.json"

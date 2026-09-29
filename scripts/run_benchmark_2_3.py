@@ -13,6 +13,9 @@ from pathlib import Path
 from typing import Any
 
 from synbiocrow import DesignRequest, SynBioCrowEngine, design
+from synbiocrow.execution.runner import _candidate_from_dict, _run_id
+from synbiocrow.execution.state import RunStateStore
+from synbiocrow.ensemble import resolve_compound
 
 
 PRIMARY_BACKENDS=("doranet","retrobiocat2","retropath_standalone","biopks_retrotide")
@@ -87,7 +90,7 @@ def run_arm(
             request,
             engine=engine,
             state_root=str(state_root),
-            resume=False,
+            resume=True,
         )
         elapsed=time.perf_counter()-t0
         status="COMPLETE"
@@ -103,6 +106,7 @@ def run_arm(
             "graph_summary":result.graph_summary,
             "backend_status":result.backend_status,
             "run_id":result.run_id,
+            "_candidate_records":[asdict(c) for c in result.candidates],
         }
     except Exception as exc:
         return {
@@ -115,6 +119,100 @@ def run_arm(
             "error_type":type(exc).__name__,
             "error":str(exc),
         }
+
+
+
+def _load_arm_candidates_from_state(
+    target:dict[str,Any],
+    backend_id:str,
+    *,
+    state_root:Path,
+    max_route_steps:int,
+    max_routes:int,
+)->list:
+    req=DesignRequest(
+        target_smiles=target["target_smiles"],
+        mode="biosynthesis",
+        backend_ids=(backend_id,),
+        sink_smiles=tuple(target.get("sink_smiles") or ()),
+        max_route_steps=max_route_steps,
+        max_routes=max_routes,
+    )
+    store=RunStateStore(str(state_root))
+    cached=store.read_stage(_run_id(req),"candidates")
+    if not cached:
+        return []
+    return [_candidate_from_dict(x) for x in cached.get("candidates",[])]
+
+def build_ensemble_from_cached_arms(
+    target:dict[str,Any],
+    arms:dict[str,dict[str,Any]],
+    *,
+    engine:SynBioCrowEngine,
+    state_root:Path,
+    max_route_steps:int,
+    max_routes:int,
+)->dict[str,Any]:
+    t0=time.perf_counter()
+    candidates=[]
+    contributing=[]
+    failures={}
+    for bid in PRIMARY_BACKENDS:
+        arm=arms.get(bid,{})
+        if arm.get("status") in {"NOT_APPLICABLE","SKIPPED_UNAVAILABLE","UNKNOWN_BACKEND"}:
+            continue
+        try:
+            records=arm.get("_candidate_records")
+            if records is not None:
+                found=[_candidate_from_dict(x) for x in records]
+            else:
+                found=_load_arm_candidates_from_state(
+                    target,bid,state_root=state_root,
+                    max_route_steps=max_route_steps,max_routes=max_routes,
+                )
+            if found:
+                candidates.extend(found)
+                contributing.append(bid)
+            elif arm.get("status") in {"ERROR","INCOMPLETE"}:
+                failures[bid]={
+                    "status":arm.get("status"),
+                    "error_type":arm.get("error_type"),
+                    "error":arm.get("error"),
+                }
+        except Exception as exc:
+            failures[bid]={"status":"ERROR","error_type":type(exc).__name__,"error":str(exc)}
+
+    graph=engine.build_ensemble(candidates)
+    routes=[]
+    if target.get("sink_smiles"):
+        target_key=resolve_compound(target["target_smiles"],source="request").key
+        sink_keys={resolve_compound(x,source="request").key for x in target.get("sink_smiles",[])}
+        routes=graph.find_routes(
+            target_key,sink_keys,max_steps=max_route_steps,max_routes=max_routes
+        )
+    graph_summary={
+        "compound_count":len(graph.compounds),
+        "edge_count":len(graph.edges),
+        "backends":list(graph.backend_set()),
+        "composite_edge_count":graph.composite_edge_count(),
+    }
+    if candidates:
+        status="COMPLETE"
+    elif failures:
+        status="INCOMPLETE"
+    else:
+        status="NO_HIT"
+    return {
+        "status":status,
+        "elapsed_seconds":time.perf_counter()-t0,
+        "candidate_count":len(candidates),
+        "route_count":len(routes),
+        "graph_summary":graph_summary,
+        "backend_status":{k:v for k,v in failures.items()},
+        "contributing_backends":contributing,
+        "failed_backends":failures,
+        "ensemble_policy":"UNION_SUCCESSFUL_CACHED_BACKEND_CANDIDATES",
+    }
 
 
 def summarize(records:list[dict[str,Any]])->dict[str,Any]:
@@ -200,8 +298,17 @@ def main()->int:
         if target_path.is_file() and not args.no_resume:
             try:
                 rec=json.loads(target_path.read_text(encoding="utf-8"))
+                old=rec.get("arms",{}).get("ensemble",{})
+                if old.get("status") in {"ERROR","INCOMPLETE"}:
+                    rec["arms"]["ensemble"]=build_ensemble_from_cached_arms(
+                        target,rec["arms"],engine=engine,state_root=state_root,
+                        max_route_steps=args.max_route_steps,max_routes=args.max_routes,
+                    )
+                    target_path.write_text(json.dumps(rec,indent=2,sort_keys=True)+"\n",encoding="utf-8")
+                    print(f"[BENCHMARK] {i}/{len(targets)} {target['target_id']} RESUME cached + ensemble repaired status={rec['arms']['ensemble'].get('status')} routes={rec['arms']['ensemble'].get('route_count',0)}",flush=True)
+                else:
+                    print(f"[BENCHMARK] {i}/{len(targets)} {target['target_id']} RESUME cached",flush=True)
                 records.append(rec)
-                print(f"[BENCHMARK] {i}/{len(targets)} {target['target_id']} RESUME cached",flush=True)
                 continue
             except Exception as exc:
                 print(f"[BENCHMARK] cache invalid for {target['target_id']}: {exc}; rerunning",flush=True)
@@ -239,17 +346,14 @@ def main()->int:
                 max_route_steps=args.max_route_steps,max_routes=args.max_routes,
             )
             print(f"[BENCHMARK]   arm={bid} status={arms[bid].get('status')} candidates={arms[bid].get('candidate_count',0)} routes={arms[bid].get('route_count',0)} elapsed={arms[bid].get('elapsed_seconds',0):.1f}s",flush=True)
-        ensemble_backends=tuple(b for b in available_primary if b in applicable)
-        print(f"[BENCHMARK]   arm=ensemble start backends={list(ensemble_backends)}",flush=True)
-        ensemble_t0=time.perf_counter()
-        arms["ensemble"]=run_arm(
-            target,ensemble_backends,engine=engine,state_root=state_root,
+        print("[BENCHMARK]   arm=ensemble build from cached successful backend candidates",flush=True)
+        arms["ensemble"]=build_ensemble_from_cached_arms(
+            target,arms,engine=engine,state_root=state_root,
             max_route_steps=args.max_route_steps,max_routes=args.max_routes,
-        ) if ensemble_backends else {
-            "status":"SKIPPED_UNAVAILABLE","elapsed_seconds":0.0,
-            "candidate_count":0,"route_count":0,
-        }
-        print(f"[BENCHMARK]   arm=ensemble status={arms['ensemble'].get('status')} candidates={arms['ensemble'].get('candidate_count',0)} routes={arms['ensemble'].get('route_count',0)} elapsed={arms['ensemble'].get('elapsed_seconds',time.perf_counter()-ensemble_t0):.1f}s",flush=True)
+        )
+        print(f"[BENCHMARK]   arm=ensemble status={arms['ensemble'].get('status')} candidates={arms['ensemble'].get('candidate_count',0)} routes={arms['ensemble'].get('route_count',0)} contributing={arms['ensemble'].get('contributing_backends',[])} elapsed={arms['ensemble'].get('elapsed_seconds',0):.1f}s",flush=True)
+        for _arm in arms.values():
+            _arm.pop("_candidate_records",None)
         rec={
             "target_id":target["target_id"],
             "target_name":target["target_name"],

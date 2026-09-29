@@ -263,8 +263,18 @@ class BioPKSBackend:
             )
         status = str(response.get("status", "COMPLETE")).upper()
         if status not in ("COMPLETE", "PASS", "NO_HIT"):
+            err_type=response.get("error_type")
+            err=response.get("error")
+            detail=": ".join(str(x) for x in (err_type,err) if x)
+            self.last_run_stats = {
+                "status":"ERROR",
+                "bridge_status":status,
+                "error_type":err_type,
+                "error":err,
+                "diagnostics":response.get("diagnostics"),
+            }
             raise BackendExecutionError(
-                f"BioPKS bridge reported non-success status {status!r}"
+                f"BioPKS bridge reported non-success status {status!r}" + (f": {detail}" if detail else "")
             )
 
         candidates = normalize_biopks_payload(

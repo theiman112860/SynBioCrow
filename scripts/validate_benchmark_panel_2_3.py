@@ -30,8 +30,12 @@ def main()->int:
         can=Chem.MolToSmiles(mol,isomericSmiles=True)
         assert can not in canonical, f"duplicate structure: {row['target_id']} and {canonical[can]}"
         canonical[can]=row["target_id"]
+        target_can=Chem.MolToSmiles(mol,isomericSmiles=True)
         for smi in row.get("sink_smiles",[]):
-            assert Chem.MolFromSmiles(smi) is not None, (row["target_id"],smi)
+            sink_mol=Chem.MolFromSmiles(smi)
+            assert sink_mol is not None, (row["target_id"],smi)
+            sink_can=Chem.MolToSmiles(sink_mol,isomericSmiles=True)
+            assert sink_can != target_can, f"target appears in sink set: {row['target_id']}"
     pks=[x for x in targets if "biopks_retrotide" in x.get("applicable_backends",[])]
     assert all(x["chemical_class"]=="polyketide_derived" for x in pks)
     report={

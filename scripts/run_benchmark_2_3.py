@@ -174,6 +174,7 @@ def main()->int:
     ap.add_argument("--output-dir",required=True)
     ap.add_argument("--max-route-steps",type=int,default=8)
     ap.add_argument("--max-routes",type=int,default=100)
+    ap.add_argument("--no-resume",action="store_true",help="Ignore completed per-target JSON files")
     args=ap.parse_args()
 
     root=Path(__file__).resolve().parents[1]
@@ -195,6 +196,15 @@ def main()->int:
 
     records=[]
     for i,target in enumerate(targets,1):
+        target_path=raw_dir/f"{target['target_id']}.json"
+        if target_path.is_file() and not args.no_resume:
+            try:
+                rec=json.loads(target_path.read_text(encoding="utf-8"))
+                records.append(rec)
+                print(f"[BENCHMARK] {i}/{len(targets)} {target['target_id']} RESUME cached",flush=True)
+                continue
+            except Exception as exc:
+                print(f"[BENCHMARK] cache invalid for {target['target_id']}: {exc}; rerunning",flush=True)
         print(f"[BENCHMARK] {i}/{len(targets)} {target['target_id']} {target['target_name']}",flush=True)
         arms={}
         applicable=set(target.get("applicable_backends") or PRIMARY_BACKENDS)
@@ -243,7 +253,7 @@ def main()->int:
             "arms":arms,
         }
         records.append(rec)
-        (raw_dir/f"{target['target_id']}.json").write_text(
+        target_path.write_text(
             json.dumps(rec,indent=2,sort_keys=True)+"\n",encoding="utf-8"
         )
 
@@ -264,6 +274,7 @@ def main()->int:
         "max_route_steps":args.max_route_steps,
         "max_routes":args.max_routes,
         "truth_accessed":False,
+        "resume_enabled":not args.no_resume,
         "aggregate_sha256":sha256(aggregate_path),
     }
     manifest_path=out/"benchmark_manifest.json"

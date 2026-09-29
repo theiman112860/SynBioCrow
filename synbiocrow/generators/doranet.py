@@ -213,6 +213,7 @@ class DORAnetBackend:
             # Run inside the isolated temp directory instead of passing an absolute path.
             old_cwd = os.getcwd()
             os.chdir(tmp)
+            Path("tmp").mkdir(parents=True, exist_ok=True)
             try:
                 network = generate_network(
                 job_name="direct_rule_probe",

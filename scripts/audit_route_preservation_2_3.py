@@ -18,7 +18,7 @@ def load_panel(path:Path)->list[dict]:
     return list(payload["targets"])
 
 
-def load_candidates(store:RunStateStore,target:dict,backend_id:str,max_steps:int,max_routes:int):
+def load_candidates(stores:list[RunStateStore],target:dict,backend_id:str,max_steps:int,max_routes:int):
     req=DesignRequest(
         target_smiles=target["target_smiles"],
         mode="biosynthesis",
@@ -27,10 +27,12 @@ def load_candidates(store:RunStateStore,target:dict,backend_id:str,max_steps:int
         max_route_steps=max_steps,
         max_routes=max_routes,
     )
-    payload=store.read_stage(_run_id(req),"candidates")
-    if not payload:
-        return [],None
-    return [_candidate_from_dict(x) for x in payload.get("candidates",[])],payload
+    run_id=_run_id(req)
+    for store in stores:
+        payload=store.read_stage(run_id,"candidates")
+        if payload:
+            return [_candidate_from_dict(x) for x in payload.get("candidates",[])],payload
+    return [],None
 
 
 def route_signature(graph,route):
@@ -49,13 +51,13 @@ def routes_for(engine,candidates,target,max_steps,max_routes):
     return graph,routes
 
 
-def audit_target(engine,store,target,max_steps,max_routes):
+def audit_target(engine,stores,target,max_steps,max_routes):
     by_backend={}
     union=[]
     for bid in GENERAL_BACKENDS:
         if bid not in set(target.get("applicable_backends") or GENERAL_BACKENDS):
             continue
-        candidates,_=load_candidates(store,target,bid,max_steps,max_routes)
+        candidates,_=load_candidates(stores,target,bid,max_steps,max_routes)
         graph,routes=routes_for(engine,candidates,target,max_steps,max_routes) if candidates else (engine.build_ensemble([]),[])
         by_backend[bid]={
             "candidate_count":len(candidates),
@@ -111,19 +113,20 @@ def audit_target(engine,store,target,max_steps,max_routes):
 def main()->int:
     ap=argparse.ArgumentParser()
     ap.add_argument("--panel",required=True)
-    ap.add_argument("--state-root",required=True)
+    ap.add_argument("--state-root",action="append",required=True,
+                    help="State root to search; may be supplied multiple times in priority order")
     ap.add_argument("--output",required=True)
     ap.add_argument("--max-route-steps",type=int,default=8)
     ap.add_argument("--max-routes",type=int,default=100)
     args=ap.parse_args()
 
     panel=load_panel(Path(args.panel))
-    store=RunStateStore(Path(args.state_root))
+    stores=[RunStateStore(Path(x)) for x in args.state_root]
     engine=SynBioCrowEngine()
 
     results=[]
     for target in panel:
-        rec=audit_target(engine,store,target,args.max_route_steps,args.max_routes)
+        rec=audit_target(engine,stores,target,args.max_route_steps,args.max_routes)
         if any(rec["backend_route_counts"].values()):
             results.append(rec)
             print(
@@ -137,7 +140,7 @@ def main()->int:
     report={
         "schema":"synbiocrow.route_preservation_audit.v1",
         "panel":str(Path(args.panel).resolve()),
-        "state_root":str(Path(args.state_root).resolve()),
+        "state_roots":[str(Path(x).resolve()) for x in args.state_root],
         "max_route_steps":args.max_route_steps,
         "max_routes":args.max_routes,
         "targets_with_individual_routes":len(results),

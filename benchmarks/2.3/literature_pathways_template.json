@@ -1,0 +1,37 @@
+{
+  "schema": "synbiocrow.literature_pathway_benchmark.v1",
+  "benchmark_id": "synbiocrow_2_3_literature_pathways",
+  "truth_accessed": false,
+  "records": [
+    {
+      "pathway_id": "EXAMPLE_ONLY_DO_NOT_SCORE",
+      "split": "development",
+      "target_name": "",
+      "target_smiles": "",
+      "chassis": {
+        "organism": "",
+        "strain": "",
+        "source_metabolites": []
+      },
+      "literature": {
+        "doi": "",
+        "pmid": "",
+        "citation": "",
+        "url": ""
+      },
+      "experimentally_demonstrated": false,
+      "reactions": [
+        {
+          "order": 1,
+          "reaction_smiles": "",
+          "substrates": [],
+          "products": [],
+          "ec_numbers": [],
+          "enzymes": [],
+          "evidence_note": ""
+        }
+      ],
+      "notes": "Remove this example before scoring."
+    }
+  ]
+}

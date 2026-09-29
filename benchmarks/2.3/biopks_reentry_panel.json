@@ -1,0 +1,26 @@
+{
+  "schema": "synbiocrow.biopks_reentry_panel.v1",
+  "panel_id": "synbiocrow_2_3_biopks_reentry",
+  "purpose": "Isolated BioPKS/RetroTide runtime qualification before rejoining manuscript benchmarks.",
+  "gate_policy": {
+    "stage_0": "bridge import/smoke must complete",
+    "stage_1": "PKS-only max_designs=1 must complete without timeout on at least one canonical PKS target",
+    "stage_2": "combined PKS+bio max_designs=1 must complete without timeout on at least one canonical PKS target",
+    "manuscript_reentry": "BioPKS may rejoin only PKS-relevant benchmark records after stage_2 passes reproducibly.",
+    "timeout_is_not_scientific_no_hit": true
+  },
+  "targets": [
+    {
+      "target_id": "pks_naringenin",
+      "target_name": "naringenin",
+      "target_smiles": "O=C1CC(c2ccc(O)cc2)Oc2cc(O)cc(O)c21",
+      "rationale": "Canonical flavanone/polyketide-derived target used in prior BioPKS smoke work."
+    },
+    {
+      "target_id": "pks_pinocembrin",
+      "target_name": "pinocembrin",
+      "target_smiles": "O=C1CC(c2ccccc2)Oc2cc(O)cc(O)c21",
+      "rationale": "Closely related flavanone with simpler aryl substitution; useful second qualification target."
+    }
+  ]
+}

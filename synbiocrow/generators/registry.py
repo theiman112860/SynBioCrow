@@ -39,6 +39,9 @@ def _retropath_standalone_from_env()->RetroPathStandaloneBackend:
         executable=exe,
         rules_file=rules,
         sink_file=sink,
+        max_steps=int(os.getenv("SYNBIOCROW_RETROPATH_STANDALONE_MAX_STEPS","3")),
+        topx=int(os.getenv("SYNBIOCROW_RETROPATH_STANDALONE_TOPX","25")),
+        timeout_minutes=int(os.getenv("SYNBIOCROW_RETROPATH_STANDALONE_TIMEOUT_MINUTES","8")),
     ))
 
 def default_registry()->BackendRegistry:

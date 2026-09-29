@@ -314,8 +314,23 @@ def main()->int:
                 print(f"[BENCHMARK] cache invalid for {target['target_id']}: {exc}; rerunning",flush=True)
         print(f"[BENCHMARK] {i}/{len(targets)} {target['target_id']} {target['target_name']}",flush=True)
         arms={}
+        partial_path=raw_dir/f"{target['target_id']}.partial.json"
+        if partial_path.is_file() and not args.no_resume:
+            try:
+                partial=json.loads(partial_path.read_text(encoding="utf-8"))
+                arms=dict(partial.get("arms") or {})
+                print(f"[BENCHMARK]   restored partial arms={sorted(arms)}",flush=True)
+            except Exception as exc:
+                print(f"[BENCHMARK]   partial cache invalid: {exc}; ignoring",flush=True)
+                arms={}
         applicable=set(target.get("applicable_backends") or PRIMARY_BACKENDS)
         for bid in PRIMARY_BACKENDS:
+            if bid in arms and arms[bid].get("status") in {
+                "COMPLETE","NO_HIT","INCOMPLETE","ERROR","NOT_APPLICABLE",
+                "SKIPPED_UNAVAILABLE","UNKNOWN_BACKEND"
+            }:
+                print(f"[BENCHMARK]   arm={bid} RESUME status={arms[bid].get('status')} candidates={arms[bid].get('candidate_count',0)} routes={arms[bid].get('route_count',0)}",flush=True)
+                continue
             print(f"[BENCHMARK]   arm={bid} start",flush=True)
             arm_t0=time.perf_counter()
             if bid not in applicable:
@@ -326,10 +341,12 @@ def main()->int:
                     "route_count":0,
                 }
                 print(f"[BENCHMARK]   arm={bid} status=NOT_APPLICABLE elapsed={time.perf_counter()-arm_t0:.1f}s",flush=True)
+                partial_path.write_text(json.dumps({"target_id":target["target_id"],"arms":arms},indent=2,sort_keys=True)+"\n",encoding="utf-8")
                 continue
             if bid not in engine.backend_ids():
                 arms[bid]={"status":"UNKNOWN_BACKEND","elapsed_seconds":0.0,"candidate_count":0,"route_count":0}
                 print(f"[BENCHMARK]   arm={bid} status=UNKNOWN_BACKEND elapsed={time.perf_counter()-arm_t0:.1f}s",flush=True)
+                partial_path.write_text(json.dumps({"target_id":target["target_id"],"arms":arms},indent=2,sort_keys=True)+"\n",encoding="utf-8")
                 continue
             if not readiness.get(bid,{}).get("available",False):
                 arms[bid]={
@@ -340,12 +357,14 @@ def main()->int:
                     "readiness":readiness.get(bid,{})
                 }
                 print(f"[BENCHMARK]   arm={bid} status=SKIPPED_UNAVAILABLE elapsed={time.perf_counter()-arm_t0:.1f}s",flush=True)
+                partial_path.write_text(json.dumps({"target_id":target["target_id"],"arms":arms},indent=2,sort_keys=True)+"\n",encoding="utf-8")
                 continue
             arms[bid]=run_arm(
                 target,(bid,),engine=engine,state_root=state_root,
                 max_route_steps=args.max_route_steps,max_routes=args.max_routes,
             )
             print(f"[BENCHMARK]   arm={bid} status={arms[bid].get('status')} candidates={arms[bid].get('candidate_count',0)} routes={arms[bid].get('route_count',0)} elapsed={arms[bid].get('elapsed_seconds',0):.1f}s",flush=True)
+            partial_path.write_text(json.dumps({"target_id":target["target_id"],"arms":arms},indent=2,sort_keys=True)+"\n",encoding="utf-8")
         print("[BENCHMARK]   arm=ensemble build from cached successful backend candidates",flush=True)
         arms["ensemble"]=build_ensemble_from_cached_arms(
             target,arms,engine=engine,state_root=state_root,
@@ -369,6 +388,8 @@ def main()->int:
         target_path.write_text(
             json.dumps(rec,indent=2,sort_keys=True)+"\n",encoding="utf-8"
         )
+        if partial_path.exists():
+            partial_path.unlink()
         print(f"[BENCHMARK] {i}/{len(targets)} {target['target_id']} COMPLETE cached={target_path}",flush=True)
 
     aggregate=summarize(records)

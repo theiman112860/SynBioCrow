@@ -1,11 +1,13 @@
 cff-version: 1.2.0
-message: "If you use SynBioCrow, please cite the archived software release. The 2.2.0-rc1 branch is a prerelease candidate pending final Zenodo archival."
+message: "If you use SynBioCrow, please cite the archived SynBioCrow 2.2.0 software release."
 title: "SynBioCrow: computational synthetic-biology pathway and construct design framework"
 type: software
-version: 2.2.0-rc1
-date-released: 2026-09-27
+version: 2.2.0
+date-released: 2026-09-28
 authors:
   - family-names: Heiman
     given-names: Thomas J.
 url: "https://github.com/theiman112860/SynBioCrow"
 repository-code: "https://github.com/theiman112860/SynBioCrow"
+doi: "10.5281/zenodo.23027052"
+repository-artifact: "https://doi.org/10.5281/zenodo.23027052"

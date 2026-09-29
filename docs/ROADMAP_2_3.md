@@ -7,8 +7,8 @@ Shift from integration plumbing to **scientific breadth, benchmarking, and manus
 
 ## Workstreams
 
-### 1. Multi-compound benchmark panel
-Build a curated benchmark spanning multiple biosynthetic/industrial chemical classes. Preserve blinded truth boundaries where applicable.
+### 1. Multi-compound benchmark panel — INITIAL PASS COMPLETE
+The initial 24-target breadth benchmark is complete. Route-preservation auditing confirmed that every individual complete route survived graph union and was returned by the ensemble. The benchmark now serves primarily as a system-behavior and route-diversity benchmark rather than the main biological-validity benchmark.
 
 Outputs:
 - per-engine coverage;
@@ -18,8 +18,8 @@ Outputs:
 - abstention/failure taxonomy;
 - runtime and reproducibility metrics.
 
-### 2. Ensemble contribution analysis
-Quantify when reaction-graph union recovers complete routes that no individual backend recovers alone.
+### 2. Ensemble contribution analysis — PARTIALLY COMPLETE
+The route-preservation audit found zero graph-monotonicity violations and zero enumeration losses across all route-positive targets. The ensemble substantially increased route diversity for some solvable targets (for example, 3-hydroxypropionic acid reached the 100-route cap), but the current panel contains no ensemble-only target recovery. The next analysis should quantify edge-level complementarity and composite-route composition within the expanded ensemble route sets.
 
 Outputs:
 - unique edge contributions by engine;
@@ -52,7 +52,7 @@ Broaden the specialized PKS test set and document where the specialized generato
 Evaluate deterministic sequence/construct QC across representative enzymes and chassis while preserving amino-acid sequence by default.
 
 ### 7. Manuscript package
-Turn `paper/2.2/MANUSCRIPT.md` into a submission-ready paper with:
+Continue `paper/2.3/MANUSCRIPT_DRAFT.md` as the submission-oriented paper, using the Galaxy-SynBioCAD style of biological problem framing, literature-grounded pathway validation, comparative benchmarking, and downstream design. Include:
 - literature-supported Introduction;
 - complete benchmark Methods;
 - quantitative Results;

@@ -13,16 +13,22 @@ def sha256(p:Path)->str:
 def main()->int:
     ap=argparse.ArgumentParser()
     ap.add_argument("panel")
+    ap.add_argument("--expected-target-count",type=int,default=24)
+    ap.add_argument("--allow-subset",action="store_true",
+                    help="Validate a focused subset without requiring 6 classes x 4 targets")
     args=ap.parse_args()
     path=Path(args.panel)
     payload=json.loads(path.read_text())
     targets=payload["targets"]
-    assert len(targets)==24, len(targets)
+    assert len(targets)==args.expected_target_count, (
+        len(targets), args.expected_target_count
+    )
     ids=[x["target_id"] for x in targets]
     assert len(ids)==len(set(ids)), "duplicate target_id"
     classes=Counter(x["chemical_class"] for x in targets)
-    assert len(classes)==6, classes
-    assert set(classes.values())=={4}, classes
+    if not args.allow_subset:
+        assert len(classes)==6, classes
+        assert set(classes.values())=={4}, classes
     canonical={}
     for row in targets:
         mol=Chem.MolFromSmiles(row["target_smiles"])
@@ -41,7 +47,10 @@ def main()->int:
     report={
         "status":"PASS","panel_id":payload.get("panel_id"),"target_count":len(targets),
         "class_counts":dict(sorted(classes.items())),"unique_structures":len(canonical),
-        "biopks_retrotide_applicable_targets":len(pks),"panel_sha256":sha256(path)
+        "biopks_retrotide_applicable_targets":len(pks),
+        "panel_sha256":sha256(path),
+        "validation_mode":"FOCUSED_SUBSET" if args.allow_subset else "FULL_24_TARGET_PANEL",
+        "expected_target_count":args.expected_target_count,
     }
     print(json.dumps(report,indent=2,sort_keys=True))
     return 0

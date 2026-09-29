@@ -1,0 +1,60 @@
+{
+  "schema": "synbiocrow.benchmark_panel.v1",
+  "panel_id": "synbiocrow_2_3_manuscript_panel_v2_general_completion",
+  "description": "Final focused recovery panel: only missing general-backend evidence for resveratrol and phloretin. BioPKS is excluded because repeated 600-second timeouts are already recorded separately.",
+  "curation_policy": {
+    "target_count": 2,
+    "truth_labels_included": false,
+    "purpose": "Recovery-only completion of missing general-backend evidence",
+    "excluded_backend": "biopks_retrotide",
+    "excluded_backend_reason": "Repeated 600-second timeout evidence already recorded; do not spend additional runtime."
+  },
+  "targets": [
+    {
+      "target_id": "pks_resveratrol",
+      "target_name": "resveratrol",
+      "target_smiles": "Oc1ccc(/C=C/c2cc(O)cc(O)c2)cc1",
+      "chemical_class": "polyketide_derived",
+      "applicable_backends": [
+        "doranet",
+        "retrobiocat2",
+        "retropath_standalone"
+      ],
+      "notes": "Stilbenoid natural product. Focused completion: general backend checkpoints were missing in V2. Final recovery run excludes BioPKS; its repeated timeout evidence is handled separately.",
+      "sink_smiles": [
+        "CC(=O)O",
+        "CC(=O)C(=O)O",
+        "O=C(O)CCC(=O)O",
+        "O=C(O)CC(O)C(=O)O",
+        "O=C(O)CC(=O)C(=O)O",
+        "O=C(O)CCC(=O)C(=O)O",
+        "C=C(OP(=O)(O)O)C(=O)O",
+        "OCC(O)CO",
+        "OCC1OC(O)C(O)C(O)C1O"
+      ]
+    },
+    {
+      "target_id": "pks_phloretin",
+      "target_name": "phloretin",
+      "target_smiles": "O=C(CCc1ccc(O)cc1)c1c(O)cc(O)cc1O",
+      "chemical_class": "polyketide_derived",
+      "applicable_backends": [
+        "doranet",
+        "retrobiocat2",
+        "retropath_standalone"
+      ],
+      "notes": "Dihydrochalcone natural product. Focused completion: general backend checkpoints were missing in V2. Final recovery run excludes BioPKS; its repeated timeout evidence is handled separately.",
+      "sink_smiles": [
+        "CC(=O)O",
+        "CC(=O)C(=O)O",
+        "O=C(O)CCC(=O)O",
+        "O=C(O)CC(O)C(=O)O",
+        "O=C(O)CC(=O)C(=O)O",
+        "O=C(O)CCC(=O)C(=O)O",
+        "C=C(OP(=O)(O)O)C(=O)O",
+        "OCC(O)CO",
+        "OCC1OC(O)C(O)C(O)C1O"
+      ]
+    }
+  ]
+}

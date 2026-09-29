@@ -4,6 +4,7 @@ import hashlib
 import importlib
 import importlib.util
 import tempfile
+import os
 from dataclasses import dataclass
 from importlib import metadata as importlib_metadata
 from pathlib import Path
@@ -208,9 +209,13 @@ class DORAnetBackend:
             version = "unknown"
 
         with tempfile.TemporaryDirectory(prefix="synbiocrow_doranet_") as tmp:
-            job_name = str(Path(tmp) / "direct_rule_probe")
-            network = generate_network(
-                job_name=job_name,
+            # DORAnet 0.5.x treats job_name as a relative stem and may prepend "./".
+            # Run inside the isolated temp directory instead of passing an absolute path.
+            old_cwd = os.getcwd()
+            os.chdir(tmp)
+            try:
+                network = generate_network(
+                job_name="direct_rule_probe",
                 starters=[target_smiles],
                 gen=1,
                 direction=direction,
@@ -220,7 +225,9 @@ class DORAnetBackend:
                 allow_multiple_reactants=allow_multiple_reactants,
                 targets=None,
                 ruleset=ruleset,
-            )
+                )
+            finally:
+                os.chdir(old_cwd)
 
         return _network_to_candidates(
             network,

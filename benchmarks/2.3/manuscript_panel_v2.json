@@ -1,0 +1,581 @@
+{
+  "schema": "synbiocrow.benchmark_panel.v1",
+  "panel_id": "synbiocrow_2_3_manuscript_panel_v2",
+  "description": "Repaired first-pass manuscript benchmark panel. V2 preserves the 24-target class balance while preventing trivial target-in-sink route matches.",
+  "curation_policy": {
+    "target_count": 24,
+    "class_balance": "4 targets per class across 6 classes",
+    "truth_labels_included": false,
+    "selection_note": "Targets were chosen to span common fermentation products, aromatics, terpenoids, amino-acid-derived products, and polyketide-derived natural products while remaining computationally manageable for an initial manuscript benchmark.",
+    "shared_sink_policy": "Common central-metabolism sink set, with any target molecule removed from its own sink list to prevent trivial zero-step route matches.",
+    "specialized_backend_policy": "biopks_retrotide is marked applicable only for polyketide-derived targets in this first panel."
+  },
+  "shared_sink_smiles": [
+    "CC(=O)O",
+    "CC(=O)C(=O)O",
+    "O=C(O)CCC(=O)O",
+    "O=C(O)CC(O)C(=O)O",
+    "O=C(O)CC(=O)C(=O)O",
+    "O=C(O)CCC(=O)C(=O)O",
+    "C=C(OP(=O)(O)O)C(=O)O",
+    "OCC(O)CO",
+    "OCC1OC(O)C(O)C(O)C1O"
+  ],
+  "targets": [
+    {
+      "target_id": "oxygenate_ethanol",
+      "target_name": "ethanol",
+      "target_smiles": "CCO",
+      "chemical_class": "small_oxygenate",
+      "applicable_backends": [
+        "doranet",
+        "retrobiocat2",
+        "retropath_standalone"
+      ],
+      "notes": "Commodity fermentation alcohol.",
+      "sink_smiles": [
+        "CC(=O)O",
+        "CC(=O)C(=O)O",
+        "O=C(O)CCC(=O)O",
+        "O=C(O)CC(O)C(=O)O",
+        "O=C(O)CC(=O)C(=O)O",
+        "O=C(O)CCC(=O)C(=O)O",
+        "C=C(OP(=O)(O)O)C(=O)O",
+        "OCC(O)CO",
+        "OCC1OC(O)C(O)C(O)C1O"
+      ]
+    },
+    {
+      "target_id": "oxygenate_lactic_acid",
+      "target_name": "lactic acid",
+      "target_smiles": "CC(O)C(=O)O",
+      "chemical_class": "small_oxygenate",
+      "applicable_backends": [
+        "doranet",
+        "retrobiocat2",
+        "retropath_standalone"
+      ],
+      "notes": "Organic-acid fermentation product.",
+      "sink_smiles": [
+        "CC(=O)O",
+        "CC(=O)C(=O)O",
+        "O=C(O)CCC(=O)O",
+        "O=C(O)CC(O)C(=O)O",
+        "O=C(O)CC(=O)C(=O)O",
+        "O=C(O)CCC(=O)C(=O)O",
+        "C=C(OP(=O)(O)O)C(=O)O",
+        "OCC(O)CO",
+        "OCC1OC(O)C(O)C(O)C1O"
+      ]
+    },
+    {
+      "target_id": "oxygenate_succinic_acid",
+      "target_name": "succinic acid",
+      "target_smiles": "O=C(O)CCC(=O)O",
+      "chemical_class": "small_oxygenate",
+      "applicable_backends": [
+        "doranet",
+        "retrobiocat2",
+        "retropath_standalone"
+      ],
+      "notes": "Central-metabolism-derived industrial acid.",
+      "sink_smiles": [
+        "CC(=O)O",
+        "CC(=O)C(=O)O",
+        "O=C(O)CC(O)C(=O)O",
+        "O=C(O)CC(=O)C(=O)O",
+        "O=C(O)CCC(=O)C(=O)O",
+        "C=C(OP(=O)(O)O)C(=O)O",
+        "OCC(O)CO",
+        "OCC1OC(O)C(O)C(O)C1O"
+      ]
+    },
+    {
+      "target_id": "oxygenate_itaconic_acid",
+      "target_name": "itaconic acid",
+      "target_smiles": "C=C(CC(=O)O)C(=O)O",
+      "chemical_class": "small_oxygenate",
+      "applicable_backends": [
+        "doranet",
+        "retrobiocat2",
+        "retropath_standalone"
+      ],
+      "notes": "Biobased unsaturated dicarboxylic acid.",
+      "sink_smiles": [
+        "CC(=O)O",
+        "CC(=O)C(=O)O",
+        "O=C(O)CCC(=O)O",
+        "O=C(O)CC(O)C(=O)O",
+        "O=C(O)CC(=O)C(=O)O",
+        "O=C(O)CCC(=O)C(=O)O",
+        "C=C(OP(=O)(O)O)C(=O)O",
+        "OCC(O)CO",
+        "OCC1OC(O)C(O)C(O)C1O"
+      ]
+    },
+    {
+      "target_id": "commodity_3hp",
+      "target_name": "3-hydroxypropionic acid",
+      "target_smiles": "O=C(O)CCO",
+      "chemical_class": "commodity_intermediate",
+      "applicable_backends": [
+        "doranet",
+        "retrobiocat2",
+        "retropath_standalone"
+      ],
+      "notes": "Platform chemical with multiple proposed biosynthetic routes.",
+      "sink_smiles": [
+        "CC(=O)O",
+        "CC(=O)C(=O)O",
+        "O=C(O)CCC(=O)O",
+        "O=C(O)CC(O)C(=O)O",
+        "O=C(O)CC(=O)C(=O)O",
+        "O=C(O)CCC(=O)C(=O)O",
+        "C=C(OP(=O)(O)O)C(=O)O",
+        "OCC(O)CO",
+        "OCC1OC(O)C(O)C(O)C1O"
+      ]
+    },
+    {
+      "target_id": "commodity_butanediol",
+      "target_name": "1,4-butanediol",
+      "target_smiles": "OCCCCO",
+      "chemical_class": "commodity_intermediate",
+      "applicable_backends": [
+        "doranet",
+        "retrobiocat2",
+        "retropath_standalone"
+      ],
+      "notes": "Reduced C4 commodity chemical.",
+      "sink_smiles": [
+        "CC(=O)O",
+        "CC(=O)C(=O)O",
+        "O=C(O)CCC(=O)O",
+        "O=C(O)CC(O)C(=O)O",
+        "O=C(O)CC(=O)C(=O)O",
+        "O=C(O)CCC(=O)C(=O)O",
+        "C=C(OP(=O)(O)O)C(=O)O",
+        "OCC(O)CO",
+        "OCC1OC(O)C(O)C(O)C1O"
+      ]
+    },
+    {
+      "target_id": "commodity_isobutanol",
+      "target_name": "isobutanol",
+      "target_smiles": "CC(C)CO",
+      "chemical_class": "commodity_intermediate",
+      "applicable_backends": [
+        "doranet",
+        "retrobiocat2",
+        "retropath_standalone"
+      ],
+      "notes": "Branched-chain higher alcohol.",
+      "sink_smiles": [
+        "CC(=O)O",
+        "CC(=O)C(=O)O",
+        "O=C(O)CCC(=O)O",
+        "O=C(O)CC(O)C(=O)O",
+        "O=C(O)CC(=O)C(=O)O",
+        "O=C(O)CCC(=O)C(=O)O",
+        "C=C(OP(=O)(O)O)C(=O)O",
+        "OCC(O)CO",
+        "OCC1OC(O)C(O)C(O)C1O"
+      ]
+    },
+    {
+      "target_id": "commodity_adipic_acid",
+      "target_name": "adipic acid",
+      "target_smiles": "O=C(O)CCCCC(=O)O",
+      "chemical_class": "commodity_intermediate",
+      "applicable_backends": [
+        "doranet",
+        "retrobiocat2",
+        "retropath_standalone"
+      ],
+      "notes": "Industrial dicarboxylic-acid target.",
+      "sink_smiles": [
+        "CC(=O)O",
+        "CC(=O)C(=O)O",
+        "O=C(O)CCC(=O)O",
+        "O=C(O)CC(O)C(=O)O",
+        "O=C(O)CC(=O)C(=O)O",
+        "O=C(O)CCC(=O)C(=O)O",
+        "C=C(OP(=O)(O)O)C(=O)O",
+        "OCC(O)CO",
+        "OCC1OC(O)C(O)C(O)C1O"
+      ]
+    },
+    {
+      "target_id": "aromatic_phenol",
+      "target_name": "phenol",
+      "target_smiles": "Oc1ccccc1",
+      "chemical_class": "aromatic",
+      "applicable_backends": [
+        "doranet",
+        "retrobiocat2",
+        "retropath_standalone"
+      ],
+      "notes": "Simple aromatic oxygenate.",
+      "sink_smiles": [
+        "CC(=O)O",
+        "CC(=O)C(=O)O",
+        "O=C(O)CCC(=O)O",
+        "O=C(O)CC(O)C(=O)O",
+        "O=C(O)CC(=O)C(=O)O",
+        "O=C(O)CCC(=O)C(=O)O",
+        "C=C(OP(=O)(O)O)C(=O)O",
+        "OCC(O)CO",
+        "OCC1OC(O)C(O)C(O)C1O"
+      ]
+    },
+    {
+      "target_id": "aromatic_catechol",
+      "target_name": "catechol",
+      "target_smiles": "Oc1ccccc1O",
+      "chemical_class": "aromatic",
+      "applicable_backends": [
+        "doranet",
+        "retrobiocat2",
+        "retropath_standalone"
+      ],
+      "notes": "Dihydroxylated aromatic platform chemical.",
+      "sink_smiles": [
+        "CC(=O)O",
+        "CC(=O)C(=O)O",
+        "O=C(O)CCC(=O)O",
+        "O=C(O)CC(O)C(=O)O",
+        "O=C(O)CC(=O)C(=O)O",
+        "O=C(O)CCC(=O)C(=O)O",
+        "C=C(OP(=O)(O)O)C(=O)O",
+        "OCC(O)CO",
+        "OCC1OC(O)C(O)C(O)C1O"
+      ]
+    },
+    {
+      "target_id": "aromatic_vanillin",
+      "target_name": "vanillin",
+      "target_smiles": "COc1cc(C=O)ccc1O",
+      "chemical_class": "aromatic",
+      "applicable_backends": [
+        "doranet",
+        "retrobiocat2",
+        "retropath_standalone"
+      ],
+      "notes": "Lignin-/phenylpropanoid-related aromatic product.",
+      "sink_smiles": [
+        "CC(=O)O",
+        "CC(=O)C(=O)O",
+        "O=C(O)CCC(=O)O",
+        "O=C(O)CC(O)C(=O)O",
+        "O=C(O)CC(=O)C(=O)O",
+        "O=C(O)CCC(=O)C(=O)O",
+        "C=C(OP(=O)(O)O)C(=O)O",
+        "OCC(O)CO",
+        "OCC1OC(O)C(O)C(O)C1O"
+      ]
+    },
+    {
+      "target_id": "aromatic_p_coumaric_acid",
+      "target_name": "p-coumaric acid",
+      "target_smiles": "O=C(O)/C=C/c1ccc(O)cc1",
+      "chemical_class": "aromatic",
+      "applicable_backends": [
+        "doranet",
+        "retrobiocat2",
+        "retropath_standalone"
+      ],
+      "notes": "Phenylpropanoid intermediate.",
+      "sink_smiles": [
+        "CC(=O)O",
+        "CC(=O)C(=O)O",
+        "O=C(O)CCC(=O)O",
+        "O=C(O)CC(O)C(=O)O",
+        "O=C(O)CC(=O)C(=O)O",
+        "O=C(O)CCC(=O)C(=O)O",
+        "C=C(OP(=O)(O)O)C(=O)O",
+        "OCC(O)CO",
+        "OCC1OC(O)C(O)C(O)C1O"
+      ]
+    },
+    {
+      "target_id": "terpenoid_limonene",
+      "target_name": "limonene",
+      "target_smiles": "C=C(C)C1CC=C(C)CC1",
+      "chemical_class": "terpenoid",
+      "applicable_backends": [
+        "doranet",
+        "retrobiocat2",
+        "retropath_standalone"
+      ],
+      "notes": "Monoterpene hydrocarbon.",
+      "sink_smiles": [
+        "CC(=O)O",
+        "CC(=O)C(=O)O",
+        "O=C(O)CCC(=O)O",
+        "O=C(O)CC(O)C(=O)O",
+        "O=C(O)CC(=O)C(=O)O",
+        "O=C(O)CCC(=O)C(=O)O",
+        "C=C(OP(=O)(O)O)C(=O)O",
+        "OCC(O)CO",
+        "OCC1OC(O)C(O)C(O)C1O"
+      ]
+    },
+    {
+      "target_id": "terpenoid_geraniol",
+      "target_name": "geraniol",
+      "target_smiles": "CC(C)=CCCC(C)=CCO",
+      "chemical_class": "terpenoid",
+      "applicable_backends": [
+        "doranet",
+        "retrobiocat2",
+        "retropath_standalone"
+      ],
+      "notes": "Acyclic monoterpenoid alcohol.",
+      "sink_smiles": [
+        "CC(=O)O",
+        "CC(=O)C(=O)O",
+        "O=C(O)CCC(=O)O",
+        "O=C(O)CC(O)C(=O)O",
+        "O=C(O)CC(=O)C(=O)O",
+        "O=C(O)CCC(=O)C(=O)O",
+        "C=C(OP(=O)(O)O)C(=O)O",
+        "OCC(O)CO",
+        "OCC1OC(O)C(O)C(O)C1O"
+      ]
+    },
+    {
+      "target_id": "terpenoid_farnesol",
+      "target_name": "farnesol",
+      "target_smiles": "CC(C)=CCCC(C)=CCCC(C)=CCO",
+      "chemical_class": "terpenoid",
+      "applicable_backends": [
+        "doranet",
+        "retrobiocat2",
+        "retropath_standalone"
+      ],
+      "notes": "Sesquiterpenoid alcohol.",
+      "sink_smiles": [
+        "CC(=O)O",
+        "CC(=O)C(=O)O",
+        "O=C(O)CCC(=O)O",
+        "O=C(O)CC(O)C(=O)O",
+        "O=C(O)CC(=O)C(=O)O",
+        "O=C(O)CCC(=O)C(=O)O",
+        "C=C(OP(=O)(O)O)C(=O)O",
+        "OCC(O)CO",
+        "OCC1OC(O)C(O)C(O)C1O"
+      ]
+    },
+    {
+      "target_id": "terpenoid_menthol",
+      "target_name": "menthol",
+      "target_smiles": "CC1CCC(C(C)C)C(O)C1",
+      "chemical_class": "terpenoid",
+      "applicable_backends": [
+        "doranet",
+        "retrobiocat2",
+        "retropath_standalone"
+      ],
+      "notes": "Reduced cyclic monoterpenoid.",
+      "sink_smiles": [
+        "CC(=O)O",
+        "CC(=O)C(=O)O",
+        "O=C(O)CCC(=O)O",
+        "O=C(O)CC(O)C(=O)O",
+        "O=C(O)CC(=O)C(=O)O",
+        "O=C(O)CCC(=O)C(=O)O",
+        "C=C(OP(=O)(O)O)C(=O)O",
+        "OCC(O)CO",
+        "OCC1OC(O)C(O)C(O)C1O"
+      ]
+    },
+    {
+      "target_id": "aa_derived_tryptophol",
+      "target_name": "tryptophol",
+      "target_smiles": "OCCc1c[nH]c2ccccc12",
+      "chemical_class": "amino_acid_derived",
+      "applicable_backends": [
+        "doranet",
+        "retrobiocat2",
+        "retropath_standalone"
+      ],
+      "notes": "Tryptophan-derived aromatic alcohol.",
+      "sink_smiles": [
+        "CC(=O)O",
+        "CC(=O)C(=O)O",
+        "O=C(O)CCC(=O)O",
+        "O=C(O)CC(O)C(=O)O",
+        "O=C(O)CC(=O)C(=O)O",
+        "O=C(O)CCC(=O)C(=O)O",
+        "C=C(OP(=O)(O)O)C(=O)O",
+        "OCC(O)CO",
+        "OCC1OC(O)C(O)C(O)C1O"
+      ]
+    },
+    {
+      "target_id": "aa_derived_tyrosol",
+      "target_name": "tyrosol",
+      "target_smiles": "OCCc1ccc(O)cc1",
+      "chemical_class": "amino_acid_derived",
+      "applicable_backends": [
+        "doranet",
+        "retrobiocat2",
+        "retropath_standalone"
+      ],
+      "notes": "Tyrosine/phenylalanine-derived aromatic alcohol.",
+      "sink_smiles": [
+        "CC(=O)O",
+        "CC(=O)C(=O)O",
+        "O=C(O)CCC(=O)O",
+        "O=C(O)CC(O)C(=O)O",
+        "O=C(O)CC(=O)C(=O)O",
+        "O=C(O)CCC(=O)C(=O)O",
+        "C=C(OP(=O)(O)O)C(=O)O",
+        "OCC(O)CO",
+        "OCC1OC(O)C(O)C(O)C1O"
+      ]
+    },
+    {
+      "target_id": "aa_derived_phenethylamine",
+      "target_name": "phenethylamine",
+      "target_smiles": "NCCc1ccccc1",
+      "chemical_class": "amino_acid_derived",
+      "applicable_backends": [
+        "doranet",
+        "retrobiocat2",
+        "retropath_standalone"
+      ],
+      "notes": "Aromatic amine related to amino-acid decarboxylation chemistry.",
+      "sink_smiles": [
+        "CC(=O)O",
+        "CC(=O)C(=O)O",
+        "O=C(O)CCC(=O)O",
+        "O=C(O)CC(O)C(=O)O",
+        "O=C(O)CC(=O)C(=O)O",
+        "O=C(O)CCC(=O)C(=O)O",
+        "C=C(OP(=O)(O)O)C(=O)O",
+        "OCC(O)CO",
+        "OCC1OC(O)C(O)C(O)C1O"
+      ]
+    },
+    {
+      "target_id": "aa_derived_putrescine",
+      "target_name": "putrescine",
+      "target_smiles": "NCCCCN",
+      "chemical_class": "amino_acid_derived",
+      "applicable_backends": [
+        "doranet",
+        "retrobiocat2",
+        "retropath_standalone"
+      ],
+      "notes": "Diamine derived from amino-acid metabolism.",
+      "sink_smiles": [
+        "CC(=O)O",
+        "CC(=O)C(=O)O",
+        "O=C(O)CCC(=O)O",
+        "O=C(O)CC(O)C(=O)O",
+        "O=C(O)CC(=O)C(=O)O",
+        "O=C(O)CCC(=O)C(=O)O",
+        "C=C(OP(=O)(O)O)C(=O)O",
+        "OCC(O)CO",
+        "OCC1OC(O)C(O)C(O)C1O"
+      ]
+    },
+    {
+      "target_id": "pks_pinocembrin",
+      "target_name": "pinocembrin",
+      "target_smiles": "O=C1CC(c2ccccc2)Oc2cc(O)cc(O)c21",
+      "chemical_class": "polyketide_derived",
+      "applicable_backends": [
+        "doranet",
+        "retrobiocat2",
+        "retropath_standalone",
+        "biopks_retrotide"
+      ],
+      "notes": "Flavanone with polyketide-derived ring construction.",
+      "sink_smiles": [
+        "CC(=O)O",
+        "CC(=O)C(=O)O",
+        "O=C(O)CCC(=O)O",
+        "O=C(O)CC(O)C(=O)O",
+        "O=C(O)CC(=O)C(=O)O",
+        "O=C(O)CCC(=O)C(=O)O",
+        "C=C(OP(=O)(O)O)C(=O)O",
+        "OCC(O)CO",
+        "OCC1OC(O)C(O)C(O)C1O"
+      ]
+    },
+    {
+      "target_id": "pks_naringenin",
+      "target_name": "naringenin",
+      "target_smiles": "O=C1CC(c2ccc(O)cc2)Oc2cc(O)cc(O)c21",
+      "chemical_class": "polyketide_derived",
+      "applicable_backends": [
+        "doranet",
+        "retrobiocat2",
+        "retropath_standalone",
+        "biopks_retrotide"
+      ],
+      "notes": "Canonical flavanone natural-product target.",
+      "sink_smiles": [
+        "CC(=O)O",
+        "CC(=O)C(=O)O",
+        "O=C(O)CCC(=O)O",
+        "O=C(O)CC(O)C(=O)O",
+        "O=C(O)CC(=O)C(=O)O",
+        "O=C(O)CCC(=O)C(=O)O",
+        "C=C(OP(=O)(O)O)C(=O)O",
+        "OCC(O)CO",
+        "OCC1OC(O)C(O)C(O)C1O"
+      ]
+    },
+    {
+      "target_id": "pks_resveratrol",
+      "target_name": "resveratrol",
+      "target_smiles": "Oc1ccc(/C=C/c2cc(O)cc(O)c2)cc1",
+      "chemical_class": "polyketide_derived",
+      "applicable_backends": [
+        "doranet",
+        "retrobiocat2",
+        "retropath_standalone",
+        "biopks_retrotide"
+      ],
+      "notes": "Stilbenoid natural product.",
+      "sink_smiles": [
+        "CC(=O)O",
+        "CC(=O)C(=O)O",
+        "O=C(O)CCC(=O)O",
+        "O=C(O)CC(O)C(=O)O",
+        "O=C(O)CC(=O)C(=O)O",
+        "O=C(O)CCC(=O)C(=O)O",
+        "C=C(OP(=O)(O)O)C(=O)O",
+        "OCC(O)CO",
+        "OCC1OC(O)C(O)C(O)C1O"
+      ]
+    },
+    {
+      "target_id": "pks_phloretin",
+      "target_name": "phloretin",
+      "target_smiles": "O=C(CCc1ccc(O)cc1)c1c(O)cc(O)cc1O",
+      "chemical_class": "polyketide_derived",
+      "applicable_backends": [
+        "doranet",
+        "retrobiocat2",
+        "retropath_standalone",
+        "biopks_retrotide"
+      ],
+      "notes": "Dihydrochalcone natural product.",
+      "sink_smiles": [
+        "CC(=O)O",
+        "CC(=O)C(=O)O",
+        "O=C(O)CCC(=O)O",
+        "O=C(O)CC(O)C(=O)O",
+        "O=C(O)CC(=O)C(=O)O",
+        "O=C(O)CCC(=O)C(=O)O",
+        "C=C(OP(=O)(O)O)C(=O)O",
+        "OCC(O)CO",
+        "OCC1OC(O)C(O)C(O)C1O"
+      ]
+    }
+  ]
+}

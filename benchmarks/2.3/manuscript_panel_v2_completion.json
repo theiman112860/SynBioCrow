@@ -1,0 +1,116 @@
+{
+  "schema": "synbiocrow.benchmark_panel.v1",
+  "panel_id": "synbiocrow_2_3_manuscript_panel_v2_completion",
+  "description": "Focused completion panel: BioPKS/RetroTide on all four PKS targets; general backends only on targets missing from V2 checkpoint evidence.",
+  "curation_policy": {
+    "target_count": 24,
+    "class_balance": "4 targets per class across 6 classes",
+    "truth_labels_included": false,
+    "selection_note": "Targets were chosen to span common fermentation products, aromatics, terpenoids, amino-acid-derived products, and polyketide-derived natural products while remaining computationally manageable for an initial manuscript benchmark.",
+    "shared_sink_policy": "Common central-metabolism sink set, with any target molecule removed from its own sink list to prevent trivial zero-step route matches.",
+    "specialized_backend_policy": "biopks_retrotide is marked applicable only for polyketide-derived targets in this first panel."
+  },
+  "shared_sink_smiles": [
+    "CC(=O)O",
+    "CC(=O)C(=O)O",
+    "O=C(O)CCC(=O)O",
+    "O=C(O)CC(O)C(=O)O",
+    "O=C(O)CC(=O)C(=O)O",
+    "O=C(O)CCC(=O)C(=O)O",
+    "C=C(OP(=O)(O)O)C(=O)O",
+    "OCC(O)CO",
+    "OCC1OC(O)C(O)C(O)C1O"
+  ],
+  "targets": [
+    {
+      "target_id": "pks_pinocembrin",
+      "target_name": "pinocembrin",
+      "target_smiles": "O=C1CC(c2ccccc2)Oc2cc(O)cc(O)c21",
+      "chemical_class": "polyketide_derived",
+      "applicable_backends": [
+        "biopks_retrotide"
+      ],
+      "notes": "Flavanone with polyketide-derived ring construction. Focused completion: general backend evidence already exists in V2 checkpoints.",
+      "sink_smiles": [
+        "CC(=O)O",
+        "CC(=O)C(=O)O",
+        "O=C(O)CCC(=O)O",
+        "O=C(O)CC(O)C(=O)O",
+        "O=C(O)CC(=O)C(=O)O",
+        "O=C(O)CCC(=O)C(=O)O",
+        "C=C(OP(=O)(O)O)C(=O)O",
+        "OCC(O)CO",
+        "OCC1OC(O)C(O)C(O)C1O"
+      ]
+    },
+    {
+      "target_id": "pks_naringenin",
+      "target_name": "naringenin",
+      "target_smiles": "O=C1CC(c2ccc(O)cc2)Oc2cc(O)cc(O)c21",
+      "chemical_class": "polyketide_derived",
+      "applicable_backends": [
+        "biopks_retrotide"
+      ],
+      "notes": "Canonical flavanone natural-product target. Focused completion: general backend evidence already exists in V2 checkpoints.",
+      "sink_smiles": [
+        "CC(=O)O",
+        "CC(=O)C(=O)O",
+        "O=C(O)CCC(=O)O",
+        "O=C(O)CC(O)C(=O)O",
+        "O=C(O)CC(=O)C(=O)O",
+        "O=C(O)CCC(=O)C(=O)O",
+        "C=C(OP(=O)(O)O)C(=O)O",
+        "OCC(O)CO",
+        "OCC1OC(O)C(O)C(O)C1O"
+      ]
+    },
+    {
+      "target_id": "pks_resveratrol",
+      "target_name": "resveratrol",
+      "target_smiles": "Oc1ccc(/C=C/c2cc(O)cc(O)c2)cc1",
+      "chemical_class": "polyketide_derived",
+      "applicable_backends": [
+        "doranet",
+        "retrobiocat2",
+        "retropath_standalone",
+        "biopks_retrotide"
+      ],
+      "notes": "Stilbenoid natural product. Focused completion: general backend checkpoints were missing in V2.",
+      "sink_smiles": [
+        "CC(=O)O",
+        "CC(=O)C(=O)O",
+        "O=C(O)CCC(=O)O",
+        "O=C(O)CC(O)C(=O)O",
+        "O=C(O)CC(=O)C(=O)O",
+        "O=C(O)CCC(=O)C(=O)O",
+        "C=C(OP(=O)(O)O)C(=O)O",
+        "OCC(O)CO",
+        "OCC1OC(O)C(O)C(O)C1O"
+      ]
+    },
+    {
+      "target_id": "pks_phloretin",
+      "target_name": "phloretin",
+      "target_smiles": "O=C(CCc1ccc(O)cc1)c1c(O)cc(O)cc1O",
+      "chemical_class": "polyketide_derived",
+      "applicable_backends": [
+        "doranet",
+        "retrobiocat2",
+        "retropath_standalone",
+        "biopks_retrotide"
+      ],
+      "notes": "Dihydrochalcone natural product. Focused completion: general backend checkpoints were missing in V2.",
+      "sink_smiles": [
+        "CC(=O)O",
+        "CC(=O)C(=O)O",
+        "O=C(O)CCC(=O)O",
+        "O=C(O)CC(O)C(=O)O",
+        "O=C(O)CC(=O)C(=O)O",
+        "O=C(O)CCC(=O)C(=O)O",
+        "C=C(OP(=O)(O)O)C(=O)O",
+        "OCC(O)CO",
+        "OCC1OC(O)C(O)C(O)C1O"
+      ]
+    }
+  ]
+}

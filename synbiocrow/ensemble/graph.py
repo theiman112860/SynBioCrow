@@ -82,11 +82,21 @@ class EnsembleGraph:
         return routes
 
 def _split_reaction(step:ReactionStep)->tuple[list[str],list[str]]:
-    if " = " not in step.reaction:
-        raise ValueError(f"ReactionStep lacks explicit ' = ' separator: {step.reaction!r}")
-    left,right=step.reaction.split(" = ",1)
-    return ([x.strip() for x in left.split(" + ") if x.strip()],
-            [x.strip() for x in right.split(" + ") if x.strip()])
+    reaction=step.reaction.strip()
+    # Accept both SynBioCrow's historical "A + B = C" form and standard
+    # reaction-SMILES "A.B>>C.D" emitted by current generators.
+    if ">>" in reaction:
+        left,right=reaction.split(">>",1)
+        return ([x.strip() for x in left.split(".") if x.strip()],
+                [x.strip() for x in right.split(".") if x.strip()])
+    if " = " in reaction:
+        left,right=reaction.split(" = ",1)
+        return ([x.strip() for x in left.split(" + ") if x.strip()],
+                [x.strip() for x in right.split(" + ") if x.strip()])
+    raise ValueError(
+        "ReactionStep lacks supported reaction separator ('>>' or ' = '): "
+        f"{step.reaction!r}"
+    )
 
 def _parent_side(step:ReactionStep)->str:
     explicit=step.metadata.get("retrosynthetic_parent_side") if step.metadata else None
@@ -94,7 +104,7 @@ def _parent_side(step:ReactionStep)->str:
     if step.source_backend=="retrobiocat2": return "left"
     if step.source_backend=="doranet":
         return "left" if step.metadata.get("direction","retro")=="retro" else "right"
-    if step.source_backend=="retropath2": return "right"
+    if step.source_backend in {"retropath2","retropath_standalone"}: return "right"
     if step.source_backend=="biopks_retrotide": return "left"
     return "left"
 

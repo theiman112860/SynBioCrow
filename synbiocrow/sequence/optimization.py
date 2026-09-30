@@ -68,3 +68,84 @@ def reoptimize_cds(
     return CodonOptimizationResult(
         result.dna_sequence,result.protein_sequence,result.profile_name,subs,original
     )
+
+
+def repair_synonymous_forbidden_motifs(
+    dna_sequence: str,
+    protein_sequence: str,
+    *,
+    forbidden_motifs: tuple[str,...] = (
+        "GAATTC","GGATCC","AAGCTT","GGTCTC","CGTCTC",
+    ),
+    preferred_codons: Mapping[str,str] | None = None,
+    max_passes: int = 50,
+) -> CodonOptimizationResult:
+    """Remove forbidden DNA motifs by synonymous codon substitution.
+
+    The amino-acid sequence is invariant. Candidate substitutions are accepted
+    only when they reduce the number of forbidden-motif occurrences.
+    """
+    table=dict(preferred_codons or ECOLI_K12_PREFERRED)
+    protein="".join(protein_sequence.split()).upper().rstrip("*")
+    seq="".join(dna_sequence.upper().split()).replace("U","T")
+    if translate_dna(seq).rstrip("*") != protein:
+        raise ValueError("Input DNA does not translate to the supplied protein")
+
+    def motif_count(s: str) -> int:
+        return sum(s.count(m) for m in forbidden_motifs if m)
+
+    current=motif_count(seq)
+    substitutions=0
+    passes=0
+
+    while current > 0 and passes < max_passes:
+        passes += 1
+        improved=False
+        for motif in forbidden_motifs:
+            start=seq.find(motif)
+            if start < 0:
+                continue
+            end=start+len(motif)-1
+            first_codon=start//3
+            last_codon=end//3
+            for ci in range(first_codon,last_codon+1):
+                aa=protein[ci] if ci < len(protein) else "*"
+                original=seq[ci*3:ci*3+3]
+                alternatives=[c for c in AA_CODONS[aa] if c != original]
+                preferred=table.get(aa)
+                alternatives=sorted(
+                    alternatives,
+                    key=lambda c:(0 if c==preferred else 1,c)
+                )
+                for codon in alternatives:
+                    trial=seq[:ci*3]+codon+seq[ci*3+3:]
+                    if translate_dna(trial).rstrip("*") != protein:
+                        continue
+                    score=motif_count(trial)
+                    if score < current:
+                        seq=trial
+                        current=score
+                        substitutions += 1
+                        improved=True
+                        break
+                if improved:
+                    break
+            if improved:
+                break
+        if not improved:
+            break
+
+    if current:
+        raise ValueError(
+            f"Could not remove all forbidden motifs synonymously; remaining={current}"
+        )
+    if translate_dna(seq).rstrip("*") != protein:
+        raise AssertionError("Synonymous motif repair changed the protein sequence")
+
+    return CodonOptimizationResult(
+        dna_sequence=seq,
+        protein_sequence=protein,
+        profile_name="synonymous_forbidden_motif_repair",
+        substitutions=substitutions,
+        original_dna=dna_sequence,
+    )

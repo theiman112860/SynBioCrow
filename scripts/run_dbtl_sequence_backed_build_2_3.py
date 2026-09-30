@@ -175,9 +175,9 @@ def main():
             "translation_preserved":True,
             "sequence_qc":{
                 "pass_qc":qc.pass_qc,
-                "length":qc.length,
-                "gc_fraction":qc.gc_fraction,
-                "forbidden_motifs":list(qc.forbidden_motifs),
+                "length_bp":qc.length_bp,
+                "gc_percent":qc.gc_percent,
+                "forbidden_motif_hits":list(qc.forbidden_motif_hits),\n                "homopolymer_hits":list(qc.homopolymer_hits),
             },
             "cassette_status":"ABSTAIN_MISSING_VERIFIED_REGULATORY_SEQUENCES",
             "note":"The CDS is newly designed from a provenance-backed protein sequence; it is not represented as a native CDS accession. Full cassette assembly remains blocked until verified regulatory-part sequences are supplied."

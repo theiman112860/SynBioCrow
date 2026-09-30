@@ -58,6 +58,10 @@ SynBioCrow separates pathway generation, reaction-graph integration, evidence ev
 
 [Figure 1: end-to-end workflow]
 
+[Figure 2: multistep ensemble-route construction example using 1,4-butanediol]
+
+**Figure 2. Multistep construction of a SynBioCrow ensemble route.** A real benchmark target, 1,4-butanediol, is used to illustrate the routing logic. Backend-specific candidate reactions are first generated independently. These reactions are normalized to canonical compound identities and merged into a shared reaction graph while preserving backend provenance on each edge. SynBioCrow then enumerates coherent target-to-sink routes through the union graph. The figure is schematic for readability: it illustrates the graph-merging and route-extraction logic using chemistry observed in the benchmark lineage, but does not imply that every displayed edge was recovered by every backend in the same run.
+
 ### 2.1 Independent generator layer
 
 Current generator families include:
@@ -70,7 +74,7 @@ Each engine runs independently and returns Candidate records with backend proven
 
 ### 2.2 Reaction-graph integration
 
-Candidate reactions are normalized to molecular identities and represented as retrosynthetic graph edges. Duplicate or equivalent edges can retain multiple backend sources. Route enumeration is performed on the union graph, allowing a route to contain edges proposed by different engines.
+Candidate reactions are normalized to molecular identities and represented as retrosynthetic graph edges. Duplicate or equivalent edges can retain multiple backend sources. Route enumeration is performed on the union graph, allowing a route to contain edges proposed by different engines. Figure 2 illustrates this process with a multistep 1,4-butanediol example: backend-specific candidate reactions converge on a common normalized graph, from which a coherent route is extracted while edge-level provenance is retained.
 
 A core software invariant is monotonicity: adding candidate edges to the graph must not remove the reachability of a route already present in a constituent graph. The route-preservation audit tests this invariant explicitly and distinguishes graph loss from top-K enumeration effects.
 

@@ -86,7 +86,7 @@ def main():
         union_candidates=[]
         for bid in BACKENDS:
             t0=time.perf_counter()
-            backend=engine.backends[bid]
+            backend=engine.backends.get(bid)
             try:
                 candidates=list(backend.generate(target["target_smiles"],options={}))
                 status="COMPLETE" if candidates else "NO_HIT"

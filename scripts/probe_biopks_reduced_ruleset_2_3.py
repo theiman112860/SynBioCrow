@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-import argparse, json, time
+import argparse, inspect, json, time
 from pathlib import Path
 from collections import Counter
 
@@ -10,8 +10,7 @@ def atom_bounds(precursor,target,extra=1):
         m=Chem.MolFromSmiles(s)
         if m is None:
             raise ValueError(f"Invalid SMILES: {s}")
-        c=Counter(a.GetSymbol() for a in m.GetAtoms())
-        return c
+        return Counter(a.GetSymbol() for a in m.GetAtoms())
     pc=counts(precursor); tc=counts(target)
     keys=set(pc)|set(tc)
     return {k:max(pc.get(k,0),tc.get(k,0))+extra for k in sorted(keys)}
@@ -25,12 +24,23 @@ def main():
     ap.add_argument("--output",required=True)
     args=ap.parse_args()
 
+    import doranet
     import doranet.modules.enzymatic as enzymatic
     import doranet.modules.post_processing as post_processing
     from rdkit import Chem
 
+    sig=inspect.signature(enzymatic.generate_network)
+    params=set(sig.parameters)
+    if "ruleset" not in params:
+        raise RuntimeError(
+            f"DORAnet generate_network lacks ruleset= support; version={getattr(doranet,'__version__','UNKNOWN')} "
+            f"signature={sig}"
+        )
+
     precursor_mol=Chem.MolFromSmiles(args.precursor)
     target_mol=Chem.MolFromSmiles(args.target)
+    if precursor_mol is None or target_mol is None:
+        raise ValueError("Invalid precursor or target SMILES")
     Chem.RemoveStereochemistry(precursor_mol)
     Chem.RemoveStereochemistry(target_mol)
     precursor=Chem.MolToSmiles(precursor_mol)
@@ -39,7 +49,9 @@ def main():
     job=f"{args.target_name}_{args.ruleset}"
 
     result={
-        "schema":"synbiocrow.biopks_reduced_ruleset_probe.v1",
+        "schema":"synbiocrow.biopks_reduced_ruleset_probe.v2",
+        "doranet_version":getattr(doranet,"__version__","UNKNOWN"),
+        "generate_network_signature":str(sig),
         "precursor":precursor,
         "target":target,
         "ruleset":args.ruleset,
@@ -48,7 +60,7 @@ def main():
         "timings":{},
     }
 
-    print("[REDUCED] NETWORK_START",args.ruleset,flush=True)
+    print("[REDUCED V2] NETWORK_START",args.ruleset,flush=True)
     t=time.time()
     network=enzymatic.generate_network(
         job_name=job,
@@ -62,20 +74,24 @@ def main():
     result["timings"]["network_seconds"]=time.time()-t
     result["network_molecule_count"]=len(network.mols)
     result["network_reaction_count"]=len(network.rxns)
-    result["target_in_network"]=any(
-        Chem.MolToSmiles(Chem.MolFromSmiles(m.uid))==target
-        for m in network.mols if Chem.MolFromSmiles(m.uid) is not None
-    )
-    print("[REDUCED] NETWORK_DONE",json.dumps({
+
+    def canon(s):
+        m=Chem.MolFromSmiles(s)
+        if m is None: return None
+        Chem.RemoveStereochemistry(m)
+        return Chem.MolToSmiles(m)
+
+    target_c=canon(target)
+    result["target_in_network"]=any(canon(m.uid)==target_c for m in network.mols)
+    print("[REDUCED V2] NETWORK_DONE",json.dumps({
         "seconds":result["timings"]["network_seconds"],
         "molecules":result["network_molecule_count"],
         "reactions":result["network_reaction_count"],
         "target_in_network":result["target_in_network"],
     }),flush=True)
 
-    # Only run pathway extraction when target is actually present.
     if result["target_in_network"]:
-        print("[REDUCED] POSTPROCESS_START",flush=True)
+        print("[REDUCED V2] POSTPROCESS_START",flush=True)
         t=time.time()
         post_processing.one_step(
             networks={network},

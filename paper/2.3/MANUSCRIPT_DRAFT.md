@@ -214,7 +214,11 @@ The state-capped cross-engine composition search expanded at most 15,000 graph s
 
 ### 4.5 Computational DBTL demonstration
 
-[Design → Test → Build-or-abstain → Learn case-study results.]
+A computational DBTL case study reused persisted benchmark candidates without rerunning retrosynthesis. For 1,4-butanediol, the Design stage recovered one four-step RetroBioCat2 route from the ensemble graph. Test-stage evidence evaluation found that two of four reactions passed explicit stoichiometric closure and two failed it. No route edge had exact promoted Rhea support, exact reviewed-enzyme support, or quantitative thermodynamic support; one edge had contextual reviewed UniProt support associated with an EC class. The route-level evidence decision was therefore FAIL rather than a positive promotion.
+
+The Build stage then abstained explicitly because the benchmark artifact did not contain provenance-backed protein, CDS, and regulatory-part sequences. The construct-design API remained available, but the workflow did not fabricate sequence evidence merely to complete the example. This behavior demonstrates the intended separation between pathway proposal and sequence-backed construct generation.
+
+For the Learn stage, 20 alternative 3-hydroxypropionic-acid ensemble routes were evaluated with evidence-aware features. The learning policy was updated from version 1 to version 2 using bounded TestOutcome rewards, producing audit digest `903a5b0bfcae8a503ea6258f9017aededa4a2193fd49ddc4b70a1f49098d2c9a`. The highest-ranked route remained unchanged, but several lower-ranked routes moved substantially: for example, route 001 moved from rank 10 to rank 2 and route 009 from rank 18 to rank 9, while route 015 moved from rank 4 to rank 16. Thus, the present DBTL demonstration shows conservative reprioritization rather than an artificial change of the top route. Importantly, the learning update had no lifecycle effect and could not convert abstaining or failing evidence into positive evidence.
 
 ### 4.6 Similarity-policy ablation
 

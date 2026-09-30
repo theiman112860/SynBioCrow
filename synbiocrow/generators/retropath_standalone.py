@@ -178,6 +178,8 @@ class RetroPathStandaloneBackend:
                             "ec_number": row.get("EC number"),
                             "score": row.get("Score"),
                             "iteration": row.get("Iteration"),
+                            "retrosynthetic_parent_side": "right" if reverse else "left",
+                            "graph_orientation": "product_to_substrate" if reverse else "substrate_to_product",
                         },
                     )
                 )

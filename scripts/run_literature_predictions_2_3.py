@@ -28,6 +28,7 @@ def candidate_route(candidate):
         "source_backends":list(candidate.source_backends),
         "reactions":[s.reaction for s in candidate.steps],
         "rules":[s.rule_id for s in candidate.steps],
+        "step_metadata":[dict(s.metadata or {}) for s in candidate.steps],
         "provenance":dict(candidate.provenance or {}),
     }
 
@@ -132,7 +133,8 @@ def main():
                         reaction=rxn,
                         rule_id=(route.get("rules") or [None]*len(route.get("reactions",[])))[j] if j < len(route.get("reactions",[])) else None,
                         source_backend=bid,
-                        metadata={}
+                        metadata=((route.get("step_metadata") or [{}]*len(route.get("reactions",[])))[j]
+                                  if j < len(route.get("reactions",[])) else {})
                     )
                     for j,rxn in enumerate(route.get("reactions",[]))
                 )

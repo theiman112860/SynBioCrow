@@ -37,8 +37,7 @@ def collect_ecs(rec):
                 out.append(ec)
     return out
 
-def search_reviewed_uniprot_by_ec(ec, *, timeout=30.0, size=10):
-    query=f"ec:{ec} AND reviewed:true"
+def search_reviewed_uniprot(query, *, timeout=30.0, size=10):
     params=urllib.parse.urlencode({
         "query":query,
         "fields":"accession,protein_name,organism_name,length",
@@ -76,29 +75,44 @@ def resolve_protein_for_record(rec, client):
         except Exception as exc:
             tried[-1]["error"]=f"{type(exc).__name__}: {exc}"
 
-    # Provenance-safe fallback: use literature EC annotations to find reviewed UniProt entries.
+    # Provenance-safe fallback.
+    # Never use an incomplete EC such as 4.2.3.- by itself because it spans
+    # many unrelated enzymes. Prefer exact ECs; otherwise use target/activity text.
     ecs=collect_ecs(rec)
+    target_name=str(rec.get("target_name") or "").strip()
+    queries=[]
     for ec in ecs:
+        if ec and "-" not in ec:
+            queries.append(("exact_ec",ec,f"ec:{ec} AND reviewed:true"))
+    if target_name:
+        queries.append(("target_activity",target_name,
+                        f'protein_name:"{target_name} synthase" AND reviewed:true'))
+        queries.append(("target_text",target_name,
+                        f'"{target_name}" AND reviewed:true'))
+
+    for mode,key,query in queries:
         try:
-            accessions=search_reviewed_uniprot_by_ec(ec)
+            accessions=search_reviewed_uniprot(query)
         except Exception as exc:
-            tried.append({"mode":"ec_reviewed_search","ec":ec,"error":f"{type(exc).__name__}: {exc}"})
+            tried.append({"mode":mode,"key":key,"query":query,
+                          "error":f"{type(exc).__name__}: {exc}"})
             continue
-        tried.append({"mode":"ec_reviewed_search","ec":ec,"accessions":accessions})
+        tried.append({"mode":mode,"key":key,"query":query,"accessions":accessions})
         for acc in accessions:
             try:
                 p=client.fetch(acc)
                 if p.sequence:
                     return p,{
-                        "resolution_mode":"reviewed_uniprot_by_literature_ec",
+                        "resolution_mode":"reviewed_uniprot_activity_match",
                         "galaxy_uniprot_accessions":explicit,
                         "ec_numbers":ecs,
-                        "selected_ec":ec,
+                        "selected_query_mode":mode,
+                        "selected_query_key":key,
                         "selected_accession":acc,
                         "tried":tried,
                     }
             except Exception as exc:
-                tried.append({"mode":"ec_reviewed_fetch","ec":ec,"accession":acc,
+                tried.append({"mode":"activity_fetch","accession":acc,
                               "error":f"{type(exc).__name__}: {exc}"})
     return None,{
         "resolution_mode":"ABSTAIN_NO_PROVENANCE_BACKED_PROTEIN",

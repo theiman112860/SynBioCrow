@@ -69,7 +69,10 @@ def main():
         target_inchi=str(first["target_structure"]).strip()
         target_smiles=inchi_to_smiles(target_inchi)
         total_structures += 1
-        if target_smiles: converted_structures += 1
+        if target_smiles:
+            converted_structures += 1
+        else:
+            errors.append({"pathway_id":pid,"step":None,"field":"target","structure":target_inchi})
 
         produced=set()
         consumed=set()

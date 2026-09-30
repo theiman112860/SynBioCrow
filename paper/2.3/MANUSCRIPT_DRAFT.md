@@ -224,7 +224,15 @@ To demonstrate a sequence-backed Build step with stronger provenance, we used th
 
 ### 4.6 Similarity-policy ablation
 
-[3D-first versus 2D-only versus 3D-only.]
+Three similarity policies were evaluated on the deterministic 12-pathway development split: Morgan/Tanimoto 2D-only, USRCAT 3D-only, and USRCAT 3D-first with explicit 2D fallback when a usable conformer could not be generated. Candidate routes were held fixed; only the evidence-similarity ranking policy changed.
+
+In the initial development analysis, exact literature-route recovery was identical across policies at Top-1 (1/12) and all three recovered two exact routes within the broader ranking set. However, leave-one-pathway-out EC-neighbor retrieval slightly favored 2D-only (Top-1 9/10, MRR 0.925) over both 3D policies (Top-1 8/10, MRR 0.900).
+
+A stricter leave-one-pathway-out route-ranking analysis removed each target pathway's own literature reactions from the evidence corpus before scoring its candidate routes. Under this setting, 2D-only achieved exact Top-1 recovery for 1/12 targets, exact Top-5 recovery for 2/12, and exact-route MRR 0.75. Both 3D-first and 3D-only achieved exact Top-1 recovery for 1/12, exact Top-5 recovery for 1/12, and MRR 0.529. The median rank of an exact recovered route was 1.5 under 2D and 9.0 under the 3D policies.
+
+3D-first changed the top-ranked route relative to 2D on 10 of 12 targets, indicating that the 3D signal materially alters prioritization even though it did not improve validated recovery. For sabinene, the exact literature route ranked second under 2D but seventeenth under both 3D policies; for valencene, the exact route ranked first under all three policies. Conformer generation succeeded for approximately 93.1% of attempted molecules, and the 3D-first policy therefore required nontrivial 2D fallback.
+
+These results do not support a universal 3D-first default for the present system. SynBioCrow 2.3 therefore uses 2D similarity as the primary evidence-ranking signal, while retaining 3D similarity as an optional secondary or class-specific feature for future evaluation.
 
 ### 4.7 Evidence-aware route prioritization
 
@@ -238,6 +246,8 @@ To demonstrate a sequence-backed Build step with stronger provenance, we used th
 
 The discussion should distinguish three different questions that are easy to conflate: whether the ensemble broadens reaction coverage, whether it increases route diversity, and whether it makes previously unsolved targets solvable. These are separate outcomes and should be reported separately.
 
+The similarity ablation provides a second negative-but-informative result. Although 3D-first USRCAT substantially changed route ordering, it did not improve exact literature-route recovery or leave-one-pathway-out EC-neighbor retrieval relative to 2D Morgan/Tanimoto similarity. The default policy was therefore revised to 2D-primary before the held-out benchmark is scored. This result should not be interpreted as evidence that 2D-selected enzymes necessarily perform better experimentally; the present computational study evaluates retrieval and ranking, not matched in-vivo enzyme productivity.
+
 The initial breadth benchmark does not show ensemble-only target recovery, and that negative result should be reported directly. It does, however, show that graph integration preserves every complete individual route tested and can greatly expand route diversity for some targets. The literature development benchmark extends that conclusion: the ensemble preserved exact connectivity-level RetroPath recoveries for sabinene and valencene and partial matches from RetroPath and RetroBioCat2, but it did not improve Top-K ranking because the current ensemble serialization is not yet a biological ranking model. No cross-engine-only literature route was recovered under the state-capped search. The practical value demonstrated so far therefore lies in route preservation, broader aggregate reaction recovery, provenance retention, and alternative-route integration, while rank improvement and ensemble-only recovery remain hypotheses for the larger benchmark and ranking ablations.
 
 ## 6. Limitations
@@ -246,7 +256,7 @@ The initial breadth benchmark does not show ensemble-only target recovery, and t
 - benchmarks are sensitive to precursor/sink definitions and route-depth limits;
 - constituent tools have different intended domains and are not always directly comparable;
 - BioPKS/RetroTide PKS design is operational, but its default post-PKS DORAnet network expansion is computationally expensive for the tested flavanone intermediates; a bounded direct search found no exact continuation within three enzymatic steps;
-- 3D similarity depends on conformer generation and may add cost without improving retrieval for all chemistry;
+- 3D similarity depends on conformer generation, changed top-route selection on 10/12 development targets, and did not improve exact-route recovery in the leave-one-pathway-out development analysis;
 - known-pathway benchmarks favor chemistry represented in the literature.
 
 ## 7. Reproducibility and availability

@@ -188,7 +188,15 @@ These observations justify a narrower role for BioPKS/RetroTide in the present m
 
 ### 4.4 Literature-grounded pathway recovery
 
-[Primary manuscript benchmark.]
+A deterministic 12-pathway development subset was selected from the Galaxy-SynBioCAD literature benchmark independently of SynBioCrow prediction performance. Predictions were generated and SHA-256 sealed before access to the literature reaction truth. DORAnet, RetroBioCat2, RetroPath standalone, and the reaction-graph ensemble were then evaluated against the known pathways using both strict stereochemical reaction identity and a connectivity-level comparison in which stereochemistry was removed before matching.
+
+Under strict stereochemical identity, no backend recovered a complete literature pathway. RetroBioCat2 partially recovered one target, yielding a mean best reaction recall of 0.028 across the 12 pathways. DORAnet and RetroPath standalone showed no strict reaction overlap in this subset. The ensemble preserved the RetroBioCat2 partial recovery and likewise achieved a mean best reaction recall of 0.028.
+
+Connectivity-level evaluation changed the picture for RetroPath standalone. RetroPath exactly recovered the one-step literature pathways for sabinene and valencene at rank 1 and partially recovered miltiradiene, giving exact Top-1 recovery for 2 of 12 pathways and partial reaction recovery for 3 of 12. RetroBioCat2 partially recovered pentadecane. DORAnet showed no literature reaction overlap in the development subset.
+
+The ensemble preserved all constituent-backend routes and therefore retained the same underlying exact recoveries and partial matches. Across the 12 targets it achieved partial reaction recovery for four targets and a mean best reaction recall of 0.211. Because the preserved ensemble routes were ordered by a deterministic truth-independent serialization rule rather than by a biochemical ranking function, the exact sabinene and valencene routes appeared at ranks 44 and 68, respectively. Consequently, the current development run demonstrates route preservation and broader aggregate reaction recovery, but not improved Top-K ranking. No cross-engine-only route was recovered under the bounded composition search.
+
+The state-capped cross-engine composition search expanded at most 15,000 graph states per target. Five connectivity-level targets and four strict-stereo targets reached this cap, so absence of a cross-engine-only route should be interpreted as a bounded negative result rather than proof that no such route exists. These development-set results therefore support the use of the ensemble as a route-preserving integration layer while motivating a separate ranking model and a larger literature benchmark before making stronger claims about retrieval performance.
 
 ### 4.5 Similarity-policy ablation
 
@@ -206,7 +214,7 @@ These observations justify a narrower role for BioPKS/RetroTide in the present m
 
 The discussion should distinguish three different questions that are easy to conflate: whether the ensemble broadens reaction coverage, whether it increases route diversity, and whether it makes previously unsolved targets solvable. These are separate outcomes and should be reported separately.
 
-The initial benchmark does not show ensemble-only target recovery, and that negative result should be reported directly. It does, however, show that graph integration preserves every complete individual route tested and can greatly expand route diversity for some targets. The practical value of the ensemble may therefore lie in broader search coverage, alternative route generation, fault tolerance, provenance, and downstream evidence integration rather than in making every previously unsolved target solvable. The literature-grounded benchmark will determine whether those properties translate into better recovery or ranking of biologically useful pathways.
+The initial breadth benchmark does not show ensemble-only target recovery, and that negative result should be reported directly. It does, however, show that graph integration preserves every complete individual route tested and can greatly expand route diversity for some targets. The literature development benchmark extends that conclusion: the ensemble preserved exact connectivity-level RetroPath recoveries for sabinene and valencene and partial matches from RetroPath and RetroBioCat2, but it did not improve Top-K ranking because the current ensemble serialization is not yet a biological ranking model. No cross-engine-only literature route was recovered under the state-capped search. The practical value demonstrated so far therefore lies in route preservation, broader aggregate reaction recovery, provenance retention, and alternative-route integration, while rank improvement and ensemble-only recovery remain hypotheses for the larger benchmark and ranking ablations.
 
 ## 6. Limitations
 

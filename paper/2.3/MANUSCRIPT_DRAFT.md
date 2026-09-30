@@ -151,7 +151,9 @@ Across the 24-target panel, DORAnet produced candidates for all 24 targets, whil
 
 The reaction-graph ensemble preserved route-positive coverage for all four of these targets. It returned 23 routes for lactic acid, reached the 100-route enumeration cap for 3-hydroxypropionic acid, returned one route for 1,4-butanediol, and returned two routes for putrescine. These results indicate that the ensemble can substantially expand route diversity for some already-solvable targets, although the present 24-target panel did not contain a target solved exclusively by cross-engine graph integration.
 
-BioPKS/RetroTide is treated separately because repeated focused executions timed out or failed before producing benchmark candidates. This is reported as a runtime limitation rather than a biochemical no-hit.
+BioPKS/RetroTide was evaluated separately because its specialized PKS design stage and its downstream enzymatic-continuation stage have very different computational behavior. PKS-only generation completed successfully for both naringenin and pinocembrin, producing 25 candidate PKS designs in 17.8 s and 11.3 s, respectively. The upstream combined BioPKS/DORAnet continuation, however, repeatedly exceeded bounded runtime limits during one-generation network expansion.
+
+To distinguish runtime failure from biochemical reachability, we replaced the Cartesian network expansion with direct enzymatic-rule application to the saved PKS products. A complete one-step screen of the JN1224MIN rule set generated 3,409 unique products for naringenin and 2,717 for pinocembrin in 35.1 s and 29.2 s, respectively, but produced no exact target hit. A subsequent checkpointed beam search explored up to three enzymatic steps with a beam width of 12. No exact target was recovered within those bounds. The best 2D similarity improved from 0.227 at depth 1 to 0.351 at depth 3 for naringenin and from 0.263 to 0.526 for pinocembrin. These results support retaining BioPKS/RetroTide as a specialized PKS generator while treating post-PKS completion as a separate bounded search problem rather than interpreting the earlier timeouts as biochemical no-hits.
 
 ### 4.2 Route-preservation audit
 
@@ -168,19 +170,31 @@ Thus, every complete route found by an individual backend remained present and w
 
 The most pronounced increase in route diversity occurred for 3-hydroxypropionic acid: DORAnet returned one complete route and RetroBioCat2 returned three, whereas the ensemble returned the maximum 100 routes permitted by the benchmark cap. Lactic acid likewise increased from ten individual routes in total (eight DORAnet and two RetroBioCat2) to 23 ensemble routes. These results support a route-diversity benefit of graph integration on some solvable targets, while not yet demonstrating ensemble-only target recovery.
 
-### 4.3 Literature-grounded pathway recovery
+### 4.3 BioPKS/RetroTide specialist qualification
+
+BioPKS/RetroTide behaved differently from the general retrosynthesis backends and was therefore evaluated as a specialist rather than folded indiscriminately into the 24-target panel. PKS-only generation was successful for both canonical flavanone targets tested. Naringenin produced 25 PKS designs in 17.8 s, and pinocembrin produced 25 designs in 11.3 s.
+
+The downstream BioPKS continuation stage calls DORAnet to search for enzymatic transformations from the PKS product to the final target. In the unmodified combined workflow this stage exceeded the runtime bound for both targets. Atom-count filtering, a reduced DORAnet ruleset, and precursor/product SMARTS prefilters reduced the nominal search space but did not make the Cartesian network expansion tractable.
+
+We therefore tested the same one-step enzymatic chemistry by direct reaction-rule execution, avoiding network Cartesian expansion. This screen evaluated 1,224 rules and completed in under 36 s per target. For naringenin, 461 valid rule/slot applications generated 3,409 unique products; for pinocembrin, 372 valid applications generated 2,717 unique products. Neither target was recovered in one step.
+
+A resumable direct beam search then explored up to three enzymatic steps using a beam width of 12. No exact target was found within these bounds. For naringenin, the best 2D similarity increased from 0.227 at depth 1 to 0.300 at depth 2 and 0.351 at depth 3. For pinocembrin, it increased from 0.263 to 0.389 and 0.526. The search completed all three depths and terminated normally with no exact hit.
+
+These observations justify a narrower role for BioPKS/RetroTide in the present manuscript: it is retained as a specialized PKS design engine, while post-PKS enzymatic completion is reported separately and is not allowed to block or redefine the performance of the general DORAnet/RetroBioCat2/RetroPath ensemble.
+
+### 4.4 Literature-grounded pathway recovery
 
 [Primary manuscript benchmark.]
 
-### 4.4 Similarity-policy ablation
+### 4.5 Similarity-policy ablation
 
 [3D-first versus 2D-only versus 3D-only.]
 
-### 4.5 Evidence-aware route prioritization
+### 4.6 Evidence-aware route prioritization
 
 [Evidence/thermodynamics/enzyme-support results.]
 
-### 4.6 End-to-end construct-design example
+### 4.7 End-to-end construct-design example
 
 [Representative pathway-to-construct case study.]
 
@@ -195,7 +209,7 @@ The initial benchmark does not show ensemble-only target recovery, and that nega
 - computational predictions are not experimental validation;
 - benchmarks are sensitive to precursor/sink definitions and route-depth limits;
 - constituent tools have different intended domains and are not always directly comparable;
-- BioPKS/RetroTide currently has runtime limitations in the benchmark environment;
+- BioPKS/RetroTide PKS design is operational, but its default post-PKS DORAnet network expansion is computationally expensive for the tested flavanone intermediates; a bounded direct search found no exact continuation within three enzymatic steps;
 - 3D similarity depends on conformer generation and may add cost without improving retrieval for all chemistry;
 - known-pathway benchmarks favor chemistry represented in the literature.
 

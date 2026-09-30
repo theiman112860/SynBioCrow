@@ -3,7 +3,7 @@ from __future__ import annotations
 import argparse, json, urllib.parse, urllib.request
 from pathlib import Path
 
-from synbiocrow.sequence import UniProtSequenceClient, optimize_protein_sequence, sequence_qc
+from synbiocrow.sequence import UniProtSequenceClient, optimize_protein_sequence, repair_synonymous_forbidden_motifs, sequence_qc
 
 PREFERRED_TARGETS=("sabinene","valencene")
 UNIPROT_SEARCH="https://rest.uniprot.org/uniprotkb/search"
@@ -164,7 +164,20 @@ def main():
         profile_name="ecoli_k12_simple_preferred",
         include_stop=True,
     )
-    qc=sequence_qc(optimized.dna_sequence)
+    qc_initial=sequence_qc(optimized.dna_sequence)
+    repaired=None
+    final_dna=optimized.dna_sequence
+    qc=qc_initial
+    if (not qc_initial.pass_qc and qc_initial.forbidden_motif_hits
+            and not qc_initial.homopolymer_hits
+            and 30.0 <= qc_initial.gc_percent <= 70.0):
+        repaired=repair_synonymous_forbidden_motifs(
+            optimized.dna_sequence,
+            protein.sequence,
+            forbidden_motifs=tuple(qc_initial.forbidden_motif_hits),
+        )
+        final_dna=repaired.dna_sequence
+        qc=sequence_qc(final_dna)
 
     result={
         "schema":"synbiocrow.dbtl_sequence_backed_build.v2",
@@ -184,9 +197,21 @@ def main():
         "build":{
             "status":"SYNTHETIC_CDS_DESIGNED_FROM_PROVENANCE_BACKED_PROTEIN",
             "profile_name":optimized.profile_name,
-            "cds_length_nt":len(optimized.dna_sequence),
+            "cds_length_nt":len(final_dna),
             "protein_length_aa":len(optimized.protein_sequence),
             "translation_preserved":True,
+            "initial_sequence_qc":{
+                "pass_qc":qc_initial.pass_qc,
+                "length_bp":qc_initial.length_bp,
+                "gc_percent":qc_initial.gc_percent,
+                "forbidden_motif_hits":list(qc_initial.forbidden_motif_hits),
+                "homopolymer_hits":list(qc_initial.homopolymer_hits),
+            },
+            "synonymous_qc_repair":{
+                "applied":repaired is not None,
+                "substitutions":repaired.substitutions if repaired else 0,
+                "translation_preserved":True,
+            },
             "sequence_qc":{
                 "pass_qc":qc.pass_qc,
                 "length_bp":qc.length_bp,

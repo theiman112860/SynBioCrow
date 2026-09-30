@@ -82,6 +82,16 @@ A core software invariant is monotonicity: adding candidate edges to the graph m
 
 Evidence is evaluated separately from generation. Missing evidence produces abstention rather than implicit support. Candidate, Mature, and Certified computational states remain separate and do not imply experimental validation.
 
+### 2.4 Computational Design-Build-Test-Learn
+
+SynBioCrow implements a bounded computational Design-Build-Test-Learn (DBTL) loop. Design comprises multi-backend pathway generation, graph integration, route enumeration, and ranking. Build refers to digital construct design from provenance-backed protein and coding-sequence evidence, including translation validation, synonymous codon optimization, sequence QC, and promoter-RBS-CDS-terminator cassette assembly. Test evaluates route closure, Rhea support, enzyme evidence, thermodynamics, reproducibility, and construct QC. Learn updates only backend, route-feature, and construct-feature prioritization weights from structured TestOutcome records.
+
+The learning layer is intentionally constrained. It cannot create missing evidence, alter evidence-gate outcomes, invent reactions or sequences, access protected benchmark truth, or promote a Candidate to Mature or Certified. Lifecycle promotion remains controlled by explicit evidence policy.
+
+### 2.5 Chemical-retrosynthesis proposal adapters
+
+SynBioCrow can in principle accept routes from conventional chemical retrosynthesis planners as an additional proposal source. Such routes are not automatically considered biosynthetic. Instead, each chemical step must be normalized and mapped to plausible biochemical transformations, enzyme or EC precedent, cofactor requirements, thermodynamic feasibility, and chassis-available precursors. Protecting-group chemistry, non-biological stoichiometric reagents, and reaction conditions without a documented biochemical analogue remain unresolved or rejected. This adapter architecture is included as an extension point in 2.3 but is not included in the present benchmark claims.
+
 ## 3. Methods
 
 ### 3.1 Initial 24-target breadth benchmark
@@ -126,7 +136,11 @@ Evaluation will include:
 
 Comparisons will be performed only where target, precursor/chassis assumptions, route depth, and success definitions can be made sufficiently comparable. Constituent-engine ablations provide the primary baseline. External open-source systems may be included when reproducible execution and aligned inputs are available.
 
-### 3.5 3D/2D molecular-similarity ablation
+### 3.5 Computational DBTL case study
+
+A computational DBTL case study reuses persisted benchmark candidates without rerunning retrosynthesis. The 1,4-butanediol route is used to demonstrate Design and Test, including evidence-aware route features. The Build stage executes only when provenance-backed protein, CDS, and regulatory-part sequences are available; otherwise it records an explicit abstention rather than fabricating sequence evidence. A second target, 3-hydroxypropionic acid, provides multiple alternative ensemble routes for a Learn-stage demonstration in which bounded policy updates alter route-prioritization weights while leaving evidence and lifecycle state unchanged.
+
+### 3.6 3D/2D molecular-similarity ablation
 
 SynBioCrow currently prefers USRCAT 3D similarity when a usable conformer is available and falls back to 2D similarity otherwise. This policy will be evaluated rather than assumed beneficial.
 
@@ -198,15 +212,19 @@ The ensemble preserved all constituent-backend routes and therefore retained the
 
 The state-capped cross-engine composition search expanded at most 15,000 graph states per target. Five connectivity-level targets and four strict-stereo targets reached this cap, so absence of a cross-engine-only route should be interpreted as a bounded negative result rather than proof that no such route exists. These development-set results therefore support the use of the ensemble as a route-preserving integration layer while motivating a separate ranking model and a larger literature benchmark before making stronger claims about retrieval performance.
 
-### 4.5 Similarity-policy ablation
+### 4.5 Computational DBTL demonstration
+
+[Design → Test → Build-or-abstain → Learn case-study results.]
+
+### 4.6 Similarity-policy ablation
 
 [3D-first versus 2D-only versus 3D-only.]
 
-### 4.6 Evidence-aware route prioritization
+### 4.7 Evidence-aware route prioritization
 
 [Evidence/thermodynamics/enzyme-support results.]
 
-### 4.7 End-to-end construct-design example
+### 4.8 End-to-end construct-design example
 
 [Representative pathway-to-construct case study.]
 

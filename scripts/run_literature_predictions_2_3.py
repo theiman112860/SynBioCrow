@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-import argparse, hashlib, json, subprocess, time
+import argparse, gc, hashlib, json, subprocess, time
 from dataclasses import asdict
 from pathlib import Path
 
@@ -75,6 +75,7 @@ def main():
     all_records=[]
     for i,target in enumerate(panel["targets"],1):
         target_path=targets_dir/f"{target['target_id']}.json"
+        partial_path=targets_dir/f"{target['target_id']}.partial.json"
         if target_path.is_file():
             rec=json.loads(target_path.read_text())
             all_records.append(rec)
@@ -83,10 +84,21 @@ def main():
 
         print(f"[SEALED] {i}/{len(panel['targets'])} {target['target_id']} {target['target_name']}",flush=True)
         arms={}
-        union_candidates=[]
+        if partial_path.is_file():
+            try:
+                arms=dict(json.loads(partial_path.read_text()).get("arms") or {})
+                print(f"[SEALED]   restored partial arms={sorted(arms)}",flush=True)
+            except Exception as exc:
+                print(f"[SEALED]   partial cache invalid: {exc}; ignoring",flush=True)
+                arms={}
+
         for bid in BACKENDS:
+            if bid in arms and arms[bid].get("status") in {"COMPLETE","NO_HIT","ERROR"}:
+                print(f"[SEALED]   {bid} RESUME status={arms[bid].get('status')} candidates={arms[bid].get('candidate_count',0)}",flush=True)
+                continue
             t0=time.perf_counter()
             backend=engine.backends.get(bid)
+            candidates=[]
             try:
                 candidates=list(backend.generate(target["target_smiles"],options={}))
                 status="COMPLETE" if candidates else "NO_HIT"
@@ -96,7 +108,6 @@ def main():
                     "candidate_count":len(candidates),
                     "routes":[candidate_route(c) for c in candidates[:100]],
                 }
-                union_candidates.extend(candidates)
             except Exception as exc:
                 arms[bid]={
                     "status":"ERROR",
@@ -106,7 +117,32 @@ def main():
                     "error_type":type(exc).__name__,
                     "error":str(exc),
                 }
+            partial_path.write_text(json.dumps({"target_id":target["target_id"],"arms":arms},indent=2,sort_keys=True)+"\n")
             print(f"[SEALED]   {bid} {arms[bid]['status']} candidates={arms[bid]['candidate_count']} elapsed={arms[bid]['elapsed_seconds']:.1f}s",flush=True)
+            del candidates
+            gc.collect()
+
+        # Rehydrate minimal candidate objects from serialized arm routes only for ensemble graph construction.
+        union_candidates=[]
+        from synbiocrow.core.models import PathwayCandidate, ReactionStep
+        for bid in BACKENDS:
+            for route in arms.get(bid,{}).get("routes",[]):
+                steps=tuple(
+                    ReactionStep(
+                        reaction=rxn,
+                        rule_id=(route.get("rules") or [None]*len(route.get("reactions",[])))[j] if j < len(route.get("reactions",[])) else None,
+                        source_backend=bid,
+                        metadata={}
+                    )
+                    for j,rxn in enumerate(route.get("reactions",[]))
+                )
+                union_candidates.append(PathwayCandidate(
+                    candidate_id=route.get("candidate_id",f"{bid}-rehydrated-{len(union_candidates)}"),
+                    target_smiles=target["target_smiles"],
+                    steps=steps,
+                    source_backends=tuple(route.get("source_backends") or (bid,)),
+                    provenance=route.get("provenance") or {},
+                ))
 
         ens_routes,graph_summary=ensemble_routes(
             engine,union_candidates,target["target_smiles"],target.get("sink_smiles",[]),
@@ -129,7 +165,11 @@ def main():
             "arms":arms,
         }
         target_path.write_text(json.dumps(rec,indent=2,sort_keys=True)+"\n")
+        if partial_path.exists():
+            partial_path.unlink()
         all_records.append(rec)
+        del union_candidates
+        gc.collect()
 
     predictions={
         "schema":"synbiocrow.galaxy_literature_predictions.v1",

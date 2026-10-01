@@ -1,0 +1,15 @@
+{
+  "schema": "synbiocrow.v24.frozen23_target_blacklist.v1",
+  "source_sha256": "bb15a7729bb5dbd0d6a03caeb90d511b029b13f11ac3f82949f6fddc7ec4f366",
+  "blacklist_sha256": "0f28013c770acdc4d7e8afd5112ce043f930c70ba4fc642bb624947c5dea6eb1",
+  "heldout_pathway_count": 65,
+  "heldout_unique_target_count": 48,
+  "source_repair_count": 1,
+  "source_repair": {
+    "pathway_id": "literature_10",
+    "target_name": "3-methybutanol",
+    "original_inchi": "InChI=1S/C5H12O/c1-5(2)3-4-6/h5-6H,3-4H2,1-2H11",
+    "repaired_inchi": "InChI=1S/C5H12O/c1-5(2)3-4-6/h5-6H,3-4H2,1-2H3"
+  },
+  "note": "Full 65-record target list is preserved in the 2.4.10 ALL_OUTPUTS artifact; this repository certificate freezes its verified counts and hashes."
+}

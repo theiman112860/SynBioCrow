@@ -1,13 +1,16 @@
 {
   "tranche_id": "synbiocrow-2.4-source-tranche-v1",
-  "version": "2.4.8",
+  "version": "2.4.9",
   "records": [
     {
       "record_id": "post2022-curcumin-2024",
       "target_name": "curcumin",
       "normalized_target": "COC1=C(C=CC(=C1)/C=C/C(=O)CC(=O)/C=C/C2=CC(=C(C=C2)O)OC)O",
       "family_key": "diarylheptanoid-curcuminoids",
-      "source_ids": ["doi:10.1021/acssynbio.4c00059", "pubchem:969516"],
+      "source_ids": [
+        "doi:10.1021/acssynbio.4c00059",
+        "pubchem:969516"
+      ],
       "primary_doi": "10.1021/acssynbio.4c00059",
       "pubchem_cid": "969516",
       "publication_year": 2024,
@@ -22,7 +25,10 @@
       "target_name": "bakuchiol",
       "normalized_target": "CC(=CCC[C@@](C)(C=C)/C=C/C1=CC=C(C=C1)O)C",
       "family_key": "meroterpenoids-bakuchiol",
-      "source_ids": ["doi:10.1021/acssynbio.4c00416", "pubchem:5468522"],
+      "source_ids": [
+        "doi:10.1021/acssynbio.4c00416",
+        "pubchem:5468522"
+      ],
       "primary_doi": "10.1021/acssynbio.4c00416",
       "pubchem_cid": "5468522",
       "publication_year": 2024,
@@ -37,7 +43,10 @@
       "target_name": "dammaradienol",
       "normalized_target": "CC(=CCCC(=C)[C@H]1CC[C@@]2([C@@H]1CC[C@H]3[C@]2(CC[C@@H]4[C@@]3(CC[C@@H](C4(C)C)O)C)C)C)C",
       "family_key": "triterpenoids-dammarane-polyene",
-      "source_ids": ["doi:10.1021/acssynbio.4c00396", "pubchem:13893946"],
+      "source_ids": [
+        "doi:10.1021/acssynbio.4c00396",
+        "pubchem:13893946"
+      ],
       "primary_doi": "10.1021/acssynbio.4c00396",
       "pubchem_cid": "13893946",
       "publication_year": 2024,
@@ -52,14 +61,17 @@
       "target_name": "methyl isobutyl ketone",
       "normalized_target": "CC(C)CC(=O)C",
       "family_key": "branched-methyl-ketones",
-      "source_ids": ["doi:10.1021/acssynbio.5c00527", "pubchem:7909"],
+      "source_ids": [
+        "doi:10.1021/acssynbio.5c00527",
+        "pubchem:7909"
+      ],
       "primary_doi": "10.1021/acssynbio.5c00527",
       "pubchem_cid": "7909",
       "publication_year": 2025,
       "chemistry_class": "methyl-ketone",
       "mapping_quality": "reviewed",
-      "historical_exclusion_status": "verified_excluded",
-      "exclusion_basis": "2025 primary paper states no previous report of direct biosynthesis of MIBK from glucose; postdates Galaxy-SynBioCAD publication and is treated as outside the frozen 2.3 literature-pathway set.",
+      "historical_exclusion_status": "pending",
+      "exclusion_basis": "2025 first de novo biosynthesis does not prove the compound itself was absent from the 2022 Galaxy target set; exact target-name/structure cross-check required.",
       "notes": "Novel three-module pathway reported for de novo biosynthesis."
     },
     {
@@ -67,7 +79,10 @@
       "target_name": "jasmonic acid",
       "normalized_target": "CC/C=C\\C[C@@H]1[C@H](CCC1=O)CC(=O)O",
       "family_key": "jasmonates",
-      "source_ids": ["doi:10.1038/s44160-023-00429-w", "pubchem:5281166"],
+      "source_ids": [
+        "doi:10.1038/s44160-023-00429-w",
+        "pubchem:5281166"
+      ],
       "primary_doi": "10.1038/s44160-023-00429-w",
       "pubchem_cid": "5281166",
       "publication_year": 2023,
@@ -82,7 +97,10 @@
       "target_name": "D-allitol",
       "normalized_target": "C([C@H]([C@H]([C@H]([C@H](CO)O)O)O)O)O",
       "family_key": "rare-sugar-alcohols",
-      "source_ids": ["doi:10.1021/acs.jafc.5c03615", "pubchem:120700"],
+      "source_ids": [
+        "doi:10.1021/acs.jafc.5c03615",
+        "pubchem:120700"
+      ],
       "primary_doi": "10.1021/acs.jafc.5c03615",
       "pubchem_cid": "120700",
       "publication_year": 2025,

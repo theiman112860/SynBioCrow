@@ -212,7 +212,19 @@ The ensemble preserved all constituent-backend routes and therefore retained the
 
 The state-capped cross-engine composition search expanded at most 15,000 graph states per target. Five connectivity-level targets and four strict-stereo targets reached this cap, so absence of a cross-engine-only route should be interpreted as a bounded negative result rather than proof that no such route exists. These development-set results therefore support the use of the ensemble as a route-preserving integration layer while motivating a separate ranking model and a larger literature benchmark before making stronger claims about retrieval performance.
 
-### 4.5 Computational DBTL demonstration
+### 4.5 Held-out Galaxy literature benchmark
+
+The frozen SynBioCrow 2.3 policy was evaluated on the 65-path Galaxy literature benchmark after the 12-path development split had been used to finalize the 2D-primary similarity policy. One benchmark record (3-methylbutanol) remained mapping-limited because no usable normalized target structure was available; it was retained in the 65-path denominator but excluded from prediction execution. Predictions were therefore generated for 64 runnable pathways with benchmark reaction truth inaccessible during generation.
+
+At strict stereochemical identity, no backend recovered a complete literature pathway within the evaluated ranking range. Partial reaction recovery was observed for 13/65 pathways with RetroBioCat2, 4/65 with RetroPath standalone, and 15/65 with the ensemble. DORAnet showed no exact reaction overlap under this benchmark normalization.
+
+Connectivity-level evaluation improved recovery. RetroPath standalone exactly recovered two literature pathways within the Top-50 set: p-hydroxystyrene and phenol, each at rank 12. RetroBioCat2 did not produce a complete exact pathway but partially recovered 13/65 targets. RetroPath partially recovered 9/65 targets. The ensemble achieved partial reaction recovery for 19/65 targets, exceeding either individual backend, with a mean best reaction recall of 0.107 versus 0.064 for RetroBioCat2 and 0.053 for RetroPath standalone.
+
+The two exact connectivity-level routes found by RetroPath were preserved by the ensemble, but frozen 2D-primary ensemble ranking moved p-hydroxystyrene from rank 12 to rank 46 and phenol from rank 12 to rank 31. Consequently, ensemble exact-route MRR was 0.027 compared with 0.083 for RetroPath standalone, and no exact route appeared in the ensemble Top-10. These held-out results therefore support the ensemble as a route-preserving and reaction-recovery-broadening integration layer, but not yet as a superior ranking model.
+
+Across the full 65-path denominator, connectivity-level partial recovery was 19/65 for the ensemble, 13/65 for RetroBioCat2, 9/65 for RetroPath standalone, and 0/65 for DORAnet. Exact Top-50 connectivity recovery was 2/65 for both RetroPath and the ensemble; exact Top-10 and Top-5 recovery were zero for all systems. Benchmark truth was not used for learning or policy revision during scoring.
+
+### 4.6 Computational DBTL demonstration
 
 A computational DBTL case study reused persisted benchmark candidates without rerunning retrosynthesis. For 1,4-butanediol, the Design stage recovered one four-step RetroBioCat2 route from the ensemble graph. Test-stage evidence evaluation found that two of four reactions passed explicit stoichiometric closure and two failed it. No route edge had exact promoted Rhea support, exact reviewed-enzyme support, or quantitative thermodynamic support; one edge had contextual reviewed UniProt support associated with an EC class. The route-level evidence decision was therefore FAIL rather than a positive promotion.
 
@@ -222,7 +234,7 @@ For the Learn stage, 20 alternative 3-hydroxypropionic-acid ensemble routes were
 
 To demonstrate a sequence-backed Build step with stronger provenance, we used the Galaxy sabinene pathway (`literature_106`; DOI 10.1186/1475-2859-13-20). Because the Galaxy record supplied only the broad EC class 4.2.3.- and no explicit UniProt accession, protein resolution required a reviewed UniProt activity match for “sabinene synthase” rather than the incomplete EC class alone. This selected reviewed sabinene synthase A6XH06 from *Salvia pomifera* (581 aa). SynBioCrow then designed a 1,746-nt E. coli-preferred synthetic CDS that preserved the encoded protein sequence exactly. Initial sequence QC failed only because of a BamHI recognition site (GGATCC). A deterministic synonymous-repair pass changed one codon, removed the forbidden motif without altering translation, retained a GC content of 54.58%, and produced a final CDS that passed the package QC rules. Full cassette assembly remained an explicit abstention because verified promoter, RBS, and terminator sequences were not supplied.
 
-### 4.6 Similarity-policy ablation
+### 4.7 Similarity-policy ablation
 
 Three similarity policies were evaluated on the deterministic 12-pathway development split: Morgan/Tanimoto 2D-only, USRCAT 3D-only, and USRCAT 3D-first with explicit 2D fallback when a usable conformer could not be generated. Candidate routes were held fixed; only the evidence-similarity ranking policy changed.
 
@@ -234,11 +246,11 @@ A stricter leave-one-pathway-out route-ranking analysis removed each target path
 
 These results do not support a universal 3D-first default for the present system. SynBioCrow 2.3 therefore uses 2D similarity as the primary evidence-ranking signal, while retaining 3D similarity as an optional secondary or class-specific feature for future evaluation.
 
-### 4.7 Evidence-aware route prioritization
+### 4.8 Evidence-aware route prioritization
 
 [Evidence/thermodynamics/enzyme-support results.]
 
-### 4.8 End-to-end construct-design example
+### 4.9 End-to-end construct-design example
 
 [Representative pathway-to-construct case study.]
 
@@ -246,7 +258,9 @@ These results do not support a universal 3D-first default for the present system
 
 The discussion should distinguish three different questions that are easy to conflate: whether the ensemble broadens reaction coverage, whether it increases route diversity, and whether it makes previously unsolved targets solvable. These are separate outcomes and should be reported separately.
 
-The similarity ablation provides a second negative-but-informative result. Although 3D-first USRCAT substantially changed route ordering, it did not improve exact literature-route recovery or leave-one-pathway-out EC-neighbor retrieval relative to 2D Morgan/Tanimoto similarity. The default policy was therefore revised to 2D-primary before the held-out benchmark is scored. This result should not be interpreted as evidence that 2D-selected enzymes necessarily perform better experimentally; the present computational study evaluates retrieval and ranking, not matched in-vivo enzyme productivity.
+The similarity ablation provides a second negative-but-informative result. Although 3D-first USRCAT substantially changed route ordering, it did not improve exact literature-route recovery or leave-one-pathway-out EC-neighbor retrieval relative to 2D Morgan/Tanimoto similarity. The default policy was therefore revised to 2D-primary before the held-out benchmark was scored. This result should not be interpreted as evidence that 2D-selected enzymes necessarily perform better experimentally; the present computational study evaluates retrieval and ranking, not matched in-vivo enzyme productivity.
+
+The held-out 65-path benchmark reinforces the distinction between coverage and ranking. The ensemble broadened partial reaction recovery beyond either individual backend, but the two exact connectivity-level pathways were originally found by RetroPath and were ranked lower after ensemble reranking. Thus, the principal validated ensemble benefit in the current release is broader aggregate reaction recovery and route preservation, not improved exact Top-K retrieval. Improving ensemble ranking remains a separate problem from improving ensemble search-space coverage.
 
 The initial breadth benchmark does not show ensemble-only target recovery, and that negative result should be reported directly. It does, however, show that graph integration preserves every complete individual route tested and can greatly expand route diversity for some targets. The literature development benchmark extends that conclusion: the ensemble preserved exact connectivity-level RetroPath recoveries for sabinene and valencene and partial matches from RetroPath and RetroBioCat2, but it did not improve Top-K ranking because the current ensemble serialization is not yet a biological ranking model. No cross-engine-only literature route was recovered under the state-capped search. The practical value demonstrated so far therefore lies in route preservation, broader aggregate reaction recovery, provenance retention, and alternative-route integration, while rank improvement and ensemble-only recovery remain hypotheses for the larger benchmark and ranking ablations.
 

@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 import argparse, hashlib, json
 from pathlib import Path
-from synbiocrow import DesignRequest, SynBioCrowEngine, design
+from synbiocrow import SynBioCrowEngine
 from synbiocrow.execution import json_safe
+from synbiocrow.ensemble import resolve_compound
 from rdkit import Chem
 
 def sha(p): return hashlib.sha256(Path(p).read_bytes()).hexdigest()
@@ -56,16 +57,64 @@ def main():
         if rid in sealed: raise RuntimeError("validation firewall violation")
         r=recs[rid]
         print(f"[2.4.13.3] target {i}/4 | {r['target_name']} | backends={selected}",flush=True)
-        req=DesignRequest(target_smiles=r["normalized_target"],mode="biosynthesis",
-            backend_ids=selected,sink_smiles=sinks,max_route_steps=a.max_route_steps,max_routes=a.max_routes,
-            backend_options={"retrobiocat2":{
-                "max_search_time":30.0,
-                "max_iterations":750,
-                "max_length":6,
-                "starting_material_evaluator":sink_evaluator,
-            }})
-        res=design(req,engine=engine,state_root=a.state_dir,resume=True)
-        payload=json_safe(res)
+        target=r["normalized_target"]
+        candidates=[]
+        backend_status={}
+        for bid in selected:
+            backend=engine.backends.get(bid)
+            try:
+                opts={}
+                if bid=="retrobiocat2":
+                    opts={
+                        "max_search_time":30.0,
+                        "max_iterations":750,
+                        "max_length":6,
+                        "starting_material_evaluator":sink_evaluator,
+                    }
+                found=list(backend.generate(target,options=opts))
+                candidates.extend(found)
+                backend_status[bid]={"status":"COMPLETE","candidate_count":len(found)}
+            except Exception as exc:
+                backend_status[bid]={
+                    "status":"ERROR",
+                    "error_type":type(exc).__name__,
+                    "error":str(exc),
+                }
+
+        graph=engine.build_ensemble(candidates)
+        target_key=resolve_compound(target,source="request").key
+        sink_keys={resolve_compound(x,source="request").key for x in sinks}
+        routes=graph.find_routes(
+            target_key,sink_keys,
+            max_steps=a.max_route_steps,
+            max_routes=a.max_routes,
+        )
+        payload={
+            "request":{
+                "target_smiles":target,
+                "mode":"biosynthesis",
+                "backend_ids":list(selected),
+                "sink_smiles":list(sinks),
+                "max_route_steps":a.max_route_steps,
+                "max_routes":a.max_routes,
+                "retrobiocat2_policy":"frozen_sink_panel_custom_evaluator",
+            },
+            "candidates":json_safe(candidates),
+            "routes":routes,
+            "backend_status":backend_status,
+            "graph_summary":{
+                "compound_count":len(graph.compounds),
+                "edge_count":len(graph.edges),
+                "backends":list(graph.backend_set()),
+                "composite_edge_count":graph.composite_edge_count(),
+            },
+            "diagnostics":{
+                "mode":"biosynthesis",
+                "selected_backends":list(selected),
+                "scientific_state":"CANDIDATE_ONLY",
+                "commercial_source_database_used":False,
+            },
+        }
         row={"record_id":rid,"target_name":r["target_name"],"split":"development","result":payload}
         (out/f"{rid}.json").write_text(json.dumps(row,indent=2,sort_keys=True)+"\n")
         results.append({"record_id":rid,"target_name":r["target_name"],

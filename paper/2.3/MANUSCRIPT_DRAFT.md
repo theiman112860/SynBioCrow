@@ -6,7 +6,7 @@ Retrobiosynthesis seeks biosynthetic routes to a desired chemical by working bac
 
 Here we describe SynBioCrow, a computational framework that runs multiple retrosynthesis engines independently, normalizes their predictions into a shared reaction representation, and combines them at the reaction-graph level while retaining engine provenance. The system separates pathway proposal from biochemical evidence and from downstream sequence and construct design. Its current implementation integrates DORAnet, RetroBioCat2, a KNIME-free RetroPath-compatible runtime, and a specialized BioPKS/RetroTide bridge. Rather than assuming that an ensemble must outperform every constituent tool, we evaluate candidate coverage, complete-route recovery, route preservation under graph union, runtime failure modes, and recovery of literature-supported pathways. We additionally test whether 3D-first molecular similarity provides measurable value over 2D-only similarity for evidence retrieval and pathway ranking.
 
-The initial 24-target benchmark demonstrates broad candidate-generation coverage but does not, by itself, establish ensemble-only route recovery. This motivates a second benchmark centered on literature-validated pathways and controlled ablations of graph integration, similarity policy, and evidence-aware ranking. SynBioCrow is intended as an evidence-aware integration framework for computational pathway design rather than as a replacement for any single retrosynthesis algorithm.
+On a frozen 65-path Galaxy literature benchmark, the ensemble achieved connectivity-level partial reaction recovery for 19/65 pathways, compared with 13/65 for RetroBioCat2, 9/65 for RetroPath standalone, and 0/65 for DORAnet. RetroPath recovered two exact connectivity-level pathways within the Top-50 set; the ensemble preserved both, but reranked them from rank 12 to ranks 46 and 31, respectively. A non-tuning failure analysis found 42/65 targets with complete predicted routes but no literature-reaction overlap, indicating that biochemical discrimination and ranking, rather than candidate generation alone, are the dominant remaining limitations. A development-set ablation further favored 2D Morgan/Tanimoto over 3D-first USRCAT for validated route ranking, so SynBioCrow 2.3 freezes a 2D-primary policy while retaining 3D as an optional secondary signal. SynBioCrow is therefore presented as an evidence-aware, route-preserving integration framework rather than as a claim that ensembling alone improves exact Top-K retrieval.
 
 ## 1. Introduction
 
@@ -117,20 +117,9 @@ No retrosynthesis backend is rerun for this audit; it operates on persisted cand
 
 ### 3.3 Literature-grounded pathway benchmark
 
-The main biological benchmark follows the style of published retrosynthesis studies that compare generated pathways with literature- or expert-validated pathways. A curated target set will record, where available:
-- target compound;
-- host/chassis or precursor set;
-- known reaction sequence;
-- EC or enzyme annotations;
-- literature source.
+The main biological benchmark used the Galaxy-SynBioCAD literature pathway collection. A deterministic 12-pathway development subset was used for similarity-policy selection and ranking diagnostics. The remaining 65 pathways formed the frozen held-out evaluation denominator. One held-out record, 3-methylbutanol (`literature_10`), was mapping-limited because a usable normalized target structure was unavailable; it remained in the denominator, leaving 64 runnable targets.
 
-Evaluation will include:
-- top-1, top-5, and top-10 pathway recovery;
-- partial pathway recovery;
-- reaction-level overlap;
-- route length;
-- enzyme-evidence availability;
-- runtime.
+Predictions were generated without access to benchmark reaction truth and sealed before scoring. Evaluation used both strict stereochemical reaction identity and connectivity-level matching, and reported partial pathway recovery, reaction-level recall, exact-route rank, Top-K recovery, exact-route MRR, runtime failures, and mapping limitations. The held-out truth was not used for learning, post-holdout ranking revision, or policy selection.
 
 ### 3.4 Cross-tool comparisons
 
@@ -142,7 +131,7 @@ A computational DBTL case study reuses persisted benchmark candidates without re
 
 ### 3.6 3D/2D molecular-similarity ablation
 
-SynBioCrow currently prefers USRCAT 3D similarity when a usable conformer is available and falls back to 2D similarity otherwise. This policy will be evaluated rather than assumed beneficial.
+The development study compared a USRCAT 3D-first policy with a Morgan/Tanimoto 2D-only policy and a 3D-only policy. Candidate routes were held fixed so that the ablation measured ranking-policy effects rather than generator differences.
 
 Three policies will be compared:
 1. 3D-first with 2D fallback;
@@ -250,11 +239,15 @@ These results do not support a universal 3D-first default for the present system
 
 ### 4.8 Evidence-aware route prioritization
 
-[Evidence/thermodynamics/enzyme-support results.]
+Evidence-aware prioritization was evaluated as a bounded downstream operation on persisted candidate routes rather than as a mechanism for altering the frozen held-out benchmark. For the 1,4-butanediol case study, explicit reaction-level checks separated stoichiometric closure, Rhea support, reviewed-enzyme support, and thermodynamic support. Two of four route reactions passed stoichiometric closure and two failed; no edge had exact promoted Rhea support, exact reviewed-enzyme support, or quantitative thermodynamic support. One edge had contextual reviewed UniProt support associated with an EC class. The route therefore remained evidence-failing rather than being promoted on the basis of incomplete annotations.
+
+For 3-hydroxypropionic acid, 20 alternative ensemble routes were used to test the bounded Learn layer. Updating the route-prioritization policy from version 1 to version 2 changed the ordering of several lower-ranked routes while leaving the highest-ranked route unchanged. The update could modify only prioritization weights derived from structured TestOutcome records; it could not create evidence, change an evidence-gate result, access held-out truth, or alter Candidate/Mature/Certified lifecycle state. These results demonstrate that evidence-aware ranking is operational while also showing why stronger biochemical discrimination remains the principal research problem for SynBioCrow 2.4.
 
 ### 4.9 End-to-end construct-design example
 
-[Representative pathway-to-construct case study.]
+A sequence-backed Build example used the Galaxy sabinene pathway (`literature_106`; DOI 10.1186/1475-2859-13-20). The benchmark record supplied only the broad EC class 4.2.3.-, so SynBioCrow required a reviewed UniProt activity match for “sabinene synthase” rather than treating the incomplete EC annotation as sufficient sequence provenance. This resolved reviewed sabinene synthase A6XH06 from *Salvia pomifera* (581 aa).
+
+From that protein sequence, SynBioCrow generated a 1,746-nt E. coli-preferred synthetic CDS while preserving the encoded amino-acid sequence exactly. Initial sequence QC detected a BamHI recognition site (GGATCC). A deterministic synonymous repair changed one codon, removed the forbidden motif without changing translation, retained 54.58% GC content, and passed the package sequence-QC rules. Full promoter-RBS-CDS-terminator cassette assembly remained an explicit abstention because verified regulatory-part sequences were not supplied. The example therefore exercises sequence resolution, codon design, translation verification, motif repair, and QC without fabricating missing construct provenance or implying experimental validation.
 
 ## 5. Discussion
 
@@ -279,4 +272,14 @@ The initial breadth benchmark does not show ensemble-only target recovery, and t
 
 ## 7. Reproducibility and availability
 
-[Release, commit, DOI, frozen benchmark hashes, audit artifacts.]
+The SynBioCrow 2.3 scientific state is frozen at repository commit `39b3b21d8a5018001746a1ad783859cba75f9ad5`. The final freeze package SHA-256 is `67bea03543b60f4299aace5e1de674357e9ffed88e1a2d2fc21dc47c83cfcaf6`.
+
+Frozen scientific artifact SHA-256 digests are:
+
+- sealed predictions: `68fbf9440eecf3103ca70734bc7d71514978fbeab008ba0ab1734cab030f1200`;
+- scored Galaxy benchmark: `4ccfb292295e9017098c061b36baacf1fcacf8ff95182a114b66ee4d7977d809`;
+- held-out error analysis: `c7c960a866e3347e7355773648fc875243778a6e6f8ecbc8f2f7937ebefdd764`;
+- frozen 2D-primary similarity policy: `7448c031189a1c42a13f16c1856efef30c95de19a0059f5c87166b4ddcced7e4`;
+- frozen manuscript state: `b25abe53beb07511e2ff375a6f37e4bb9f51381ccbbf76a5044f49b0bc6d9539`.
+
+The held-out benchmark denominator is 65 pathways, of which 64 are runnable and one (`literature_10`, 3-methylbutanol) is mapping-limited. Benchmark truth was not used for learning, and no post-holdout ranking tuning was performed. SynBioCrow 2.3 freezes Morgan/Tanimoto 2D similarity as the primary similarity policy; USRCAT 3D similarity remains available only as an optional secondary signal. Release packaging should preserve these hashes and include the scored benchmark summary, failure-mode analysis, similarity-policy artifact, manuscript benchmark table, and manuscript figures.

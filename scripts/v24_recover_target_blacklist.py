@@ -25,10 +25,12 @@ def main():
     if args.dataset2_xlsx:
         source=args.dataset2_xlsx
         records=records_from_dataset2_xlsx(source)
+        repairs=list(getattr(records_from_dataset2_xlsx,"last_repairs",[]))
         kind="galaxy_synbiocad_supplementary_dataset_2_xlsx"
     else:
         source=args.normalized_json
         records=records_from_normalized_json(source)
+        repairs=[]
         kind="synbiocrow_2_3_normalized_galaxy_json"
 
     out=Path(args.out_dir)
@@ -55,6 +57,14 @@ def main():
         ],
     },indent=2,sort_keys=True)+"\n",encoding="utf-8")
 
+    (out/"source_repairs.json").write_text(
+        json.dumps({
+            "repair_count":len(repairs),
+            "repairs":repairs,
+        },indent=2,sort_keys=True)+"\n",
+        encoding="utf-8",
+    )
+
     (out/"tranche_resolution.json").write_text(
         json.dumps({k:v for k,v in resolution.items() if k!="updated_tranche"},indent=2,sort_keys=True)+"\n",
         encoding="utf-8",
@@ -73,6 +83,7 @@ def main():
         "blocked_historical_23_count":resolution["blocked_historical_23_count"],
         "pending_count":resolution["pending_count"],
         "split_freeze_ready":resolution["pending_count"]==0,
+        "source_repair_count":len(repairs),
         "out_dir":str(out),
     }
     (out/"recovery_summary.json").write_text(

@@ -1,0 +1,41 @@
+{
+  "schema": "synbiocrow.v24.sink-panel.v1",
+  "version": "2.4.13.1",
+  "policy": "truth-independent central-metabolite route-closure panel frozen before validation",
+  "sinks": [
+    {
+      "name": "glucose",
+      "smiles": "OC[C@H]1O[C@H](O)[C@@H](O)[C@H](O)[C@@H]1O"
+    },
+    {
+      "name": "pyruvate",
+      "smiles": "CC(=O)C(=O)O"
+    },
+    {
+      "name": "acetate",
+      "smiles": "CC(=O)O"
+    },
+    {
+      "name": "glycerol",
+      "smiles": "OCC(O)CO"
+    },
+    {
+      "name": "succinate",
+      "smiles": "O=C(O)CCC(=O)O"
+    },
+    {
+      "name": "malate",
+      "smiles": "O=C(O)C(O)CC(=O)O"
+    },
+    {
+      "name": "oxaloacetate",
+      "smiles": "O=C(O)C(=O)CC(=O)O"
+    },
+    {
+      "name": "alpha-ketoglutarate",
+      "smiles": "O=C(O)CCC(=O)C(=O)O"
+    }
+  ],
+  "panel_sha256": "779539031c8d0d69b67456bd6e19b142206734d9601e9e035bfcda12fcda04d6",
+  "validation_truth_used": false
+}

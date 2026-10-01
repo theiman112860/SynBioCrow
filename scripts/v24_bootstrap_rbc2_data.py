@@ -22,7 +22,10 @@ def inspect(db):
     finally: con.close()
 
 def main():
-    ap=argparse.ArgumentParser(); ap.add_argument("--out",required=True); a=ap.parse_args()
+    ap=argparse.ArgumentParser()
+    ap.add_argument("--out",required=True)
+    ap.add_argument("--candidate-db",action="append",default=[])
+    a=ap.parse_args()
     from rbc2.configs.data_path import path_to_data_folder
     db=Path(path_to_data_folder)/"buyability"/"source_mols.db"
     before={}
@@ -32,6 +35,24 @@ def main():
         except Exception as e:
             before={"bytes":db.stat().st_size,"error":f"{type(e).__name__}: {e}"}
     valid=bool(before.get("counts",{}).get("building_blocks",0))
+    reused_from=None
+    if not valid:
+        for candidate in a.candidate_db:
+            cp=Path(candidate)
+            if not cp.is_file():
+                continue
+            try:
+                ctables,ccounts=inspect(cp)
+            except Exception as exc:
+                print(f"[RBC2 DATA] reject candidate {cp}: {type(exc).__name__}: {exc}",flush=True)
+                continue
+            if ccounts.get("building_blocks",0)>0:
+                db.parent.mkdir(parents=True,exist_ok=True)
+                shutil.copy2(cp,db)
+                reused_from=str(cp)
+                print(f"[RBC2 DATA] reused validated Drive cache {cp} rows={ccounts.get('building_blocks')}",flush=True)
+                valid=True
+                break
     if not valid:
         if db.exists(): db.unlink()
         db.parent.mkdir(parents=True,exist_ok=True)
@@ -76,7 +97,7 @@ def main():
         raise RuntimeError("RBC2 building_blocks table is empty")
     report={"schema":"synbiocrow.v24.rbc2-data-readiness.v1","database":str(db),
       "bytes":db.stat().st_size,"sha256":file_sha(db),"tables":tables,"row_counts":counts,
-      "prebootstrap":before,"execution_ready":True}
+      "prebootstrap":before,"reused_from":reused_from,"execution_ready":True}
     Path(a.out).write_text(json.dumps(report,indent=2,sort_keys=True)+"\n")
     print(json.dumps(report,indent=2))
 if __name__=="__main__": main()

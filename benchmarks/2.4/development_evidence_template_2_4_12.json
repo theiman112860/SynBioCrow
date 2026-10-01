@@ -1,0 +1,15 @@
+{
+  "schema": "synbiocrow.v24.route-evidence.v1",
+  "split_manifest_sha256": "d9ad5c58ae11cb1798974341231e3854cf09ff34cb1d552836caa551707e0f98",
+  "allowed_target_record_ids": [
+    "post2022-mibk-2025",
+    "post2022-jasmonic-acid-2023",
+    "post2022-dammaradienol-2024",
+    "post2022-curcumin-2024"
+  ],
+  "sealed_validation_record_ids": [
+    "post2022-bakuchiol-2024",
+    "post2022-allitol-2025"
+  ],
+  "routes": []
+}

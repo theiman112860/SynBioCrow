@@ -1,0 +1,1 @@
+{"source_record_id":"EXAMPLE_SOURCE_RECORD","target_name":"EXAMPLE_ONLY_DO_NOT_USE","target_structure":"CCO","source_ids":["DOI_OR_DB_ID"],"source_type":"literature","literature_ids":["DOI_OR_PMID"],"pathway_label":"example pathway","chemistry_class":"example","mapping_quality":"unreviewed","family_key":"example-family","notes":"Replace with a curated source record."}

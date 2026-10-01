@@ -167,9 +167,16 @@ def records_from_dataset2_xlsx(path: str) -> List[HistoricalTarget]:
     if len(by_pid)!=77:
         raise ValueError(f"expected 77 literature pathways, found {len(by_pid)}")
 
-    development,heldout=reconstruct_split()
-    development=set(development)
-    heldout=set(heldout)
+    # Reproduce released 2.3 split using the ACTUAL 77 pathway IDs in Dataset 2.
+    # Do not assume IDs are a contiguous literature_1..literature_77 sequence.
+    actual_ids=sorted(by_pid)
+    ranked=sorted(actual_ids,key=lambda x:hashlib.sha256(x.encode()).hexdigest())
+    development=set(ranked[:12])
+    heldout=set(actual_ids)-development
+    if len(development)!=12 or len(heldout)!=65:
+        raise ValueError(
+            f"unexpected reconstructed split: development={len(development)} heldout={len(heldout)}"
+        )
     out=[]
     parse_repairs=[]
     for pid,row in by_pid.items():
@@ -206,12 +213,15 @@ records_from_dataset2_xlsx.last_repairs=[]
 
 
 def build_blacklist(records: Sequence[HistoricalTarget], *, source_kind: str, source_sha256: str) -> TargetBlacklist:
-    _,heldout_ids=reconstruct_split()
-    heldout_ids=set(heldout_ids)
+    # Derive the held-out set from the split labels already reconstructed from the
+    # actual Dataset 2 pathway IDs. This matches the released 2.3 normalization policy.
+    heldout_ids={r.pathway_id for r in records if r.split=="benchmark"}
     all_ids={r.pathway_id for r in records}
     missing=sorted(heldout_ids-all_ids)
     if missing:
         raise ValueError(f"source missing held-out pathway IDs: {missing[:10]}")
+    if len(heldout_ids)!=65:
+        raise ValueError(f"expected 65 held-out pathway IDs, found {len(heldout_ids)}")
     selected=tuple(r for r in records if r.pathway_id in heldout_ids)
     if len(selected)!=65:
         raise ValueError(f"expected 65 held-out pathway records, found {len(selected)}")

@@ -1,6 +1,6 @@
 {
   "tranche_id": "synbiocrow-2.4-source-tranche-v1",
-  "version": "2.4.9",
+  "version": "2.4.11",
   "records": [
     {
       "record_id": "post2022-curcumin-2024",
@@ -16,8 +16,8 @@
       "publication_year": 2024,
       "chemistry_class": "diarylheptanoid",
       "mapping_quality": "reviewed",
-      "historical_exclusion_status": "pending",
-      "exclusion_basis": "Primary de novo S. cerevisiae paper published in 2024; exact frozen-2.3 target-name/structure cross-check still required.",
+      "historical_exclusion_status": "verified_excluded",
+      "exclusion_basis": "No canonical target-structure or normalized target-name match in the exact 65-path frozen 2.3 held-out blacklist.",
       "notes": "First reported successful de novo production of curcumin in S. cerevisiae."
     },
     {
@@ -34,8 +34,8 @@
       "publication_year": 2024,
       "chemistry_class": "meroterpenoid",
       "mapping_quality": "reviewed",
-      "historical_exclusion_status": "pending",
-      "exclusion_basis": "Primary engineered-yeast pathway paper published in 2024; exact frozen-2.3 cross-check still required.",
+      "historical_exclusion_status": "verified_excluded",
+      "exclusion_basis": "No canonical target-structure or normalized target-name match in the exact 65-path frozen 2.3 held-out blacklist.",
       "notes": "De novo production from glucose in engineered S. cerevisiae."
     },
     {
@@ -52,8 +52,8 @@
       "publication_year": 2024,
       "chemistry_class": "triterpenoid",
       "mapping_quality": "reviewed",
-      "historical_exclusion_status": "pending",
-      "exclusion_basis": "Primary heterologous biosynthesis paper published in 2024; exact frozen-2.3 cross-check still required.",
+      "historical_exclusion_status": "verified_excluded",
+      "exclusion_basis": "No canonical target-structure or normalized target-name match in the exact 65-path frozen 2.3 held-out blacklist.",
       "notes": "Polyene-type ginsenoside precursor produced in engineered yeast."
     },
     {
@@ -70,8 +70,8 @@
       "publication_year": 2025,
       "chemistry_class": "methyl-ketone",
       "mapping_quality": "reviewed",
-      "historical_exclusion_status": "pending",
-      "exclusion_basis": "2025 first de novo biosynthesis does not prove the compound itself was absent from the 2022 Galaxy target set; exact target-name/structure cross-check required.",
+      "historical_exclusion_status": "verified_excluded",
+      "exclusion_basis": "No canonical target-structure or normalized target-name match in the exact 65-path frozen 2.3 held-out blacklist.",
       "notes": "Novel three-module pathway reported for de novo biosynthesis."
     },
     {
@@ -88,8 +88,8 @@
       "publication_year": 2023,
       "chemistry_class": "oxylipin",
       "mapping_quality": "reviewed",
-      "historical_exclusion_status": "pending",
-      "exclusion_basis": "De novo engineered-yeast pathway published after the 2022 Galaxy-SynBioCAD paper; exact frozen-2.3 target cross-check still required.",
+      "historical_exclusion_status": "verified_excluded",
+      "exclusion_basis": "No canonical target-structure or normalized target-name match in the exact 65-path frozen 2.3 held-out blacklist.",
       "notes": "Same study also reports methyl jasmonate and jasmonoyl-isoleucine."
     },
     {
@@ -106,8 +106,8 @@
       "publication_year": 2025,
       "chemistry_class": "sugar-alcohol",
       "mapping_quality": "reviewed",
-      "historical_exclusion_status": "pending",
-      "exclusion_basis": "2025 de novo modular pathway publication; exact frozen-2.3 target cross-check still required.",
+      "historical_exclusion_status": "verified_excluded",
+      "exclusion_basis": "No canonical target-structure or normalized target-name match in the exact 65-path frozen 2.3 held-out blacklist.",
       "notes": "De novo biosynthesis from sucrose via engineered modular metabolic pathways."
     }
   ]

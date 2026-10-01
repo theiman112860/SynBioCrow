@@ -1,0 +1,38 @@
+{
+  "registry_id": "synbiocrow-2.4-source-registry-v1",
+  "entries": [
+    {
+      "source_id": "rhea-release-142",
+      "name": "Rhea",
+      "source_type": "curated-reaction-database",
+      "homepage": "https://www.rhea-db.org/",
+      "release": "142 (2026-09-02)",
+      "license_note": "Freely downloadable; preserve source/version provenance.",
+      "role": "reaction-evidence",
+      "truth_eligible": false,
+      "notes": "Expert-curated biochemical reactions; use for reaction/evidence annotation, not as hidden evaluation truth by itself."
+    },
+    {
+      "source_id": "brenda-2026.1",
+      "name": "BRENDA Enzyme Database",
+      "source_type": "enzyme-database",
+      "homepage": "https://www.brenda-enzymes.org/",
+      "release": "2026.1 (2026-03-04)",
+      "license_note": "Online version states CC BY 4.0; preserve source/version provenance.",
+      "role": "enzyme-evidence",
+      "truth_eligible": false,
+      "notes": "Use for enzyme/pathway cross-checking and provenance; do not copy protected bulk content into repository."
+    },
+    {
+      "source_id": "primary-literature",
+      "name": "Primary peer-reviewed literature",
+      "source_type": "literature",
+      "homepage": "",
+      "release": null,
+      "license_note": "Store identifiers/metadata and derived benchmark facts; respect article licenses.",
+      "role": "literature-provenance",
+      "truth_eligible": true,
+      "notes": "Preferred source for pathway truth. Evaluation truth must be externally escrowed after curation."
+    }
+  ]
+}

@@ -13,9 +13,9 @@ from typing import Any, Dict, Iterable, Iterator, List, Mapping, Optional, Seque
 from .evidence import EvidenceLevel, ReactionEvidence, RankingFeatureVector, aggregate_route_evidence
 
 
-_ROUTE_KEYS=("route_id","route","pathway_id","path_id","candidate_id")
+_ROUTE_KEYS=("route_id","route","pathway_id","path_id","candidate_id","candidate_pathway_id")
 _REACTION_LIST_KEYS=("reactions","steps","edges","reaction_steps")
-_REACTION_ID_KEYS=("reaction_id","id","reaction","reaction_smiles","rxn_smiles","smarts")
+_REACTION_ID_KEYS=("reaction_id","id","reaction","reaction_smiles","rxn_smiles","smarts","raw")
 _ENGINE_KEYS=("engine","backend","generator","source_engine")
 _RHEA_KEYS=("rhea_id","rhea","rhea_ids")
 _EC_KEYS=("ec","ec_number","ec_numbers")
@@ -109,6 +109,17 @@ def adapt_route(raw: Mapping[str,Any], index: int=0, source_format: str="mapping
         rxns=[raw]
     if not isinstance(rxns,list):
         raise ValueError(f"{route_id}: reaction collection must be a list")
+    # Historical route-level engine/evidence fields are copied into reaction
+    # records only when explicit, so their provenance is retained without inference.
+    normalized=[]
+    for r in rxns:
+        if not isinstance(r,Mapping):
+            normalized.append(r); continue
+        rr=dict(r)
+        if _first(rr,_ENGINE_KEYS) is None and raw.get("backend") not in (None,""):
+            rr["source_engine"]=raw["backend"]
+        normalized.append(rr)
+    rxns=normalized
     evidence=tuple(adapt_reaction(r,i) for i,r in enumerate(rxns) if isinstance(r,Mapping))
     if len(evidence)!=len(rxns):
         raise ValueError(f"{route_id}: non-mapping reaction entry")

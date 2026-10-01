@@ -36,3 +36,22 @@ def test_csv_groups_rows_by_route(tmp_path):
         w.writerow({"route_id":"r","reaction_smiles":"B>>C","engine":"b"})
     routes=load_fixed_candidates(str(p))
     assert len(routes)==1 and len(routes[0].reactions)==2
+
+
+def test_observed_vnext_0_3_51_7_schema():
+    r=adapt_route({
+      "candidate_pathway_id":"BIOPKS-98ad0b2ff61121ed",
+      "backend":"BioPKS+DORAnet",
+      "benchmark_v2_truth_accessed":False,
+      "net_feasibility":0.26669833,
+      "state":"CANDIDATE",
+      "enzyme_evidence_status":"NO_DIRECT_ENZYME_IDENTITY_FOR_THIS_EXACT_REACTION",
+      "thermo_status":"NOT_QUANTIFIED_NO_FABRICATION",
+      "reactions":[{"raw":"O=C(O)C(O)Cc1ccccc1 = O=C=O + OCCc1ccccc1","parse_status":"PASS"}]
+    },source_format="vnext_0_3_51_7")
+    assert r.route_id=="BIOPKS-98ad0b2ff61121ed"
+    assert r.reactions[0].reaction_id.startswith("O=C(O)")
+    assert r.reactions[0].engines==("BioPKS+DORAnet",)
+    assert r.features.reaction_evidence_fraction==0.0
+    assert r.features.reviewed_enzyme_fraction==0.0
+    assert r.features.thermo_coverage_fraction==0.0

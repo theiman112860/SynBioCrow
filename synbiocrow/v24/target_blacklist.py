@@ -78,6 +78,21 @@ def canonical_smiles_from_inchi(value: str) -> str:
     return Chem.MolToSmiles(mol,canonical=True,isomericSmiles=True)
 
 
+def _repair_known_source_inchi(value: str) -> Optional[str]:
+    """Apply only narrow, auditable repairs for malformed Dataset 2 InChI text.
+
+    Returns a repaired string or None.  No generic chemistry guessing is done.
+    """
+    s=str(value).strip()
+    # Dataset 2 contains an impossible terminal hydrogen count in one target:
+    # InChI=1S/C5H12O/c1-5(2)3-4-6/h5-6H,3-4H2,1-2H11
+    # For C5H12O the terminal methyl layer should be 1-2H3.
+    bad="InChI=1S/C5H12O/c1-5(2)3-4-6/h5-6H,3-4H2,1-2H11"
+    if s==bad:
+        return "InChI=1S/C5H12O/c1-5(2)3-4-6/h5-6H,3-4H2,1-2H3"
+    return None
+
+
 def _norm_header(x) -> str:
     if x is None:
         return ""
@@ -156,11 +171,26 @@ def records_from_dataset2_xlsx(path: str) -> List[HistoricalTarget]:
     development=set(development)
     heldout=set(heldout)
     out=[]
+    parse_repairs=[]
     for pid,row in by_pid.items():
         inchi=str(row.get("target_structure") or "").strip()
         if not inchi:
             raise ValueError(f"{pid}: missing target_structure")
-        smi=canonical_smiles_from_inchi(inchi)
+        try:
+            smi=canonical_smiles_from_inchi(inchi)
+        except ValueError:
+            repaired=_repair_known_source_inchi(inchi)
+            if repaired is None:
+                raise
+            smi=canonical_smiles_from_inchi(repaired)
+            parse_repairs.append({
+                "pathway_id":pid,
+                "target_name":str(row.get("target_name") or "").strip(),
+                "original_inchi":inchi,
+                "repaired_inchi":repaired,
+                "repair_reason":"narrow Dataset 2 source-text correction: impossible terminal H11 -> H3 for C5H12O",
+            })
+            inchi=repaired
         out.append(HistoricalTarget(
             pathway_id=pid,
             target_name=str(row.get("target_name") or "").strip(),
@@ -168,7 +198,11 @@ def records_from_dataset2_xlsx(path: str) -> List[HistoricalTarget]:
             target_smiles=smi,
             split="development" if pid in development else "benchmark",
         ))
-    return sorted(out,key=lambda x:int(x.pathway_id.split("_")[-1]))
+    records=sorted(out,key=lambda x:int(x.pathway_id.split("_")[-1]))
+    records_from_dataset2_xlsx.last_repairs=parse_repairs
+    return records
+
+records_from_dataset2_xlsx.last_repairs=[]
 
 
 def build_blacklist(records: Sequence[HistoricalTarget], *, source_kind: str, source_sha256: str) -> TargetBlacklist:

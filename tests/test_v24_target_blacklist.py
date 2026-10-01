@@ -4,8 +4,12 @@ from synbiocrow.v24.target_blacklist import (
 from synbiocrow.v24.historical23_blacklist import reconstruct_split
 
 
+def actual_ids():
+    return [f"pid-{i:03d}" for i in range(77)]
+
+
 def test_blacklist_requires_all_65_ids():
-    _,held=reconstruct_split()
+    _,held=reconstruct_split(actual_ids())
     rows=[
         HistoricalTarget(pid,pid,"InChI=1S/CH4/h1H4","C","benchmark")
         for pid in held[:-1]
@@ -13,13 +17,13 @@ def test_blacklist_requires_all_65_ids():
     try:
         build_blacklist(rows,source_kind="test",source_sha256="a"*64)
     except ValueError as exc:
-        assert "missing held-out" in str(exc)
+        assert "expected 65 held-out pathway IDs" in str(exc)
     else:
         raise AssertionError("expected incomplete blacklist failure")
 
 
 def test_blacklist_accepts_exact_65_ids():
-    _,held=reconstruct_split()
+    _,held=reconstruct_split(actual_ids())
     rows=[
         HistoricalTarget(pid,pid,"InChI=1S/CH4/h1H4","C","benchmark")
         for pid in held

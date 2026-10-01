@@ -1,16 +1,30 @@
-# SynBioCrow 2.2.0
-
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23027052.svg)](https://doi.org/10.5281/zenodo.23027052)
+# SynBioCrow 2.3.0 release candidate
 
 **SynBioCrow** is a computational synthetic-biology design framework for moving from a target molecule to evidence-aware biosynthetic pathway Candidates and provenance-backed DNA construct Candidates.
 
-> **Release status:** 2.2.0 is the consolidated engine release. Candidate pathways and constructs are computational designs, not experimental certifications. The DOI above is the archived Zenodo record for this 2.2.0 release.
+> **Release status:** SynBioCrow 2.3 is scientifically frozen and in final release packaging. The 2.3 held-out benchmark and ranking policy are immutable; the public `v2.3.0` tag and Zenodo DOI are created only after packaging is complete. Candidate pathways and constructs are computational designs, not experimental certifications.
 
-## What changed in 2.2
+## What changed in 2.3
 
-SynBioCrow 2.2 consolidates the development lineage into one engine: DORAnet, RetroBioCat2, RetroPath standalone/RetroRules (with legacy KNIME RetroPath2 retained for reference), BioPKS/RetroTide, reaction-level cross-engine graph union, evidence/thermodynamics, sequence/construct design, unified execution, Test/reproducibility, and bounded auditable Learn/DBTL.
+SynBioCrow 2.3 freezes the first literature-grounded evaluation of the consolidated multi-generator engine. On the 65-path held-out Galaxy benchmark, connectivity-level partial recovery was 19/65 for the ensemble, 13/65 for RetroBioCat2, 9/65 for RetroPath standalone, and 0/65 for DORAnet. RetroPath recovered two exact connectivity-level pathways at rank 12; the ensemble preserved both but reranked them to ranks 46 and 31. The release therefore claims broader aggregate reaction recovery and route preservation, **not** improved exact Top-K ranking.
 
-The frozen Paper-1/v0.21 baseline and benchmark-v2 truth boundary remain unchanged.
+A non-tuning failure analysis classified 42/65 targets as complete predicted routes with no literature-reaction overlap, 17/65 as partial recovery, 2/65 as exact recovery, 3/65 as backend runtime failure, and 1/65 as mapping-limited. This identifies biochemical discrimination and ranking as the principal research problem reserved for 2.4.
+
+The 2.3 similarity policy is Morgan/Tanimoto **2D-primary**. USRCAT 3D remains optional/secondary because development-set leave-one-pathway-out ranking favored 2D and 3D changed route ordering without improving validated outcomes.
+
+The computational DBTL workflow is retained: Design uses multi-generator graph integration; Build requires provenance-backed sequence evidence; Test keeps evidence, thermodynamics, closure and QC explicit; Learn may update bounded prioritization weights but cannot fabricate evidence or promote lifecycle state.
+
+## Frozen 2.3 scientific state
+
+- scientific freeze commit: `39b3b21d8a5018001746a1ad783859cba75f9ad5`
+- freeze package SHA-256: `67bea03543b60f4299aace5e1de674357e9ffed88e1a2d2fc21dc47c83cfcaf6`
+- held-out denominator: 65; runnable: 64; mapping-limited: `literature_10`
+- benchmark truth used for learning: false
+- post-holdout ranking tuning: false
+- default similarity: 2D Morgan/Tanimoto
+- 3D USRCAT: optional secondary signal
+
+See `paper/2.3/MANUSCRIPT_DRAFT.md` for the frozen study narrative and limitations.
 
 ## Install the release core
 
@@ -105,14 +119,8 @@ python scripts/build_m9_release.py --output-dir dist_m9
 
 See [M9 release candidate](docs/M9_RELEASE_CANDIDATE.md), [M7 Test](docs/M7_TEST_REPRODUCIBILITY.md), [M8 Learn](docs/M8_LEARN_DBTL.md), and [limitations](docs/LIMITATIONS.md).
 
-## Historical release and citation
+## Historical releases and citation
 
-The sealed 2.1 scientific release remains under `release/2.1.0/`.
+SynBioCrow 2.2.0 remains archived at DOI **10.5281/zenodo.23027052**. The sealed 2.1 scientific release remains under `release/2.1.0/` (DOI **10.5281/zenodo.22999039**).
 
-Archived 2.1.1 DOI: **10.5281/zenodo.22999039**
-
-Current 2.2.0 DOI: **10.5281/zenodo.23027052**
-
-Please cite:
-
-**Heiman, Thomas J. (2026). SynBioCrow 2.2.0: computational synthetic-biology pathway and construct design framework. Zenodo. https://doi.org/10.5281/zenodo.23027052**
+The SynBioCrow 2.3 citation and DOI will be inserted after the public `v2.3.0` GitHub release and Zenodo record are created. Do not cite an intermediate release-candidate commit as the archived 2.3 release.

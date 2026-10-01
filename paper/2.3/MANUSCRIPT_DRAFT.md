@@ -56,9 +56,7 @@ This study asks five questions:
 
 SynBioCrow separates pathway generation, reaction-graph integration, evidence evaluation, enzyme/sequence resolution, construct design, and bounded learning into explicit computational stages.
 
-[Figure 1: end-to-end workflow]
-
-[Figure 2: multistep ensemble-route construction example using 1,4-butanediol]
+**Figure 1. SynBioCrow computational workflow.** Independent pathway generators feed a provenance-preserving normalized reaction graph. Candidate routes then pass through separate evidence, enzyme/sequence, thermodynamic, and construct-design stages. Test outcomes can update bounded prioritization weights, but the Learn layer cannot create evidence or promote lifecycle state. Candidate, Mature, and Certified are computational evidence states and do not imply experimental validation.
 
 **Figure 2. Multistep construction of a SynBioCrow ensemble route.** A real benchmark target, 1,4-butanediol, is used to illustrate the routing logic. Backend-specific candidate reactions are first generated independently. These reactions are normalized to canonical compound identities and merged into a shared reaction graph while preserving backend provenance on each edge. SynBioCrow then enumerates coherent target-to-sink routes through the union graph. The figure is schematic for readability: it illustrates the graph-merging and route-extraction logic using chemistry observed in the benchmark lineage, but does not imply that every displayed edge was recovered by every backend in the same run.
 
@@ -123,7 +121,7 @@ Predictions were generated without access to benchmark reaction truth and sealed
 
 ### 3.4 Cross-tool comparisons
 
-Comparisons will be performed only where target, precursor/chassis assumptions, route depth, and success definitions can be made sufficiently comparable. Constituent-engine ablations provide the primary baseline. External open-source systems may be included when reproducible execution and aligned inputs are available.
+Comparisons were restricted to conditions for which target identity, precursor/sink assumptions, route depth, and success definitions could be aligned. Constituent-engine ablations therefore provide the primary baseline. No performance claim is made against an external system where execution conditions could not be made sufficiently comparable.
 
 ### 3.5 Computational DBTL case study
 
@@ -133,22 +131,7 @@ A computational DBTL case study reuses persisted benchmark candidates without re
 
 The development study compared a USRCAT 3D-first policy with a Morgan/Tanimoto 2D-only policy and a 3D-only policy. Candidate routes were held fixed so that the ablation measured ranking-policy effects rather than generator differences.
 
-Three policies will be compared:
-1. 3D-first with 2D fallback;
-2. 2D-only;
-3. 3D-only for compounds with valid conformers.
-
-The ablation will measure:
-- known-pathway retrieval at top-1/top-5/top-10;
-- reaction/evidence precedent retrieval;
-- route survival after evidence filtering;
-- route diversity;
-- enzyme-support availability;
-- runtime;
-- fallback frequency;
-- cases in which the chosen precedent or route rank changes.
-
-The purpose is to determine where 3D similarity adds information beyond topology, not to establish a universal preference for 3D methods.
+Three policies were compared: (1) 3D-first with 2D fallback, (2) 2D-only, and (3) 3D-only for compounds with valid conformers. The analysis measured known-pathway retrieval, leave-one-pathway-out reaction/evidence precedent retrieval, exact-route rank and MRR, conformer/fallback behavior, and cases in which the selected top route changed. The purpose was to determine whether 3D similarity added validated ranking information beyond topology rather than to assume a universal advantage for either representation.
 
 ## 4. Results
 
@@ -251,7 +234,7 @@ From that protein sequence, SynBioCrow generated a 1,746-nt E. coli-preferred sy
 
 ## 5. Discussion
 
-The discussion should distinguish three different questions that are easy to conflate: whether the ensemble broadens reaction coverage, whether it increases route diversity, and whether it makes previously unsolved targets solvable. These are separate outcomes and should be reported separately.
+The results distinguish three outcomes that are easily conflated: broader reaction coverage, greater route diversity, and recovery of targets not solved by any constituent backend. SynBioCrow 2.3 demonstrates the first two under the tested conditions, but not the third. On the held-out Galaxy benchmark, ensemble connectivity-level partial recovery reached 19/65 while the strongest individual partial-recovery result was 13/65; on the breadth benchmark, graph union preserved every audited complete constituent route and substantially increased route count for some solvable targets. In contrast, no cross-engine-only literature route was recovered within the bounded search.
 
 The similarity ablation provides a second negative-but-informative result. Although 3D-first USRCAT substantially changed route ordering, it did not improve exact literature-route recovery or leave-one-pathway-out EC-neighbor retrieval relative to 2D Morgan/Tanimoto similarity. The default policy was therefore revised to 2D-primary before the held-out benchmark was scored. This result should not be interpreted as evidence that 2D-selected enzymes necessarily perform better experimentally; the present computational study evaluates retrieval and ranking, not matched in-vivo enzyme productivity.
 
@@ -259,16 +242,15 @@ The post-hoc failure analysis also indicates that additional generator breadth a
 
 The held-out 65-path benchmark reinforces the distinction between coverage and ranking. The ensemble broadened partial reaction recovery beyond either individual backend, but the two exact connectivity-level pathways were originally found by RetroPath and were ranked lower after ensemble reranking. Thus, the principal validated ensemble benefit in the current release is broader aggregate reaction recovery and route preservation, not improved exact Top-K retrieval. Improving ensemble ranking remains a separate problem from improving ensemble search-space coverage.
 
-The initial breadth benchmark does not show ensemble-only target recovery, and that negative result should be reported directly. It does, however, show that graph integration preserves every complete individual route tested and can greatly expand route diversity for some targets. The literature development benchmark extends that conclusion: the ensemble preserved exact connectivity-level RetroPath recoveries for sabinene and valencene and partial matches from RetroPath and RetroBioCat2, but it did not improve Top-K ranking because the current ensemble serialization is not yet a biological ranking model. No cross-engine-only literature route was recovered under the state-capped search. The practical value demonstrated so far therefore lies in route preservation, broader aggregate reaction recovery, provenance retention, and alternative-route integration, while rank improvement and ensemble-only recovery remain hypotheses for the larger benchmark and ranking ablations.
+The initial breadth benchmark likewise showed no ensemble-only target recovery. The literature development benchmark preserved exact connectivity-level RetroPath recoveries for sabinene and valencene and partial matches from RetroPath and RetroBioCat2, but did not improve Top-K ranking. Taken together with the held-out results, the demonstrated value of the 2.3 ensemble is route preservation, broader aggregate reaction recovery, provenance retention, and alternative-route integration. Improved exact-route ranking is not a 2.3 claim; it is the principal research objective reserved for SynBioCrow 2.4 and must be evaluated on a fresh untouched evaluation set.
 
 ## 6. Limitations
 
-- computational predictions are not experimental validation;
-- benchmarks are sensitive to precursor/sink definitions and route-depth limits;
-- constituent tools have different intended domains and are not always directly comparable;
-- BioPKS/RetroTide PKS design is operational, but its default post-PKS DORAnet network expansion is computationally expensive for the tested flavanone intermediates; a bounded direct search found no exact continuation within three enzymatic steps;
-- 3D similarity depends on conformer generation, changed top-route selection on 10/12 development targets, and did not improve exact-route recovery in the leave-one-pathway-out development analysis;
-- known-pathway benchmarks favor chemistry represented in the literature.
+All results are computational and do not constitute experimental validation of pathway activity, enzyme performance, titer, yield, productivity, or construct function. Benchmark outcomes depend on compound normalization, precursor/sink definitions, search-depth and state caps, and the chemistry represented by each constituent backend. The backends also have different intended domains, so their raw candidate counts should not be interpreted as directly comparable measures of quality.
+
+The Galaxy benchmark evaluates recovery of reported pathways and therefore favors chemistry represented in the literature; a chemically plausible alternative route can score as zero overlap even when complete. Conversely, connectivity-level matching intentionally ignores stereochemical distinctions and is less stringent than strict reaction identity. One held-out pathway was mapping-limited and three were affected by backend runtime failures.
+
+BioPKS/RetroTide is operational as a specialized PKS design backend, but post-PKS enzymatic continuation remained computationally expensive for the tested flavanone intermediates and no exact continuation was found within the bounded three-step direct search. The similarity ablation is also limited to computational retrieval and ranking: 3D-first changed the top route on 10/12 development targets but did not improve validated outcomes, and the study cannot establish whether enzymes prioritized by 2D or 3D would perform better experimentally. Finally, the sequence-backed sabinene example validates digital provenance and sequence-QC behavior only; full cassette assembly abstained because verified regulatory-part sequences were not supplied.
 
 ## 7. Reproducibility and availability
 

@@ -1,8 +1,8 @@
-# SynBioCrow 2.3.0 release candidate
+# SynBioCrow 2.3.0
 
 **SynBioCrow** is a computational synthetic-biology design framework for moving from a target molecule to evidence-aware biosynthetic pathway Candidates and provenance-backed DNA construct Candidates.
 
-> **Release status:** SynBioCrow 2.3 is scientifically frozen and in final release packaging. The 2.3 held-out benchmark and ranking policy are immutable; the public `v2.3.0` tag and Zenodo DOI are created only after packaging is complete. Candidate pathways and constructs are computational designs, not experimental certifications.
+> **Release status:** SynBioCrow 2.3.0 is released. The scientific state is frozen and the 2.3 held-out benchmark and ranking policy remain immutable. GitHub release: `v2.3.0`. Zenodo DOI: [10.5281/zenodo.23083426](https://doi.org/10.5281/zenodo.23083426). Candidate pathways and constructs are computational designs, not experimental certifications.
 
 ## What changed in 2.3
 
@@ -123,4 +123,4 @@ See [M9 release candidate](docs/M9_RELEASE_CANDIDATE.md), [M7 Test](docs/M7_TEST
 
 SynBioCrow 2.2.0 remains archived at DOI **10.5281/zenodo.23027052**. The sealed 2.1 scientific release remains under `release/2.1.0/` (DOI **10.5281/zenodo.22999039**).
 
-The SynBioCrow 2.3 citation and DOI will be inserted after the public `v2.3.0` GitHub release and Zenodo record are created. Do not cite an intermediate release-candidate commit as the archived 2.3 release.
+SynBioCrow 2.3.0 is publicly released as GitHub tag `v2.3.0` and archived on Zenodo at DOI **10.5281/zenodo.23083426**. The frozen scientific state is anchored at commit `39b3b21d8a5018001746a1ad783859cba75f9ad5`; subsequent documentation and citation updates do not alter that scientific freeze.

@@ -1,0 +1,16 @@
+{
+  "schema": "synbiocrow.v24.split.v1",
+  "version": "2.4.11",
+  "policy": "SHA-256(record_id) ascending; first 4 development, final 2 validation",
+  "blacklist_sha256": "0f28013c770acdc4d7e8afd5112ce043f930c70ba4fc642bb624947c5dea6eb1",
+  "source_sha256": "bb15a7729bb5dbd0d6a03caeb90d511b029b13f11ac3f82949f6fddc7ec4f366",
+  "records": [
+    {"record_id":"post2022-mibk-2025","target_name":"methyl isobutyl ketone","split":"development","record_id_sha256":"42dc75aeec4f0900a9d9d779b0a7f7f6c392e6c551435a30bfa5dc9c8d9f3f8a"},
+    {"record_id":"post2022-jasmonic-acid-2023","target_name":"jasmonic acid","split":"development","record_id_sha256":"67be7134e942db69d1d1c3348d3825944c1cf8aede57ef4c78fa7b676617dd91"},
+    {"record_id":"post2022-dammaradienol-2024","target_name":"dammaradienol","split":"development","record_id_sha256":"b4c61f8ad7735fa8e8d2da9dc63c8f6cdcfb2e9b77bf32dcd628475b69f1c889"},
+    {"record_id":"post2022-curcumin-2024","target_name":"curcumin","split":"development","record_id_sha256":"d7f8c635b8130990f4faee10d38d93404fe785523212a71e30248dd85641f3be"},
+    {"record_id":"post2022-bakuchiol-2024","target_name":"bakuchiol","split":"validation","record_id_sha256":"eff9c570bc558d23e5aeb00db77e121e0dc6b6b5c96c76dee1d9ef6d90a76040"},
+    {"record_id":"post2022-allitol-2025","target_name":"D-allitol","split":"validation","record_id_sha256":"feaf0a1bb084938a09683bda600a1bf46f95470a04d7d3efc7071304800bf3c7"}
+  ],
+  "manifest_sha256": "d9ad5c58ae11cb1798974341231e3854cf09ff34cb1d552836caa551707e0f98"
+}

@@ -1,0 +1,21 @@
+{
+  "schema":"synbiocrow.v24.development-anchor-truth.v1",
+  "version":"2.4.17",
+  "scope":"development_only",
+  "records":[
+    {"record_id":"post2022-mibk-2025","doi":"10.1021/acssynbio.5c00527",
+     "anchor_names":["isovaleric acid","isovaleryl-CoA","methyl isobutyl ketone"],
+     "basis":"Primary article abstract explicitly describes IVA -> isovaleryl-CoA, C5+C2 elongation, and MIBK formation."},
+    {"record_id":"post2022-jasmonic-acid-2023","doi":"10.1038/s44160-023-00429-w",
+     "anchor_names":["alpha-linolenic acid","12-oxo-phytodienoic acid","jasmonic acid"],
+     "basis":"Primary article describes alpha-linolenic acid and cis-12-oxophytodienoic acid intermediates in engineered yeast and JA production."},
+    {"record_id":"post2022-dammaradienol-2024","doi":"10.1021/acssynbio.4c00396",
+     "anchor_names":["squalene","dammaradienol"],
+     "basis":"Primary article identifies a dammaradienol synthase and a high-yielding squalene chassis; no unsupported intermediate chemistry is asserted here."},
+    {"record_id":"post2022-curcumin-2024","doi":"10.1021/acssynbio.4c00059",
+     "anchor_names":["p-coumaric acid","caffeic acid","ferulic acid","feruloyl-CoA","curcumin"],
+     "basis":"Primary article explicitly describes the phenylpropanoid intermediates and feruloyl-CoA activation preceding DCS/CURS curcumin synthesis."}
+  ],
+  "validation_truth_accessed":false,
+  "evaluation_truth_accessed":false
+}

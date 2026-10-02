@@ -286,7 +286,9 @@ def main():
             max_steps=a.max_route_steps,
             max_routes=a.max_routes,
         )
-        bridge_diag=_bridge_diagnostics(graph,sinks)\n        reach_diag=_reachability_diagnostics(graph,target_key,sink_keys)\n        connectivity_diag=_connectivity_relaxed_diagnostics(graph,target,sinks,a.max_route_steps,a.max_routes)
+        bridge_diag=_bridge_diagnostics(graph,sinks)
+        reach_diag=_reachability_diagnostics(graph,target_key,sink_keys)
+        connectivity_diag=_connectivity_relaxed_diagnostics(graph,target,sinks,a.max_route_steps,a.max_routes)
         payload={
             "request":{
                 "target_smiles":target,
@@ -300,7 +302,9 @@ def main():
             "candidates":json_safe(candidates),
             "routes":routes,
             "backend_status":backend_status,
-            "bridge_diagnostics":bridge_diag,\n            "reachability_diagnostics":reach_diag,\n            "connectivity_relaxed_diagnostics":connectivity_diag,
+            "bridge_diagnostics":bridge_diag,
+            "reachability_diagnostics":reach_diag,
+            "connectivity_relaxed_diagnostics":connectivity_diag,
             "graph_summary":{
                 "compound_count":len(graph.compounds),
                 "edge_count":len(graph.edges),

@@ -374,7 +374,7 @@ def _mixed_boundary_near_miss_audit(graph,target_key,sink_keys,currency_keys,max
                     "unresolved_noncurrency_keys":sorted(unresolved),
                     "unresolved_noncurrency":[
                         {"compound_key":k,
-                         "compound_smiles":graph.compounds[k].smiles if k in graph.compounds else None,
+                         "compound_smiles":_compound_smiles(graph,k),
                          "has_outgoing_edge":bool(graph.by_parent.get(k,()))}
                         for k in sorted(unresolved)
                     ],
@@ -393,7 +393,7 @@ def _mixed_boundary_near_miss_audit(graph,target_key,sink_keys,currency_keys,max
     for k,n in blocker_counts.most_common(50):
         ranked.append({
             "compound_key":k,
-            "compound_smiles":graph.compounds[k].smiles if k in graph.compounds else None,
+            "compound_smiles":_compound_smiles(graph,k),
             "near_miss_state_count":n,
             "has_outgoing_edge":bool(graph.by_parent.get(k,())),
         })

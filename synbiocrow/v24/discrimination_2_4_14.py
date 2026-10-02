@@ -274,23 +274,65 @@ def _route_feature_row(
 
 
 def extract_development_features(path: str | Path) -> list[RouteFeatureRow]:
+    """Extract fixed candidates plus any strict ensemble routes.
+
+    Candidate pathways are always included because 2.4 development artifacts
+    may contain many generated candidates even when strict sink closure is zero.
+    """
     obj,candidates=load_development_artifact(path)
     result=obj["result"]
-    graph=build_reaction_graph(candidates)
-    routes=result.get("routes") or []
+    record_id=str(obj.get("record_id") or "")
+    target_name=str(obj.get("target_name") or "")
     out=[]
-    for route in routes:
+
+    # Rank each persisted candidate independently. This preserves proposal
+    # provenance and does not require strict sink closure.
+    for cand in candidates:
+        cgraph=build_reaction_graph([cand])
+        edge_ids=sorted(cgraph.edges)
+        if not edge_ids:
+            continue
+        row=_route_feature_row(
+            record_id=record_id,
+            target_name=target_name,
+            split="development",
+            route=edge_ids,
+            graph=cgraph,
+            source_artifact=str(path),
+        )
+        out.append(RouteFeatureRow(
+            record_id=row.record_id,
+            target_name=row.target_name,
+            route_id="candidate:"+cand.candidate_id,
+            split=row.split,
+            route_length=row.route_length,
+            engine_count=row.engine_count,
+            component_values=row.component_values,
+            observed_feature_count=row.observed_feature_count,
+            total_feature_count=row.total_feature_count,
+            evidence_coverage=row.evidence_coverage,
+            source_artifact=row.source_artifact,
+        ))
+
+    # Also include strict ensemble routes when present.
+    graph=build_reaction_graph(candidates)
+    for route in result.get("routes") or []:
         if not isinstance(route,list):
             continue
         out.append(_route_feature_row(
-            record_id=str(obj.get("record_id") or ""),
-            target_name=str(obj.get("target_name") or ""),
+            record_id=record_id,
+            target_name=target_name,
             split="development",
             route=[str(x) for x in route],
             graph=graph,
             source_artifact=str(path),
         ))
-    return out
+
+    # Deterministic de-duplication by route_id.
+    dedup={}
+    for row in out:
+        dedup.setdefault(row.route_id,row)
+    return [dedup[k] for k in sorted(dedup)]
 
 
 def score_feature_row(

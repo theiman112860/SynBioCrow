@@ -4,7 +4,8 @@ from pathlib import Path
 from synbiocrow import SynBioCrowEngine
 from synbiocrow.execution import json_safe
 from synbiocrow.ensemble import resolve_compound
-from rdkit import Chem, DataStructs\nfrom rdkit.Chem import rdFingerprintGenerator
+from rdkit import Chem, DataStructs
+from rdkit.Chem import rdFingerprintGenerator
 
 def sha(p): return hashlib.sha256(Path(p).read_bytes()).hexdigest()
 

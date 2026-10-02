@@ -87,6 +87,7 @@ def _pathway_to_candidate(
     target_smiles: str,
     rbc2_version: str,
     search_stats: Mapping[str, Any] | None = None,
+    pathway_status: str = "SOLVED",
 ) -> PathwayCandidate:
     ordered = _ordered_reactions(pathway)
     steps: list[ReactionStep] = []
@@ -137,6 +138,7 @@ def _pathway_to_candidate(
             "rbc2_version": rbc2_version,
             "search_stats": _json_safe(dict(search_stats or {})),
             "pathway_length": int(getattr(pathway, "pathway_length", len(steps))),
+            "rbc2_pathway_status": pathway_status,
             "end_smiles": sorted(str(x) for x in getattr(pathway, "end_smis", lambda: [])()),
         },
     )
@@ -214,6 +216,7 @@ class RetroBioCatBackend:
         )
         starting_material_evaluator = options.pop("starting_material_evaluator", None)
         filters = options.pop("filters", None)
+        include_explored_pathways = bool(options.pop("include_explored_pathways", False))
         if options:
             raise ValueError(
                 "Unsupported RetroBioCat2 options: " + ", ".join(sorted(options))
@@ -251,6 +254,7 @@ class RetroBioCatBackend:
             mcts.run()
             stats = dict(mcts.get_run_stats())
             solved = list(mcts.get_solved_pathways())
+            explored = list(mcts.get_all_pathways()) if include_explored_pathways else []
         except Exception as exc:
             self.last_run_stats = {
                 "status": "ERROR",
@@ -272,17 +276,22 @@ class RetroBioCatBackend:
             "status": "COMPLETE",
             **_json_safe(stats),
             "solved_pathways": len(solved),
+            "explored_pathways": len(explored),
+            "candidate_policy": "all_explored_pathways" if include_explored_pathways else "solved_pathways_only",
         }
 
-        # [] is a successful bounded no-hit, not an engine failure.
+        selected_pathways = explored if include_explored_pathways else solved
+        solved_ids = {id(p) for p in solved}
+        # Explored pathways are explicitly marked PARTIAL unless they also occur in the solved set.
         candidates = [
             _pathway_to_candidate(
                 pathway,
                 target_smiles=target_smiles,
                 rbc2_version=version,
                 search_stats=self.last_run_stats,
+                pathway_status=("SOLVED" if id(pathway) in solved_ids else "PARTIAL_EXPLORED"),
             )
-            for pathway in solved
+            for pathway in selected_pathways
         ]
         by_id = {c.candidate_id: c for c in candidates}
         return [by_id[k] for k in sorted(by_id)]

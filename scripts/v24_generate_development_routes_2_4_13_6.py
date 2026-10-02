@@ -9,6 +9,90 @@ from rdkit.Chem import rdFingerprintGenerator
 
 def sha(p): return hashlib.sha256(Path(p).read_bytes()).hexdigest()
 
+_morgan=rdFingerprintGenerator.GetMorganGenerator(radius=2,fpSize=2048)
+
+def _fp(smiles):
+    mol=Chem.MolFromSmiles(str(smiles))
+    return None if mol is None else _morgan.GetFingerprint(mol)
+
+def _compound_smiles(graph,key):
+    ci=graph.compounds.get(key)
+    if ci is None:
+        return None
+    return getattr(ci,"canonical_smiles",None) or getattr(ci,"smiles",None) or getattr(ci,"raw",None)
+
+def _compound_sets(graph):
+    by={"doranet":set(),"retrobiocat2":set()}
+    for edge in graph.edges.values():
+        keys={edge.parent_key,*edge.precursor_keys}
+        for backend in by:
+            if backend in edge.source_backends:
+                by[backend].update(keys)
+    return by
+
+def _bridge_diagnostics(graph,sinks):
+    by=_compound_sets(graph)
+    overlap=by["doranet"] & by["retrobiocat2"]
+
+    def items(keys):
+        out=[]
+        for key in sorted(keys):
+            smi=_compound_smiles(graph,key)
+            fp=_fp(smi) if smi else None
+            if fp is not None:
+                out.append((key,smi,fp))
+        return out
+
+    d_items=items(by["doranet"])
+    r_items=items(by["retrobiocat2"])
+    cross=[]
+
+    if d_items and r_items:
+        r_fps=[x[2] for x in r_items]
+        scored=[]
+        for dkey,dsmi,dfp in d_items:
+            sims=DataStructs.BulkTanimotoSimilarity(dfp,r_fps)
+            for j,sim in enumerate(sims):
+                rkey,rsmi,_=r_items[j]
+                if dkey!=rkey:
+                    scored.append((float(sim),dkey,dsmi,rkey,rsmi))
+        for sim,dkey,dsmi,rkey,rsmi in sorted(scored,reverse=True)[:20]:
+            cross.append({
+                "tanimoto":sim,
+                "doranet_key":dkey,
+                "doranet_smiles":dsmi,
+                "retrobiocat2_key":rkey,
+                "retrobiocat2_smiles":rsmi,
+            })
+
+    sink_rows=[]
+    for sink in sinks:
+        sfp=_fp(sink)
+        row={"sink_smiles":sink}
+        if sfp is not None:
+            for backend,vals in (("doranet",d_items),("retrobiocat2",r_items)):
+                scored=[
+                    (float(DataStructs.TanimotoSimilarity(sfp,fp)),key,smi)
+                    for key,smi,fp in vals
+                ]
+                if scored:
+                    sim,key,smi=max(scored)
+                    row[backend]={
+                        "tanimoto":sim,
+                        "compound_key":key,
+                        "compound_smiles":smi,
+                    }
+        sink_rows.append(row)
+
+    return {
+        "doranet_compound_count":len(by["doranet"]),
+        "retrobiocat2_compound_count":len(by["retrobiocat2"]),
+        "exact_compound_overlap_count":len(overlap),
+        "exact_compound_overlap_keys":sorted(overlap)[:100],
+        "top_cross_engine_near_pairs":cross,
+        "nearest_compound_to_each_sink":sink_rows,
+    }
+
 class FrozenSinkEvaluator:
     """RBC2 StartingMaterialEvaluator-compatible closure over the frozen sink panel."""
     def __init__(self, sinks):

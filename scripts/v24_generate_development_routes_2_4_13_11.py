@@ -500,7 +500,8 @@ def main():
             graph=engine.build_ensemble(candidates)
 
         currency_keys,currency_rows=_currency_boundary_keys(graph)
-        currency_diag=_boundary_closure_diagnostic(graph,target_key,sink_keys,currency_keys,a.max_route_steps,a.max_routes)\n        mixed_boundary_cert=_mixed_boundary_closure_certificate(graph,target_key,sink_keys,currency_keys,a.max_route_steps,a.max_routes)
+        currency_diag=_boundary_closure_diagnostic(graph,target_key,sink_keys,currency_keys,a.max_route_steps,a.max_routes)
+        mixed_boundary_cert=_mixed_boundary_closure_certificate(graph,target_key,sink_keys,currency_keys,a.max_route_steps,a.max_routes)
 
         routes=graph.find_routes(
             target_key,sink_keys,

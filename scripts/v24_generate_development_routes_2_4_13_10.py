@@ -292,7 +292,7 @@ def _boundary_closure_diagnostic(graph,target_key,sink_keys,currency_keys,max_st
     )
     return {
         "route_count":len(routes),
-        "routes_preview":[r.to_dict() for r in routes[:10]],
+        "routes_preview":[json_safe(r) for r in routes[:10]],
         "currency_boundary_key_count":len(currency_keys),
         "strict_sink_key_count":len(sink_keys),
         "diagnostic_only":True,

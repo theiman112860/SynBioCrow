@@ -1,7 +1,18 @@
-# SynBioCrow 2.4.30 — Multivariate Interaction Audit
+# SynBioCrow 2.4.30 — Nonlinear Multivariate Interaction Audit
 
-2.4.29 showed that collapsing the exactly duplicated template/domain/type metadata block while preserving its total frozen weight changes none of the four development near-miss ranks. Therefore metadata duplication affects geometry but is not the immediate cause of scalar rank order.
+This stage tests whether corrected internal-anchor pathway proximity is encoded nonlinearly in the existing development evidence representation.
 
-2.4.30 tests the remaining hypothesis: pathway proximity depends on interactions among precedent, feasibility, route length, and contextual evidence rather than on any single marginal feature. It fits a transparent ridge model on development candidates using the frozen evidence variables plus selected pairwise interaction terms and reports standardized coefficients and in-sample explanatory power.
+Models compared:
+- frozen 2.4.16 scalar score,
+- ridge regression on the 13 evidence variables,
+- ridge regression with selected pairwise interactions,
+- random forest,
+- gradient boosting.
 
-This is diagnostic only. No production ranking change, no generation, and no validation/evaluation truth access.
+Evaluation:
+- five-fold development-only cross-validation within each target,
+- CV R², RMSE, and Pearson correlation,
+- permutation importance for fitted models,
+- gradient-boosting response surfaces for precedent × feasibility, precedent × route length, and feasibility × route length.
+
+This is diagnostic only. It does not change production ranking, invoke generation, or access validation/evaluation truth.

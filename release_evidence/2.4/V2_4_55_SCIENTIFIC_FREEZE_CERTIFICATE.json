@@ -1,0 +1,11 @@
+{
+  "complete_pathway_claim_allowed": false,
+  "evidence_freeze_sha256": "c58dd791d33446431c8820e2c68b5371f12ef27ddb9d3bd5e560226a4bd3cc81",
+  "evidence_hash_manifest_sha256": "e45ccc280cfd761eaf06d5b43411fe5db7347cfec6829b54110eddafc0fbe2a8",
+  "prospective_external_validation_outcome": "NEGATIVE_FOR_PREDECLARED_EXACT_TRUTH_INTERMEDIATE_RECOVERY",
+  "ranking_policy": "NONE",
+  "release_readiness": "READY_FOR_CANDIDATE_STAGE_RELEASE_PACKAGING",
+  "scientific_state": "CANDIDATE",
+  "status": "SCIENTIFIC_EVIDENCE_FROZEN",
+  "version": "2.4.55"
+}

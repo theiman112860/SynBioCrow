@@ -1,0 +1,70 @@
+{
+  "complete_pathway_claim_allowed": false,
+  "development_architecture_frozen": true,
+  "external_evaluation_summary": [
+    {
+      "backends": {
+        "doranet": {
+          "candidate_count": 30,
+          "partial_count": 0,
+          "solved_count": 0,
+          "truth_structure_hits": [],
+          "truth_structure_recall": 0.0
+        },
+        "retrobiocat2": {
+          "candidate_count": 1373,
+          "partial_count": 1370,
+          "solved_count": 3,
+          "truth_structure_hits": [],
+          "truth_structure_recall": 0.0
+        }
+      },
+      "record_id": "external-eval-1-3-propanediol",
+      "target_name": "1,3-propanediol"
+    },
+    {
+      "backends": {
+        "doranet": {
+          "candidate_count": 33,
+          "partial_count": 0,
+          "solved_count": 0,
+          "truth_structure_hits": [],
+          "truth_structure_recall": 0.0
+        },
+        "retrobiocat2": {
+          "candidate_count": 1466,
+          "partial_count": 1464,
+          "solved_count": 2,
+          "truth_structure_hits": [],
+          "truth_structure_recall": 0.0
+        }
+      },
+      "record_id": "external-eval-1-4-butanediol",
+      "target_name": "1,4-butanediol"
+    }
+  ],
+  "future_work_not_release_blocking": [
+    "Improve biochemical participant/role semantics and multi-step pathway reconstruction against new development data.",
+    "Develop a non-circular ranking/selection objective only with a newly predeclared development/validation design.",
+    "Run any future prospective evaluation on entirely new untouched targets."
+  ],
+  "phase_a_hash_manifest_sha256": "6ac9e8c9b06b4f55d5c8183584490162ab830efef3f465894b4aadd7974ad3f8",
+  "phase_a_lock_sha256": "0f557e08e870f4823278d641b06ca038057600be61806a57d781ab92d55540cc",
+  "phase_b_results_sha256": "9c2a8be5102739406dd264f5d5091a44da261ad32870f7b10c9d53b73941d2b2",
+  "prospective_external_evaluation_completed": true,
+  "prospective_external_truth_structure_recovery_passed": false,
+  "ranking_policy": "NONE",
+  "release_recommendation": "RELEASE_CANDIDATE_STAGE_WITH_NEGATIVE_PROSPECTIVE_EXTERNAL_VALIDATION",
+  "schema": "synbiocrow.v24.scientific-evidence-freeze.v1",
+  "scientific_interpretation": [
+    "The repaired representation/generation architecture can produce diverse Candidate reaction/pathway hypotheses.",
+    "RetroBioCat2 reported 3 internally solved candidates for 1,3-propanediol and 2 for 1,4-butanediol under its own search/status semantics.",
+    "The prospective external evaluation recovered none of the predeclared explicit truth intermediates by exact structure for either backend on either target.",
+    "Therefore internal backend 'solved' status is not evidence of recovery of the documented external pathway.",
+    "No development ranking policy was validated or frozen; production ranking remains NONE.",
+    "SynBioCrow 2.4 must remain Candidate-stage and must not claim validated complete-pathway recovery."
+  ],
+  "scientific_state": "CANDIDATE",
+  "truth_contract_sha256": "ad967a66e7899be54bd19a29bd406206743f764f76e18892a5d048d0c1321c97",
+  "version": "2.4.55"
+}

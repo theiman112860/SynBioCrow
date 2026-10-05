@@ -13,7 +13,7 @@ def _progress(pct:float,msg:str)->None:
     print(f"[SynBioCrow] {pct:5.1f}% | {msg}",flush=True)
 
 def build_parser()->argparse.ArgumentParser:
-    p=argparse.ArgumentParser(prog="synbiocrow",description="SynBioCrow 2.2 development CLI")
+    p=argparse.ArgumentParser(prog="synbiocrow",description="SynBioCrow 2.4 Candidate-stage CLI")
     sub=p.add_subparsers(dest="command",required=True)
 
     ready=sub.add_parser("readiness",help="report backend readiness/configuration")
@@ -79,7 +79,8 @@ def main(argv=None)->int:
         )
         payload={"policy":asdict(new_policy),"update":asdict(update)}
         Path(args.output).write_text(
-            json.dumps(payload,indent=2,sort_keys=True)+"\n",
+            json.dumps(payload,indent=2,sort_keys=True)+"
+",
             encoding="utf-8",
         )
         print(f"[SynBioCrow] learned policy v{new_policy.version}: {args.output}")
@@ -104,7 +105,8 @@ def main(argv=None)->int:
     payload=json_safe(result)
     text=json.dumps(payload,indent=2,sort_keys=True)
     if args.output:
-        Path(args.output).write_text(text+"\n",encoding="utf-8")
+        Path(args.output).write_text(text+"
+",encoding="utf-8")
         print(f"[SynBioCrow] result: {args.output}")
     else:
         print(text)

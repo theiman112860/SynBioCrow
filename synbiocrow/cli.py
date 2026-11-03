@@ -79,8 +79,7 @@ def main(argv=None)->int:
         )
         payload={"policy":asdict(new_policy),"update":asdict(update)}
         Path(args.output).write_text(
-            json.dumps(payload,indent=2,sort_keys=True)+"
-",
+            json.dumps(payload,indent=2,sort_keys=True)+"\n",
             encoding="utf-8",
         )
         print(f"[SynBioCrow] learned policy v{new_policy.version}: {args.output}")
@@ -105,8 +104,7 @@ def main(argv=None)->int:
     payload=json_safe(result)
     text=json.dumps(payload,indent=2,sort_keys=True)
     if args.output:
-        Path(args.output).write_text(text+"
-",encoding="utf-8")
+        Path(args.output).write_text(text+"\n",encoding="utf-8")
         print(f"[SynBioCrow] result: {args.output}")
     else:
         print(text)

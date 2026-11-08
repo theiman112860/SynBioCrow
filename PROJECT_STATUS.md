@@ -80,3 +80,9 @@ Frozen 2.3 artifacts and sealed 65-path Galaxy benchmark remain untouched. Histo
 - Built M2.4.2: preserve original sink/rules and native executable, remove exact target InChI from run-local sink copy, record original and filtered hashes and removed rows; retain fail-closed native target reaction acceptance.
 - Local syntax PASS; Colab execution pending. Do not count pinocembrin smoke rows as target-specific evidence.
 - Next action: run M2.4.2, upload outputs, inspect actual target-specific reaction SMILES.
+
+## M2.4.3 conditional sink and governance notification correction — 2026-11-08
+- User observed all-failed 'Governance contract' GitHub Actions notifications. Unverified workflow `.github/workflows/governance.yml` removed from governance branch (commit cdecb60b683c95159cbc1307d8e03967e734759d). Documentation and checker retained. Existing failed runs may remain visible; no claim that all failures were diagnosed.
+- M2.4.2 Colab observed source Name/InChI correct; 963 sink rows; zero exact target matches. Hard assertion len(removed)>0 was incorrect and stopped execution before native run.
+- M2.4.3: when target absent from sink, use original sink unchanged; if present, filter only exact target in a run-local copy. Record duplicate InChI keys within sink to investigate prior duplicate-key exception. Preserve native logs, source and rules. Local notebook AST PASS; Colab run PENDING.
+- Next action: run M2.4.3 and inspect target-specific native output or duplicate-key traceback. Avoid additional GitHub workflow creation until validated locally.

@@ -68,3 +68,9 @@ Frozen 2.3 artifacts and sealed 65-path Galaxy benchmark remain untouched. Histo
 - M2.1.2 notebook and SOURCE ZIP built: introspects native molecule container, maps native molecule IDs to RDKit-valid SMILES where possible, exports native reactant/product sides and operator IDs, otherwise retains fail-closed schema evidence.
 - Local syntax checks PASS; M2.1.2 Colab native execution PENDING. RBC2 untouched.
 - Next action: run M2.1.2 and inspect ALL_OUTPUTS; no new broad engine audit.
+
+## M2.4.1 RetroPath2 source schema repair — 2026-11-08
+- M2.4 Colab failed before native execution: upstream source headers ['Name','InChI']; notebook erroneously asserted one SMILES column. This is an input-contract error, not native chemistry failure.
+- M2.4.1 patch derives InChI from O=C(O)CCO via isolated RDKit, writes one row preserving exact Name/InChI schema, leaves rules/sink and native CLI unchanged, retains native row logs and fail-closed target matching.
+- Notebook AST and nbformat validation PASS; native target run PENDING. No claims of target-specific RetroPath2 success until outputs inspected.
+- Next action: execute M2.4.1 and inspect target-native outputs; do not repeat M2.3 installation or example preflight unless needed for smoke baseline.

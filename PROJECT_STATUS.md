@@ -48,3 +48,10 @@ Frozen 2.3 artifacts and sealed 65-path Galaxy benchmark remain untouched. Histo
 - V12 README explicitly says four native engines not executed; V14 README says BioPKS target-specific contract blocked, ChemEnzy remote opt-in, RetroPath2 example different target.
 - M1.4 source/roster recovery PASS; seven-engine native science NOT VERIFIED. V14 most advanced recovered orchestration, not automatically canonical current 2.6.
 - Next task M2.1: preserve verified RBC2 and test genuine target-specific DORAnet native output with exact logs.
+
+## M2.1 bounded DORAnet probe built — 2026-11-08
+- SOURCE ZIP and one Colab notebook produced locally. Python and notebook code compiled successfully; native Colab run NOT EXECUTED.
+- Probe installs DORAnet 0.5.7a1 in isolated venv, calls historical target-conditioned native API, captures logs and raw native identifiers.
+- No chemical-side reaction exporter certified. Explicit fail-closed state NATIVE_RETURNED_EXPORT_UNVERIFIED is expected until native reaction mapping is verified. This is diagnostic, not M2 scientific PASS.
+- RBC2 implementation and historical outputs untouched.
+- Next action: execute M2.1 Colab notebook and inspect output ZIP for native API signature, reaction identifiers, and failures before narrow repair.

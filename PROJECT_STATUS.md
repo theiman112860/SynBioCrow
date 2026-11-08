@@ -40,3 +40,11 @@ Frozen 2.3 artifacts and sealed 65-path Galaxy benchmark remain untouched. Histo
 - DORAnet, RetroPath2, ChemEnzyRetroPlanner, BioPKS, RetroTide NOT_CONFIGURED in this notebook. Seventh slot UNRESOLVED_SEVENTH_ENGINE. Do not count RetroRules resource or legacy wrappers as a seventh engine without explicit canonical evidence.
 - M1.2 PARTIAL PASS (artifact integrity/roster), M1 overall BLOCKED until full source lineage and seventh engine identity recovered.
 - Next single action: recover and integrate previously working native DORAnet implementation, preserving RBC2 and its output contract; concurrently identify seventh engine from historical source rather than guessing.
+
+## M1.4 source recovery — 2026-11-08
+- Recovered V9, V12 fixed, V14 source archives from targeted Drive retrieval.
+- Exact historical seven-engine roster confirmed by V9 engine_registry.json: DORAnet, RetroBioCat2, RetroPath2, RetroTide, BioPKS, AiZynthFinder, ChemEnzyRetroPlanner.
+- V9 first three entries CACHED_EXPORT; remaining four NO_VERIFIED_OUTPUT_IN_V8. All V9 run_command values null.
+- V12 README explicitly says four native engines not executed; V14 README says BioPKS target-specific contract blocked, ChemEnzy remote opt-in, RetroPath2 example different target.
+- M1.4 source/roster recovery PASS; seven-engine native science NOT VERIFIED. V14 most advanced recovered orchestration, not automatically canonical current 2.6.
+- Next task M2.1: preserve verified RBC2 and test genuine target-specific DORAnet native output with exact logs.

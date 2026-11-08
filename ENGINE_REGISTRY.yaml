@@ -1,0 +1,32 @@
+schema_version: 1
+status: unverified
+note: "Seven-engine roster must be reconciled against canonical 2.6 source; this is a provisional inventory of named historical integrations, not seven verified engines."
+candidates:
+  - id: doranet
+    status: unverified
+  - id: retrobiocat2
+    status: unverified
+  - id: retropath_standalone
+    status: unverified
+  - id: retropath2_legacy
+    status: reference_only_unverified
+  - id: retrorules
+    status: rules_resource_not_assumed_independent_engine
+  - id: biopks
+    status: specialist_unverified
+  - id: retrotide
+    status: specialist_unverified
+  - id: chemenzyretroplanner
+    status: unverified
+required_per_engine:
+  - source_ref
+  - environment_manifest
+  - native_entrypoint
+  - supported_target_domain
+  - target_conditioned_command
+  - native_output_path
+  - provenance_schema
+  - installation_test
+  - scientific_test
+  - integration_test
+  - evidence_hash

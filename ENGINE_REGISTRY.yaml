@@ -1,32 +1,26 @@
-schema_version: 1
-status: unverified
-note: "Seven-engine roster must be reconciled against canonical 2.6 source; this is a provisional inventory of named historical integrations, not seven verified engines."
-candidates:
+schema_version: 2
+source: "V9 engine_registry.json, cross-checked against V12 and V14 source archives"
+scientific_readiness: not_verified
+engines:
   - id: doranet
-    status: unverified
+    historical_evidence: cached_export
+    current_native_target_generation: unverified
   - id: retrobiocat2
-    status: unverified
-  - id: retropath_standalone
-    status: unverified
-  - id: retropath2_legacy
-    status: reference_only_unverified
-  - id: retrorules
-    status: rules_resource_not_assumed_independent_engine
-  - id: biopks
-    status: specialist_unverified
+    historical_evidence: cached_export
+    current_native_target_generation: archived_verified_two_targets
+    note: "16 native candidate reaction records from independent uploaded RBC2 evidence; rerun pending"
+  - id: retropath2
+    historical_evidence: cached_export
+    current_native_target_generation: unverified
   - id: retrotide
-    status: specialist_unverified
+    historical_evidence: no_verified_v8_output
+    current_native_target_generation: unverified
+  - id: biopks
+    historical_evidence: no_verified_v8_output
+    current_native_target_generation: blocked_target_contract
+  - id: aizynthfinder
+    historical_evidence: no_verified_v8_output
+    current_native_target_generation: unverified
   - id: chemenzyretroplanner
-    status: unverified
-required_per_engine:
-  - source_ref
-  - environment_manifest
-  - native_entrypoint
-  - supported_target_domain
-  - target_conditioned_command
-  - native_output_path
-  - provenance_schema
-  - installation_test
-  - scientific_test
-  - integration_test
-  - evidence_hash
+    historical_evidence: no_verified_v8_output
+    current_native_target_generation: remote_opt_in_required

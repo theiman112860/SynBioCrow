@@ -74,3 +74,9 @@ Frozen 2.3 artifacts and sealed 65-path Galaxy benchmark remain untouched. Histo
 - M2.4.1 patch derives InChI from O=C(O)CCO via isolated RDKit, writes one row preserving exact Name/InChI schema, leaves rules/sink and native CLI unchanged, retains native row logs and fail-closed target matching.
 - Notebook AST and nbformat validation PASS; native target run PENDING. No claims of target-specific RetroPath2 success until outputs inspected.
 - Next action: execute M2.4.1 and inspect target-native outputs; do not repeat M2.3 installation or example preflight unless needed for smoke baseline.
+
+## M2.4.2 RetroPath2 source/sink collision — 2026-11-08
+- Uploaded M2.4.1 output: input Name/InChI correct; native rules 17 and source fingerprints calculated, then process failed with ArgumentException duplicate key InChI=1S/C3H6O3/c4-2-1-3(5)6/h4H,1-2H2,(H,5,6) in SinkAndSourceDivider.Divide. Native target reaction count 0.
+- Built M2.4.2: preserve original sink/rules and native executable, remove exact target InChI from run-local sink copy, record original and filtered hashes and removed rows; retain fail-closed native target reaction acceptance.
+- Local syntax PASS; Colab execution pending. Do not count pinocembrin smoke rows as target-specific evidence.
+- Next action: run M2.4.2, upload outputs, inspect actual target-specific reaction SMILES.

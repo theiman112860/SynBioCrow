@@ -61,3 +61,10 @@ Frozen 2.3 artifacts and sealed 65-path Galaxy benchmark remain untouched. Histo
 - Narrow repair: uv-managed Python 3.11 isolated venv, uv pip install doranet==0.5.7a1 and rdkit; no native probe or RBC2 code changed.
 - Local notebook code syntax checks PASS. Colab runtime, native chemistry, and reaction export NOT VERIFIED.
 - Next single action: run M2.1.1 notebook and inspect ALL_OUTPUTS ZIP; do not retry Python 3.13 ensurepip bootstrap.
+
+## M2.1.1 observed run and M2.1.2 exporter — 2026-11-08
+- Uploaded ALL_OUTPUTS verified: Python 3.11.17, doranet 0.5.7a1 installed; native reverse expansion on O=C(O)CCO returned ChemNetworkBasic, 98 native reactions, 126 molecules, 3571 operators, 1 generation, 1.54 min.
+- M2.1.1 status NATIVE_RETURNED_EXPORT_UNVERIFIED: 98 native reaction identifiers, zero verified chemical-side reaction exports; warnings include invalid valence/kekulization; not a scientific export PASS.
+- M2.1.2 notebook and SOURCE ZIP built: introspects native molecule container, maps native molecule IDs to RDKit-valid SMILES where possible, exports native reactant/product sides and operator IDs, otherwise retains fail-closed schema evidence.
+- Local syntax checks PASS; M2.1.2 Colab native execution PENDING. RBC2 untouched.
+- Next action: run M2.1.2 and inspect ALL_OUTPUTS; no new broad engine audit.

@@ -55,3 +55,9 @@ Frozen 2.3 artifacts and sealed 65-path Galaxy benchmark remain untouched. Histo
 - No chemical-side reaction exporter certified. Explicit fail-closed state NATIVE_RETURNED_EXPORT_UNVERIFIED is expected until native reaction mapping is verified. This is diagnostic, not M2 scientific PASS.
 - RBC2 implementation and historical outputs untouched.
 - Next action: execute M2.1 Colab notebook and inspect output ZIP for native API signature, reaction identifiers, and failures before narrow repair.
+
+## M2.1.1 Python 3.13 venv bootstrap repair — 2026-11-08
+- Observed Colab failure: venv.EnvBuilder(with_pip=True) -> ensurepip CalledProcessError under Python 3.13, before native DORAnet execution.
+- Narrow repair: uv-managed Python 3.11 isolated venv, uv pip install doranet==0.5.7a1 and rdkit; no native probe or RBC2 code changed.
+- Local notebook code syntax checks PASS. Colab runtime, native chemistry, and reaction export NOT VERIFIED.
+- Next single action: run M2.1.1 notebook and inspect ALL_OUTPUTS ZIP; do not retry Python 3.13 ensurepip bootstrap.

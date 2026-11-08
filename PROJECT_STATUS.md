@@ -32,3 +32,11 @@ Obtain the latest 2.6 seven-engine SOURCE ZIP or a direct Git commit/branch cont
 
 ## Immutable boundaries
 Frozen 2.3 artifacts and sealed 65-path Galaxy benchmark remain untouched. Historical prospective failures remain failures.
+
+## M1.2 uploaded artifact inspection — 2026-11-08
+- SOURCE ZIP SHA256 e6cd9b76c7a239feb64df42639818fff90d86fa823c956711aa9cde6ac3e6873 contains canonical notebook, RBC2 reference notebook, README only.
+- ALL_OUTPUTS ZIP SHA256 c2dc7da0ee4538ccc392e3c5328459548bf1a461e66deadee249d9adf774bb0f.
+- RBC2 native archive records 9 target-conditioned candidate reactions for 3-hydroxypropionic acid and 7 for butanal; 16 CSV rows and JSON counts consistent; source commit c5f32561b1ed99d0701a6dbb472dc448d6c082e8. Archived evidence verified, execution not repeated in this environment.
+- DORAnet, RetroPath2, ChemEnzyRetroPlanner, BioPKS, RetroTide NOT_CONFIGURED in this notebook. Seventh slot UNRESOLVED_SEVENTH_ENGINE. Do not count RetroRules resource or legacy wrappers as a seventh engine without explicit canonical evidence.
+- M1.2 PARTIAL PASS (artifact integrity/roster), M1 overall BLOCKED until full source lineage and seventh engine identity recovered.
+- Next single action: recover and integrate previously working native DORAnet implementation, preserving RBC2 and its output contract; concurrently identify seventh engine from historical source rather than guessing.

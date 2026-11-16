@@ -1,0 +1,22 @@
+{
+  "schema": "synbiocrow.core.v1.certification",
+  "decision": "CERTIFICATION_PENDING",
+  "source": "historical archives; not an end-to-end reproducibility run",
+  "engines": [
+    "DORAnet",
+    "AiZynthFinder",
+    "ChemEnzyRetroPlanner",
+    "RetroBioCat2",
+    "RetroPath2",
+    "BioPKS",
+    "RetroTide"
+  ],
+  "gates": {
+    "all_seven_reproducible_install_and_native_run": "NOT_VERIFIED",
+    "all_seven_native_extraction": "NOT_VERIFIED",
+    "candidate_pathway_reconstruction": "PASS_HISTORICAL_EVIDENCE"
+  },
+  "limitations": [
+    "The governance CI checks process rules, not native engine installation or scientific validity."
+  ]
+}

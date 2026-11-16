@@ -1,11 +1,26 @@
 # Pathway evidence v1
 
-This is a **candidate graph witness** feature, not a scientific certification engine. It does not call or reinstall native generators.
+This feature produces a **candidate graph witness**, not scientific certification, and does not reinstall or run any native generator.
 
-Input: Reaction objects with stable IDs, all reactants/products, engine and evidence reference; explicit seed set and target.
+## Existing historical archive adapter
 
-Output: target reachability, a dependency-complete reaction witness, provenance and direct target-producing precursor gaps. A target already supplied as a seed has zero reaction evidence and must not be counted as a newly discovered pathway.
+The adapter accepts two previously inspected SynBioCrow archive layouts:
+- `SynBioCrow_AiZynth_Seven_Engine_Combined_RESULTS.zip` with `combined_reaction_candidates.json`
+- `SynBioCrow_AIZYNTH_TARGET_BIDIRECTIONAL_INTEGRATION.zip` with `synbiocrow_target_integration/combined_reactions.json`
 
-The implementation does not infer reaction direction, cofactor balance, carbon balance, enzymatic support, thermodynamics, host feasibility, or experimental validation. Those require separate gates. PKS design records must not be fed as chemical reaction edges without a verified release transformation.
+Records must have `id`, `engine`, `substrates`, `products`, `direction`, `source_file` and `source_sha256`. Missing evidence is quarantined. The historical source's explicit substrate-to-product orientation is preserved; no reverse chemistry is inferred. SMILES are treated as exact strings, not canonicalized.
 
-Run regression tests with `python -m unittest discover -s tests -p 'test_pathway_evidence.py'`.
+Example:
+```bash
+python scripts/trace_legacy_archive.py SynBioCrow_AiZynth_Seven_Engine_Combined_RESULTS.zip --target 'CCCCCC(=O)O' --seed 'CCCCCCO' --output hexanoic_graph_evidence.json
+```
+
+This example reports a candidate graph connection only. The source's native direction and chemical feasibility still require independent validation.
+
+For a custom normalized JSON input use `python scripts/trace_pathway_evidence.py INPUT.json`.
+
+## Safety boundary
+
+The tracer requires all substrates, records reaction IDs and source hashes, and separates graph reachability from biochemical validity. It does not evaluate carbon/atom balance, enzyme support, cofactor availability, thermodynamics, organism constraints, or experimental validation. BioPKS/RetroTide designs must not be treated as chemical edges without verified release chemistry.
+
+Tests: `python -m unittest discover -s tests -p 'test_*pathway_evidence.py'` and `python -m unittest discover -s tests -p 'test_legacy_adapter.py'`.

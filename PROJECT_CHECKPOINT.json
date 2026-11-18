@@ -1,0 +1,34 @@
+{
+  "schema_version": "1.0",
+  "project": "SynBioCrow",
+  "checkpoint_date": "2026-11-18",
+  "status": "CONTEXT_RECONCILIATION_REQUIRED",
+  "current_milestone": "Cofactor-aware Rhea enzymatic bridge search using four frozen longest AiZynthFinder routes",
+  "verified_repo_commit": null,
+  "notebook_path": null,
+  "latest_artifacts": [],
+  "historical_context_unverified_in_repository": "Prior ALL_OUTPUTS archive reported four routes (depths 7,7,6,6), 28,872 indexed Rhea reactions, zero bridge candidates under restrictive conditions; GitHub evidence path not yet verified.",
+  "blockers": [
+    "Exact latest notebook, evidence artifacts and SHA have not been reconciled against repository HEAD"
+  ],
+  "next_action": "Recover exact four-route evidence and Rhea cache; build cofactor-aware bridge search without regenerating routes",
+  "scientific_status": "NOT_VERIFIED",
+  "rules": [
+    "Do not overwrite evidence",
+    "Never infer scientific PASS from notebook exit",
+    "Human approval for merge and certification",
+    "Update checkpoint only after verifying artifacts and hashes"
+  ],
+  "checkpoint_update_policy": {
+    "append_history": true,
+    "record_commit_sha": true,
+    "record_artifact_sha256": true,
+    "allowed_statuses": [
+      "NOT_VERIFIED",
+      "FAIL",
+      "INCONCLUSIVE",
+      "PASS_HISTORICAL_EVIDENCE",
+      "PASS_REPRODUCED"
+    ]
+  }
+}

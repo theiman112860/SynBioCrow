@@ -1,4 +1,5 @@
 import unittest
+from unittest.mock import patch
 from synbiocrow.core.models import LifecycleState,ReactionStep,PathwayCandidate
 from synbiocrow.evidence.gates import GateDecision,GateResult,require_all
 from synbiocrow.lifecycle.policy import PromotionPolicy
@@ -9,8 +10,11 @@ from synbiocrow.core.errors import BackendUnavailableError
 class EngineContractTests(unittest.TestCase):
     def test_registry_contains_planned_live_families(self):
         self.assertEqual(default_registry().ids(),("biopks_retrotide","doranet","retrobiocat2","retropath2","retropath_standalone"))
-    def test_unmigrated_backend_fails_closed(self):
-        with self.assertRaises(BackendUnavailableError): default_registry().get("doranet").generate("CCO")
+    def test_missing_doranet_backend_fails_closed(self):
+        backend = default_registry().get("doranet")
+        with patch.object(backend, "available", return_value=False):
+            with self.assertRaises(BackendUnavailableError):
+                backend.generate("CCO")
     def test_evidence_abstention_blocks_promotion(self):
         self.assertEqual(PromotionPolicy().promote(LifecycleState.CANDIDATE,GateDecision.ABSTAIN),LifecycleState.CANDIDATE)
     def test_pass_promotes_one_level_only(self):

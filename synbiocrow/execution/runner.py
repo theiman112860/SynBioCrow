@@ -81,16 +81,15 @@ def design(
     if cached is not None:
         candidates=[_candidate_from_dict(x) for x in cached.get("candidates",[])]
         backend_status=dict(cached.get("backend_status") or {})
-        _emit(progress,35,"restored candidate generation checkpoint")
-    else:
-        total=max(1,len(selected))
-        for i,bid in enumerate(selected):
-            backend=engine.backends.get(bid)
-            r=readiness.get(bid,{})
-            if not r.get("available",False):
-                backend_status[bid]={"status":"SKIPPED_UNAVAILABLE","readiness":r}
-                _emit(progress,5+30*(i+1)/total,f"{bid}: unavailable/configuration missing")
-                continue
+        _emit(progress,5,"restored completed candidate generation")
+    pending=[bid for bid in dict.fromkeys(selected)
+             if backend_status.get(bid,{}).get("status")!="COMPLETE"]
+    for i,bid in enumerate(pending):
+        backend=engine.backends.get(bid)
+        r=readiness.get(bid,{})
+        if not r.get("available",False):
+            backend_status[bid]={"status":"SKIPPED_UNAVAILABLE","readiness":r}
+        else:
             try:
                 found=list(backend.generate(
                     request.target_smiles,
@@ -104,13 +103,13 @@ def design(
                     "error_type":type(exc).__name__,
                     "error":str(exc),
                 }
-            _emit(progress,5+30*(i+1)/total,f"{bid}: {backend_status[bid]['status']}")
-        if store:
-            store.write_stage(run_id,"candidates",{
-                "request":asdict(request),
-                "candidates":candidates,
-                "backend_status":backend_status,
-            })
+        _emit(progress,5+30*(i+1)/len(pending),f"{bid}: {backend_status[bid]['status']}")
+    if store and (pending or cached is None):
+        store.write_stage(run_id,"candidates",{
+            "request":asdict(request),
+            "candidates":candidates,
+            "backend_status":backend_status,
+        })
 
     _emit(progress,45,"build cross-engine reaction graph")
     graph=engine.build_ensemble(candidates)

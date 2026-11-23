@@ -1,0 +1,149 @@
+[
+  {
+    "engine": "DORAnet",
+    "target": "3_hydroxypropionic_acid",
+    "direction_supported_product_records": 97,
+    "engine_in_reconstructed_target_path": false,
+    "native_pathway_proven_for_this_target": false
+  },
+  {
+    "engine": "DORAnet",
+    "target": "butanal",
+    "direction_supported_product_records": 75,
+    "engine_in_reconstructed_target_path": false,
+    "native_pathway_proven_for_this_target": false
+  },
+  {
+    "engine": "DORAnet",
+    "target": "hexanoic_acid",
+    "direction_supported_product_records": 0,
+    "engine_in_reconstructed_target_path": false,
+    "native_pathway_proven_for_this_target": false
+  },
+  {
+    "engine": "AiZynthFinder",
+    "target": "3_hydroxypropionic_acid",
+    "direction_supported_product_records": 15,
+    "engine_in_reconstructed_target_path": false,
+    "native_pathway_proven_for_this_target": false
+  },
+  {
+    "engine": "AiZynthFinder",
+    "target": "butanal",
+    "direction_supported_product_records": 16,
+    "engine_in_reconstructed_target_path": true,
+    "native_pathway_proven_for_this_target": true
+  },
+  {
+    "engine": "AiZynthFinder",
+    "target": "hexanoic_acid",
+    "direction_supported_product_records": 0,
+    "engine_in_reconstructed_target_path": false,
+    "native_pathway_proven_for_this_target": false
+  },
+  {
+    "engine": "ChemEnzyRetroPlanner",
+    "target": "3_hydroxypropionic_acid",
+    "direction_supported_product_records": 4,
+    "engine_in_reconstructed_target_path": false,
+    "native_pathway_proven_for_this_target": false
+  },
+  {
+    "engine": "ChemEnzyRetroPlanner",
+    "target": "butanal",
+    "direction_supported_product_records": 60,
+    "engine_in_reconstructed_target_path": false,
+    "native_pathway_proven_for_this_target": false
+  },
+  {
+    "engine": "ChemEnzyRetroPlanner",
+    "target": "hexanoic_acid",
+    "direction_supported_product_records": 26,
+    "engine_in_reconstructed_target_path": false,
+    "native_pathway_proven_for_this_target": false
+  },
+  {
+    "engine": "RetroTide",
+    "target": "3_hydroxypropionic_acid",
+    "direction_supported_product_records": 0,
+    "engine_in_reconstructed_target_path": false,
+    "native_pathway_proven_for_this_target": false
+  },
+  {
+    "engine": "RetroTide",
+    "target": "butanal",
+    "direction_supported_product_records": 0,
+    "engine_in_reconstructed_target_path": false,
+    "native_pathway_proven_for_this_target": false
+  },
+  {
+    "engine": "RetroTide",
+    "target": "hexanoic_acid",
+    "direction_supported_product_records": 0,
+    "engine_in_reconstructed_target_path": false,
+    "native_pathway_proven_for_this_target": false
+  },
+  {
+    "engine": "BioPKS",
+    "target": "3_hydroxypropionic_acid",
+    "direction_supported_product_records": 0,
+    "engine_in_reconstructed_target_path": false,
+    "native_pathway_proven_for_this_target": false
+  },
+  {
+    "engine": "BioPKS",
+    "target": "butanal",
+    "direction_supported_product_records": 0,
+    "engine_in_reconstructed_target_path": false,
+    "native_pathway_proven_for_this_target": false
+  },
+  {
+    "engine": "BioPKS",
+    "target": "hexanoic_acid",
+    "direction_supported_product_records": 0,
+    "engine_in_reconstructed_target_path": false,
+    "native_pathway_proven_for_this_target": false
+  },
+  {
+    "engine": "RetroBioCat2",
+    "target": "3_hydroxypropionic_acid",
+    "direction_supported_product_records": 9,
+    "engine_in_reconstructed_target_path": false,
+    "native_pathway_proven_for_this_target": false
+  },
+  {
+    "engine": "RetroBioCat2",
+    "target": "butanal",
+    "direction_supported_product_records": 7,
+    "engine_in_reconstructed_target_path": false,
+    "native_pathway_proven_for_this_target": false
+  },
+  {
+    "engine": "RetroBioCat2",
+    "target": "hexanoic_acid",
+    "direction_supported_product_records": 0,
+    "engine_in_reconstructed_target_path": false,
+    "native_pathway_proven_for_this_target": false
+  },
+  {
+    "engine": "RetroPath2",
+    "target": "3_hydroxypropionic_acid",
+    "direction_supported_product_records": 0,
+    "engine_in_reconstructed_target_path": false,
+    "native_pathway_proven_for_this_target": false
+  },
+  {
+    "engine": "RetroPath2",
+    "target": "butanal",
+    "direction_supported_product_records": 0,
+    "engine_in_reconstructed_target_path": false,
+    "native_pathway_proven_for_this_target": false
+  },
+  {
+    "engine": "RetroPath2",
+    "target": "hexanoic_acid",
+    "direction_supported_product_records": 0,
+    "engine_in_reconstructed_target_path": false,
+    "native_pathway_proven_for_this_target": false
+  }
+]

@@ -1,0 +1,41 @@
+{
+  "3_hydroxypropionic_acid": {
+    "smiles": "O=C(O)CCO",
+    "reachable": false,
+    "witness": null
+  },
+  "butanal": {
+    "smiles": "CCCC=O",
+    "reachable": true,
+    "witness": {
+      "steps": [
+        {
+          "index": 173,
+          "engine": "AiZynthFinder",
+          "reactants": [
+            "CCCCO"
+          ],
+          "products": [
+            "CCCC=O"
+          ],
+          "native_file": "native/AiZynthFinder/external_evidence/0_butanal_native_routes.json",
+          "reaction_smiles": "CCCCO>>CCCC=O",
+          "native_sha256": "097064067fe5b15511d1731606aff112d45ea4ec9d11f274fde94fda81103207",
+          "native_pointer": "/routes/0/tree/children/0",
+          "direction": "precursors_to_target",
+          "native_direction": null,
+          "native_reaction": null
+        }
+      ],
+      "engines": [
+        "AiZynthFinder"
+      ],
+      "multi_engine": false
+    }
+  },
+  "hexanoic_acid": {
+    "smiles": "CCCCCC(=O)O",
+    "reachable": false,
+    "witness": null
+  }
+}

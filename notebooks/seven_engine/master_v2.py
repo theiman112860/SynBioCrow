@@ -10,7 +10,7 @@ def execute(name,cmd,out,timeout):
  log=out/'logs'/(name+'.log');log.parent.mkdir(parents=True,exist_ok=True)
  print('[MASTER V2]',name,'START',flush=True);start=time.monotonic()
  with log.open('w') as f:
-  p=subprocess.Popen(cmd,stdout=f,stderr=subprocess.STDOUT,cwd=str(ROOT),start_new_session=True,env={**os.environ,'PYTHONUNBUFFERED':'1','PYTHONPATH':str(ROOT)+os.pathsep+os.environ.get('PYTHONPATH','')})
+  p=subprocess.Popen(cmd,stdout=f,stderr=subprocess.STDOUT,cwd=str(ROOT),start_new_session=True,env={**os.environ,'PYTHONUNBUFFERED':'1','PYTHONHASHSEED':'0','PYTHONPATH':str(ROOT)+os.pathsep+os.environ.get('PYTHONPATH','')})
   last=0
   while p.poll() is None:
    elapsed=time.monotonic()-start
@@ -49,15 +49,16 @@ def collect_external(engine, out, started_ns):
    if engine=='RetroPath2':
     with f.open(newline='') as h:
      reader=csv.DictReader(h)
-     for r in reader:
+     for row_index,r in enumerate(reader,1):
       rxn=r.get('Reaction SMILES') or r.get('reaction_smiles') or ''
       if '>>' in rxn:
-       a,b=rxn.split('>>',1);emit(a,b,copy,direction='native_source_expansion')
+       a,b=rxn.split('>>',1);emit(a,b,copy,direction='native_source_expansion',native_pointer=f'csv:{row_index}',
+            native_template=r.get('Rule ID'))
    else:
     obj=json.loads(f.read_text())
     if engine=='DORAnet':
-     for target in obj.get('targets',[]):
-      for r in target.get('reactions',[]):
+     for target_index,target in enumerate(obj.get('targets',[])):
+      for reaction_index,r in enumerate(target.get('reactions',[])):
        # DORAnet uses human-readable `a + b = c + d`, not reaction SMILES.
        raw=r.get('reaction','')
        if ' = ' in raw:
@@ -69,35 +70,34 @@ def collect_external(engine, out, started_ns):
         a,b=(right,left) if direction=='retro' else (left,right)
         emit('.'.join(x.strip() for x in a.split(' + ')),'.'.join(x.strip() for x in b.split(' + ')),
              copy,direction='precursors_to_target',native_direction=direction,native_reaction=raw,
-             target_smiles=target.get('smiles'))
+             target_smiles=target.get('smiles'),native_template=r.get('rule_id'),
+             native_pointer=f'/targets/{target_index}/reactions/{reaction_index}')
     elif engine=='RetroBioCat2':
-     for t in obj.get('targets',[]):
-      for r in t.get('reactions',[]):
+     for target_index,t in enumerate(obj.get('targets',[])):
+      for reaction_index,r in enumerate(t.get('reactions',[])):
        rx=r.get('reaction_smiles','')
        if '>>' in rx:
         a,b=rx.split('>>',1)
-        emit(a,b,copy,direction='precursors_to_target',target_smiles=t.get('smiles'))
+        emit(a,b,copy,direction='precursors_to_target',target_smiles=t.get('smiles'),
+             native_template=r.get('reaction_name'),native_pointer=f'/targets/{target_index}/reactions/{reaction_index}')
     elif engine=='AiZynthFinder':
-     def walk(node,parent=None):
+     def walk(node,path,parent=None):
       if not isinstance(node,dict):return
       if node.get('type')=='reaction':
        precursors=[c.get('smiles') for c in node.get('children',[]) if isinstance(c,dict) and c.get('type')=='mol' and c.get('smiles')]
-       if parent and precursors:emit('.'.join(precursors),parent,copy,direction='precursors_to_target',target_smiles=obj.get('target_smiles'))
-       for child in node.get('children',[]):walk(child,None)
-      elif node.get('type')=='mol':
-       for child in node.get('children',[]):walk(child,node.get('smiles'))
-     for route in obj.get('routes',[]):walk(route.get('tree',{}))
+       if parent and precursors:
+        emit('.'.join(precursors),parent,copy,direction='precursors_to_target',
+             target_smiles=obj.get('target_smiles'),native_pointer=path,
+             native_template=node.get('metadata',{}).get('template_hash'))
+      for i,child in enumerate(node.get('children',[])):
+       walk(child,f'{path}/children/{i}',node.get('smiles') if node.get('type')=='mol' else None)
+     for i,route in enumerate(obj.get('routes',[])):walk(route.get('tree',{}),f'/routes/{i}/tree')
   except Exception as exc:diagnostics.append(str(f)+': '+repr(exc))
- # A source can repeat the same reaction in multiple routes; preserve one per engine.
- unique={}
- for row in records:
-  key=(row["reaction_smiles"],row["native_file"])
-  unique.setdefault(key,row)
  digests={name:hashlib.sha256((out/name).read_bytes()).hexdigest()
-          for name in {row["native_file"] for row in unique.values()}}
- for row in unique.values():
+          for name in {row["native_file"] for row in records}}
+ for row in records:
   row["native_sha256"]=digests[row["native_file"]]
- return list(unique.values()),{'root':str(root),'files':selected,'diagnostics':diagnostics,'collected':len(unique)}
+ return records,{'root':str(root),'files':selected,'diagnostics':diagnostics,'collected':len(records)}
 
 def collect_retrotide_design_evidence(out, started_ns):
  """Collect actual specialist design/TE evidence without inventing separate reactions.

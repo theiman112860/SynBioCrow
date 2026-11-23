@@ -1,0 +1,196 @@
+{
+  "version": "M1_20_7_REVIEW",
+  "targets": [
+    "3_hydroxypropionic_acid",
+    "butanal",
+    "hexanoic_acid"
+  ],
+  "engine_states": {
+    "DORAnet": {
+      "syntax": "PASS",
+      "run": {
+        "status": "PROCESS_PASS",
+        "exit_code": 0,
+        "seconds": 106.1,
+        "log": "logs/DORAnet_native.log"
+      },
+      "parsed_reaction_records": 173,
+      "native_json_files": [
+        "native/DORAnet/external_evidence/0_results.json"
+      ],
+      "external_evidence": {
+        "root": "/workspace/work/full-master/content/synbiocrow_doranet_native",
+        "files": [
+          "/workspace/work/full-master/content/synbiocrow_doranet_native/results.json"
+        ],
+        "diagnostics": [],
+        "collected": 173
+      },
+      "acceptance": "NATIVE_REACTIONS_EXPORTED"
+    },
+    "AiZynthFinder": {
+      "syntax": "PASS",
+      "run": {
+        "status": "PROCESS_PASS",
+        "exit_code": 0,
+        "seconds": 59.1,
+        "log": "logs/AiZynthFinder_native.log"
+      },
+      "parsed_reaction_records": 31,
+      "native_json_files": [
+        "native/AiZynthFinder/external_evidence/0_butanal_native_routes.json",
+        "native/AiZynthFinder/external_evidence/1_3_hydroxypropionic_acid_native_routes.json"
+      ],
+      "external_evidence": {
+        "root": "/workspace/work/full-master/content/synbiocrow_aizynth/outputs",
+        "files": [
+          "/workspace/work/full-master/content/synbiocrow_aizynth/outputs/butanal_native_routes.json",
+          "/workspace/work/full-master/content/synbiocrow_aizynth/outputs/3_hydroxypropionic_acid_native_routes.json"
+        ],
+        "diagnostics": [],
+        "collected": 31
+      },
+      "acceptance": "NATIVE_REACTIONS_EXPORTED"
+    },
+    "ChemEnzyRetroPlanner": {
+      "run": {
+        "status": "PROCESS_PASS",
+        "exit_code": 0,
+        "seconds": 83.1,
+        "log": "logs/ChemEnzyRetroPlanner_native.log"
+      },
+      "native_status": {
+        "assets": {
+          "building_block_dataset.zip": "87fd03d502cf75b558871b8adda89b6e4918288922ad66c84ca15880958cc1e0",
+          "onmt_metadata.zip": "b5922a639eb387a815374c2e069c8c76b51a4b2bb5fb0bf9cf9cf91ccbbe7adb",
+          "retro_planner_env.tar.gz": "10d5029b8660c52eaf0c8c047ceac277b88e3930843e6162b4115c05eeda06bd",
+          "value_fun_metadata.zip": "085b0364ff07af10e577eae523ea2f05e795d2a62f4262d10587cc96a6504087"
+        },
+        "config_sha256": "c57d61e7f0f121ac798391bc25456f84beb53e404c40805f7da217e082e58e13",
+        "model": "onmt_models.bionav_one_step",
+        "reactions_sha256": "49d4c7ed793de1b9147c206d758ce3519df9dd49ae0f1356310b13604de887d0",
+        "route_counts": {
+          "CCCC=O": 66,
+          "CCCCCC(=O)O": 31,
+          "O=C(O)CCO": 28
+        },
+        "routes_sha256": "ada05b7d7f03049e48bac1143ca46e57d5f4aaca626aaf28aca1efcd948fe26d",
+        "scientific_lock_sha256": "ec3574bd755f6a987c1be490e5fe545cc1766dc242ffe6ee2d6256641a541158",
+        "stage": "native_output",
+        "status": "NATIVE_OUTPUT",
+        "stock": "BioNav-stock",
+        "upstream_git": "7dbab354189db9edc7aea9c0aedc2f1b1659f906"
+      },
+      "parsed_reaction_records": 342,
+      "native_json_files": [
+        "native/ChemEnzyRetroPlanner/local_native/routes.json"
+      ],
+      "external_evidence": {
+        "config_sha256": "c57d61e7f0f121ac798391bc25456f84beb53e404c40805f7da217e082e58e13"
+      },
+      "acceptance": "NATIVE_REACTIONS_EXPORTED"
+    },
+    "RetroTide": {
+      "syntax": "PASS",
+      "run": {
+        "status": "PROCESS_PASS",
+        "exit_code": 0,
+        "seconds": 7.0,
+        "log": "logs/RetroTide_native.log"
+      },
+      "implementation_note": "Direct RetroTide designPKS invocation; shared upstream package with BioPKS",
+      "acceptance_override": "RETROTIDE_NATIVE_DESIGN_API_PASS",
+      "specialist_evidence": {
+        "status": "RETROTIDE_NATIVE_DESIGN_API_EVIDENCE",
+        "native_designs": 113,
+        "native_te_calls": 0,
+        "exact_target_matches": 0,
+        "evidence_file": "native/RetroTide/external_evidence/native_design_release_records.json",
+        "evidence_sha256": "b3a5c0f201622e949d3211d4efa2750eb5972e4a0bbda85e126a12a49757ce80",
+        "independent_retrotide_api_verified": true,
+        "additional_unique_reactions_counted": 0
+      },
+      "parsed_reaction_records": 0,
+      "native_json_files": [],
+      "external_evidence": {},
+      "acceptance": "RETROTIDE_NATIVE_DESIGN_API_PASS"
+    },
+    "BioPKS": {
+      "syntax": "PASS",
+      "run": {
+        "status": "PROCESS_PASS",
+        "exit_code": 0,
+        "seconds": 7.0,
+        "log": "logs/BioPKS_native.log"
+      },
+      "specialist_evidence": {
+        "status": "BIOPKS_NATIVE_DESIGN_API_EVIDENCE",
+        "native_designs": 113,
+        "exact_target_matches": 1,
+        "evidence_file": "native/BioPKS/external_evidence/native_design_release_records.json",
+        "evidence_sha256": "0158668cc96d72fbdf3fc28e4f967fa71d5ed21780ad9a22e06bf7367d5b1d87"
+      },
+      "acceptance_override": "BIOPKS_NATIVE_DESIGN_API_EVIDENCE",
+      "parsed_reaction_records": 0,
+      "native_json_files": [],
+      "external_evidence": {},
+      "acceptance": "BIOPKS_NATIVE_DESIGN_API_EVIDENCE"
+    },
+    "RetroBioCat2": {
+      "syntax": "PASS",
+      "run": {
+        "status": "PROCESS_FAILED",
+        "exit_code": 1,
+        "seconds": 1.0,
+        "log": "logs/RetroBioCat2_native.log"
+      },
+      "parsed_reaction_records": 0,
+      "native_json_files": [],
+      "external_evidence": {
+        "root": "/workspace/work/full-master/content/rbc2_native_verified/results",
+        "files": [],
+        "diagnostics": [],
+        "collected": 0
+      },
+      "acceptance": "NATIVE_REACTION_GATE_OPEN"
+    },
+    "RetroPath2": {
+      "syntax": "PASS",
+      "run": {
+        "status": "PROCESS_PASS",
+        "exit_code": 0,
+        "seconds": 15.0,
+        "log": "logs/RetroPath2_native.log"
+      },
+      "parsed_reaction_records": 1399,
+      "native_json_files": [
+        "native/RetroPath2/external_evidence/0_results.csv",
+        "native/RetroPath2/external_evidence/1_results.csv"
+      ],
+      "external_evidence": {
+        "root": "/workspace/work/full-master/content/retropath2_standalone",
+        "files": [
+          "/workspace/work/full-master/content/retropath2_standalone/runs/butanal/results/results.csv",
+          "/workspace/work/full-master/content/retropath2_standalone/runs/3_hydroxypropionic_acid/results/results.csv"
+        ],
+        "diagnostics": [],
+        "collected": 1399
+      },
+      "acceptance": "NATIVE_REACTIONS_EXPORTED"
+    }
+  },
+  "fresh_native_records": 1945,
+  "replayed_records": 0,
+  "seven_engine_live_gate": "NOT_VERIFIED",
+  "limitations": [
+    "Separate operational adapters do not imply independent algorithms",
+    "ChemEnzyRetroPlanner local routes require a verified native artifact hash",
+    "Raw template hits and designs are not certified reactions",
+    "Automated hybrid candidates are structural only"
+  ],
+  "historical_hosted_reactions": 0,
+  "hybrid_candidates": 86,
+  "seven_engine_execution_gate": "NOT_PASSED",
+  "seven_engine_reaction_export_gate": "NOT_PASSED",
+  "retro_tide_output_type": "Native PKS designs, not reaction records"
+}

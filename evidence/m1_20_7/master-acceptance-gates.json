@@ -1,0 +1,27 @@
+{
+  "all_seven_processes_passed": true,
+  "all_reaction_engines_have_direction_admitted_candidates": false,
+  "pks_design_evidence": {
+    "BioPKS": {
+      "status": "BIOPKS_NATIVE_DESIGN_API_EVIDENCE",
+      "native_designs": 113,
+      "exact_target_matches": 1,
+      "evidence_file": "native/BioPKS/external_evidence/native_design_release_records.json",
+      "evidence_sha256": "0158668cc96d72fbdf3fc28e4f967fa71d5ed21780ad9a22e06bf7367d5b1d87"
+    },
+    "RetroTide": {
+      "status": "RETROTIDE_NATIVE_DESIGN_API_EVIDENCE",
+      "native_designs": 113,
+      "native_te_calls": 0,
+      "exact_target_matches": 0,
+      "evidence_file": "native/RetroTide/external_evidence/native_design_release_records.json",
+      "evidence_sha256": "b3a5c0f201622e949d3211d4efa2750eb5972e4a0bbda85e126a12a49757ce80",
+      "independent_retrotide_api_verified": true,
+      "additional_unique_reactions_counted": 0
+    }
+  },
+  "all_reaction_engines_have_reconstructed_target_pathways": false,
+  "complete_multi_engine_target_pathway_demonstrated": false,
+  "biochemical_certification": false,
+  "note": "Graph witnesses rely on assumed starting materials and recorded candidate reaction direction. No claim of balanced reactions or experimentally verified feasibility."
+}

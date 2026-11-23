@@ -4,6 +4,7 @@ import csv
 import gzip
 import hashlib
 import json
+import zipfile
 from collections import Counter
 from pathlib import Path
 
@@ -32,6 +33,16 @@ def normalize(reaction):
     left, right = reaction.split(">>")
     return tuple(tuple(sorted(canonical(smiles) for smiles in side.split(".")))
                  for side in (left, right))
+
+
+def inventory(species):
+    atoms = Counter()
+    charge = 0
+    for molecule in species:
+        for atom in Chem.AddHs(molecule).GetAtoms():
+            atoms[atom.GetAtomicNum()] += 1
+            charge += atom.GetFormalCharge()
+    return atoms, charge
 
 
 def rbc2_records(root, attempt):
@@ -82,6 +93,70 @@ def chemenzy_records(run, targets=TARGETS):
     return raw, result
 
 
+def aizynth_records(root, attempt):
+    directory = root / f"aizynth-{attempt}"
+    result = {}
+    paths = {}
+    for path in sorted(directory.glob("*_native_routes.json")):
+        payload = read(path)
+        target = canonical(payload["target_smiles"])
+        paths[target] = path
+        rows = []
+
+        def walk(node):
+            require(node["type"] == "mol", "Unexpected AiZynthFinder molecule node")
+            for reaction in node.get("children", []):
+                require(reaction["type"] == "reaction", "Unexpected AiZynthFinder reaction node")
+                children = reaction["children"]
+                pair = (tuple(sorted(canonical(child["smiles"]) for child in children)),
+                        (canonical(node["smiles"]),))
+                require(pair[0], "AiZynthFinder reaction is missing precursors")
+                rows.append((pair, reaction["metadata"]["template_hash"]))
+                for child in children:
+                    walk(child)
+
+        for route in payload["routes"]:
+            tree = route["tree"]
+            require(canonical(tree["smiles"]) == target, "AiZynthFinder route target changed")
+            require(route["route_metadata"]["is_solved"], "AiZynthFinder route is unsolved")
+            walk(tree)
+        require(rows and len(rows) == len(payload["native_reaction_nodes"]),
+                "AiZynthFinder native reaction count mismatch")
+        result[target] = rows
+    require(set(result) == {canonical(target) for target in TARGETS},
+            "AiZynthFinder evidence is missing a target")
+    return paths, result
+
+
+def pks_designs(root, engine):
+    expected_targets = {canonical(smiles) for smiles in (*TARGETS, "CCCCCC(=O)O")}
+    identities = []
+    summary = {}
+    for attempt in (1, 2):
+        rows = read(root / f"{engine}-{attempt}.json")
+        require({canonical(row["target_smiles"]) for row in rows} == expected_targets,
+                f"{engine} is missing a native target")
+        matches = Counter()
+        keys = []
+        for row in rows:
+            target = canonical(row["target_smiles"])
+            product = row.get("native_release_product_smiles")
+            exact = product is not None and canonical(product) == target
+            require(exact == row["exact_target_match"], f"{engine} release mismatch")
+            require(row["native_te_called"] == (engine == "biopks"), f"{engine} TE call status changed")
+            if engine == "retrotide":
+                require(row["native_retrotide_designPKS_called"], "Native RetroTide call missing")
+            if exact:
+                matches[target] += 1
+            keys.append((target, canonical(row["native_bound_smiles"]), row["round"],
+                         product, row["score"]))
+        identities.append(Counter(keys))
+        summary = {"native_designs": len(rows), "native_release_calls": sum(
+            row["native_te_called"] for row in rows), "exact_released_targets": dict(matches)}
+    require(identities[0] == identities[1], f"{engine} typed native designs did not reproduce")
+    return summary
+
+
 def retropath_records(root, attempt):
     targets = {"butanal": "CCCC=O", "3_hydroxypropionic_acid": "O=C(O)CCO"}
     result = {}
@@ -99,8 +174,40 @@ def retropath_records(root, attempt):
     return result
 
 
+def master_campaign(root):
+    with zipfile.ZipFile(root / "master-native-evidence.zip") as archive:
+        report_bytes = archive.read("summary.json")
+        require(report_bytes == (root / "master-campaign-summary.json").read_bytes(),
+                "Master campaign summary mismatch")
+        report = json.loads(report_bytes)
+        source_summaries = ("master-initial-summary.json", "master-retrobiocat2-retry-summary.json")
+        require([digest(root / name) for name in source_summaries] == report["source_run_summary_sha256"],
+                "Master campaign source run hash mismatch")
+        rows = json.loads(archive.read("fresh_native_reactions.json"))
+        native_digests = {name: hashlib.sha256(archive.read(name)).hexdigest()
+                          for name in {row["native_file"] for row in rows}}
+        require(len(rows) == report["fresh_native_records"] and
+                all(row["native_sha256"] == native_digests[row["native_file"]] and
+                    row["native_pointer"] and row["fresh_native"] for row in rows),
+                "Master output lost source provenance")
+        for engine, state in report["engine_states"].items():
+            require(state["run"]["status"] == "PROCESS_PASS", f"{engine} did not execute")
+            if "specialist_evidence" in state:
+                evidence = state["specialist_evidence"]
+                require(hashlib.sha256(archive.read(evidence["evidence_file"])).hexdigest()
+                        == evidence["evidence_sha256"], f"{engine} specialist provenance mismatch")
+        gates = json.loads(archive.read("m116_acceptance/acceptance_gates.json"))
+        require(gates == read(root / "master-acceptance-gates.json"),
+                "Master campaign gates mismatch")
+    return {"engines_completed": sorted(report["engine_states"]),
+            "native_candidate_rows": len(rows),
+            "execution": report["seven_engine_execution_gate"],
+            "multi_engine_target_pathway": gates["complete_multi_engine_target_pathway_demonstrated"]}
+
+
 def main(root):
-    summary = {"doranet": verify_doranet(root, replay=True)}
+    summary = {"doranet": verify_doranet(root, replay=True),
+               "master_campaign": master_campaign(root)}
     candidates = []
     for target in TARGETS:
         path = root / f"doranet-{target}-1.json"
@@ -134,6 +241,25 @@ def main(root):
                     (engine,),
                 ))
 
+    (aizynth_paths, first), (_, second) = (aizynth_records(root, attempt) for attempt in (1, 2))
+    require({target: Counter(rows) for target, rows in first.items()}
+            == {target: Counter(rows) for target, rows in second.items()},
+            "AiZynthFinder native reaction identities did not reproduce")
+    summary["aizynthfinder"] = {target: len(rows) for target, rows in first.items()}
+    for target, rows in first.items():
+        source_sha = digest(aizynth_paths[target])
+        for index, ((substrates, products), rule) in enumerate(rows):
+            candidates.append(PathwayCandidate(
+                f"aizynthfinder:{target}:{index}", target,
+                (ReactionStep(" + ".join(substrates) + " = " + " + ".join(products), rule,
+                              "aizynthfinder", metadata={"retrosynthetic_parent_side": "right",
+                                                         "source_sha256": source_sha,
+                                                         "source_engine": "aizynthfinder"}),),
+                ("aizynthfinder",),
+            ))
+    for engine in ("biopks", "retrotide"):
+        summary[engine] = pks_designs(root, engine)
+
     hexanoic = "CCCCCC(=O)O"
     _, master = chemenzy_records(root / "chemenzy-master", (*TARGETS, hexanoic))
     _, direct = chemenzy_records(root / "chemenzy-hex-repeat", (hexanoic,))
@@ -156,21 +282,25 @@ def main(root):
         }
     summary["retropath2_source_expansion"] = expansions
     eligible, unresolved = [], Counter()
+    balance = {}
     for candidate in candidates:
         step, = candidate.steps
-        species = step.reaction.replace(" = ", " + ").split(" + ")
-        if any(atom.GetAtomicNum() == 0
-               for molecule in map(Chem.MolFromSmiles, species)
+        left, right = ([Chem.MolFromSmiles(smiles) for smiles in side.split(" + ")]
+                       for side in step.reaction.split(" = "))
+        if any(atom.GetAtomicNum() == 0 for molecule in left + right
                for atom in molecule.GetAtoms()):
             unresolved[step.source_backend] += 1
-        else:
-            eligible.append(candidate)
+            continue
+        eligible.append(candidate)
+        counts = balance.setdefault(step.source_backend, {"balanced": 0, "unbalanced": 0})
+        counts["balanced" if inventory(left) == inventory(right) else "unbalanced"] += 1
+    summary["explicit_atom_and_charge_balance"] = balance
     graph = build_reaction_graph(eligible)
     for target in TARGETS:
         key = resolve_compound(target).key
         backends = {backend for edge_id in graph.by_parent[key]
                     for backend in graph.edges[edge_id].source_backends}
-        require(backends == {"doranet", "retrobiocat2", "chemenzyretroplanner"},
+        require(backends == {"doranet", "retrobiocat2", "chemenzyretroplanner", "aizynthfinder"},
                 f"Combined graph lost source engines for {target}: {backends}")
     for edge in graph.edges.values():
         require(set(edge.source_backends) == {item["source_engine"] for item in edge.provenance},

@@ -1,0 +1,44 @@
+{
+  "rules": 4500,
+  "diameters": [
+    2,
+    4
+  ],
+  "limit": 4500,
+  "counts_by_diameter": {
+    "2": 4500
+  },
+  "members": [
+    {
+      "member": "retrorules_rr02_rp2_hs/retrorules_rr02_rp2_flat_all.csv",
+      "accepted": 4500,
+      "headers": [
+        "Rule ID",
+        "Rule",
+        "EC number",
+        "Reaction order",
+        "Diameter",
+        "Score",
+        "Legacy ID",
+        "Reaction direction",
+        "Rule relative direction",
+        "Rule usage",
+        "Score normalized"
+      ]
+    }
+  ],
+  "skips": {},
+  "rule_file": "/workspace/work/retropath2-verify/rr02_rules/rules_d2_4_max4500.csv",
+  "sha256": "1d8d2b94d04b6ede52a2874ff7a763b1982fa95b79b3a79ac04557cc75cb4a14",
+  "source_doi": "10.5281/zenodo.5828017",
+  "explicit_hydrogens": true,
+  "schema": [
+    "Rule ID",
+    "Rule",
+    "EC number",
+    "Reaction order",
+    "Diameter",
+    "Score"
+  ],
+  "truncated": true
+}

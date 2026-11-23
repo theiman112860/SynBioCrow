@@ -69,6 +69,19 @@ def build(out):
             raise ValueError("SOURCE archive failed integrity validation")
     manifest["source_zip_sha256"] = sha256(archive_path.read_bytes())
     (out / manifest_name).write_bytes(json_bytes(manifest))
+    evidence = {}
+    evidence_paths = git("ls-tree", "-r", "--name-only", "-z", commit, "--",
+                         "evidence/m1_20_7").decode()
+    for name in sorted(filter(None, evidence_paths.split("\0"))):
+        evidence[name] = git("show", f"{commit}:{name}")
+    if evidence:
+        evidence_path = out / f"{BASENAME}_EVIDENCE.zip"
+        with zipfile.ZipFile(evidence_path, "w") as archive:
+            for name, contents in evidence.items():
+                write_member(archive, name, contents)
+        manifest["evidence_zip_sha256"] = sha256(evidence_path.read_bytes())
+        manifest["evidence_files"] = {name: sha256(contents) for name, contents in evidence.items()}
+        (out / manifest_name).write_bytes(json_bytes(manifest))
     print(f"{archive_path.name} {manifest['source_zip_sha256']}")
 
 

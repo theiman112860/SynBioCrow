@@ -1,0 +1,8 @@
+{
+  "release": "v0.0.1-alpha",
+  "prerelease": true,
+  "release_url": "https://github.com/TraceLD/retropath/releases/tag/v0.0.1-alpha",
+  "asset": "retropath_1.0.0-alpha_linux-x64.zip",
+  "sha256": "0cf49589334c99750bfd1d495ad47356498ab4205cf5b227c2c3c28212238755",
+  "cli": "/workspace/work/retropath2-verify/distribution/retropath_1.0.0-alpha_linux-x64/RetroPath.Cli"
+}

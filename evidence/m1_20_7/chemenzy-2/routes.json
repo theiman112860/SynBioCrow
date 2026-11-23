@@ -1,0 +1,4613 @@
+[
+  {
+    "target": "CCCC=O",
+    "canonical_target": "CCCC=O",
+    "routes": [
+      {
+        "smiles": "CCCC=O",
+        "type": "mol",
+        "in_stock": false,
+        "values": 1.3257771939168954,
+        "children": [
+          {
+            "type": "reaction",
+            "smiles": "",
+            "template": null,
+            "children": [
+              {
+                "smiles": "CCCCS(=O)(=O)O",
+                "type": "mol",
+                "in_stock": true,
+                "values": 0
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "smiles": "CCCC=O",
+        "type": "mol",
+        "in_stock": false,
+        "values": 1.3257771939168954,
+        "children": [
+          {
+            "type": "reaction",
+            "smiles": "",
+            "template": null,
+            "children": [
+              {
+                "smiles": "CCCCN",
+                "type": "mol",
+                "in_stock": true,
+                "values": 0
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "smiles": "CCCC=O",
+        "type": "mol",
+        "in_stock": false,
+        "values": 1.3257771939168954,
+        "children": [
+          {
+            "type": "reaction",
+            "smiles": "",
+            "template": null,
+            "children": [
+              {
+                "smiles": "CCCC",
+                "type": "mol",
+                "in_stock": true,
+                "values": 0
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "smiles": "CCCC=O",
+        "type": "mol",
+        "in_stock": false,
+        "values": 1.3257771939168954,
+        "children": [
+          {
+            "type": "reaction",
+            "smiles": "",
+            "template": null,
+            "children": [
+              {
+                "smiles": "CC=CC(=O)O",
+                "type": "mol",
+                "in_stock": true,
+                "values": 0
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "smiles": "CCCC=O",
+        "type": "mol",
+        "in_stock": false,
+        "values": 1.3257771939168954,
+        "children": [
+          {
+            "type": "reaction",
+            "smiles": "",
+            "template": null,
+            "children": [
+              {
+                "smiles": "CCCCCO",
+                "type": "mol",
+                "in_stock": true,
+                "values": 0
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "smiles": "CCCC=O",
+        "type": "mol",
+        "in_stock": false,
+        "values": 1.3257771939168954,
+        "children": [
+          {
+            "type": "reaction",
+            "smiles": "",
+            "template": null,
+            "children": [
+              {
+                "smiles": "CCCC(=O)O",
+                "type": "mol",
+                "in_stock": true,
+                "values": 0
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "smiles": "CCCC=O",
+        "type": "mol",
+        "in_stock": false,
+        "values": 1.3257771939168954,
+        "children": [
+          {
+            "type": "reaction",
+            "smiles": "",
+            "template": null,
+            "children": [
+              {
+                "smiles": "CCCC(=O)C(=O)O",
+                "type": "mol",
+                "in_stock": true,
+                "values": 0
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "smiles": "CCCC=O",
+        "type": "mol",
+        "in_stock": false,
+        "values": 1.3257771939168954,
+        "children": [
+          {
+            "type": "reaction",
+            "smiles": "",
+            "template": null,
+            "children": [
+              {
+                "smiles": "CCCCO",
+                "type": "mol",
+                "in_stock": true,
+                "values": 0
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "smiles": "CCCC=O",
+        "type": "mol",
+        "in_stock": false,
+        "values": 1.3257771939168954,
+        "children": [
+          {
+            "type": "reaction",
+            "smiles": "",
+            "template": null,
+            "children": [
+              {
+                "smiles": "C=CC(C)(C)O",
+                "type": "mol",
+                "in_stock": true,
+                "values": 0
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "smiles": "CCCC=O",
+        "type": "mol",
+        "in_stock": false,
+        "values": 1.3257771939168954,
+        "children": [
+          {
+            "type": "reaction",
+            "smiles": "",
+            "template": null,
+            "children": [
+              {
+                "smiles": "CC(=O)C(=O)O",
+                "type": "mol",
+                "in_stock": false,
+                "values": 3.749448283583422,
+                "children": [
+                  {
+                    "type": "reaction",
+                    "smiles": "",
+                    "template": null,
+                    "children": [
+                      {
+                        "smiles": "O=C(O)C(=O)Cc1c[nH]c2ccccc12",
+                        "type": "mol",
+                        "in_stock": true,
+                        "values": 0
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "smiles": "CCCC=O",
+        "type": "mol",
+        "in_stock": false,
+        "values": 1.3257771939168954,
+        "children": [
+          {
+            "type": "reaction",
+            "smiles": "",
+            "template": null,
+            "children": [
+              {
+                "smiles": "C/C=C\\CO",
+                "type": "mol",
+                "in_stock": false,
+                "values": 1.148297983513514,
+                "children": [
+                  {
+                    "type": "reaction",
+                    "smiles": "",
+                    "template": null,
+                    "children": [
+                      {
+                        "smiles": "CCCCC=O",
+                        "type": "mol",
+                        "in_stock": true,
+                        "values": 0
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "smiles": "CCCC=O",
+        "type": "mol",
+        "in_stock": false,
+        "values": 1.3257771939168954,
+        "children": [
+          {
+            "type": "reaction",
+            "smiles": "",
+            "template": null,
+            "children": [
+              {
+                "smiles": "C/C=C\\CO",
+                "type": "mol",
+                "in_stock": false,
+                "values": 1.148297983513514,
+                "children": [
+                  {
+                    "type": "reaction",
+                    "smiles": "",
+                    "template": null,
+                    "children": [
+                      {
+                        "smiles": "CCCCC(=O)O",
+                        "type": "mol",
+                        "in_stock": true,
+                        "values": 0
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "smiles": "CCCC=O",
+        "type": "mol",
+        "in_stock": false,
+        "values": 1.3257771939168954,
+        "children": [
+          {
+            "type": "reaction",
+            "smiles": "",
+            "template": null,
+            "children": [
+              {
+                "smiles": "CC(=O)C(=O)O",
+                "type": "mol",
+                "in_stock": false,
+                "values": 3.749448283583422,
+                "children": [
+                  {
+                    "type": "reaction",
+                    "smiles": "",
+                    "template": null,
+                    "children": [
+                      {
+                        "smiles": "N[C@@H](CCC=O)C(=O)O",
+                        "type": "mol",
+                        "in_stock": true,
+                        "values": 0
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "smiles": "CCCC=O",
+        "type": "mol",
+        "in_stock": false,
+        "values": 1.3257771939168954,
+        "children": [
+          {
+            "type": "reaction",
+            "smiles": "",
+            "template": null,
+            "children": [
+              {
+                "smiles": "CC(=O)C(=O)O",
+                "type": "mol",
+                "in_stock": false,
+                "values": 3.749448283583422,
+                "children": [
+                  {
+                    "type": "reaction",
+                    "smiles": "",
+                    "template": null,
+                    "children": [
+                      {
+                        "smiles": "O=C(O)C[C@H](O)C(=O)O",
+                        "type": "mol",
+                        "in_stock": true,
+                        "values": 0
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "smiles": "CCCC=O",
+        "type": "mol",
+        "in_stock": false,
+        "values": 1.3257771939168954,
+        "children": [
+          {
+            "type": "reaction",
+            "smiles": "",
+            "template": null,
+            "children": [
+              {
+                "smiles": "CC(=O)C(=O)O",
+                "type": "mol",
+                "in_stock": false,
+                "values": 3.749448283583422,
+                "children": [
+                  {
+                    "type": "reaction",
+                    "smiles": "",
+                    "template": null,
+                    "children": [
+                      {
+                        "smiles": "C[C@@H](O)[C@H](N)C(=O)O",
+                        "type": "mol",
+                        "in_stock": true,
+                        "values": 0
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "smiles": "CCCC=O",
+        "type": "mol",
+        "in_stock": false,
+        "values": 1.3257771939168954,
+        "children": [
+          {
+            "type": "reaction",
+            "smiles": "",
+            "template": null,
+            "children": [
+              {
+                "smiles": "CC(=O)C(=O)O",
+                "type": "mol",
+                "in_stock": false,
+                "values": 3.749448283583422,
+                "children": [
+                  {
+                    "type": "reaction",
+                    "smiles": "",
+                    "template": null,
+                    "children": [
+                      {
+                        "smiles": "O=C(O)C(=O)Cc1ccccc1",
+                        "type": "mol",
+                        "in_stock": true,
+                        "values": 0
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "smiles": "CCCC=O",
+        "type": "mol",
+        "in_stock": false,
+        "values": 1.3257771939168954,
+        "children": [
+          {
+            "type": "reaction",
+            "smiles": "",
+            "template": null,
+            "children": [
+              {
+                "smiles": "C/C=C/CO",
+                "type": "mol",
+                "in_stock": false,
+                "values": 2.2095898178995608,
+                "children": [
+                  {
+                    "type": "reaction",
+                    "smiles": "",
+                    "template": null,
+                    "children": [
+                      {
+                        "smiles": "CCCC(=O)O",
+                        "type": "mol",
+                        "in_stock": true,
+                        "values": 0
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "smiles": "CCCC=O",
+        "type": "mol",
+        "in_stock": false,
+        "values": 1.3257771939168954,
+        "children": [
+          {
+            "type": "reaction",
+            "smiles": "",
+            "template": null,
+            "children": [
+              {
+                "smiles": "C/C=C/CO",
+                "type": "mol",
+                "in_stock": false,
+                "values": 2.2095898178995608,
+                "children": [
+                  {
+                    "type": "reaction",
+                    "smiles": "",
+                    "template": null,
+                    "children": [
+                      {
+                        "smiles": "CC=CCC",
+                        "type": "mol",
+                        "in_stock": true,
+                        "values": 0
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "smiles": "CCCC=O",
+        "type": "mol",
+        "in_stock": false,
+        "values": 1.3257771939168954,
+        "children": [
+          {
+            "type": "reaction",
+            "smiles": "",
+            "template": null,
+            "children": [
+              {
+                "smiles": "C/C=C/CO",
+                "type": "mol",
+                "in_stock": false,
+                "values": 2.2095898178995608,
+                "children": [
+                  {
+                    "type": "reaction",
+                    "smiles": "",
+                    "template": null,
+                    "children": [
+                      {
+                        "smiles": "CCC=CC=O",
+                        "type": "mol",
+                        "in_stock": true,
+                        "values": 0
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "smiles": "CCCC=O",
+        "type": "mol",
+        "in_stock": false,
+        "values": 1.3257771939168954,
+        "children": [
+          {
+            "type": "reaction",
+            "smiles": "",
+            "template": null,
+            "children": [
+              {
+                "smiles": "C/C=C/CO",
+                "type": "mol",
+                "in_stock": false,
+                "values": 2.2095898178995608,
+                "children": [
+                  {
+                    "type": "reaction",
+                    "smiles": "",
+                    "template": null,
+                    "children": [
+                      {
+                        "smiles": "CC=CC(C)=O",
+                        "type": "mol",
+                        "in_stock": true,
+                        "values": 0
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "smiles": "CCCC=O",
+        "type": "mol",
+        "in_stock": false,
+        "values": 1.3257771939168954,
+        "children": [
+          {
+            "type": "reaction",
+            "smiles": "",
+            "template": null,
+            "children": [
+              {
+                "smiles": "C/C=C/CO",
+                "type": "mol",
+                "in_stock": false,
+                "values": 2.2095898178995608,
+                "children": [
+                  {
+                    "type": "reaction",
+                    "smiles": "",
+                    "template": null,
+                    "children": [
+                      {
+                        "smiles": "CCCCC=O",
+                        "type": "mol",
+                        "in_stock": true,
+                        "values": 0
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "smiles": "CCCC=O",
+        "type": "mol",
+        "in_stock": false,
+        "values": 1.3257771939168954,
+        "children": [
+          {
+            "type": "reaction",
+            "smiles": "",
+            "template": null,
+            "children": [
+              {
+                "smiles": "C/C=C\\CO",
+                "type": "mol",
+                "in_stock": false,
+                "values": 1.148297983513514,
+                "children": [
+                  {
+                    "type": "reaction",
+                    "smiles": "",
+                    "template": null,
+                    "children": [
+                      {
+                        "smiles": "CC(C)C=O",
+                        "type": "mol",
+                        "in_stock": true,
+                        "values": 0
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "smiles": "CCCC=O",
+        "type": "mol",
+        "in_stock": false,
+        "values": 1.3257771939168954,
+        "children": [
+          {
+            "type": "reaction",
+            "smiles": "",
+            "template": null,
+            "children": [
+              {
+                "smiles": "C/C=C/CO",
+                "type": "mol",
+                "in_stock": false,
+                "values": 2.2095898178995608,
+                "children": [
+                  {
+                    "type": "reaction",
+                    "smiles": "",
+                    "template": null,
+                    "children": [
+                      {
+                        "smiles": "CC=CC(=O)O",
+                        "type": "mol",
+                        "in_stock": true,
+                        "values": 0
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "smiles": "CCCC=O",
+        "type": "mol",
+        "in_stock": false,
+        "values": 1.3257771939168954,
+        "children": [
+          {
+            "type": "reaction",
+            "smiles": "",
+            "template": null,
+            "children": [
+              {
+                "smiles": "C/C=C/CO",
+                "type": "mol",
+                "in_stock": false,
+                "values": 2.2095898178995608,
+                "children": [
+                  {
+                    "type": "reaction",
+                    "smiles": "",
+                    "template": null,
+                    "children": [
+                      {
+                        "smiles": "CC(C)=CC=O",
+                        "type": "mol",
+                        "in_stock": true,
+                        "values": 0
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "smiles": "CCCC=O",
+        "type": "mol",
+        "in_stock": false,
+        "values": 1.3257771939168954,
+        "children": [
+          {
+            "type": "reaction",
+            "smiles": "",
+            "template": null,
+            "children": [
+              {
+                "smiles": "C/C=C/CO",
+                "type": "mol",
+                "in_stock": false,
+                "values": 2.2095898178995608,
+                "children": [
+                  {
+                    "type": "reaction",
+                    "smiles": "",
+                    "template": null,
+                    "children": [
+                      {
+                        "smiles": "CC=CC=O",
+                        "type": "mol",
+                        "in_stock": true,
+                        "values": 0
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "smiles": "CCCC=O",
+        "type": "mol",
+        "in_stock": false,
+        "values": 1.3257771939168954,
+        "children": [
+          {
+            "type": "reaction",
+            "smiles": "",
+            "template": null,
+            "children": [
+              {
+                "smiles": "C/C=C/CO",
+                "type": "mol",
+                "in_stock": false,
+                "values": 2.2095898178995608,
+                "children": [
+                  {
+                    "type": "reaction",
+                    "smiles": "",
+                    "template": null,
+                    "children": [
+                      {
+                        "smiles": "CCC(=O)OC",
+                        "type": "mol",
+                        "in_stock": true,
+                        "values": 0
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "smiles": "CCCC=O",
+        "type": "mol",
+        "in_stock": false,
+        "values": 1.3257771939168954,
+        "children": [
+          {
+            "type": "reaction",
+            "smiles": "",
+            "template": null,
+            "children": [
+              {
+                "smiles": "C/C=C/CO",
+                "type": "mol",
+                "in_stock": false,
+                "values": 2.2095898178995608,
+                "children": [
+                  {
+                    "type": "reaction",
+                    "smiles": "",
+                    "template": null,
+                    "children": [
+                      {
+                        "smiles": "C=CC(C)=O",
+                        "type": "mol",
+                        "in_stock": true,
+                        "values": 0
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "smiles": "CCCC=O",
+        "type": "mol",
+        "in_stock": false,
+        "values": 1.3257771939168954,
+        "children": [
+          {
+            "type": "reaction",
+            "smiles": "",
+            "template": null,
+            "children": [
+              {
+                "smiles": "C/C=C\\CO",
+                "type": "mol",
+                "in_stock": false,
+                "values": 1.148297983513514,
+                "children": [
+                  {
+                    "type": "reaction",
+                    "smiles": "",
+                    "template": null,
+                    "children": [
+                      {
+                        "smiles": "CC=CC(C)=O",
+                        "type": "mol",
+                        "in_stock": true,
+                        "values": 0
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "smiles": "CCCC=O",
+        "type": "mol",
+        "in_stock": false,
+        "values": 1.3257771939168954,
+        "children": [
+          {
+            "type": "reaction",
+            "smiles": "",
+            "template": null,
+            "children": [
+              {
+                "smiles": "C/C=C\\CO",
+                "type": "mol",
+                "in_stock": false,
+                "values": 1.148297983513514,
+                "children": [
+                  {
+                    "type": "reaction",
+                    "smiles": "",
+                    "template": null,
+                    "children": [
+                      {
+                        "smiles": "CC(C)=CCO",
+                        "type": "mol",
+                        "in_stock": true,
+                        "values": 0
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "smiles": "CCCC=O",
+        "type": "mol",
+        "in_stock": false,
+        "values": 1.3257771939168954,
+        "children": [
+          {
+            "type": "reaction",
+            "smiles": "",
+            "template": null,
+            "children": [
+              {
+                "smiles": "C/C=C\\CO",
+                "type": "mol",
+                "in_stock": false,
+                "values": 1.148297983513514,
+                "children": [
+                  {
+                    "type": "reaction",
+                    "smiles": "",
+                    "template": null,
+                    "children": [
+                      {
+                        "smiles": "CC(C)=CC=O",
+                        "type": "mol",
+                        "in_stock": true,
+                        "values": 0
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "smiles": "CCCC=O",
+        "type": "mol",
+        "in_stock": false,
+        "values": 1.3257771939168954,
+        "children": [
+          {
+            "type": "reaction",
+            "smiles": "",
+            "template": null,
+            "children": [
+              {
+                "smiles": "C/C=C\\CO",
+                "type": "mol",
+                "in_stock": false,
+                "values": 1.148297983513514,
+                "children": [
+                  {
+                    "type": "reaction",
+                    "smiles": "",
+                    "template": null,
+                    "children": [
+                      {
+                        "smiles": "CC=CC(=O)O",
+                        "type": "mol",
+                        "in_stock": true,
+                        "values": 0
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "smiles": "CCCC=O",
+        "type": "mol",
+        "in_stock": false,
+        "values": 1.3257771939168954,
+        "children": [
+          {
+            "type": "reaction",
+            "smiles": "",
+            "template": null,
+            "children": [
+              {
+                "smiles": "*C(=O)CCC",
+                "type": "mol",
+                "in_stock": false,
+                "values": 4.185070754609486,
+                "children": [
+                  {
+                    "type": "reaction",
+                    "smiles": "",
+                    "template": null,
+                    "children": [
+                      {
+                        "smiles": "CCCC(=O)O",
+                        "type": "mol",
+                        "in_stock": true,
+                        "values": 0
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "smiles": "CCCC=O",
+        "type": "mol",
+        "in_stock": false,
+        "values": 1.3257771939168954,
+        "children": [
+          {
+            "type": "reaction",
+            "smiles": "",
+            "template": null,
+            "children": [
+              {
+                "smiles": "*C(=O)CCC",
+                "type": "mol",
+                "in_stock": false,
+                "values": 4.185070754609486,
+                "children": [
+                  {
+                    "type": "reaction",
+                    "smiles": "",
+                    "template": null,
+                    "children": [
+                      {
+                        "smiles": "CCC(=O)C(=O)O",
+                        "type": "mol",
+                        "in_stock": true,
+                        "values": 0
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "smiles": "CCCC=O",
+        "type": "mol",
+        "in_stock": false,
+        "values": 1.3257771939168954,
+        "children": [
+          {
+            "type": "reaction",
+            "smiles": "",
+            "template": null,
+            "children": [
+              {
+                "smiles": "CC/C=C/CO",
+                "type": "mol",
+                "in_stock": false,
+                "values": 0.6933399911903593,
+                "children": [
+                  {
+                    "type": "reaction",
+                    "smiles": "",
+                    "template": null,
+                    "children": [
+                      {
+                        "smiles": "CCCCCO",
+                        "type": "mol",
+                        "in_stock": true,
+                        "values": 0
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "smiles": "CCCC=O",
+        "type": "mol",
+        "in_stock": false,
+        "values": 1.3257771939168954,
+        "children": [
+          {
+            "type": "reaction",
+            "smiles": "",
+            "template": null,
+            "children": [
+              {
+                "smiles": "CC/C=C/CO",
+                "type": "mol",
+                "in_stock": false,
+                "values": 0.6933399911903593,
+                "children": [
+                  {
+                    "type": "reaction",
+                    "smiles": "",
+                    "template": null,
+                    "children": [
+                      {
+                        "smiles": "CCCCC(=O)O",
+                        "type": "mol",
+                        "in_stock": true,
+                        "values": 0
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "smiles": "CCCC=O",
+        "type": "mol",
+        "in_stock": false,
+        "values": 1.3257771939168954,
+        "children": [
+          {
+            "type": "reaction",
+            "smiles": "",
+            "template": null,
+            "children": [
+              {
+                "smiles": "CC/C=C/CO",
+                "type": "mol",
+                "in_stock": false,
+                "values": 0.6933399911903593,
+                "children": [
+                  {
+                    "type": "reaction",
+                    "smiles": "",
+                    "template": null,
+                    "children": [
+                      {
+                        "smiles": "CCCCCC=O",
+                        "type": "mol",
+                        "in_stock": true,
+                        "values": 0
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "smiles": "CCCC=O",
+        "type": "mol",
+        "in_stock": false,
+        "values": 1.3257771939168954,
+        "children": [
+          {
+            "type": "reaction",
+            "smiles": "",
+            "template": null,
+            "children": [
+              {
+                "smiles": "CC/C=C/CO",
+                "type": "mol",
+                "in_stock": false,
+                "values": 0.6933399911903593,
+                "children": [
+                  {
+                    "type": "reaction",
+                    "smiles": "",
+                    "template": null,
+                    "children": [
+                      {
+                        "smiles": "CCCCC",
+                        "type": "mol",
+                        "in_stock": true,
+                        "values": 0
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "smiles": "CCCC=O",
+        "type": "mol",
+        "in_stock": false,
+        "values": 1.3257771939168954,
+        "children": [
+          {
+            "type": "reaction",
+            "smiles": "",
+            "template": null,
+            "children": [
+              {
+                "smiles": "CC/C=C/CO",
+                "type": "mol",
+                "in_stock": false,
+                "values": 0.6933399911903593,
+                "children": [
+                  {
+                    "type": "reaction",
+                    "smiles": "",
+                    "template": null,
+                    "children": [
+                      {
+                        "smiles": "CCCCC=O",
+                        "type": "mol",
+                        "in_stock": true,
+                        "values": 0
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "smiles": "CCCC=O",
+        "type": "mol",
+        "in_stock": false,
+        "values": 1.3257771939168954,
+        "children": [
+          {
+            "type": "reaction",
+            "smiles": "",
+            "template": null,
+            "children": [
+              {
+                "smiles": "CC/C=C/CO",
+                "type": "mol",
+                "in_stock": false,
+                "values": 0.6933399911903593,
+                "children": [
+                  {
+                    "type": "reaction",
+                    "smiles": "",
+                    "template": null,
+                    "children": [
+                      {
+                        "smiles": "CCC=CCO",
+                        "type": "mol",
+                        "in_stock": true,
+                        "values": 0
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "smiles": "CCCC=O",
+        "type": "mol",
+        "in_stock": false,
+        "values": 1.3257771939168954,
+        "children": [
+          {
+            "type": "reaction",
+            "smiles": "",
+            "template": null,
+            "children": [
+              {
+                "smiles": "CC/C=C/CO",
+                "type": "mol",
+                "in_stock": false,
+                "values": 0.6933399911903593,
+                "children": [
+                  {
+                    "type": "reaction",
+                    "smiles": "",
+                    "template": null,
+                    "children": [
+                      {
+                        "smiles": "CC=CC(C)=O",
+                        "type": "mol",
+                        "in_stock": true,
+                        "values": 0
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "smiles": "CCCC=O",
+        "type": "mol",
+        "in_stock": false,
+        "values": 1.3257771939168954,
+        "children": [
+          {
+            "type": "reaction",
+            "smiles": "",
+            "template": null,
+            "children": [
+              {
+                "smiles": "CC/C=C/CO",
+                "type": "mol",
+                "in_stock": false,
+                "values": 0.6933399911903593,
+                "children": [
+                  {
+                    "type": "reaction",
+                    "smiles": "",
+                    "template": null,
+                    "children": [
+                      {
+                        "smiles": "CCCC=CC=O",
+                        "type": "mol",
+                        "in_stock": true,
+                        "values": 0
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "smiles": "CCCC=O",
+        "type": "mol",
+        "in_stock": false,
+        "values": 1.3257771939168954,
+        "children": [
+          {
+            "type": "reaction",
+            "smiles": "",
+            "template": null,
+            "children": [
+              {
+                "smiles": "C/C=C\\CO",
+                "type": "mol",
+                "in_stock": false,
+                "values": 1.148297983513514,
+                "children": [
+                  {
+                    "type": "reaction",
+                    "smiles": "",
+                    "template": null,
+                    "children": [
+                      {
+                        "smiles": "CCCC(=O)O",
+                        "type": "mol",
+                        "in_stock": true,
+                        "values": 0
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "smiles": "CCCC=O",
+        "type": "mol",
+        "in_stock": false,
+        "values": 1.3257771939168954,
+        "children": [
+          {
+            "type": "reaction",
+            "smiles": "",
+            "template": null,
+            "children": [
+              {
+                "smiles": "C/C=C\\CO",
+                "type": "mol",
+                "in_stock": false,
+                "values": 1.148297983513514,
+                "children": [
+                  {
+                    "type": "reaction",
+                    "smiles": "",
+                    "template": null,
+                    "children": [
+                      {
+                        "smiles": "C=CC(C)=O",
+                        "type": "mol",
+                        "in_stock": true,
+                        "values": 0
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "smiles": "CCCC=O",
+        "type": "mol",
+        "in_stock": false,
+        "values": 1.3257771939168954,
+        "children": [
+          {
+            "type": "reaction",
+            "smiles": "",
+            "template": null,
+            "children": [
+              {
+                "smiles": "CC/C=C/CO",
+                "type": "mol",
+                "in_stock": false,
+                "values": 0.6933399911903593,
+                "children": [
+                  {
+                    "type": "reaction",
+                    "smiles": "",
+                    "template": null,
+                    "children": [
+                      {
+                        "smiles": "CCC=CC=O",
+                        "type": "mol",
+                        "in_stock": true,
+                        "values": 0
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "smiles": "CCCC=O",
+        "type": "mol",
+        "in_stock": false,
+        "values": 1.3257771939168954,
+        "children": [
+          {
+            "type": "reaction",
+            "smiles": "",
+            "template": null,
+            "children": [
+              {
+                "smiles": "CC/C=C/CO",
+                "type": "mol",
+                "in_stock": false,
+                "values": 0.6933399911903593,
+                "children": [
+                  {
+                    "type": "reaction",
+                    "smiles": "",
+                    "template": null,
+                    "children": [
+                      {
+                        "smiles": "CC/C=C/C=O",
+                        "type": "mol",
+                        "in_stock": false,
+                        "values": 0.7424251473335582,
+                        "children": [
+                          {
+                            "type": "reaction",
+                            "smiles": "",
+                            "template": null,
+                            "children": [
+                              {
+                                "smiles": "CCCCCC(=O)O",
+                                "type": "mol",
+                                "in_stock": true,
+                                "values": 0
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "smiles": "CCCC=O",
+        "type": "mol",
+        "in_stock": false,
+        "values": 1.3257771939168954,
+        "children": [
+          {
+            "type": "reaction",
+            "smiles": "",
+            "template": null,
+            "children": [
+              {
+                "smiles": "C/C=C\\CO",
+                "type": "mol",
+                "in_stock": false,
+                "values": 1.148297983513514,
+                "children": [
+                  {
+                    "type": "reaction",
+                    "smiles": "",
+                    "template": null,
+                    "children": [
+                      {
+                        "smiles": "C/C=C\\C=O",
+                        "type": "mol",
+                        "in_stock": false,
+                        "values": 1.0655429814416317,
+                        "children": [
+                          {
+                            "type": "reaction",
+                            "smiles": "",
+                            "template": null,
+                            "children": [
+                              {
+                                "smiles": "CCCCC(=O)O",
+                                "type": "mol",
+                                "in_stock": true,
+                                "values": 0
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "smiles": "CCCC=O",
+        "type": "mol",
+        "in_stock": false,
+        "values": 1.3257771939168954,
+        "children": [
+          {
+            "type": "reaction",
+            "smiles": "",
+            "template": null,
+            "children": [
+              {
+                "smiles": "C/C=C\\CO",
+                "type": "mol",
+                "in_stock": false,
+                "values": 1.148297983513514,
+                "children": [
+                  {
+                    "type": "reaction",
+                    "smiles": "",
+                    "template": null,
+                    "children": [
+                      {
+                        "smiles": "C/C=C\\C=O",
+                        "type": "mol",
+                        "in_stock": false,
+                        "values": 1.0655429814416317,
+                        "children": [
+                          {
+                            "type": "reaction",
+                            "smiles": "",
+                            "template": null,
+                            "children": [
+                              {
+                                "smiles": "CC[C@H](O)C(=O)O",
+                                "type": "mol",
+                                "in_stock": true,
+                                "values": 0
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "smiles": "CCCC=O",
+        "type": "mol",
+        "in_stock": false,
+        "values": 1.3257771939168954,
+        "children": [
+          {
+            "type": "reaction",
+            "smiles": "",
+            "template": null,
+            "children": [
+              {
+                "smiles": "C/C=C\\CO",
+                "type": "mol",
+                "in_stock": false,
+                "values": 1.148297983513514,
+                "children": [
+                  {
+                    "type": "reaction",
+                    "smiles": "",
+                    "template": null,
+                    "children": [
+                      {
+                        "smiles": "C/C=C\\C=O",
+                        "type": "mol",
+                        "in_stock": false,
+                        "values": 1.0655429814416317,
+                        "children": [
+                          {
+                            "type": "reaction",
+                            "smiles": "",
+                            "template": null,
+                            "children": [
+                              {
+                                "smiles": "C=CC(C)=O",
+                                "type": "mol",
+                                "in_stock": true,
+                                "values": 0
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "smiles": "CCCC=O",
+        "type": "mol",
+        "in_stock": false,
+        "values": 1.3257771939168954,
+        "children": [
+          {
+            "type": "reaction",
+            "smiles": "",
+            "template": null,
+            "children": [
+              {
+                "smiles": "C/C=C\\CO",
+                "type": "mol",
+                "in_stock": false,
+                "values": 1.148297983513514,
+                "children": [
+                  {
+                    "type": "reaction",
+                    "smiles": "",
+                    "template": null,
+                    "children": [
+                      {
+                        "smiles": "C/C=C\\C=O",
+                        "type": "mol",
+                        "in_stock": false,
+                        "values": 1.0655429814416317,
+                        "children": [
+                          {
+                            "type": "reaction",
+                            "smiles": "",
+                            "template": null,
+                            "children": [
+                              {
+                                "smiles": "C=CC(C)(C)O",
+                                "type": "mol",
+                                "in_stock": true,
+                                "values": 0
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "smiles": "CCCC=O",
+        "type": "mol",
+        "in_stock": false,
+        "values": 1.3257771939168954,
+        "children": [
+          {
+            "type": "reaction",
+            "smiles": "",
+            "template": null,
+            "children": [
+              {
+                "smiles": "C/C=C\\CO",
+                "type": "mol",
+                "in_stock": false,
+                "values": 1.148297983513514,
+                "children": [
+                  {
+                    "type": "reaction",
+                    "smiles": "",
+                    "template": null,
+                    "children": [
+                      {
+                        "smiles": "C/C=C\\C=O",
+                        "type": "mol",
+                        "in_stock": false,
+                        "values": 1.0655429814416317,
+                        "children": [
+                          {
+                            "type": "reaction",
+                            "smiles": "",
+                            "template": null,
+                            "children": [
+                              {
+                                "smiles": "CC=CC(=O)O",
+                                "type": "mol",
+                                "in_stock": true,
+                                "values": 0
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "smiles": "CCCC=O",
+        "type": "mol",
+        "in_stock": false,
+        "values": 1.3257771939168954,
+        "children": [
+          {
+            "type": "reaction",
+            "smiles": "",
+            "template": null,
+            "children": [
+              {
+                "smiles": "C/C=C\\CO",
+                "type": "mol",
+                "in_stock": false,
+                "values": 1.148297983513514,
+                "children": [
+                  {
+                    "type": "reaction",
+                    "smiles": "",
+                    "template": null,
+                    "children": [
+                      {
+                        "smiles": "C/C=C\\C=O",
+                        "type": "mol",
+                        "in_stock": false,
+                        "values": 1.0655429814416317,
+                        "children": [
+                          {
+                            "type": "reaction",
+                            "smiles": "",
+                            "template": null,
+                            "children": [
+                              {
+                                "smiles": "CCCC(=O)O",
+                                "type": "mol",
+                                "in_stock": true,
+                                "values": 0
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "smiles": "CCCC=O",
+        "type": "mol",
+        "in_stock": false,
+        "values": 1.3257771939168954,
+        "children": [
+          {
+            "type": "reaction",
+            "smiles": "",
+            "template": null,
+            "children": [
+              {
+                "smiles": "CC/C=C/CO",
+                "type": "mol",
+                "in_stock": false,
+                "values": 0.6933399911903593,
+                "children": [
+                  {
+                    "type": "reaction",
+                    "smiles": "",
+                    "template": null,
+                    "children": [
+                      {
+                        "smiles": "CC/C=C/C=O",
+                        "type": "mol",
+                        "in_stock": false,
+                        "values": 0.7424251473335582,
+                        "children": [
+                          {
+                            "type": "reaction",
+                            "smiles": "",
+                            "template": null,
+                            "children": [
+                              {
+                                "smiles": "CCCC(=O)O",
+                                "type": "mol",
+                                "in_stock": true,
+                                "values": 0
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "smiles": "CCCC=O",
+        "type": "mol",
+        "in_stock": false,
+        "values": 1.3257771939168954,
+        "children": [
+          {
+            "type": "reaction",
+            "smiles": "",
+            "template": null,
+            "children": [
+              {
+                "smiles": "CC/C=C/CO",
+                "type": "mol",
+                "in_stock": false,
+                "values": 0.6933399911903593,
+                "children": [
+                  {
+                    "type": "reaction",
+                    "smiles": "",
+                    "template": null,
+                    "children": [
+                      {
+                        "smiles": "CC/C=C/C=O",
+                        "type": "mol",
+                        "in_stock": false,
+                        "values": 0.7424251473335582,
+                        "children": [
+                          {
+                            "type": "reaction",
+                            "smiles": "",
+                            "template": null,
+                            "children": [
+                              {
+                                "smiles": "CCC=CC(=O)O",
+                                "type": "mol",
+                                "in_stock": true,
+                                "values": 0
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "smiles": "CCCC=O",
+        "type": "mol",
+        "in_stock": false,
+        "values": 1.3257771939168954,
+        "children": [
+          {
+            "type": "reaction",
+            "smiles": "",
+            "template": null,
+            "children": [
+              {
+                "smiles": "CC/C=C/CO",
+                "type": "mol",
+                "in_stock": false,
+                "values": 0.6933399911903593,
+                "children": [
+                  {
+                    "type": "reaction",
+                    "smiles": "",
+                    "template": null,
+                    "children": [
+                      {
+                        "smiles": "CC/C=C/C=O",
+                        "type": "mol",
+                        "in_stock": false,
+                        "values": 0.7424251473335582,
+                        "children": [
+                          {
+                            "type": "reaction",
+                            "smiles": "",
+                            "template": null,
+                            "children": [
+                              {
+                                "smiles": "CCCCCC=O",
+                                "type": "mol",
+                                "in_stock": true,
+                                "values": 0
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "smiles": "CCCC=O",
+        "type": "mol",
+        "in_stock": false,
+        "values": 1.3257771939168954,
+        "children": [
+          {
+            "type": "reaction",
+            "smiles": "",
+            "template": null,
+            "children": [
+              {
+                "smiles": "C/C=C\\CO",
+                "type": "mol",
+                "in_stock": false,
+                "values": 1.148297983513514,
+                "children": [
+                  {
+                    "type": "reaction",
+                    "smiles": "",
+                    "template": null,
+                    "children": [
+                      {
+                        "smiles": "C/C=C\\C=O",
+                        "type": "mol",
+                        "in_stock": false,
+                        "values": 1.0655429814416317,
+                        "children": [
+                          {
+                            "type": "reaction",
+                            "smiles": "",
+                            "template": null,
+                            "children": [
+                              {
+                                "smiles": "CCCC(=O)OC",
+                                "type": "mol",
+                                "in_stock": true,
+                                "values": 0
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "smiles": "CCCC=O",
+        "type": "mol",
+        "in_stock": false,
+        "values": 1.3257771939168954,
+        "children": [
+          {
+            "type": "reaction",
+            "smiles": "",
+            "template": null,
+            "children": [
+              {
+                "smiles": "CC/C=C/CO",
+                "type": "mol",
+                "in_stock": false,
+                "values": 0.6933399911903593,
+                "children": [
+                  {
+                    "type": "reaction",
+                    "smiles": "",
+                    "template": null,
+                    "children": [
+                      {
+                        "smiles": "CC/C=C/C=O",
+                        "type": "mol",
+                        "in_stock": false,
+                        "values": 0.7424251473335582,
+                        "children": [
+                          {
+                            "type": "reaction",
+                            "smiles": "",
+                            "template": null,
+                            "children": [
+                              {
+                                "smiles": "CCCCC",
+                                "type": "mol",
+                                "in_stock": true,
+                                "values": 0
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "smiles": "CCCC=O",
+        "type": "mol",
+        "in_stock": false,
+        "values": 1.3257771939168954,
+        "children": [
+          {
+            "type": "reaction",
+            "smiles": "",
+            "template": null,
+            "children": [
+              {
+                "smiles": "CC/C=C/CO",
+                "type": "mol",
+                "in_stock": false,
+                "values": 0.6933399911903593,
+                "children": [
+                  {
+                    "type": "reaction",
+                    "smiles": "",
+                    "template": null,
+                    "children": [
+                      {
+                        "smiles": "CC/C=C/C=O",
+                        "type": "mol",
+                        "in_stock": false,
+                        "values": 0.7424251473335582,
+                        "children": [
+                          {
+                            "type": "reaction",
+                            "smiles": "",
+                            "template": null,
+                            "children": [
+                              {
+                                "smiles": "CCCCC=O",
+                                "type": "mol",
+                                "in_stock": true,
+                                "values": 0
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "smiles": "CCCC=O",
+        "type": "mol",
+        "in_stock": false,
+        "values": 1.3257771939168954,
+        "children": [
+          {
+            "type": "reaction",
+            "smiles": "",
+            "template": null,
+            "children": [
+              {
+                "smiles": "CC/C=C/CO",
+                "type": "mol",
+                "in_stock": false,
+                "values": 0.6933399911903593,
+                "children": [
+                  {
+                    "type": "reaction",
+                    "smiles": "",
+                    "template": null,
+                    "children": [
+                      {
+                        "smiles": "CC/C=C/C=O",
+                        "type": "mol",
+                        "in_stock": false,
+                        "values": 0.7424251473335582,
+                        "children": [
+                          {
+                            "type": "reaction",
+                            "smiles": "",
+                            "template": null,
+                            "children": [
+                              {
+                                "smiles": "C=CC(C)(C)O",
+                                "type": "mol",
+                                "in_stock": true,
+                                "values": 0
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "smiles": "CCCC=O",
+        "type": "mol",
+        "in_stock": false,
+        "values": 1.3257771939168954,
+        "children": [
+          {
+            "type": "reaction",
+            "smiles": "",
+            "template": null,
+            "children": [
+              {
+                "smiles": "CC/C=C/CO",
+                "type": "mol",
+                "in_stock": false,
+                "values": 0.6933399911903593,
+                "children": [
+                  {
+                    "type": "reaction",
+                    "smiles": "",
+                    "template": null,
+                    "children": [
+                      {
+                        "smiles": "CC/C=C/C=O",
+                        "type": "mol",
+                        "in_stock": false,
+                        "values": 0.7424251473335582,
+                        "children": [
+                          {
+                            "type": "reaction",
+                            "smiles": "",
+                            "template": null,
+                            "children": [
+                              {
+                                "smiles": "CCCCC(=O)O",
+                                "type": "mol",
+                                "in_stock": true,
+                                "values": 0
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "smiles": "CCCC=O",
+        "type": "mol",
+        "in_stock": false,
+        "values": 1.3257771939168954,
+        "children": [
+          {
+            "type": "reaction",
+            "smiles": "",
+            "template": null,
+            "children": [
+              {
+                "smiles": "CC/C=C/CO",
+                "type": "mol",
+                "in_stock": false,
+                "values": 0.6933399911903593,
+                "children": [
+                  {
+                    "type": "reaction",
+                    "smiles": "",
+                    "template": null,
+                    "children": [
+                      {
+                        "smiles": "CC/C=C/C=O",
+                        "type": "mol",
+                        "in_stock": false,
+                        "values": 0.7424251473335582,
+                        "children": [
+                          {
+                            "type": "reaction",
+                            "smiles": "",
+                            "template": null,
+                            "children": [
+                              {
+                                "smiles": "CCCCCO",
+                                "type": "mol",
+                                "in_stock": true,
+                                "values": 0
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "smiles": "CCCC=O",
+        "type": "mol",
+        "in_stock": false,
+        "values": 1.3257771939168954,
+        "children": [
+          {
+            "type": "reaction",
+            "smiles": "",
+            "template": null,
+            "children": [
+              {
+                "smiles": "*C(=O)CCC",
+                "type": "mol",
+                "in_stock": false,
+                "values": 4.185070754609486,
+                "children": [
+                  {
+                    "type": "reaction",
+                    "smiles": "",
+                    "template": null,
+                    "children": [
+                      {
+                        "smiles": "*C(=O)CCCO",
+                        "type": "mol",
+                        "in_stock": false,
+                        "values": 1.361111473146081,
+                        "children": [
+                          {
+                            "type": "reaction",
+                            "smiles": "",
+                            "template": null,
+                            "children": [
+                              {
+                                "smiles": "O=C(O)CCCO",
+                                "type": "mol",
+                                "in_stock": true,
+                                "values": 0
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "smiles": "CCCC=O",
+        "type": "mol",
+        "in_stock": false,
+        "values": 1.3257771939168954,
+        "children": [
+          {
+            "type": "reaction",
+            "smiles": "",
+            "template": null,
+            "children": [
+              {
+                "smiles": "C/C=C\\CO",
+                "type": "mol",
+                "in_stock": false,
+                "values": 1.148297983513514,
+                "children": [
+                  {
+                    "type": "reaction",
+                    "smiles": "",
+                    "template": null,
+                    "children": [
+                      {
+                        "smiles": "C/C=C\\C=O",
+                        "type": "mol",
+                        "in_stock": false,
+                        "values": 1.0655429814416317,
+                        "children": [
+                          {
+                            "type": "reaction",
+                            "smiles": "",
+                            "template": null,
+                            "children": [
+                              {
+                                "smiles": "CCCCCO",
+                                "type": "mol",
+                                "in_stock": true,
+                                "values": 0
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "smiles": "CCCC=O",
+        "type": "mol",
+        "in_stock": false,
+        "values": 1.3257771939168954,
+        "children": [
+          {
+            "type": "reaction",
+            "smiles": "",
+            "template": null,
+            "children": [
+              {
+                "smiles": "CC/C=C/CO",
+                "type": "mol",
+                "in_stock": false,
+                "values": 0.6933399911903593,
+                "children": [
+                  {
+                    "type": "reaction",
+                    "smiles": "",
+                    "template": null,
+                    "children": [
+                      {
+                        "smiles": "CC/C=C/C=O",
+                        "type": "mol",
+                        "in_stock": false,
+                        "values": 0.7424251473335582,
+                        "children": [
+                          {
+                            "type": "reaction",
+                            "smiles": "",
+                            "template": null,
+                            "children": [
+                              {
+                                "smiles": "CCCCCCO",
+                                "type": "mol",
+                                "in_stock": true,
+                                "values": 0
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "smiles": "CCCC=O",
+        "type": "mol",
+        "in_stock": false,
+        "values": 1.3257771939168954,
+        "children": [
+          {
+            "type": "reaction",
+            "smiles": "",
+            "template": null,
+            "children": [
+              {
+                "smiles": "*C(=O)CCC",
+                "type": "mol",
+                "in_stock": false,
+                "values": 4.185070754609486,
+                "children": [
+                  {
+                    "type": "reaction",
+                    "smiles": "",
+                    "template": null,
+                    "children": [
+                      {
+                        "smiles": "*C(=O)/C=C/C",
+                        "type": "mol",
+                        "in_stock": false,
+                        "values": 3.137033546348565,
+                        "children": [
+                          {
+                            "type": "reaction",
+                            "smiles": "",
+                            "template": null,
+                            "children": [
+                              {
+                                "smiles": "*C(=O)CCCO",
+                                "type": "mol",
+                                "in_stock": false,
+                                "values": 1.361111473146081,
+                                "children": [
+                                  {
+                                    "type": "reaction",
+                                    "smiles": "",
+                                    "template": null,
+                                    "children": [
+                                      {
+                                        "smiles": "O=C(O)CCCO",
+                                        "type": "mol",
+                                        "in_stock": true,
+                                        "values": 0
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "smiles": "CCCC=O",
+        "type": "mol",
+        "in_stock": false,
+        "values": 1.3257771939168954,
+        "children": [
+          {
+            "type": "reaction",
+            "smiles": "",
+            "template": null,
+            "children": [
+              {
+                "smiles": "*C(=O)CCC",
+                "type": "mol",
+                "in_stock": false,
+                "values": 4.185070754609486,
+                "children": [
+                  {
+                    "type": "reaction",
+                    "smiles": "",
+                    "template": null,
+                    "children": [
+                      {
+                        "smiles": "*C(C)=O",
+                        "type": "mol",
+                        "in_stock": false,
+                        "values": 5.8052782827517975,
+                        "children": [
+                          {
+                            "type": "reaction",
+                            "smiles": "",
+                            "template": null,
+                            "children": [
+                              {
+                                "smiles": "*C(=O)/C=C/C",
+                                "type": "mol",
+                                "in_stock": false,
+                                "values": 3.137033546348565,
+                                "children": [
+                                  {
+                                    "type": "reaction",
+                                    "smiles": "",
+                                    "template": null,
+                                    "children": [
+                                      {
+                                        "smiles": "*C(=O)CCCO",
+                                        "type": "mol",
+                                        "in_stock": false,
+                                        "values": 1.361111473146081,
+                                        "children": [
+                                          {
+                                            "type": "reaction",
+                                            "smiles": "",
+                                            "template": null,
+                                            "children": [
+                                              {
+                                                "smiles": "O=C(O)CCCO",
+                                                "type": "mol",
+                                                "in_stock": true,
+                                                "values": 0
+                                              }
+                                            ]
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "smiles": "CCCC=O",
+        "type": "mol",
+        "in_stock": false,
+        "values": 1.3257771939168954,
+        "children": [
+          {
+            "type": "reaction",
+            "smiles": "",
+            "template": null,
+            "children": [
+              {
+                "smiles": "*C(=O)CCC",
+                "type": "mol",
+                "in_stock": false,
+                "values": 4.185070754609486,
+                "children": [
+                  {
+                    "type": "reaction",
+                    "smiles": "",
+                    "template": null,
+                    "children": [
+                      {
+                        "smiles": "*C(=O)CC(C)=O",
+                        "type": "mol",
+                        "in_stock": false,
+                        "values": 5.038211896394797,
+                        "children": [
+                          {
+                            "type": "reaction",
+                            "smiles": "",
+                            "template": null,
+                            "children": [
+                              {
+                                "smiles": "*C(=O)/C=C/C",
+                                "type": "mol",
+                                "in_stock": false,
+                                "values": 3.137033546348565,
+                                "children": [
+                                  {
+                                    "type": "reaction",
+                                    "smiles": "",
+                                    "template": null,
+                                    "children": [
+                                      {
+                                        "smiles": "*C(=O)CCCO",
+                                        "type": "mol",
+                                        "in_stock": false,
+                                        "values": 1.361111473146081,
+                                        "children": [
+                                          {
+                                            "type": "reaction",
+                                            "smiles": "",
+                                            "template": null,
+                                            "children": [
+                                              {
+                                                "smiles": "O=C(O)CCCO",
+                                                "type": "mol",
+                                                "in_stock": true,
+                                                "values": 0
+                                              }
+                                            ]
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "target": "O=C(O)CCO",
+    "canonical_target": "O=C(O)CCO",
+    "routes": [
+      {
+        "smiles": "O=C(O)CCO",
+        "type": "mol",
+        "in_stock": false,
+        "values": 5.436154895657796,
+        "children": [
+          {
+            "type": "reaction",
+            "smiles": "",
+            "template": null,
+            "children": [
+              {
+                "smiles": "CSCCC(=O)O",
+                "type": "mol",
+                "in_stock": true,
+                "values": 0
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "smiles": "O=C(O)CCO",
+        "type": "mol",
+        "in_stock": false,
+        "values": 5.436154895657796,
+        "children": [
+          {
+            "type": "reaction",
+            "smiles": "",
+            "template": null,
+            "children": [
+              {
+                "smiles": "O=CCCO",
+                "type": "mol",
+                "in_stock": false,
+                "values": 4.182146070879989,
+                "children": [
+                  {
+                    "type": "reaction",
+                    "smiles": "",
+                    "template": null,
+                    "children": [
+                      {
+                        "smiles": "OCCC(O)CO",
+                        "type": "mol",
+                        "in_stock": true,
+                        "values": 0
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "smiles": "O=C(O)CCO",
+        "type": "mol",
+        "in_stock": false,
+        "values": 5.436154895657796,
+        "children": [
+          {
+            "type": "reaction",
+            "smiles": "",
+            "template": null,
+            "children": [
+              {
+                "smiles": "O=CCCO",
+                "type": "mol",
+                "in_stock": false,
+                "values": 4.182146070879989,
+                "children": [
+                  {
+                    "type": "reaction",
+                    "smiles": "",
+                    "template": null,
+                    "children": [
+                      {
+                        "smiles": "O=C1O[C@H](CO)[C@@H](O)[C@H]1O",
+                        "type": "mol",
+                        "in_stock": true,
+                        "values": 0
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "smiles": "O=C(O)CCO",
+        "type": "mol",
+        "in_stock": false,
+        "values": 5.436154895657796,
+        "children": [
+          {
+            "type": "reaction",
+            "smiles": "",
+            "template": null,
+            "children": [
+              {
+                "smiles": "*C(=O)C=C",
+                "type": "mol",
+                "in_stock": false,
+                "values": 4.495480378591884,
+                "children": [
+                  {
+                    "type": "reaction",
+                    "smiles": "",
+                    "template": null,
+                    "children": [
+                      {
+                        "smiles": "*C(=O)CC",
+                        "type": "mol",
+                        "in_stock": false,
+                        "values": 3.314750363983136,
+                        "children": [
+                          {
+                            "type": "reaction",
+                            "smiles": "",
+                            "template": null,
+                            "children": [
+                              {
+                                "smiles": "CCC(=O)C(=O)O",
+                                "type": "mol",
+                                "in_stock": true,
+                                "values": 0
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "smiles": "O=C(O)CCO",
+        "type": "mol",
+        "in_stock": false,
+        "values": 5.436154895657796,
+        "children": [
+          {
+            "type": "reaction",
+            "smiles": "",
+            "template": null,
+            "children": [
+              {
+                "smiles": "O=CCCO",
+                "type": "mol",
+                "in_stock": false,
+                "values": 4.182146070879989,
+                "children": [
+                  {
+                    "type": "reaction",
+                    "smiles": "",
+                    "template": null,
+                    "children": [
+                      {
+                        "smiles": "OCC(O)CO",
+                        "type": "mol",
+                        "in_stock": false,
+                        "values": 3.1002934127955197,
+                        "children": [
+                          {
+                            "type": "reaction",
+                            "smiles": "",
+                            "template": null,
+                            "children": [
+                              {
+                                "smiles": "CCCCCCCCCCCCCCCC(=O)OCC(O)CO",
+                                "type": "mol",
+                                "in_stock": true,
+                                "values": 0
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "smiles": "O=C(O)CCO",
+        "type": "mol",
+        "in_stock": false,
+        "values": 5.436154895657796,
+        "children": [
+          {
+            "type": "reaction",
+            "smiles": "",
+            "template": null,
+            "children": [
+              {
+                "smiles": "*C(=O)C=C",
+                "type": "mol",
+                "in_stock": false,
+                "values": 4.495480378591884,
+                "children": [
+                  {
+                    "type": "reaction",
+                    "smiles": "",
+                    "template": null,
+                    "children": [
+                      {
+                        "smiles": "C=CC(=O)O",
+                        "type": "mol",
+                        "in_stock": false,
+                        "values": 1.6589979224931568,
+                        "children": [
+                          {
+                            "type": "reaction",
+                            "smiles": "",
+                            "template": null,
+                            "children": [
+                              {
+                                "smiles": "C[S+](C)CCC(=O)O",
+                                "type": "mol",
+                                "in_stock": true,
+                                "values": 0
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "smiles": "O=C(O)CCO",
+        "type": "mol",
+        "in_stock": false,
+        "values": 5.436154895657796,
+        "children": [
+          {
+            "type": "reaction",
+            "smiles": "",
+            "template": null,
+            "children": [
+              {
+                "smiles": "*C(=O)C=C",
+                "type": "mol",
+                "in_stock": false,
+                "values": 4.495480378591884,
+                "children": [
+                  {
+                    "type": "reaction",
+                    "smiles": "",
+                    "template": null,
+                    "children": [
+                      {
+                        "smiles": "C=CC(=O)O",
+                        "type": "mol",
+                        "in_stock": false,
+                        "values": 1.6589979224931568,
+                        "children": [
+                          {
+                            "type": "reaction",
+                            "smiles": "",
+                            "template": null,
+                            "children": [
+                              {
+                                "smiles": "O=C(O)CCC(=O)O",
+                                "type": "mol",
+                                "in_stock": true,
+                                "values": 0
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "smiles": "O=C(O)CCO",
+        "type": "mol",
+        "in_stock": false,
+        "values": 5.436154895657796,
+        "children": [
+          {
+            "type": "reaction",
+            "smiles": "",
+            "template": null,
+            "children": [
+              {
+                "smiles": "*C(=O)CCO",
+                "type": "mol",
+                "in_stock": false,
+                "values": 6.102656446064788,
+                "children": [
+                  {
+                    "type": "reaction",
+                    "smiles": "",
+                    "template": null,
+                    "children": [
+                      {
+                        "smiles": "*C(=O)C=C",
+                        "type": "mol",
+                        "in_stock": false,
+                        "values": 5.329671960401688,
+                        "children": [
+                          {
+                            "type": "reaction",
+                            "smiles": "",
+                            "template": null,
+                            "children": [
+                              {
+                                "smiles": "*C(=O)CC",
+                                "type": "mol",
+                                "in_stock": false,
+                                "values": 3.314750363983136,
+                                "children": [
+                                  {
+                                    "type": "reaction",
+                                    "smiles": "",
+                                    "template": null,
+                                    "children": [
+                                      {
+                                        "smiles": "CCC(=O)C(=O)O",
+                                        "type": "mol",
+                                        "in_stock": true,
+                                        "values": 0
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "smiles": "O=C(O)CCO",
+        "type": "mol",
+        "in_stock": false,
+        "values": 5.436154895657796,
+        "children": [
+          {
+            "type": "reaction",
+            "smiles": "",
+            "template": null,
+            "children": [
+              {
+                "smiles": "*C(=O)C=C",
+                "type": "mol",
+                "in_stock": false,
+                "values": 4.495480378591884,
+                "children": [
+                  {
+                    "type": "reaction",
+                    "smiles": "",
+                    "template": null,
+                    "children": [
+                      {
+                        "smiles": "*C(=O)[C@H](C)O",
+                        "type": "mol",
+                        "in_stock": false,
+                        "values": 3.523271859306811,
+                        "children": [
+                          {
+                            "type": "reaction",
+                            "smiles": "",
+                            "template": null,
+                            "children": [
+                              {
+                                "smiles": "CC(O)C(=O)O",
+                                "type": "mol",
+                                "in_stock": false,
+                                "values": 2.1968521032056354,
+                                "children": [
+                                  {
+                                    "type": "reaction",
+                                    "smiles": "",
+                                    "template": null,
+                                    "children": [
+                                      {
+                                        "smiles": "C[C@@H](O)C(=O)SC[C@H](NC(=O)CC[C@H](N)C(=O)O)C(=O)NCC(=O)O",
+                                        "type": "mol",
+                                        "in_stock": true,
+                                        "values": 0
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "smiles": "O=C(O)CCO",
+        "type": "mol",
+        "in_stock": false,
+        "values": 5.436154895657796,
+        "children": [
+          {
+            "type": "reaction",
+            "smiles": "",
+            "template": null,
+            "children": [
+              {
+                "smiles": "*C(=O)C=C",
+                "type": "mol",
+                "in_stock": false,
+                "values": 4.495480378591884,
+                "children": [
+                  {
+                    "type": "reaction",
+                    "smiles": "",
+                    "template": null,
+                    "children": [
+                      {
+                        "smiles": "*C(=O)[C@H](C)O",
+                        "type": "mol",
+                        "in_stock": false,
+                        "values": 3.523271859306811,
+                        "children": [
+                          {
+                            "type": "reaction",
+                            "smiles": "",
+                            "template": null,
+                            "children": [
+                              {
+                                "smiles": "CC(O)C(=O)O",
+                                "type": "mol",
+                                "in_stock": false,
+                                "values": 2.1968521032056354,
+                                "children": [
+                                  {
+                                    "type": "reaction",
+                                    "smiles": "",
+                                    "template": null,
+                                    "children": [
+                                      {
+                                        "smiles": "Nc1ncnc2c1ncn2[C@@H]1O[C@H](COP(=O)(O)O)[C@@H](O)[C@H]1O",
+                                        "type": "mol",
+                                        "in_stock": true,
+                                        "values": 0
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "smiles": "O=C(O)CCO",
+        "type": "mol",
+        "in_stock": false,
+        "values": 5.436154895657796,
+        "children": [
+          {
+            "type": "reaction",
+            "smiles": "",
+            "template": null,
+            "children": [
+              {
+                "smiles": "*C(=O)C=C",
+                "type": "mol",
+                "in_stock": false,
+                "values": 4.495480378591884,
+                "children": [
+                  {
+                    "type": "reaction",
+                    "smiles": "",
+                    "template": null,
+                    "children": [
+                      {
+                        "smiles": "*C(=O)[C@H](C)O",
+                        "type": "mol",
+                        "in_stock": false,
+                        "values": 3.523271859306811,
+                        "children": [
+                          {
+                            "type": "reaction",
+                            "smiles": "",
+                            "template": null,
+                            "children": [
+                              {
+                                "smiles": "CC(O)C(=O)O",
+                                "type": "mol",
+                                "in_stock": false,
+                                "values": 2.1968521032056354,
+                                "children": [
+                                  {
+                                    "type": "reaction",
+                                    "smiles": "",
+                                    "template": null,
+                                    "children": [
+                                      {
+                                        "smiles": "O=C1O[C@H]([C@@H](O)CO)C(O)=C1O",
+                                        "type": "mol",
+                                        "in_stock": true,
+                                        "values": 0
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "smiles": "O=C(O)CCO",
+        "type": "mol",
+        "in_stock": false,
+        "values": 5.436154895657796,
+        "children": [
+          {
+            "type": "reaction",
+            "smiles": "",
+            "template": null,
+            "children": [
+              {
+                "smiles": "*C(=O)CC[S+](C)C",
+                "type": "mol",
+                "in_stock": false,
+                "values": 4.684601188739258,
+                "children": [
+                  {
+                    "type": "reaction",
+                    "smiles": "",
+                    "template": null,
+                    "children": [
+                      {
+                        "smiles": "*C(=O)CC(=O)CC",
+                        "type": "mol",
+                        "in_stock": false,
+                        "values": 3.9374974965513916,
+                        "children": [
+                          {
+                            "type": "reaction",
+                            "smiles": "",
+                            "template": null,
+                            "children": [
+                              {
+                                "smiles": "*C(=O)C[C@H](O)CC",
+                                "type": "mol",
+                                "in_stock": false,
+                                "values": 3.640752946378316,
+                                "children": [
+                                  {
+                                    "type": "reaction",
+                                    "smiles": "",
+                                    "template": null,
+                                    "children": [
+                                      {
+                                        "smiles": "CCC(O)C(=O)O",
+                                        "type": "mol",
+                                        "in_stock": true,
+                                        "values": 0
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "smiles": "O=C(O)CCO",
+        "type": "mol",
+        "in_stock": false,
+        "values": 5.436154895657796,
+        "children": [
+          {
+            "type": "reaction",
+            "smiles": "",
+            "template": null,
+            "children": [
+              {
+                "smiles": "*C(=O)C=C",
+                "type": "mol",
+                "in_stock": false,
+                "values": 4.495480378591884,
+                "children": [
+                  {
+                    "type": "reaction",
+                    "smiles": "",
+                    "template": null,
+                    "children": [
+                      {
+                        "smiles": "*C(=O)[C@H](C)O",
+                        "type": "mol",
+                        "in_stock": false,
+                        "values": 3.523271859306811,
+                        "children": [
+                          {
+                            "type": "reaction",
+                            "smiles": "",
+                            "template": null,
+                            "children": [
+                              {
+                                "smiles": "CC(O)C(=O)O",
+                                "type": "mol",
+                                "in_stock": false,
+                                "values": 2.1968521032056354,
+                                "children": [
+                                  {
+                                    "type": "reaction",
+                                    "smiles": "",
+                                    "template": null,
+                                    "children": [
+                                      {
+                                        "smiles": "O=C(O)C[C@H](O)C(=O)O",
+                                        "type": "mol",
+                                        "in_stock": true,
+                                        "values": 0
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "smiles": "O=C(O)CCO",
+        "type": "mol",
+        "in_stock": false,
+        "values": 5.436154895657796,
+        "children": [
+          {
+            "type": "reaction",
+            "smiles": "",
+            "template": null,
+            "children": [
+              {
+                "smiles": "*C(=O)C=C",
+                "type": "mol",
+                "in_stock": false,
+                "values": 4.495480378591884,
+                "children": [
+                  {
+                    "type": "reaction",
+                    "smiles": "",
+                    "template": null,
+                    "children": [
+                      {
+                        "smiles": "*C(=O)[C@@H](C)O",
+                        "type": "mol",
+                        "in_stock": false,
+                        "values": 5.772327089578352,
+                        "children": [
+                          {
+                            "type": "reaction",
+                            "smiles": "",
+                            "template": null,
+                            "children": [
+                              {
+                                "smiles": "*C(=O)CC(O)C(C)=O",
+                                "type": "mol",
+                                "in_stock": false,
+                                "values": 4.170648932827644,
+                                "children": [
+                                  {
+                                    "type": "reaction",
+                                    "smiles": "",
+                                    "template": null,
+                                    "children": [
+                                      {
+                                        "smiles": "CC(=O)C(O)CC(=O)O",
+                                        "type": "mol",
+                                        "in_stock": false,
+                                        "values": 3.0125435055542864,
+                                        "children": [
+                                          {
+                                            "type": "reaction",
+                                            "smiles": "",
+                                            "template": null,
+                                            "children": [
+                                              {
+                                                "smiles": "O=C(O)CC(=O)C(=O)O",
+                                                "type": "mol",
+                                                "in_stock": true,
+                                                "values": 0
+                                              }
+                                            ]
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "smiles": "O=C(O)CCO",
+        "type": "mol",
+        "in_stock": false,
+        "values": 5.436154895657796,
+        "children": [
+          {
+            "type": "reaction",
+            "smiles": "",
+            "template": null,
+            "children": [
+              {
+                "smiles": "*C(=O)CC[S+](C)C",
+                "type": "mol",
+                "in_stock": false,
+                "values": 4.684601188739258,
+                "children": [
+                  {
+                    "type": "reaction",
+                    "smiles": "",
+                    "template": null,
+                    "children": [
+                      {
+                        "smiles": "*C(=O)/C=C/OS(C)(C)C",
+                        "type": "mol",
+                        "in_stock": false,
+                        "values": 4.311859973158148,
+                        "children": [
+                          {
+                            "type": "reaction",
+                            "smiles": "",
+                            "template": null,
+                            "children": [
+                              {
+                                "smiles": "*C(=O)/C=C/O",
+                                "type": "mol",
+                                "in_stock": false,
+                                "values": 3.0925582418423594,
+                                "children": [
+                                  {
+                                    "type": "reaction",
+                                    "smiles": "",
+                                    "template": null,
+                                    "children": [
+                                      {
+                                        "smiles": "O=C(O)/C=C/O",
+                                        "type": "mol",
+                                        "in_stock": false,
+                                        "values": 1.506496701391709,
+                                        "children": [
+                                          {
+                                            "type": "reaction",
+                                            "smiles": "",
+                                            "template": null,
+                                            "children": [
+                                              {
+                                                "smiles": "O=C(O)C[C@@H](O)C(=O)O",
+                                                "type": "mol",
+                                                "in_stock": true,
+                                                "values": 0
+                                              }
+                                            ]
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "smiles": "O=C(O)CCO",
+        "type": "mol",
+        "in_stock": false,
+        "values": 5.436154895657796,
+        "children": [
+          {
+            "type": "reaction",
+            "smiles": "",
+            "template": null,
+            "children": [
+              {
+                "smiles": "*C(=O)C=C",
+                "type": "mol",
+                "in_stock": false,
+                "values": 4.495480378591884,
+                "children": [
+                  {
+                    "type": "reaction",
+                    "smiles": "",
+                    "template": null,
+                    "children": [
+                      {
+                        "smiles": "*C(=O)[C@@H](C)O",
+                        "type": "mol",
+                        "in_stock": false,
+                        "values": 5.772327089578352,
+                        "children": [
+                          {
+                            "type": "reaction",
+                            "smiles": "",
+                            "template": null,
+                            "children": [
+                              {
+                                "smiles": "*C(=O)CC(O)C(C)=O",
+                                "type": "mol",
+                                "in_stock": false,
+                                "values": 4.170648932827644,
+                                "children": [
+                                  {
+                                    "type": "reaction",
+                                    "smiles": "",
+                                    "template": null,
+                                    "children": [
+                                      {
+                                        "smiles": "CC(=O)C(O)CC(=O)O",
+                                        "type": "mol",
+                                        "in_stock": false,
+                                        "values": 3.0125435055542864,
+                                        "children": [
+                                          {
+                                            "type": "reaction",
+                                            "smiles": "",
+                                            "template": null,
+                                            "children": [
+                                              {
+                                                "smiles": "O=C(O)C[C@H](O)C(=O)O",
+                                                "type": "mol",
+                                                "in_stock": true,
+                                                "values": 0
+                                              }
+                                            ]
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "smiles": "O=C(O)CCO",
+        "type": "mol",
+        "in_stock": false,
+        "values": 5.436154895657796,
+        "children": [
+          {
+            "type": "reaction",
+            "smiles": "",
+            "template": null,
+            "children": [
+              {
+                "smiles": "*C(=O)C=C",
+                "type": "mol",
+                "in_stock": false,
+                "values": 4.495480378591884,
+                "children": [
+                  {
+                    "type": "reaction",
+                    "smiles": "",
+                    "template": null,
+                    "children": [
+                      {
+                        "smiles": "*C(=O)[C@@H](C)O",
+                        "type": "mol",
+                        "in_stock": false,
+                        "values": 5.772327089578352,
+                        "children": [
+                          {
+                            "type": "reaction",
+                            "smiles": "",
+                            "template": null,
+                            "children": [
+                              {
+                                "smiles": "*C(=O)CC(O)C(C)=O",
+                                "type": "mol",
+                                "in_stock": false,
+                                "values": 4.170648932827644,
+                                "children": [
+                                  {
+                                    "type": "reaction",
+                                    "smiles": "",
+                                    "template": null,
+                                    "children": [
+                                      {
+                                        "smiles": "CC(=O)C(O)CC(=O)O",
+                                        "type": "mol",
+                                        "in_stock": false,
+                                        "values": 3.0125435055542864,
+                                        "children": [
+                                          {
+                                            "type": "reaction",
+                                            "smiles": "",
+                                            "template": null,
+                                            "children": [
+                                              {
+                                                "smiles": "O=C(O)CCC(=O)O",
+                                                "type": "mol",
+                                                "in_stock": true,
+                                                "values": 0
+                                              }
+                                            ]
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "smiles": "O=C(O)CCO",
+        "type": "mol",
+        "in_stock": false,
+        "values": 5.436154895657796,
+        "children": [
+          {
+            "type": "reaction",
+            "smiles": "",
+            "template": null,
+            "children": [
+              {
+                "smiles": "*C(=O)C=C",
+                "type": "mol",
+                "in_stock": false,
+                "values": 4.495480378591884,
+                "children": [
+                  {
+                    "type": "reaction",
+                    "smiles": "",
+                    "template": null,
+                    "children": [
+                      {
+                        "smiles": "*C(=O)[C@@H](C)O",
+                        "type": "mol",
+                        "in_stock": false,
+                        "values": 5.772327089578352,
+                        "children": [
+                          {
+                            "type": "reaction",
+                            "smiles": "",
+                            "template": null,
+                            "children": [
+                              {
+                                "smiles": "*C(=O)CC(O)C(C)=O",
+                                "type": "mol",
+                                "in_stock": false,
+                                "values": 4.170648932827644,
+                                "children": [
+                                  {
+                                    "type": "reaction",
+                                    "smiles": "",
+                                    "template": null,
+                                    "children": [
+                                      {
+                                        "smiles": "CC(=O)C(O)CC(=O)O",
+                                        "type": "mol",
+                                        "in_stock": false,
+                                        "values": 3.0125435055542864,
+                                        "children": [
+                                          {
+                                            "type": "reaction",
+                                            "smiles": "",
+                                            "template": null,
+                                            "children": [
+                                              {
+                                                "smiles": "O=C(O)CC(O)C(=O)O",
+                                                "type": "mol",
+                                                "in_stock": true,
+                                                "values": 0
+                                              }
+                                            ]
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "smiles": "O=C(O)CCO",
+        "type": "mol",
+        "in_stock": false,
+        "values": 5.436154895657796,
+        "children": [
+          {
+            "type": "reaction",
+            "smiles": "",
+            "template": null,
+            "children": [
+              {
+                "smiles": "*C(=O)C=C",
+                "type": "mol",
+                "in_stock": false,
+                "values": 4.495480378591884,
+                "children": [
+                  {
+                    "type": "reaction",
+                    "smiles": "",
+                    "template": null,
+                    "children": [
+                      {
+                        "smiles": "*C(=O)[C@@H](C)O",
+                        "type": "mol",
+                        "in_stock": false,
+                        "values": 5.772327089578352,
+                        "children": [
+                          {
+                            "type": "reaction",
+                            "smiles": "",
+                            "template": null,
+                            "children": [
+                              {
+                                "smiles": "*C(=O)CC(O)C(C)=O",
+                                "type": "mol",
+                                "in_stock": false,
+                                "values": 4.170648932827644,
+                                "children": [
+                                  {
+                                    "type": "reaction",
+                                    "smiles": "",
+                                    "template": null,
+                                    "children": [
+                                      {
+                                        "smiles": "CC(=O)C(O)CC(=O)O",
+                                        "type": "mol",
+                                        "in_stock": false,
+                                        "values": 3.0125435055542864,
+                                        "children": [
+                                          {
+                                            "type": "reaction",
+                                            "smiles": "",
+                                            "template": null,
+                                            "children": [
+                                              {
+                                                "smiles": "O=C(O)C[C@@H](O)C(=O)O",
+                                                "type": "mol",
+                                                "in_stock": true,
+                                                "values": 0
+                                              }
+                                            ]
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "smiles": "O=C(O)CCO",
+        "type": "mol",
+        "in_stock": false,
+        "values": 5.436154895657796,
+        "children": [
+          {
+            "type": "reaction",
+            "smiles": "",
+            "template": null,
+            "children": [
+              {
+                "smiles": "*C(=O)C=C",
+                "type": "mol",
+                "in_stock": false,
+                "values": 4.495480378591884,
+                "children": [
+                  {
+                    "type": "reaction",
+                    "smiles": "",
+                    "template": null,
+                    "children": [
+                      {
+                        "smiles": "*C(=O)[C@@H](C)O",
+                        "type": "mol",
+                        "in_stock": false,
+                        "values": 5.772327089578352,
+                        "children": [
+                          {
+                            "type": "reaction",
+                            "smiles": "",
+                            "template": null,
+                            "children": [
+                              {
+                                "smiles": "*C(=O)CC(O)C(C)=O",
+                                "type": "mol",
+                                "in_stock": false,
+                                "values": 4.170648932827644,
+                                "children": [
+                                  {
+                                    "type": "reaction",
+                                    "smiles": "",
+                                    "template": null,
+                                    "children": [
+                                      {
+                                        "smiles": "CC(=O)C(O)CC(=O)O",
+                                        "type": "mol",
+                                        "in_stock": false,
+                                        "values": 3.0125435055542864,
+                                        "children": [
+                                          {
+                                            "type": "reaction",
+                                            "smiles": "",
+                                            "template": null,
+                                            "children": [
+                                              {
+                                                "smiles": "CC1=C(O)C(=O)CO1",
+                                                "type": "mol",
+                                                "in_stock": true,
+                                                "values": 0
+                                              }
+                                            ]
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "smiles": "O=C(O)CCO",
+        "type": "mol",
+        "in_stock": false,
+        "values": 5.436154895657796,
+        "children": [
+          {
+            "type": "reaction",
+            "smiles": "",
+            "template": null,
+            "children": [
+              {
+                "smiles": "*C(=O)CC[S+](C)C",
+                "type": "mol",
+                "in_stock": false,
+                "values": 4.684601188739258,
+                "children": [
+                  {
+                    "type": "reaction",
+                    "smiles": "",
+                    "template": null,
+                    "children": [
+                      {
+                        "smiles": "*C(=O)/C=C/OS(C)(C)C",
+                        "type": "mol",
+                        "in_stock": false,
+                        "values": 4.311859973158148,
+                        "children": [
+                          {
+                            "type": "reaction",
+                            "smiles": "",
+                            "template": null,
+                            "children": [
+                              {
+                                "smiles": "*C(=O)/C=C/O",
+                                "type": "mol",
+                                "in_stock": false,
+                                "values": 3.0925582418423594,
+                                "children": [
+                                  {
+                                    "type": "reaction",
+                                    "smiles": "",
+                                    "template": null,
+                                    "children": [
+                                      {
+                                        "smiles": "O=C(O)/C=C/O",
+                                        "type": "mol",
+                                        "in_stock": false,
+                                        "values": 1.506496701391709,
+                                        "children": [
+                                          {
+                                            "type": "reaction",
+                                            "smiles": "",
+                                            "template": null,
+                                            "children": [
+                                              {
+                                                "smiles": "O=C(O)CC(O)(CC(=O)O)C(=O)O",
+                                                "type": "mol",
+                                                "in_stock": true,
+                                                "values": 0
+                                              }
+                                            ]
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "smiles": "O=C(O)CCO",
+        "type": "mol",
+        "in_stock": false,
+        "values": 5.436154895657796,
+        "children": [
+          {
+            "type": "reaction",
+            "smiles": "",
+            "template": null,
+            "children": [
+              {
+                "smiles": "*C(=O)CC[S+](C)C",
+                "type": "mol",
+                "in_stock": false,
+                "values": 4.684601188739258,
+                "children": [
+                  {
+                    "type": "reaction",
+                    "smiles": "",
+                    "template": null,
+                    "children": [
+                      {
+                        "smiles": "*C(=O)/C=C/OS(C)(C)C",
+                        "type": "mol",
+                        "in_stock": false,
+                        "values": 4.311859973158148,
+                        "children": [
+                          {
+                            "type": "reaction",
+                            "smiles": "",
+                            "template": null,
+                            "children": [
+                              {
+                                "smiles": "*C(=O)/C=C/O",
+                                "type": "mol",
+                                "in_stock": false,
+                                "values": 3.0925582418423594,
+                                "children": [
+                                  {
+                                    "type": "reaction",
+                                    "smiles": "",
+                                    "template": null,
+                                    "children": [
+                                      {
+                                        "smiles": "O=C(O)/C=C/O",
+                                        "type": "mol",
+                                        "in_stock": false,
+                                        "values": 1.506496701391709,
+                                        "children": [
+                                          {
+                                            "type": "reaction",
+                                            "smiles": "",
+                                            "template": null,
+                                            "children": [
+                                              {
+                                                "smiles": "O=C(O)CCC(=O)O",
+                                                "type": "mol",
+                                                "in_stock": true,
+                                                "values": 0
+                                              }
+                                            ]
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "smiles": "O=C(O)CCO",
+        "type": "mol",
+        "in_stock": false,
+        "values": 5.436154895657796,
+        "children": [
+          {
+            "type": "reaction",
+            "smiles": "",
+            "template": null,
+            "children": [
+              {
+                "smiles": "*C(=O)CC[S+](C)C",
+                "type": "mol",
+                "in_stock": false,
+                "values": 4.684601188739258,
+                "children": [
+                  {
+                    "type": "reaction",
+                    "smiles": "",
+                    "template": null,
+                    "children": [
+                      {
+                        "smiles": "*C(=O)/C=C/OS(C)(C)C",
+                        "type": "mol",
+                        "in_stock": false,
+                        "values": 4.311859973158148,
+                        "children": [
+                          {
+                            "type": "reaction",
+                            "smiles": "",
+                            "template": null,
+                            "children": [
+                              {
+                                "smiles": "*C(=O)/C=C/O",
+                                "type": "mol",
+                                "in_stock": false,
+                                "values": 3.0925582418423594,
+                                "children": [
+                                  {
+                                    "type": "reaction",
+                                    "smiles": "",
+                                    "template": null,
+                                    "children": [
+                                      {
+                                        "smiles": "O=C(O)/C=C/O",
+                                        "type": "mol",
+                                        "in_stock": false,
+                                        "values": 1.506496701391709,
+                                        "children": [
+                                          {
+                                            "type": "reaction",
+                                            "smiles": "",
+                                            "template": null,
+                                            "children": [
+                                              {
+                                                "smiles": "O=C(O)CCCO",
+                                                "type": "mol",
+                                                "in_stock": true,
+                                                "values": 0
+                                              }
+                                            ]
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "smiles": "O=C(O)CCO",
+        "type": "mol",
+        "in_stock": false,
+        "values": 5.436154895657796,
+        "children": [
+          {
+            "type": "reaction",
+            "smiles": "",
+            "template": null,
+            "children": [
+              {
+                "smiles": "*C(=O)CC[S+](C)C",
+                "type": "mol",
+                "in_stock": false,
+                "values": 4.684601188739258,
+                "children": [
+                  {
+                    "type": "reaction",
+                    "smiles": "",
+                    "template": null,
+                    "children": [
+                      {
+                        "smiles": "*C(=O)/C=C/OS(C)(C)C",
+                        "type": "mol",
+                        "in_stock": false,
+                        "values": 4.311859973158148,
+                        "children": [
+                          {
+                            "type": "reaction",
+                            "smiles": "",
+                            "template": null,
+                            "children": [
+                              {
+                                "smiles": "*C(=O)/C=C/O",
+                                "type": "mol",
+                                "in_stock": false,
+                                "values": 3.0925582418423594,
+                                "children": [
+                                  {
+                                    "type": "reaction",
+                                    "smiles": "",
+                                    "template": null,
+                                    "children": [
+                                      {
+                                        "smiles": "O=C(O)/C=C/O",
+                                        "type": "mol",
+                                        "in_stock": false,
+                                        "values": 1.506496701391709,
+                                        "children": [
+                                          {
+                                            "type": "reaction",
+                                            "smiles": "",
+                                            "template": null,
+                                            "children": [
+                                              {
+                                                "smiles": "O=C(O)C[C@H](O)C(=O)O",
+                                                "type": "mol",
+                                                "in_stock": true,
+                                                "values": 0
+                                              }
+                                            ]
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "smiles": "O=C(O)CCO",
+        "type": "mol",
+        "in_stock": false,
+        "values": 5.436154895657796,
+        "children": [
+          {
+            "type": "reaction",
+            "smiles": "",
+            "template": null,
+            "children": [
+              {
+                "smiles": "*C(=O)CC[S+](C)C",
+                "type": "mol",
+                "in_stock": false,
+                "values": 4.684601188739258,
+                "children": [
+                  {
+                    "type": "reaction",
+                    "smiles": "",
+                    "template": null,
+                    "children": [
+                      {
+                        "smiles": "*C(=O)/C=C/OS(C)(C)C",
+                        "type": "mol",
+                        "in_stock": false,
+                        "values": 4.311859973158148,
+                        "children": [
+                          {
+                            "type": "reaction",
+                            "smiles": "",
+                            "template": null,
+                            "children": [
+                              {
+                                "smiles": "*C(=O)/C=C/O",
+                                "type": "mol",
+                                "in_stock": false,
+                                "values": 3.0925582418423594,
+                                "children": [
+                                  {
+                                    "type": "reaction",
+                                    "smiles": "",
+                                    "template": null,
+                                    "children": [
+                                      {
+                                        "smiles": "O=C(O)/C=C/O",
+                                        "type": "mol",
+                                        "in_stock": false,
+                                        "values": 1.506496701391709,
+                                        "children": [
+                                          {
+                                            "type": "reaction",
+                                            "smiles": "",
+                                            "template": null,
+                                            "children": [
+                                              {
+                                                "smiles": "O=C1O[C@H]([C@@H](O)CO)C(O)=C1O",
+                                                "type": "mol",
+                                                "in_stock": true,
+                                                "values": 0
+                                              }
+                                            ]
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "smiles": "O=C(O)CCO",
+        "type": "mol",
+        "in_stock": false,
+        "values": 5.436154895657796,
+        "children": [
+          {
+            "type": "reaction",
+            "smiles": "",
+            "template": null,
+            "children": [
+              {
+                "smiles": "*C(=O)CC[S+](C)C",
+                "type": "mol",
+                "in_stock": false,
+                "values": 4.684601188739258,
+                "children": [
+                  {
+                    "type": "reaction",
+                    "smiles": "",
+                    "template": null,
+                    "children": [
+                      {
+                        "smiles": "*C(=O)C=CO",
+                        "type": "mol",
+                        "in_stock": false,
+                        "values": 7.095067175063805,
+                        "children": [
+                          {
+                            "type": "reaction",
+                            "smiles": "",
+                            "template": null,
+                            "children": [
+                              {
+                                "smiles": "*C(=O)CCO",
+                                "type": "mol",
+                                "in_stock": false,
+                                "values": 6.102656446064788,
+                                "children": [
+                                  {
+                                    "type": "reaction",
+                                    "smiles": "",
+                                    "template": null,
+                                    "children": [
+                                      {
+                                        "smiles": "*C(=O)C=C",
+                                        "type": "mol",
+                                        "in_stock": false,
+                                        "values": 5.329671960401688,
+                                        "children": [
+                                          {
+                                            "type": "reaction",
+                                            "smiles": "",
+                                            "template": null,
+                                            "children": [
+                                              {
+                                                "smiles": "*C(=O)CC",
+                                                "type": "mol",
+                                                "in_stock": false,
+                                                "values": 3.314750363983136,
+                                                "children": [
+                                                  {
+                                                    "type": "reaction",
+                                                    "smiles": "",
+                                                    "template": null,
+                                                    "children": [
+                                                      {
+                                                        "smiles": "CCC(=O)C(=O)O",
+                                                        "type": "mol",
+                                                        "in_stock": true,
+                                                        "values": 0
+                                                      }
+                                                    ]
+                                                  }
+                                                ]
+                                              }
+                                            ]
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "smiles": "O=C(O)CCO",
+        "type": "mol",
+        "in_stock": false,
+        "values": 5.436154895657796,
+        "children": [
+          {
+            "type": "reaction",
+            "smiles": "",
+            "template": null,
+            "children": [
+              {
+                "smiles": "*C(=O)C=C",
+                "type": "mol",
+                "in_stock": false,
+                "values": 4.495480378591884,
+                "children": [
+                  {
+                    "type": "reaction",
+                    "smiles": "",
+                    "template": null,
+                    "children": [
+                      {
+                        "smiles": "*C(=O)CCO",
+                        "type": "mol",
+                        "in_stock": false,
+                        "values": 10.807800684897316,
+                        "children": [
+                          {
+                            "type": "reaction",
+                            "smiles": "",
+                            "template": null,
+                            "children": [
+                              {
+                                "smiles": "*C(=O)CC(C)=O",
+                                "type": "mol",
+                                "in_stock": false,
+                                "values": 8.481936150482385,
+                                "children": [
+                                  {
+                                    "type": "reaction",
+                                    "smiles": "",
+                                    "template": null,
+                                    "children": [
+                                      {
+                                        "smiles": "*C(=O)/C=C/C",
+                                        "type": "mol",
+                                        "in_stock": false,
+                                        "values": 6.580757800436152,
+                                        "children": [
+                                          {
+                                            "type": "reaction",
+                                            "smiles": "",
+                                            "template": null,
+                                            "children": [
+                                              {
+                                                "smiles": "*C(=O)CCC",
+                                                "type": "mol",
+                                                "in_stock": false,
+                                                "values": 4.92257206680276,
+                                                "children": [
+                                                  {
+                                                    "type": "reaction",
+                                                    "smiles": "",
+                                                    "template": null,
+                                                    "children": [
+                                                      {
+                                                        "smiles": "CCCC(=O)O",
+                                                        "type": "mol",
+                                                        "in_stock": true,
+                                                        "values": 0
+                                                      }
+                                                    ]
+                                                  }
+                                                ]
+                                              }
+                                            ]
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "smiles": "O=C(O)CCO",
+        "type": "mol",
+        "in_stock": false,
+        "values": 5.436154895657796,
+        "children": [
+          {
+            "type": "reaction",
+            "smiles": "",
+            "template": null,
+            "children": [
+              {
+                "smiles": "*C(=O)C=C",
+                "type": "mol",
+                "in_stock": false,
+                "values": 4.495480378591884,
+                "children": [
+                  {
+                    "type": "reaction",
+                    "smiles": "",
+                    "template": null,
+                    "children": [
+                      {
+                        "smiles": "*C(=O)CCO",
+                        "type": "mol",
+                        "in_stock": false,
+                        "values": 10.807800684897316,
+                        "children": [
+                          {
+                            "type": "reaction",
+                            "smiles": "",
+                            "template": null,
+                            "children": [
+                              {
+                                "smiles": "*C(=O)CC(C)=O",
+                                "type": "mol",
+                                "in_stock": false,
+                                "values": 8.481936150482385,
+                                "children": [
+                                  {
+                                    "type": "reaction",
+                                    "smiles": "",
+                                    "template": null,
+                                    "children": [
+                                      {
+                                        "smiles": "*C(=O)/C=C/C",
+                                        "type": "mol",
+                                        "in_stock": false,
+                                        "values": 6.580757800436152,
+                                        "children": [
+                                          {
+                                            "type": "reaction",
+                                            "smiles": "",
+                                            "template": null,
+                                            "children": [
+                                              {
+                                                "smiles": "*C(=O)CCC",
+                                                "type": "mol",
+                                                "in_stock": false,
+                                                "values": 4.92257206680276,
+                                                "children": [
+                                                  {
+                                                    "type": "reaction",
+                                                    "smiles": "",
+                                                    "template": null,
+                                                    "children": [
+                                                      {
+                                                        "smiles": "CCC(=O)C(=O)O",
+                                                        "type": "mol",
+                                                        "in_stock": true,
+                                                        "values": 0
+                                                      }
+                                                    ]
+                                                  }
+                                                ]
+                                              }
+                                            ]
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]

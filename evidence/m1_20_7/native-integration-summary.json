@@ -1,0 +1,50 @@
+{
+  "chemenzy_master_hexanoic": {
+    "native_reaction_nodes": 73,
+    "native_routes": 31
+  },
+  "chemenzyretroplanner": {
+    "CCCC=O": 150,
+    "O=C(O)CCO": 119
+  },
+  "combined_graph": {
+    "composite_edges": 5,
+    "edges": 402,
+    "engines": [
+      "chemenzyretroplanner",
+      "doranet",
+      "retrobiocat2"
+    ],
+    "placeholder_rows_quarantined": {
+      "chemenzyretroplanner": 114,
+      "doranet": 1
+    },
+    "scope": "direction-explicit candidate output and provenance only"
+  },
+  "doranet": {
+    "CCCC=O": {
+      "candidates": 75,
+      "reproducible_identity_sha256": "2c6a03eae668cc2645010c0ff88f9bb3c18ecdcd3264fc3bd8d2649f4cf4a130"
+    },
+    "O=C(O)CCO": {
+      "candidates": 98,
+      "reproducible_identity_sha256": "8cec421d1ab17fed9ebc3d13f053af58f7533a142401e4fce19dcd9c6e6a6eb6"
+    }
+  },
+  "retrobiocat2": {
+    "CCCC=O": 7,
+    "O=C(O)CCO": 9
+  },
+  "retropath2_source_expansion": {
+    "3_hydroxypropionic_acid": {
+      "compound_transitions": 973,
+      "rule_attributions_only_in_run_1": 150,
+      "rule_attributions_only_in_run_2": 150
+    },
+    "butanal": {
+      "compound_transitions": 426,
+      "rule_attributions_only_in_run_1": 39,
+      "rule_attributions_only_in_run_2": 39
+    }
+  }
+}

@@ -1,0 +1,113 @@
+{
+  "condition_config": {
+    "parrot": {
+      "model_name": "parrot",
+      "topk": 3
+    },
+    "rcr": {
+      "info_path": "packages/condition_predictor/condition_predictor/data",
+      "model_name": "rcr",
+      "topk": 3,
+      "weights_path": "packages/condition_predictor/condition_predictor/data/dict_weights.npy"
+    }
+  },
+  "depth_output_dim": 10,
+  "depth_value_latent_dim": 256,
+  "easifa_config": {
+    "checkpoint_path": "packages/easifa/easifa/checkpoints/enzyme_site_type_predition_model/train_in_uniprot_ecreact_cluster_split_merge_dataset_all_limit_3_at_2023-12-19-16-06-42/global_step_284000"
+  },
+  "enzyme_assign": false,
+  "enzyme_rxn_classifier_config": {
+    "checkpoint_path": "packages/organic_enzyme_rxn_classifier/organic_enzyme_rxn_classifier/checkpoints/ecreact_classification",
+    "topk": 3
+  },
+  "exclude_target": true,
+  "expansion_topk": 50,
+  "filter_path": "packages/rxn_filter/rxn_filter/model/filter_model_20250604_232451_state.pt",
+  "fp_dim": 2048,
+  "gpu": -1,
+  "iterations": 12,
+  "keep_score": true,
+  "keep_search": true,
+  "latent_dim": 128,
+  "max_depth": 6,
+  "n_layers": 1,
+  "one_step_model_configs": {
+    "graphfp_models": {
+      "USPTO-full_remapped": {
+        "graph_dataset_root": "packages/graph_retrosyn/graph_retrosyn/data/raw",
+        "graph_model_dumb": "packages/graph_retrosyn/graph_retrosyn/model/train_all_model/saved_graph_rollout_state_1_DMPNNFP_init_lr_0.001_batch_size_1024_fp_lindim_512_graph_lindim_512_use_gru_False_massage_depth_3.ckpt",
+        "weight": 1.0
+      }
+    },
+    "onmt_models": {
+      "bionav_one_step": {
+        "beam_size": 20,
+        "model_path": [
+          "packages/onmt/checkpoints/np-like/model_step_30000.pt",
+          "packages/onmt/checkpoints/np-like/model_step_50000.pt",
+          "packages/onmt/checkpoints/np-like/model_step_80000.pt",
+          "packages/onmt/checkpoints/np-like/model_step_100000.pt"
+        ],
+        "weight": 1.0
+      }
+    },
+    "template_relevance": {
+      "bkms_metabolic": {
+        "state_name": "bkms_metabolic",
+        "weight": 1.0
+      },
+      "pistachio": {
+        "state_name": "pistachio",
+        "weight": 1.0
+      },
+      "pistachio_ringbreaker": {
+        "state_name": "pistachio_ringbreaker",
+        "weight": 1.0
+      },
+      "reaxys": {
+        "state_name": "reaxys",
+        "weight": 1.0
+      },
+      "reaxys_biocatalysis": {
+        "state_name": "reaxys_biocatalysis",
+        "weight": 1.0
+      }
+    }
+  },
+  "organic_enzyme_rxn_classification": false,
+  "organic_enzyme_rxn_classifier_config": {
+    "checkpoint_path": "packages/organic_enzyme_rxn_classifier/organic_enzyme_rxn_classifier/checkpoints/unbalance_organic_enzyme_classification"
+  },
+  "output": "results/api_test",
+  "pathway_ranking_config": {
+    "depth_based_ranker": "depth_based_ranker",
+    "tree_lstm_ranker": "tree_lstm_ranker"
+  },
+  "pred_condition": false,
+  "search_strategy": "MCTS_STAR",
+  "stock_limit_dict": {
+    "num_C": [
+      0,
+      999
+    ],
+    "num_N": [
+      0,
+      999
+    ],
+    "num_O": [
+      0,
+      999
+    ]
+  },
+  "stocks": {
+    "BioNav-stock": "building_block_dataset/bionav_all_building_block.csv"
+  },
+  "use_depth_value_fn": true,
+  "use_filter": false,
+  "use_value_fn": false,
+  "value_fn_save_folder": "packages/value_function/value_function/depth_model_save_folder/download_model",
+  "value_model": "filter_train_data_maxDepth_data_dic_2022-01-15_18h-56m-34s.pkl",
+  "viz": false,
+  "viz_dir": "viz"
+}

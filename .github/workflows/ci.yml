@@ -73,7 +73,11 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - name: Build SOURCE ZIP and hash manifest
+      - name: Check captured native evidence
+        run: |
+          python -m pip install -e .
+          python notebooks/seven_engine/check_native_integration.py evidence/m1_20_7
+      - name: Build SOURCE ZIP, evidence bundle and hash manifest
         run: python scripts/build_seven_engine_review.py --output-dir dist_seven_engine
       - uses: actions/upload-artifact@v4
         with:

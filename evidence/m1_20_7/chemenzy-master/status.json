@@ -1,0 +1,22 @@
+{
+  "assets": {
+    "building_block_dataset.zip": "87fd03d502cf75b558871b8adda89b6e4918288922ad66c84ca15880958cc1e0",
+    "onmt_metadata.zip": "b5922a639eb387a815374c2e069c8c76b51a4b2bb5fb0bf9cf9cf91ccbbe7adb",
+    "retro_planner_env.tar.gz": "10d5029b8660c52eaf0c8c047ceac277b88e3930843e6162b4115c05eeda06bd",
+    "value_fun_metadata.zip": "085b0364ff07af10e577eae523ea2f05e795d2a62f4262d10587cc96a6504087"
+  },
+  "config_sha256": "c57d61e7f0f121ac798391bc25456f84beb53e404c40805f7da217e082e58e13",
+  "model": "onmt_models.bionav_one_step",
+  "reactions_sha256": "f552062a2a92758de22de838b6d71e9f98072c1ba0c3b11c158e406001f30e7e",
+  "route_counts": {
+    "CCCC=O": 66,
+    "CCCCCC(=O)O": 31,
+    "O=C(O)CCO": 28
+  },
+  "routes_sha256": "101a51a6d4c5c4460e6351359bbba05377f1860f0248d869f414881fe5790c97",
+  "scientific_lock_sha256": "ec3574bd755f6a987c1be490e5fe545cc1766dc242ffe6ee2d6256641a541158",
+  "stage": "native_output",
+  "status": "NATIVE_OUTPUT",
+  "stock": "BioNav-stock",
+  "upstream_git": "7dbab354189db9edc7aea9c0aedc2f1b1659f906"
+}

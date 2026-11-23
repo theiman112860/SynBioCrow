@@ -27,7 +27,7 @@ def main():
         prepare_enzyme_recommander=False,
     )
     results = []
-    for target in json.loads(targets_path):
+    for target in json.loads(Path(targets_path).read_text()):
         try:
             expected = canonical(target)
             result = planner.plan(expected)

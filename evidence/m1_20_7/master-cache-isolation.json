@@ -1,0 +1,32 @@
+{
+  "version": "M1_20_7_REVIEW",
+  "targets": [
+    "butanal"
+  ],
+  "engine_states": {
+    "ChemEnzyRetroPlanner": {
+      "run": {
+        "status": "SKIPPED_UNAVAILABLE",
+        "error": "Set CHEMENZY_CACHE"
+      },
+      "parsed_reaction_records": 0,
+      "native_json_files": [],
+      "external_evidence": {},
+      "acceptance": "NATIVE_REACTION_GATE_OPEN"
+    }
+  },
+  "fresh_native_records": 0,
+  "replayed_records": 0,
+  "seven_engine_live_gate": "NOT_VERIFIED",
+  "limitations": [
+    "Separate operational adapters do not imply independent algorithms",
+    "ChemEnzyRetroPlanner local routes require a verified native artifact hash",
+    "Raw template hits and designs are not certified reactions",
+    "Automated hybrid candidates are structural only"
+  ],
+  "historical_hosted_reactions": 0,
+  "hybrid_candidates": 0,
+  "seven_engine_execution_gate": "NOT_PASSED",
+  "seven_engine_reaction_export_gate": "NOT_PASSED",
+  "retro_tide_output_type": "Native PKS designs, not reaction records"
+}

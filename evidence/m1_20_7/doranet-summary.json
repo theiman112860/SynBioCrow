@@ -1,0 +1,10 @@
+{
+  "CCCC=O": {
+    "candidates": 75,
+    "reproducible_identity_sha256": "2c6a03eae668cc2645010c0ff88f9bb3c18ecdcd3264fc3bd8d2649f4cf4a130"
+  },
+  "O=C(O)CCO": {
+    "candidates": 98,
+    "reproducible_identity_sha256": "8cec421d1ab17fed9ebc3d13f053af58f7533a142401e4fce19dcd9c6e6a6eb6"
+  }
+}

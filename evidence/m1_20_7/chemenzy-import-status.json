@@ -1,0 +1,9 @@
+{
+  "assets": {
+    "retro_planner_env.tar.gz": "10d5029b8660c52eaf0c8c047ceac277b88e3930843e6162b4115c05eeda06bd"
+  },
+  "scientific_lock_sha256": "ec3574bd755f6a987c1be490e5fe545cc1766dc242ffe6ee2d6256641a541158",
+  "stage": "native_api_loaded",
+  "status": "NOT_VERIFIED",
+  "upstream_git": "7dbab354189db9edc7aea9c0aedc2f1b1659f906"
+}

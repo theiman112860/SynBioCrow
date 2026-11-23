@@ -1,0 +1,36 @@
+{
+  "aizynthfinder_solved_routes": {
+    "CCCC=O": 16,
+    "O=C(O)CCO": 15
+  },
+  "archive_sha256": "adb0a3ea2cd381caffcad1a3b3341e6450548bb2907d521adbdeff8d9a100078",
+  "archived_export_counts": {
+    "AiZynthFinder": 31,
+    "BioPKS": 1,
+    "DORAnet": 170,
+    "RetroBioCat2": 15,
+    "RetroPath2": 724
+  },
+  "archived_gates": {
+    "all_seven_exported_independent_direction_supported_reactions": false,
+    "all_seven_have_reconstructed_target_pathways": false,
+    "all_seven_processes_passed": false,
+    "biochemical_certification": false,
+    "complete_multi_engine_target_pathway_demonstrated": false,
+    "note": "Graph witnesses rely on assumed starting materials and recorded candidate reaction direction. No claim of balanced reactions or experimentally verified feasibility."
+  },
+  "gate": "PASS_HISTORICAL_EVIDENCE",
+  "native_member_sha256": {
+    "native/AiZynthFinder/external_evidence/0_3_hydroxypropionic_acid_native_routes.json": "383bb9cee2e9c5978db4d7883d6d32eb840b2541a9866593484581fbc278588a",
+    "native/AiZynthFinder/external_evidence/1_butanal_native_routes.json": "097064067fe5b15511d1731606aff112d45ea4ec9d11f274fde94fda81103207",
+    "native/BioPKS/external_evidence/0_native_design_release_records.json": "0c69557e9b8f00d30a08a005d5d41c8c1602273e1d88bb685d42f695a147055a",
+    "native/DORAnet/external_evidence/0_results.json": "a1a7a08a2187d7aa5f3acc22045e494e8815a62bc0cf413499655e5ae9f9220b",
+    "native/RetroBioCat2/external_evidence/0_results.json": "40a3252d0b2eff6244f15197a0e76878c96f285ec8eecc0b72b191f8c54dd508",
+    "native/RetroPath2/external_evidence/0_results.csv": "94e0bec4878a9a0188441d7f9efb5c4df87dadb7fd3a6711cc76c6a3d47ec6d3",
+    "native/RetroPath2/external_evidence/1_results.csv": "1806b71db1ce1da96e4113133a644bca89d24414cbbca615258eeac5eb5fc725",
+    "native/RetroTide/external_evidence/native_design_release_records.json": "e5e55c226a8f44f7e7723f1954ea630ad40b59e84e99a4c531b5ae8e93089a06"
+  },
+  "quarantined": 725,
+  "usable": 216,
+  "valid_smiles_count": 708
+}

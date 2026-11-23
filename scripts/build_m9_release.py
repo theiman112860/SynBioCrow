@@ -19,7 +19,7 @@ REQUIRED=[
 ]
 EXCLUDE_PREFIXES=(
     ".git/","dist/","build/","dist_m9/",".synbiocrow_runs/",
-    "__pycache__/","development_history/",
+    "__pycache__/","development_history/","evidence/m1_20_7/",
 )
 PROTECTED_PATTERNS=("benchmark_v2_truth","holdout_truth","gold_truth","blind_truth")
 

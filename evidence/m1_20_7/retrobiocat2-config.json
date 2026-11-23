@@ -1,0 +1,13 @@
+{
+  "targets": [
+    [
+      "3-hydroxypropionic acid",
+      "O=C(O)CCO"
+    ],
+    [
+      "butanal",
+      "CCCC=O"
+    ]
+  ],
+  "search_literature_precedent": false
+}

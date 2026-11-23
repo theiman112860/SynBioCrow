@@ -1,0 +1,3080 @@
+[
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/0/routes/0/children/0",
+    "native_template": null,
+    "products": "CCCC=O",
+    "reactants": "CCCCS(=O)(=O)O",
+    "reaction_smiles": "CCCCS(=O)(=O)O>>CCCC=O",
+    "target_smiles": "CCCC=O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/0/routes/1/children/0",
+    "native_template": null,
+    "products": "CCCC=O",
+    "reactants": "CCCCN",
+    "reaction_smiles": "CCCCN>>CCCC=O",
+    "target_smiles": "CCCC=O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/0/routes/2/children/0",
+    "native_template": null,
+    "products": "CCCC=O",
+    "reactants": "CCCC",
+    "reaction_smiles": "CCCC>>CCCC=O",
+    "target_smiles": "CCCC=O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/0/routes/3/children/0",
+    "native_template": null,
+    "products": "CCCC=O",
+    "reactants": "CC=CC(=O)O",
+    "reaction_smiles": "CC=CC(=O)O>>CCCC=O",
+    "target_smiles": "CCCC=O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/0/routes/4/children/0",
+    "native_template": null,
+    "products": "CCCC=O",
+    "reactants": "CCCCCO",
+    "reaction_smiles": "CCCCCO>>CCCC=O",
+    "target_smiles": "CCCC=O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/0/routes/5/children/0",
+    "native_template": null,
+    "products": "CCCC=O",
+    "reactants": "CCCC(=O)O",
+    "reaction_smiles": "CCCC(=O)O>>CCCC=O",
+    "target_smiles": "CCCC=O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/0/routes/6/children/0",
+    "native_template": null,
+    "products": "CCCC=O",
+    "reactants": "CCCC(=O)C(=O)O",
+    "reaction_smiles": "CCCC(=O)C(=O)O>>CCCC=O",
+    "target_smiles": "CCCC=O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/0/routes/7/children/0",
+    "native_template": null,
+    "products": "CCCC=O",
+    "reactants": "CCCCO",
+    "reaction_smiles": "CCCCO>>CCCC=O",
+    "target_smiles": "CCCC=O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/0/routes/8/children/0",
+    "native_template": null,
+    "products": "CCCC=O",
+    "reactants": "C=CC(C)(C)O",
+    "reaction_smiles": "C=CC(C)(C)O>>CCCC=O",
+    "target_smiles": "CCCC=O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/0/routes/9/children/0",
+    "native_template": null,
+    "products": "CCCC=O",
+    "reactants": "CC(=O)C(=O)O",
+    "reaction_smiles": "CC(=O)C(=O)O>>CCCC=O",
+    "target_smiles": "CCCC=O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/0/routes/9/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "CC(=O)C(=O)O",
+    "reactants": "O=C(O)C(=O)Cc1c[nH]c2ccccc12",
+    "reaction_smiles": "O=C(O)C(=O)Cc1c[nH]c2ccccc12>>CC(=O)C(=O)O",
+    "target_smiles": "CCCC=O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/0/routes/10/children/0",
+    "native_template": null,
+    "products": "CCCC=O",
+    "reactants": "C/C=C\\CO",
+    "reaction_smiles": "C/C=C\\CO>>CCCC=O",
+    "target_smiles": "CCCC=O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/0/routes/10/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "C/C=C\\CO",
+    "reactants": "CCCCC=O",
+    "reaction_smiles": "CCCCC=O>>C/C=C\\CO",
+    "target_smiles": "CCCC=O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/0/routes/11/children/0",
+    "native_template": null,
+    "products": "CCCC=O",
+    "reactants": "C/C=C\\CO",
+    "reaction_smiles": "C/C=C\\CO>>CCCC=O",
+    "target_smiles": "CCCC=O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/0/routes/11/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "C/C=C\\CO",
+    "reactants": "CCCCC(=O)O",
+    "reaction_smiles": "CCCCC(=O)O>>C/C=C\\CO",
+    "target_smiles": "CCCC=O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/0/routes/12/children/0",
+    "native_template": null,
+    "products": "CCCC=O",
+    "reactants": "CC(=O)C(=O)O",
+    "reaction_smiles": "CC(=O)C(=O)O>>CCCC=O",
+    "target_smiles": "CCCC=O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/0/routes/12/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "CC(=O)C(=O)O",
+    "reactants": "N[C@@H](CCC=O)C(=O)O",
+    "reaction_smiles": "N[C@@H](CCC=O)C(=O)O>>CC(=O)C(=O)O",
+    "target_smiles": "CCCC=O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/0/routes/13/children/0",
+    "native_template": null,
+    "products": "CCCC=O",
+    "reactants": "CC(=O)C(=O)O",
+    "reaction_smiles": "CC(=O)C(=O)O>>CCCC=O",
+    "target_smiles": "CCCC=O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/0/routes/13/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "CC(=O)C(=O)O",
+    "reactants": "O=C(O)C[C@H](O)C(=O)O",
+    "reaction_smiles": "O=C(O)C[C@H](O)C(=O)O>>CC(=O)C(=O)O",
+    "target_smiles": "CCCC=O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/0/routes/14/children/0",
+    "native_template": null,
+    "products": "CCCC=O",
+    "reactants": "CC(=O)C(=O)O",
+    "reaction_smiles": "CC(=O)C(=O)O>>CCCC=O",
+    "target_smiles": "CCCC=O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/0/routes/14/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "CC(=O)C(=O)O",
+    "reactants": "C[C@@H](O)[C@H](N)C(=O)O",
+    "reaction_smiles": "C[C@@H](O)[C@H](N)C(=O)O>>CC(=O)C(=O)O",
+    "target_smiles": "CCCC=O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/0/routes/15/children/0",
+    "native_template": null,
+    "products": "CCCC=O",
+    "reactants": "CC(=O)C(=O)O",
+    "reaction_smiles": "CC(=O)C(=O)O>>CCCC=O",
+    "target_smiles": "CCCC=O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/0/routes/15/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "CC(=O)C(=O)O",
+    "reactants": "O=C(O)C(=O)Cc1ccccc1",
+    "reaction_smiles": "O=C(O)C(=O)Cc1ccccc1>>CC(=O)C(=O)O",
+    "target_smiles": "CCCC=O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/0/routes/16/children/0",
+    "native_template": null,
+    "products": "CCCC=O",
+    "reactants": "C/C=C/CO",
+    "reaction_smiles": "C/C=C/CO>>CCCC=O",
+    "target_smiles": "CCCC=O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/0/routes/16/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "C/C=C/CO",
+    "reactants": "CCCC(=O)O",
+    "reaction_smiles": "CCCC(=O)O>>C/C=C/CO",
+    "target_smiles": "CCCC=O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/0/routes/17/children/0",
+    "native_template": null,
+    "products": "CCCC=O",
+    "reactants": "C/C=C/CO",
+    "reaction_smiles": "C/C=C/CO>>CCCC=O",
+    "target_smiles": "CCCC=O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/0/routes/17/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "C/C=C/CO",
+    "reactants": "CC=CCC",
+    "reaction_smiles": "CC=CCC>>C/C=C/CO",
+    "target_smiles": "CCCC=O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/0/routes/18/children/0",
+    "native_template": null,
+    "products": "CCCC=O",
+    "reactants": "C/C=C/CO",
+    "reaction_smiles": "C/C=C/CO>>CCCC=O",
+    "target_smiles": "CCCC=O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/0/routes/18/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "C/C=C/CO",
+    "reactants": "CCC=CC=O",
+    "reaction_smiles": "CCC=CC=O>>C/C=C/CO",
+    "target_smiles": "CCCC=O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/0/routes/19/children/0",
+    "native_template": null,
+    "products": "CCCC=O",
+    "reactants": "C/C=C/CO",
+    "reaction_smiles": "C/C=C/CO>>CCCC=O",
+    "target_smiles": "CCCC=O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/0/routes/19/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "C/C=C/CO",
+    "reactants": "CC=CC(C)=O",
+    "reaction_smiles": "CC=CC(C)=O>>C/C=C/CO",
+    "target_smiles": "CCCC=O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/0/routes/20/children/0",
+    "native_template": null,
+    "products": "CCCC=O",
+    "reactants": "C/C=C/CO",
+    "reaction_smiles": "C/C=C/CO>>CCCC=O",
+    "target_smiles": "CCCC=O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/0/routes/20/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "C/C=C/CO",
+    "reactants": "CCCCC=O",
+    "reaction_smiles": "CCCCC=O>>C/C=C/CO",
+    "target_smiles": "CCCC=O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/0/routes/21/children/0",
+    "native_template": null,
+    "products": "CCCC=O",
+    "reactants": "C/C=C\\CO",
+    "reaction_smiles": "C/C=C\\CO>>CCCC=O",
+    "target_smiles": "CCCC=O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/0/routes/21/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "C/C=C\\CO",
+    "reactants": "CC(C)C=O",
+    "reaction_smiles": "CC(C)C=O>>C/C=C\\CO",
+    "target_smiles": "CCCC=O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/0/routes/22/children/0",
+    "native_template": null,
+    "products": "CCCC=O",
+    "reactants": "C/C=C/CO",
+    "reaction_smiles": "C/C=C/CO>>CCCC=O",
+    "target_smiles": "CCCC=O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/0/routes/22/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "C/C=C/CO",
+    "reactants": "CC=CC(=O)O",
+    "reaction_smiles": "CC=CC(=O)O>>C/C=C/CO",
+    "target_smiles": "CCCC=O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/0/routes/23/children/0",
+    "native_template": null,
+    "products": "CCCC=O",
+    "reactants": "C/C=C/CO",
+    "reaction_smiles": "C/C=C/CO>>CCCC=O",
+    "target_smiles": "CCCC=O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/0/routes/23/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "C/C=C/CO",
+    "reactants": "CC(C)=CC=O",
+    "reaction_smiles": "CC(C)=CC=O>>C/C=C/CO",
+    "target_smiles": "CCCC=O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/0/routes/24/children/0",
+    "native_template": null,
+    "products": "CCCC=O",
+    "reactants": "C/C=C/CO",
+    "reaction_smiles": "C/C=C/CO>>CCCC=O",
+    "target_smiles": "CCCC=O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/0/routes/24/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "C/C=C/CO",
+    "reactants": "CC=CC=O",
+    "reaction_smiles": "CC=CC=O>>C/C=C/CO",
+    "target_smiles": "CCCC=O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/0/routes/25/children/0",
+    "native_template": null,
+    "products": "CCCC=O",
+    "reactants": "C/C=C/CO",
+    "reaction_smiles": "C/C=C/CO>>CCCC=O",
+    "target_smiles": "CCCC=O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/0/routes/25/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "C/C=C/CO",
+    "reactants": "CCC(=O)OC",
+    "reaction_smiles": "CCC(=O)OC>>C/C=C/CO",
+    "target_smiles": "CCCC=O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/0/routes/26/children/0",
+    "native_template": null,
+    "products": "CCCC=O",
+    "reactants": "C/C=C/CO",
+    "reaction_smiles": "C/C=C/CO>>CCCC=O",
+    "target_smiles": "CCCC=O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/0/routes/26/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "C/C=C/CO",
+    "reactants": "C=CC(C)=O",
+    "reaction_smiles": "C=CC(C)=O>>C/C=C/CO",
+    "target_smiles": "CCCC=O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/0/routes/27/children/0",
+    "native_template": null,
+    "products": "CCCC=O",
+    "reactants": "C/C=C\\CO",
+    "reaction_smiles": "C/C=C\\CO>>CCCC=O",
+    "target_smiles": "CCCC=O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/0/routes/27/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "C/C=C\\CO",
+    "reactants": "CC=CC(C)=O",
+    "reaction_smiles": "CC=CC(C)=O>>C/C=C\\CO",
+    "target_smiles": "CCCC=O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/0/routes/28/children/0",
+    "native_template": null,
+    "products": "CCCC=O",
+    "reactants": "C/C=C\\CO",
+    "reaction_smiles": "C/C=C\\CO>>CCCC=O",
+    "target_smiles": "CCCC=O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/0/routes/28/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "C/C=C\\CO",
+    "reactants": "CC(C)=CCO",
+    "reaction_smiles": "CC(C)=CCO>>C/C=C\\CO",
+    "target_smiles": "CCCC=O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/0/routes/29/children/0",
+    "native_template": null,
+    "products": "CCCC=O",
+    "reactants": "C/C=C\\CO",
+    "reaction_smiles": "C/C=C\\CO>>CCCC=O",
+    "target_smiles": "CCCC=O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/0/routes/29/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "C/C=C\\CO",
+    "reactants": "CC(C)=CC=O",
+    "reaction_smiles": "CC(C)=CC=O>>C/C=C\\CO",
+    "target_smiles": "CCCC=O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/0/routes/30/children/0",
+    "native_template": null,
+    "products": "CCCC=O",
+    "reactants": "C/C=C\\CO",
+    "reaction_smiles": "C/C=C\\CO>>CCCC=O",
+    "target_smiles": "CCCC=O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/0/routes/30/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "C/C=C\\CO",
+    "reactants": "CC=CC(=O)O",
+    "reaction_smiles": "CC=CC(=O)O>>C/C=C\\CO",
+    "target_smiles": "CCCC=O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/0/routes/31/children/0",
+    "native_template": null,
+    "products": "CCCC=O",
+    "reactants": "*C(=O)CCC",
+    "reaction_smiles": "*C(=O)CCC>>CCCC=O",
+    "target_smiles": "CCCC=O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/0/routes/31/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "*C(=O)CCC",
+    "reactants": "CCCC(=O)O",
+    "reaction_smiles": "CCCC(=O)O>>*C(=O)CCC",
+    "target_smiles": "CCCC=O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/0/routes/32/children/0",
+    "native_template": null,
+    "products": "CCCC=O",
+    "reactants": "*C(=O)CCC",
+    "reaction_smiles": "*C(=O)CCC>>CCCC=O",
+    "target_smiles": "CCCC=O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/0/routes/32/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "*C(=O)CCC",
+    "reactants": "CCC(=O)C(=O)O",
+    "reaction_smiles": "CCC(=O)C(=O)O>>*C(=O)CCC",
+    "target_smiles": "CCCC=O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/0/routes/33/children/0",
+    "native_template": null,
+    "products": "CCCC=O",
+    "reactants": "CC/C=C/CO",
+    "reaction_smiles": "CC/C=C/CO>>CCCC=O",
+    "target_smiles": "CCCC=O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/0/routes/33/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "CC/C=C/CO",
+    "reactants": "CCCCCO",
+    "reaction_smiles": "CCCCCO>>CC/C=C/CO",
+    "target_smiles": "CCCC=O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/0/routes/34/children/0",
+    "native_template": null,
+    "products": "CCCC=O",
+    "reactants": "CC/C=C/CO",
+    "reaction_smiles": "CC/C=C/CO>>CCCC=O",
+    "target_smiles": "CCCC=O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/0/routes/34/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "CC/C=C/CO",
+    "reactants": "CCCCC(=O)O",
+    "reaction_smiles": "CCCCC(=O)O>>CC/C=C/CO",
+    "target_smiles": "CCCC=O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/0/routes/35/children/0",
+    "native_template": null,
+    "products": "CCCC=O",
+    "reactants": "CC/C=C/CO",
+    "reaction_smiles": "CC/C=C/CO>>CCCC=O",
+    "target_smiles": "CCCC=O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/0/routes/35/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "CC/C=C/CO",
+    "reactants": "CCCCCC=O",
+    "reaction_smiles": "CCCCCC=O>>CC/C=C/CO",
+    "target_smiles": "CCCC=O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/0/routes/36/children/0",
+    "native_template": null,
+    "products": "CCCC=O",
+    "reactants": "CC/C=C/CO",
+    "reaction_smiles": "CC/C=C/CO>>CCCC=O",
+    "target_smiles": "CCCC=O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/0/routes/36/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "CC/C=C/CO",
+    "reactants": "CCCCC",
+    "reaction_smiles": "CCCCC>>CC/C=C/CO",
+    "target_smiles": "CCCC=O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/0/routes/37/children/0",
+    "native_template": null,
+    "products": "CCCC=O",
+    "reactants": "CC/C=C/CO",
+    "reaction_smiles": "CC/C=C/CO>>CCCC=O",
+    "target_smiles": "CCCC=O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/0/routes/37/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "CC/C=C/CO",
+    "reactants": "CCCCC=O",
+    "reaction_smiles": "CCCCC=O>>CC/C=C/CO",
+    "target_smiles": "CCCC=O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/0/routes/38/children/0",
+    "native_template": null,
+    "products": "CCCC=O",
+    "reactants": "CC/C=C/CO",
+    "reaction_smiles": "CC/C=C/CO>>CCCC=O",
+    "target_smiles": "CCCC=O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/0/routes/38/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "CC/C=C/CO",
+    "reactants": "CCC=CCO",
+    "reaction_smiles": "CCC=CCO>>CC/C=C/CO",
+    "target_smiles": "CCCC=O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/0/routes/39/children/0",
+    "native_template": null,
+    "products": "CCCC=O",
+    "reactants": "CC/C=C/CO",
+    "reaction_smiles": "CC/C=C/CO>>CCCC=O",
+    "target_smiles": "CCCC=O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/0/routes/39/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "CC/C=C/CO",
+    "reactants": "CC=CC(C)=O",
+    "reaction_smiles": "CC=CC(C)=O>>CC/C=C/CO",
+    "target_smiles": "CCCC=O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/0/routes/40/children/0",
+    "native_template": null,
+    "products": "CCCC=O",
+    "reactants": "CC/C=C/CO",
+    "reaction_smiles": "CC/C=C/CO>>CCCC=O",
+    "target_smiles": "CCCC=O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/0/routes/40/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "CC/C=C/CO",
+    "reactants": "CCCC=CC=O",
+    "reaction_smiles": "CCCC=CC=O>>CC/C=C/CO",
+    "target_smiles": "CCCC=O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/0/routes/41/children/0",
+    "native_template": null,
+    "products": "CCCC=O",
+    "reactants": "C/C=C\\CO",
+    "reaction_smiles": "C/C=C\\CO>>CCCC=O",
+    "target_smiles": "CCCC=O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/0/routes/41/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "C/C=C\\CO",
+    "reactants": "CCCC(=O)O",
+    "reaction_smiles": "CCCC(=O)O>>C/C=C\\CO",
+    "target_smiles": "CCCC=O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/0/routes/42/children/0",
+    "native_template": null,
+    "products": "CCCC=O",
+    "reactants": "C/C=C\\CO",
+    "reaction_smiles": "C/C=C\\CO>>CCCC=O",
+    "target_smiles": "CCCC=O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/0/routes/42/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "C/C=C\\CO",
+    "reactants": "C=CC(C)=O",
+    "reaction_smiles": "C=CC(C)=O>>C/C=C\\CO",
+    "target_smiles": "CCCC=O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/0/routes/43/children/0",
+    "native_template": null,
+    "products": "CCCC=O",
+    "reactants": "CC/C=C/CO",
+    "reaction_smiles": "CC/C=C/CO>>CCCC=O",
+    "target_smiles": "CCCC=O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/0/routes/43/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "CC/C=C/CO",
+    "reactants": "CCC=CC=O",
+    "reaction_smiles": "CCC=CC=O>>CC/C=C/CO",
+    "target_smiles": "CCCC=O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/0/routes/44/children/0",
+    "native_template": null,
+    "products": "CCCC=O",
+    "reactants": "CC/C=C/CO",
+    "reaction_smiles": "CC/C=C/CO>>CCCC=O",
+    "target_smiles": "CCCC=O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/0/routes/44/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "CC/C=C/CO",
+    "reactants": "CC/C=C/C=O",
+    "reaction_smiles": "CC/C=C/C=O>>CC/C=C/CO",
+    "target_smiles": "CCCC=O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/0/routes/44/children/0/children/0/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "CC/C=C/C=O",
+    "reactants": "CCCCCC(=O)O",
+    "reaction_smiles": "CCCCCC(=O)O>>CC/C=C/C=O",
+    "target_smiles": "CCCC=O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/0/routes/45/children/0",
+    "native_template": null,
+    "products": "CCCC=O",
+    "reactants": "C/C=C\\CO",
+    "reaction_smiles": "C/C=C\\CO>>CCCC=O",
+    "target_smiles": "CCCC=O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/0/routes/45/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "C/C=C\\CO",
+    "reactants": "C/C=C\\C=O",
+    "reaction_smiles": "C/C=C\\C=O>>C/C=C\\CO",
+    "target_smiles": "CCCC=O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/0/routes/45/children/0/children/0/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "C/C=C\\C=O",
+    "reactants": "CCCCC(=O)O",
+    "reaction_smiles": "CCCCC(=O)O>>C/C=C\\C=O",
+    "target_smiles": "CCCC=O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/0/routes/46/children/0",
+    "native_template": null,
+    "products": "CCCC=O",
+    "reactants": "C/C=C\\CO",
+    "reaction_smiles": "C/C=C\\CO>>CCCC=O",
+    "target_smiles": "CCCC=O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/0/routes/46/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "C/C=C\\CO",
+    "reactants": "C/C=C\\C=O",
+    "reaction_smiles": "C/C=C\\C=O>>C/C=C\\CO",
+    "target_smiles": "CCCC=O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/0/routes/46/children/0/children/0/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "C/C=C\\C=O",
+    "reactants": "CC[C@H](O)C(=O)O",
+    "reaction_smiles": "CC[C@H](O)C(=O)O>>C/C=C\\C=O",
+    "target_smiles": "CCCC=O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/0/routes/47/children/0",
+    "native_template": null,
+    "products": "CCCC=O",
+    "reactants": "C/C=C\\CO",
+    "reaction_smiles": "C/C=C\\CO>>CCCC=O",
+    "target_smiles": "CCCC=O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/0/routes/47/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "C/C=C\\CO",
+    "reactants": "C/C=C\\C=O",
+    "reaction_smiles": "C/C=C\\C=O>>C/C=C\\CO",
+    "target_smiles": "CCCC=O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/0/routes/47/children/0/children/0/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "C/C=C\\C=O",
+    "reactants": "C=CC(C)=O",
+    "reaction_smiles": "C=CC(C)=O>>C/C=C\\C=O",
+    "target_smiles": "CCCC=O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/0/routes/48/children/0",
+    "native_template": null,
+    "products": "CCCC=O",
+    "reactants": "C/C=C\\CO",
+    "reaction_smiles": "C/C=C\\CO>>CCCC=O",
+    "target_smiles": "CCCC=O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/0/routes/48/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "C/C=C\\CO",
+    "reactants": "C/C=C\\C=O",
+    "reaction_smiles": "C/C=C\\C=O>>C/C=C\\CO",
+    "target_smiles": "CCCC=O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/0/routes/48/children/0/children/0/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "C/C=C\\C=O",
+    "reactants": "C=CC(C)(C)O",
+    "reaction_smiles": "C=CC(C)(C)O>>C/C=C\\C=O",
+    "target_smiles": "CCCC=O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/0/routes/49/children/0",
+    "native_template": null,
+    "products": "CCCC=O",
+    "reactants": "C/C=C\\CO",
+    "reaction_smiles": "C/C=C\\CO>>CCCC=O",
+    "target_smiles": "CCCC=O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/0/routes/49/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "C/C=C\\CO",
+    "reactants": "C/C=C\\C=O",
+    "reaction_smiles": "C/C=C\\C=O>>C/C=C\\CO",
+    "target_smiles": "CCCC=O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/0/routes/49/children/0/children/0/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "C/C=C\\C=O",
+    "reactants": "CC=CC(=O)O",
+    "reaction_smiles": "CC=CC(=O)O>>C/C=C\\C=O",
+    "target_smiles": "CCCC=O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/0/routes/50/children/0",
+    "native_template": null,
+    "products": "CCCC=O",
+    "reactants": "C/C=C\\CO",
+    "reaction_smiles": "C/C=C\\CO>>CCCC=O",
+    "target_smiles": "CCCC=O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/0/routes/50/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "C/C=C\\CO",
+    "reactants": "C/C=C\\C=O",
+    "reaction_smiles": "C/C=C\\C=O>>C/C=C\\CO",
+    "target_smiles": "CCCC=O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/0/routes/50/children/0/children/0/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "C/C=C\\C=O",
+    "reactants": "CCCC(=O)O",
+    "reaction_smiles": "CCCC(=O)O>>C/C=C\\C=O",
+    "target_smiles": "CCCC=O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/0/routes/51/children/0",
+    "native_template": null,
+    "products": "CCCC=O",
+    "reactants": "CC/C=C/CO",
+    "reaction_smiles": "CC/C=C/CO>>CCCC=O",
+    "target_smiles": "CCCC=O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/0/routes/51/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "CC/C=C/CO",
+    "reactants": "CC/C=C/C=O",
+    "reaction_smiles": "CC/C=C/C=O>>CC/C=C/CO",
+    "target_smiles": "CCCC=O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/0/routes/51/children/0/children/0/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "CC/C=C/C=O",
+    "reactants": "CCCC(=O)O",
+    "reaction_smiles": "CCCC(=O)O>>CC/C=C/C=O",
+    "target_smiles": "CCCC=O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/0/routes/52/children/0",
+    "native_template": null,
+    "products": "CCCC=O",
+    "reactants": "CC/C=C/CO",
+    "reaction_smiles": "CC/C=C/CO>>CCCC=O",
+    "target_smiles": "CCCC=O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/0/routes/52/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "CC/C=C/CO",
+    "reactants": "CC/C=C/C=O",
+    "reaction_smiles": "CC/C=C/C=O>>CC/C=C/CO",
+    "target_smiles": "CCCC=O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/0/routes/52/children/0/children/0/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "CC/C=C/C=O",
+    "reactants": "CCC=CC(=O)O",
+    "reaction_smiles": "CCC=CC(=O)O>>CC/C=C/C=O",
+    "target_smiles": "CCCC=O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/0/routes/53/children/0",
+    "native_template": null,
+    "products": "CCCC=O",
+    "reactants": "CC/C=C/CO",
+    "reaction_smiles": "CC/C=C/CO>>CCCC=O",
+    "target_smiles": "CCCC=O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/0/routes/53/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "CC/C=C/CO",
+    "reactants": "CC/C=C/C=O",
+    "reaction_smiles": "CC/C=C/C=O>>CC/C=C/CO",
+    "target_smiles": "CCCC=O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/0/routes/53/children/0/children/0/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "CC/C=C/C=O",
+    "reactants": "CCCCCC=O",
+    "reaction_smiles": "CCCCCC=O>>CC/C=C/C=O",
+    "target_smiles": "CCCC=O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/0/routes/54/children/0",
+    "native_template": null,
+    "products": "CCCC=O",
+    "reactants": "C/C=C\\CO",
+    "reaction_smiles": "C/C=C\\CO>>CCCC=O",
+    "target_smiles": "CCCC=O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/0/routes/54/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "C/C=C\\CO",
+    "reactants": "C/C=C\\C=O",
+    "reaction_smiles": "C/C=C\\C=O>>C/C=C\\CO",
+    "target_smiles": "CCCC=O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/0/routes/54/children/0/children/0/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "C/C=C\\C=O",
+    "reactants": "CCCC(=O)OC",
+    "reaction_smiles": "CCCC(=O)OC>>C/C=C\\C=O",
+    "target_smiles": "CCCC=O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/0/routes/55/children/0",
+    "native_template": null,
+    "products": "CCCC=O",
+    "reactants": "CC/C=C/CO",
+    "reaction_smiles": "CC/C=C/CO>>CCCC=O",
+    "target_smiles": "CCCC=O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/0/routes/55/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "CC/C=C/CO",
+    "reactants": "CC/C=C/C=O",
+    "reaction_smiles": "CC/C=C/C=O>>CC/C=C/CO",
+    "target_smiles": "CCCC=O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/0/routes/55/children/0/children/0/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "CC/C=C/C=O",
+    "reactants": "CCCCC",
+    "reaction_smiles": "CCCCC>>CC/C=C/C=O",
+    "target_smiles": "CCCC=O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/0/routes/56/children/0",
+    "native_template": null,
+    "products": "CCCC=O",
+    "reactants": "CC/C=C/CO",
+    "reaction_smiles": "CC/C=C/CO>>CCCC=O",
+    "target_smiles": "CCCC=O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/0/routes/56/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "CC/C=C/CO",
+    "reactants": "CC/C=C/C=O",
+    "reaction_smiles": "CC/C=C/C=O>>CC/C=C/CO",
+    "target_smiles": "CCCC=O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/0/routes/56/children/0/children/0/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "CC/C=C/C=O",
+    "reactants": "CCCCC=O",
+    "reaction_smiles": "CCCCC=O>>CC/C=C/C=O",
+    "target_smiles": "CCCC=O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/0/routes/57/children/0",
+    "native_template": null,
+    "products": "CCCC=O",
+    "reactants": "CC/C=C/CO",
+    "reaction_smiles": "CC/C=C/CO>>CCCC=O",
+    "target_smiles": "CCCC=O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/0/routes/57/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "CC/C=C/CO",
+    "reactants": "CC/C=C/C=O",
+    "reaction_smiles": "CC/C=C/C=O>>CC/C=C/CO",
+    "target_smiles": "CCCC=O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/0/routes/57/children/0/children/0/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "CC/C=C/C=O",
+    "reactants": "C=CC(C)(C)O",
+    "reaction_smiles": "C=CC(C)(C)O>>CC/C=C/C=O",
+    "target_smiles": "CCCC=O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/0/routes/58/children/0",
+    "native_template": null,
+    "products": "CCCC=O",
+    "reactants": "CC/C=C/CO",
+    "reaction_smiles": "CC/C=C/CO>>CCCC=O",
+    "target_smiles": "CCCC=O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/0/routes/58/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "CC/C=C/CO",
+    "reactants": "CC/C=C/C=O",
+    "reaction_smiles": "CC/C=C/C=O>>CC/C=C/CO",
+    "target_smiles": "CCCC=O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/0/routes/58/children/0/children/0/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "CC/C=C/C=O",
+    "reactants": "CCCCC(=O)O",
+    "reaction_smiles": "CCCCC(=O)O>>CC/C=C/C=O",
+    "target_smiles": "CCCC=O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/0/routes/59/children/0",
+    "native_template": null,
+    "products": "CCCC=O",
+    "reactants": "CC/C=C/CO",
+    "reaction_smiles": "CC/C=C/CO>>CCCC=O",
+    "target_smiles": "CCCC=O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/0/routes/59/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "CC/C=C/CO",
+    "reactants": "CC/C=C/C=O",
+    "reaction_smiles": "CC/C=C/C=O>>CC/C=C/CO",
+    "target_smiles": "CCCC=O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/0/routes/59/children/0/children/0/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "CC/C=C/C=O",
+    "reactants": "CCCCCO",
+    "reaction_smiles": "CCCCCO>>CC/C=C/C=O",
+    "target_smiles": "CCCC=O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/0/routes/60/children/0",
+    "native_template": null,
+    "products": "CCCC=O",
+    "reactants": "*C(=O)CCC",
+    "reaction_smiles": "*C(=O)CCC>>CCCC=O",
+    "target_smiles": "CCCC=O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/0/routes/60/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "*C(=O)CCC",
+    "reactants": "*C(=O)CCCO",
+    "reaction_smiles": "*C(=O)CCCO>>*C(=O)CCC",
+    "target_smiles": "CCCC=O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/0/routes/60/children/0/children/0/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "*C(=O)CCCO",
+    "reactants": "O=C(O)CCCO",
+    "reaction_smiles": "O=C(O)CCCO>>*C(=O)CCCO",
+    "target_smiles": "CCCC=O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/0/routes/61/children/0",
+    "native_template": null,
+    "products": "CCCC=O",
+    "reactants": "C/C=C\\CO",
+    "reaction_smiles": "C/C=C\\CO>>CCCC=O",
+    "target_smiles": "CCCC=O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/0/routes/61/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "C/C=C\\CO",
+    "reactants": "C/C=C\\C=O",
+    "reaction_smiles": "C/C=C\\C=O>>C/C=C\\CO",
+    "target_smiles": "CCCC=O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/0/routes/61/children/0/children/0/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "C/C=C\\C=O",
+    "reactants": "CCCCCO",
+    "reaction_smiles": "CCCCCO>>C/C=C\\C=O",
+    "target_smiles": "CCCC=O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/0/routes/62/children/0",
+    "native_template": null,
+    "products": "CCCC=O",
+    "reactants": "CC/C=C/CO",
+    "reaction_smiles": "CC/C=C/CO>>CCCC=O",
+    "target_smiles": "CCCC=O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/0/routes/62/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "CC/C=C/CO",
+    "reactants": "CC/C=C/C=O",
+    "reaction_smiles": "CC/C=C/C=O>>CC/C=C/CO",
+    "target_smiles": "CCCC=O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/0/routes/62/children/0/children/0/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "CC/C=C/C=O",
+    "reactants": "CCCCCCO",
+    "reaction_smiles": "CCCCCCO>>CC/C=C/C=O",
+    "target_smiles": "CCCC=O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/0/routes/63/children/0",
+    "native_template": null,
+    "products": "CCCC=O",
+    "reactants": "*C(=O)CCC",
+    "reaction_smiles": "*C(=O)CCC>>CCCC=O",
+    "target_smiles": "CCCC=O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/0/routes/63/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "*C(=O)CCC",
+    "reactants": "*C(=O)/C=C/C",
+    "reaction_smiles": "*C(=O)/C=C/C>>*C(=O)CCC",
+    "target_smiles": "CCCC=O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/0/routes/63/children/0/children/0/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "*C(=O)/C=C/C",
+    "reactants": "*C(=O)CCCO",
+    "reaction_smiles": "*C(=O)CCCO>>*C(=O)/C=C/C",
+    "target_smiles": "CCCC=O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/0/routes/63/children/0/children/0/children/0/children/0/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "*C(=O)CCCO",
+    "reactants": "O=C(O)CCCO",
+    "reaction_smiles": "O=C(O)CCCO>>*C(=O)CCCO",
+    "target_smiles": "CCCC=O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/0/routes/64/children/0",
+    "native_template": null,
+    "products": "CCCC=O",
+    "reactants": "*C(=O)CCC",
+    "reaction_smiles": "*C(=O)CCC>>CCCC=O",
+    "target_smiles": "CCCC=O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/0/routes/64/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "*C(=O)CCC",
+    "reactants": "*C(C)=O",
+    "reaction_smiles": "*C(C)=O>>*C(=O)CCC",
+    "target_smiles": "CCCC=O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/0/routes/64/children/0/children/0/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "*C(C)=O",
+    "reactants": "*C(=O)/C=C/C",
+    "reaction_smiles": "*C(=O)/C=C/C>>*C(C)=O",
+    "target_smiles": "CCCC=O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/0/routes/64/children/0/children/0/children/0/children/0/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "*C(=O)/C=C/C",
+    "reactants": "*C(=O)CCCO",
+    "reaction_smiles": "*C(=O)CCCO>>*C(=O)/C=C/C",
+    "target_smiles": "CCCC=O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/0/routes/64/children/0/children/0/children/0/children/0/children/0/children/0/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "*C(=O)CCCO",
+    "reactants": "O=C(O)CCCO",
+    "reaction_smiles": "O=C(O)CCCO>>*C(=O)CCCO",
+    "target_smiles": "CCCC=O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/0/routes/65/children/0",
+    "native_template": null,
+    "products": "CCCC=O",
+    "reactants": "*C(=O)CCC",
+    "reaction_smiles": "*C(=O)CCC>>CCCC=O",
+    "target_smiles": "CCCC=O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/0/routes/65/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "*C(=O)CCC",
+    "reactants": "*C(=O)CC(C)=O",
+    "reaction_smiles": "*C(=O)CC(C)=O>>*C(=O)CCC",
+    "target_smiles": "CCCC=O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/0/routes/65/children/0/children/0/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "*C(=O)CC(C)=O",
+    "reactants": "*C(=O)/C=C/C",
+    "reaction_smiles": "*C(=O)/C=C/C>>*C(=O)CC(C)=O",
+    "target_smiles": "CCCC=O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/0/routes/65/children/0/children/0/children/0/children/0/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "*C(=O)/C=C/C",
+    "reactants": "*C(=O)CCCO",
+    "reaction_smiles": "*C(=O)CCCO>>*C(=O)/C=C/C",
+    "target_smiles": "CCCC=O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/0/routes/65/children/0/children/0/children/0/children/0/children/0/children/0/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "*C(=O)CCCO",
+    "reactants": "O=C(O)CCCO",
+    "reaction_smiles": "O=C(O)CCCO>>*C(=O)CCCO",
+    "target_smiles": "CCCC=O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/1/routes/0/children/0",
+    "native_template": null,
+    "products": "O=C(O)CCO",
+    "reactants": "CSCCC(=O)O",
+    "reaction_smiles": "CSCCC(=O)O>>O=C(O)CCO",
+    "target_smiles": "O=C(O)CCO"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/1/routes/1/children/0",
+    "native_template": null,
+    "products": "O=C(O)CCO",
+    "reactants": "O=CCCO",
+    "reaction_smiles": "O=CCCO>>O=C(O)CCO",
+    "target_smiles": "O=C(O)CCO"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/1/routes/1/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "O=CCCO",
+    "reactants": "OCCC(O)CO",
+    "reaction_smiles": "OCCC(O)CO>>O=CCCO",
+    "target_smiles": "O=C(O)CCO"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/1/routes/2/children/0",
+    "native_template": null,
+    "products": "O=C(O)CCO",
+    "reactants": "O=CCCO",
+    "reaction_smiles": "O=CCCO>>O=C(O)CCO",
+    "target_smiles": "O=C(O)CCO"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/1/routes/2/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "O=CCCO",
+    "reactants": "O=C1O[C@H](CO)[C@@H](O)[C@H]1O",
+    "reaction_smiles": "O=C1O[C@H](CO)[C@@H](O)[C@H]1O>>O=CCCO",
+    "target_smiles": "O=C(O)CCO"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/1/routes/3/children/0",
+    "native_template": null,
+    "products": "O=C(O)CCO",
+    "reactants": "*C(=O)C=C",
+    "reaction_smiles": "*C(=O)C=C>>O=C(O)CCO",
+    "target_smiles": "O=C(O)CCO"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/1/routes/3/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "*C(=O)C=C",
+    "reactants": "*C(=O)CC",
+    "reaction_smiles": "*C(=O)CC>>*C(=O)C=C",
+    "target_smiles": "O=C(O)CCO"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/1/routes/3/children/0/children/0/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "*C(=O)CC",
+    "reactants": "CCC(=O)C(=O)O",
+    "reaction_smiles": "CCC(=O)C(=O)O>>*C(=O)CC",
+    "target_smiles": "O=C(O)CCO"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/1/routes/4/children/0",
+    "native_template": null,
+    "products": "O=C(O)CCO",
+    "reactants": "O=CCCO",
+    "reaction_smiles": "O=CCCO>>O=C(O)CCO",
+    "target_smiles": "O=C(O)CCO"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/1/routes/4/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "O=CCCO",
+    "reactants": "OCC(O)CO",
+    "reaction_smiles": "OCC(O)CO>>O=CCCO",
+    "target_smiles": "O=C(O)CCO"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/1/routes/4/children/0/children/0/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "OCC(O)CO",
+    "reactants": "CCCCCCCCCCCCCCCC(=O)OCC(O)CO",
+    "reaction_smiles": "CCCCCCCCCCCCCCCC(=O)OCC(O)CO>>OCC(O)CO",
+    "target_smiles": "O=C(O)CCO"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/1/routes/5/children/0",
+    "native_template": null,
+    "products": "O=C(O)CCO",
+    "reactants": "*C(=O)C=C",
+    "reaction_smiles": "*C(=O)C=C>>O=C(O)CCO",
+    "target_smiles": "O=C(O)CCO"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/1/routes/5/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "*C(=O)C=C",
+    "reactants": "C=CC(=O)O",
+    "reaction_smiles": "C=CC(=O)O>>*C(=O)C=C",
+    "target_smiles": "O=C(O)CCO"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/1/routes/5/children/0/children/0/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "C=CC(=O)O",
+    "reactants": "C[S+](C)CCC(=O)O",
+    "reaction_smiles": "C[S+](C)CCC(=O)O>>C=CC(=O)O",
+    "target_smiles": "O=C(O)CCO"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/1/routes/6/children/0",
+    "native_template": null,
+    "products": "O=C(O)CCO",
+    "reactants": "*C(=O)C=C",
+    "reaction_smiles": "*C(=O)C=C>>O=C(O)CCO",
+    "target_smiles": "O=C(O)CCO"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/1/routes/6/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "*C(=O)C=C",
+    "reactants": "C=CC(=O)O",
+    "reaction_smiles": "C=CC(=O)O>>*C(=O)C=C",
+    "target_smiles": "O=C(O)CCO"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/1/routes/6/children/0/children/0/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "C=CC(=O)O",
+    "reactants": "O=C(O)CCC(=O)O",
+    "reaction_smiles": "O=C(O)CCC(=O)O>>C=CC(=O)O",
+    "target_smiles": "O=C(O)CCO"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/1/routes/7/children/0",
+    "native_template": null,
+    "products": "O=C(O)CCO",
+    "reactants": "*C(=O)CCO",
+    "reaction_smiles": "*C(=O)CCO>>O=C(O)CCO",
+    "target_smiles": "O=C(O)CCO"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/1/routes/7/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "*C(=O)CCO",
+    "reactants": "*C(=O)C=C",
+    "reaction_smiles": "*C(=O)C=C>>*C(=O)CCO",
+    "target_smiles": "O=C(O)CCO"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/1/routes/7/children/0/children/0/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "*C(=O)C=C",
+    "reactants": "*C(=O)CC",
+    "reaction_smiles": "*C(=O)CC>>*C(=O)C=C",
+    "target_smiles": "O=C(O)CCO"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/1/routes/7/children/0/children/0/children/0/children/0/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "*C(=O)CC",
+    "reactants": "CCC(=O)C(=O)O",
+    "reaction_smiles": "CCC(=O)C(=O)O>>*C(=O)CC",
+    "target_smiles": "O=C(O)CCO"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/1/routes/8/children/0",
+    "native_template": null,
+    "products": "O=C(O)CCO",
+    "reactants": "*C(=O)C=C",
+    "reaction_smiles": "*C(=O)C=C>>O=C(O)CCO",
+    "target_smiles": "O=C(O)CCO"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/1/routes/8/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "*C(=O)C=C",
+    "reactants": "*C(=O)[C@H](C)O",
+    "reaction_smiles": "*C(=O)[C@H](C)O>>*C(=O)C=C",
+    "target_smiles": "O=C(O)CCO"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/1/routes/8/children/0/children/0/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "*C(=O)[C@H](C)O",
+    "reactants": "CC(O)C(=O)O",
+    "reaction_smiles": "CC(O)C(=O)O>>*C(=O)[C@H](C)O",
+    "target_smiles": "O=C(O)CCO"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/1/routes/8/children/0/children/0/children/0/children/0/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "CC(O)C(=O)O",
+    "reactants": "C[C@@H](O)C(=O)SC[C@H](NC(=O)CC[C@H](N)C(=O)O)C(=O)NCC(=O)O",
+    "reaction_smiles": "C[C@@H](O)C(=O)SC[C@H](NC(=O)CC[C@H](N)C(=O)O)C(=O)NCC(=O)O>>CC(O)C(=O)O",
+    "target_smiles": "O=C(O)CCO"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/1/routes/9/children/0",
+    "native_template": null,
+    "products": "O=C(O)CCO",
+    "reactants": "*C(=O)C=C",
+    "reaction_smiles": "*C(=O)C=C>>O=C(O)CCO",
+    "target_smiles": "O=C(O)CCO"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/1/routes/9/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "*C(=O)C=C",
+    "reactants": "*C(=O)[C@H](C)O",
+    "reaction_smiles": "*C(=O)[C@H](C)O>>*C(=O)C=C",
+    "target_smiles": "O=C(O)CCO"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/1/routes/9/children/0/children/0/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "*C(=O)[C@H](C)O",
+    "reactants": "CC(O)C(=O)O",
+    "reaction_smiles": "CC(O)C(=O)O>>*C(=O)[C@H](C)O",
+    "target_smiles": "O=C(O)CCO"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/1/routes/9/children/0/children/0/children/0/children/0/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "CC(O)C(=O)O",
+    "reactants": "Nc1ncnc2c1ncn2[C@@H]1O[C@H](COP(=O)(O)O)[C@@H](O)[C@H]1O",
+    "reaction_smiles": "Nc1ncnc2c1ncn2[C@@H]1O[C@H](COP(=O)(O)O)[C@@H](O)[C@H]1O>>CC(O)C(=O)O",
+    "target_smiles": "O=C(O)CCO"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/1/routes/10/children/0",
+    "native_template": null,
+    "products": "O=C(O)CCO",
+    "reactants": "*C(=O)C=C",
+    "reaction_smiles": "*C(=O)C=C>>O=C(O)CCO",
+    "target_smiles": "O=C(O)CCO"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/1/routes/10/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "*C(=O)C=C",
+    "reactants": "*C(=O)[C@H](C)O",
+    "reaction_smiles": "*C(=O)[C@H](C)O>>*C(=O)C=C",
+    "target_smiles": "O=C(O)CCO"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/1/routes/10/children/0/children/0/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "*C(=O)[C@H](C)O",
+    "reactants": "CC(O)C(=O)O",
+    "reaction_smiles": "CC(O)C(=O)O>>*C(=O)[C@H](C)O",
+    "target_smiles": "O=C(O)CCO"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/1/routes/10/children/0/children/0/children/0/children/0/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "CC(O)C(=O)O",
+    "reactants": "O=C1O[C@H]([C@@H](O)CO)C(O)=C1O",
+    "reaction_smiles": "O=C1O[C@H]([C@@H](O)CO)C(O)=C1O>>CC(O)C(=O)O",
+    "target_smiles": "O=C(O)CCO"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/1/routes/11/children/0",
+    "native_template": null,
+    "products": "O=C(O)CCO",
+    "reactants": "*C(=O)CC[S+](C)C",
+    "reaction_smiles": "*C(=O)CC[S+](C)C>>O=C(O)CCO",
+    "target_smiles": "O=C(O)CCO"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/1/routes/11/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "*C(=O)CC[S+](C)C",
+    "reactants": "*C(=O)CC(=O)CC",
+    "reaction_smiles": "*C(=O)CC(=O)CC>>*C(=O)CC[S+](C)C",
+    "target_smiles": "O=C(O)CCO"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/1/routes/11/children/0/children/0/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "*C(=O)CC(=O)CC",
+    "reactants": "*C(=O)C[C@H](O)CC",
+    "reaction_smiles": "*C(=O)C[C@H](O)CC>>*C(=O)CC(=O)CC",
+    "target_smiles": "O=C(O)CCO"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/1/routes/11/children/0/children/0/children/0/children/0/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "*C(=O)C[C@H](O)CC",
+    "reactants": "CCC(O)C(=O)O",
+    "reaction_smiles": "CCC(O)C(=O)O>>*C(=O)C[C@H](O)CC",
+    "target_smiles": "O=C(O)CCO"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/1/routes/12/children/0",
+    "native_template": null,
+    "products": "O=C(O)CCO",
+    "reactants": "*C(=O)C=C",
+    "reaction_smiles": "*C(=O)C=C>>O=C(O)CCO",
+    "target_smiles": "O=C(O)CCO"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/1/routes/12/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "*C(=O)C=C",
+    "reactants": "*C(=O)[C@H](C)O",
+    "reaction_smiles": "*C(=O)[C@H](C)O>>*C(=O)C=C",
+    "target_smiles": "O=C(O)CCO"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/1/routes/12/children/0/children/0/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "*C(=O)[C@H](C)O",
+    "reactants": "CC(O)C(=O)O",
+    "reaction_smiles": "CC(O)C(=O)O>>*C(=O)[C@H](C)O",
+    "target_smiles": "O=C(O)CCO"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/1/routes/12/children/0/children/0/children/0/children/0/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "CC(O)C(=O)O",
+    "reactants": "O=C(O)C[C@H](O)C(=O)O",
+    "reaction_smiles": "O=C(O)C[C@H](O)C(=O)O>>CC(O)C(=O)O",
+    "target_smiles": "O=C(O)CCO"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/1/routes/13/children/0",
+    "native_template": null,
+    "products": "O=C(O)CCO",
+    "reactants": "*C(=O)C=C",
+    "reaction_smiles": "*C(=O)C=C>>O=C(O)CCO",
+    "target_smiles": "O=C(O)CCO"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/1/routes/13/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "*C(=O)C=C",
+    "reactants": "*C(=O)[C@@H](C)O",
+    "reaction_smiles": "*C(=O)[C@@H](C)O>>*C(=O)C=C",
+    "target_smiles": "O=C(O)CCO"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/1/routes/13/children/0/children/0/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "*C(=O)[C@@H](C)O",
+    "reactants": "*C(=O)CC(O)C(C)=O",
+    "reaction_smiles": "*C(=O)CC(O)C(C)=O>>*C(=O)[C@@H](C)O",
+    "target_smiles": "O=C(O)CCO"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/1/routes/13/children/0/children/0/children/0/children/0/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "*C(=O)CC(O)C(C)=O",
+    "reactants": "CC(=O)C(O)CC(=O)O",
+    "reaction_smiles": "CC(=O)C(O)CC(=O)O>>*C(=O)CC(O)C(C)=O",
+    "target_smiles": "O=C(O)CCO"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/1/routes/13/children/0/children/0/children/0/children/0/children/0/children/0/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "CC(=O)C(O)CC(=O)O",
+    "reactants": "O=C(O)CC(=O)C(=O)O",
+    "reaction_smiles": "O=C(O)CC(=O)C(=O)O>>CC(=O)C(O)CC(=O)O",
+    "target_smiles": "O=C(O)CCO"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/1/routes/14/children/0",
+    "native_template": null,
+    "products": "O=C(O)CCO",
+    "reactants": "*C(=O)CC[S+](C)C",
+    "reaction_smiles": "*C(=O)CC[S+](C)C>>O=C(O)CCO",
+    "target_smiles": "O=C(O)CCO"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/1/routes/14/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "*C(=O)CC[S+](C)C",
+    "reactants": "*C(=O)/C=C/OS(C)(C)C",
+    "reaction_smiles": "*C(=O)/C=C/OS(C)(C)C>>*C(=O)CC[S+](C)C",
+    "target_smiles": "O=C(O)CCO"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/1/routes/14/children/0/children/0/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "*C(=O)/C=C/OS(C)(C)C",
+    "reactants": "*C(=O)/C=C/O",
+    "reaction_smiles": "*C(=O)/C=C/O>>*C(=O)/C=C/OS(C)(C)C",
+    "target_smiles": "O=C(O)CCO"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/1/routes/14/children/0/children/0/children/0/children/0/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "*C(=O)/C=C/O",
+    "reactants": "O=C(O)/C=C/O",
+    "reaction_smiles": "O=C(O)/C=C/O>>*C(=O)/C=C/O",
+    "target_smiles": "O=C(O)CCO"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/1/routes/14/children/0/children/0/children/0/children/0/children/0/children/0/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "O=C(O)/C=C/O",
+    "reactants": "O=C(O)C[C@@H](O)C(=O)O",
+    "reaction_smiles": "O=C(O)C[C@@H](O)C(=O)O>>O=C(O)/C=C/O",
+    "target_smiles": "O=C(O)CCO"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/1/routes/15/children/0",
+    "native_template": null,
+    "products": "O=C(O)CCO",
+    "reactants": "*C(=O)C=C",
+    "reaction_smiles": "*C(=O)C=C>>O=C(O)CCO",
+    "target_smiles": "O=C(O)CCO"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/1/routes/15/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "*C(=O)C=C",
+    "reactants": "*C(=O)[C@@H](C)O",
+    "reaction_smiles": "*C(=O)[C@@H](C)O>>*C(=O)C=C",
+    "target_smiles": "O=C(O)CCO"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/1/routes/15/children/0/children/0/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "*C(=O)[C@@H](C)O",
+    "reactants": "*C(=O)CC(O)C(C)=O",
+    "reaction_smiles": "*C(=O)CC(O)C(C)=O>>*C(=O)[C@@H](C)O",
+    "target_smiles": "O=C(O)CCO"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/1/routes/15/children/0/children/0/children/0/children/0/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "*C(=O)CC(O)C(C)=O",
+    "reactants": "CC(=O)C(O)CC(=O)O",
+    "reaction_smiles": "CC(=O)C(O)CC(=O)O>>*C(=O)CC(O)C(C)=O",
+    "target_smiles": "O=C(O)CCO"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/1/routes/15/children/0/children/0/children/0/children/0/children/0/children/0/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "CC(=O)C(O)CC(=O)O",
+    "reactants": "O=C(O)C[C@H](O)C(=O)O",
+    "reaction_smiles": "O=C(O)C[C@H](O)C(=O)O>>CC(=O)C(O)CC(=O)O",
+    "target_smiles": "O=C(O)CCO"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/1/routes/16/children/0",
+    "native_template": null,
+    "products": "O=C(O)CCO",
+    "reactants": "*C(=O)C=C",
+    "reaction_smiles": "*C(=O)C=C>>O=C(O)CCO",
+    "target_smiles": "O=C(O)CCO"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/1/routes/16/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "*C(=O)C=C",
+    "reactants": "*C(=O)[C@@H](C)O",
+    "reaction_smiles": "*C(=O)[C@@H](C)O>>*C(=O)C=C",
+    "target_smiles": "O=C(O)CCO"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/1/routes/16/children/0/children/0/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "*C(=O)[C@@H](C)O",
+    "reactants": "*C(=O)CC(O)C(C)=O",
+    "reaction_smiles": "*C(=O)CC(O)C(C)=O>>*C(=O)[C@@H](C)O",
+    "target_smiles": "O=C(O)CCO"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/1/routes/16/children/0/children/0/children/0/children/0/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "*C(=O)CC(O)C(C)=O",
+    "reactants": "CC(=O)C(O)CC(=O)O",
+    "reaction_smiles": "CC(=O)C(O)CC(=O)O>>*C(=O)CC(O)C(C)=O",
+    "target_smiles": "O=C(O)CCO"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/1/routes/16/children/0/children/0/children/0/children/0/children/0/children/0/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "CC(=O)C(O)CC(=O)O",
+    "reactants": "O=C(O)CCC(=O)O",
+    "reaction_smiles": "O=C(O)CCC(=O)O>>CC(=O)C(O)CC(=O)O",
+    "target_smiles": "O=C(O)CCO"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/1/routes/17/children/0",
+    "native_template": null,
+    "products": "O=C(O)CCO",
+    "reactants": "*C(=O)C=C",
+    "reaction_smiles": "*C(=O)C=C>>O=C(O)CCO",
+    "target_smiles": "O=C(O)CCO"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/1/routes/17/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "*C(=O)C=C",
+    "reactants": "*C(=O)[C@@H](C)O",
+    "reaction_smiles": "*C(=O)[C@@H](C)O>>*C(=O)C=C",
+    "target_smiles": "O=C(O)CCO"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/1/routes/17/children/0/children/0/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "*C(=O)[C@@H](C)O",
+    "reactants": "*C(=O)CC(O)C(C)=O",
+    "reaction_smiles": "*C(=O)CC(O)C(C)=O>>*C(=O)[C@@H](C)O",
+    "target_smiles": "O=C(O)CCO"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/1/routes/17/children/0/children/0/children/0/children/0/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "*C(=O)CC(O)C(C)=O",
+    "reactants": "CC(=O)C(O)CC(=O)O",
+    "reaction_smiles": "CC(=O)C(O)CC(=O)O>>*C(=O)CC(O)C(C)=O",
+    "target_smiles": "O=C(O)CCO"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/1/routes/17/children/0/children/0/children/0/children/0/children/0/children/0/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "CC(=O)C(O)CC(=O)O",
+    "reactants": "O=C(O)CC(O)C(=O)O",
+    "reaction_smiles": "O=C(O)CC(O)C(=O)O>>CC(=O)C(O)CC(=O)O",
+    "target_smiles": "O=C(O)CCO"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/1/routes/18/children/0",
+    "native_template": null,
+    "products": "O=C(O)CCO",
+    "reactants": "*C(=O)C=C",
+    "reaction_smiles": "*C(=O)C=C>>O=C(O)CCO",
+    "target_smiles": "O=C(O)CCO"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/1/routes/18/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "*C(=O)C=C",
+    "reactants": "*C(=O)[C@@H](C)O",
+    "reaction_smiles": "*C(=O)[C@@H](C)O>>*C(=O)C=C",
+    "target_smiles": "O=C(O)CCO"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/1/routes/18/children/0/children/0/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "*C(=O)[C@@H](C)O",
+    "reactants": "*C(=O)CC(O)C(C)=O",
+    "reaction_smiles": "*C(=O)CC(O)C(C)=O>>*C(=O)[C@@H](C)O",
+    "target_smiles": "O=C(O)CCO"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/1/routes/18/children/0/children/0/children/0/children/0/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "*C(=O)CC(O)C(C)=O",
+    "reactants": "CC(=O)C(O)CC(=O)O",
+    "reaction_smiles": "CC(=O)C(O)CC(=O)O>>*C(=O)CC(O)C(C)=O",
+    "target_smiles": "O=C(O)CCO"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/1/routes/18/children/0/children/0/children/0/children/0/children/0/children/0/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "CC(=O)C(O)CC(=O)O",
+    "reactants": "O=C(O)C[C@@H](O)C(=O)O",
+    "reaction_smiles": "O=C(O)C[C@@H](O)C(=O)O>>CC(=O)C(O)CC(=O)O",
+    "target_smiles": "O=C(O)CCO"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/1/routes/19/children/0",
+    "native_template": null,
+    "products": "O=C(O)CCO",
+    "reactants": "*C(=O)C=C",
+    "reaction_smiles": "*C(=O)C=C>>O=C(O)CCO",
+    "target_smiles": "O=C(O)CCO"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/1/routes/19/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "*C(=O)C=C",
+    "reactants": "*C(=O)[C@@H](C)O",
+    "reaction_smiles": "*C(=O)[C@@H](C)O>>*C(=O)C=C",
+    "target_smiles": "O=C(O)CCO"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/1/routes/19/children/0/children/0/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "*C(=O)[C@@H](C)O",
+    "reactants": "*C(=O)CC(O)C(C)=O",
+    "reaction_smiles": "*C(=O)CC(O)C(C)=O>>*C(=O)[C@@H](C)O",
+    "target_smiles": "O=C(O)CCO"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/1/routes/19/children/0/children/0/children/0/children/0/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "*C(=O)CC(O)C(C)=O",
+    "reactants": "CC(=O)C(O)CC(=O)O",
+    "reaction_smiles": "CC(=O)C(O)CC(=O)O>>*C(=O)CC(O)C(C)=O",
+    "target_smiles": "O=C(O)CCO"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/1/routes/19/children/0/children/0/children/0/children/0/children/0/children/0/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "CC(=O)C(O)CC(=O)O",
+    "reactants": "CC1=C(O)C(=O)CO1",
+    "reaction_smiles": "CC1=C(O)C(=O)CO1>>CC(=O)C(O)CC(=O)O",
+    "target_smiles": "O=C(O)CCO"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/1/routes/20/children/0",
+    "native_template": null,
+    "products": "O=C(O)CCO",
+    "reactants": "*C(=O)CC[S+](C)C",
+    "reaction_smiles": "*C(=O)CC[S+](C)C>>O=C(O)CCO",
+    "target_smiles": "O=C(O)CCO"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/1/routes/20/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "*C(=O)CC[S+](C)C",
+    "reactants": "*C(=O)/C=C/OS(C)(C)C",
+    "reaction_smiles": "*C(=O)/C=C/OS(C)(C)C>>*C(=O)CC[S+](C)C",
+    "target_smiles": "O=C(O)CCO"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/1/routes/20/children/0/children/0/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "*C(=O)/C=C/OS(C)(C)C",
+    "reactants": "*C(=O)/C=C/O",
+    "reaction_smiles": "*C(=O)/C=C/O>>*C(=O)/C=C/OS(C)(C)C",
+    "target_smiles": "O=C(O)CCO"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/1/routes/20/children/0/children/0/children/0/children/0/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "*C(=O)/C=C/O",
+    "reactants": "O=C(O)/C=C/O",
+    "reaction_smiles": "O=C(O)/C=C/O>>*C(=O)/C=C/O",
+    "target_smiles": "O=C(O)CCO"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/1/routes/20/children/0/children/0/children/0/children/0/children/0/children/0/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "O=C(O)/C=C/O",
+    "reactants": "O=C(O)CC(O)(CC(=O)O)C(=O)O",
+    "reaction_smiles": "O=C(O)CC(O)(CC(=O)O)C(=O)O>>O=C(O)/C=C/O",
+    "target_smiles": "O=C(O)CCO"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/1/routes/21/children/0",
+    "native_template": null,
+    "products": "O=C(O)CCO",
+    "reactants": "*C(=O)CC[S+](C)C",
+    "reaction_smiles": "*C(=O)CC[S+](C)C>>O=C(O)CCO",
+    "target_smiles": "O=C(O)CCO"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/1/routes/21/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "*C(=O)CC[S+](C)C",
+    "reactants": "*C(=O)/C=C/OS(C)(C)C",
+    "reaction_smiles": "*C(=O)/C=C/OS(C)(C)C>>*C(=O)CC[S+](C)C",
+    "target_smiles": "O=C(O)CCO"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/1/routes/21/children/0/children/0/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "*C(=O)/C=C/OS(C)(C)C",
+    "reactants": "*C(=O)/C=C/O",
+    "reaction_smiles": "*C(=O)/C=C/O>>*C(=O)/C=C/OS(C)(C)C",
+    "target_smiles": "O=C(O)CCO"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/1/routes/21/children/0/children/0/children/0/children/0/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "*C(=O)/C=C/O",
+    "reactants": "O=C(O)/C=C/O",
+    "reaction_smiles": "O=C(O)/C=C/O>>*C(=O)/C=C/O",
+    "target_smiles": "O=C(O)CCO"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/1/routes/21/children/0/children/0/children/0/children/0/children/0/children/0/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "O=C(O)/C=C/O",
+    "reactants": "O=C(O)CCC(=O)O",
+    "reaction_smiles": "O=C(O)CCC(=O)O>>O=C(O)/C=C/O",
+    "target_smiles": "O=C(O)CCO"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/1/routes/22/children/0",
+    "native_template": null,
+    "products": "O=C(O)CCO",
+    "reactants": "*C(=O)CC[S+](C)C",
+    "reaction_smiles": "*C(=O)CC[S+](C)C>>O=C(O)CCO",
+    "target_smiles": "O=C(O)CCO"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/1/routes/22/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "*C(=O)CC[S+](C)C",
+    "reactants": "*C(=O)/C=C/OS(C)(C)C",
+    "reaction_smiles": "*C(=O)/C=C/OS(C)(C)C>>*C(=O)CC[S+](C)C",
+    "target_smiles": "O=C(O)CCO"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/1/routes/22/children/0/children/0/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "*C(=O)/C=C/OS(C)(C)C",
+    "reactants": "*C(=O)/C=C/O",
+    "reaction_smiles": "*C(=O)/C=C/O>>*C(=O)/C=C/OS(C)(C)C",
+    "target_smiles": "O=C(O)CCO"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/1/routes/22/children/0/children/0/children/0/children/0/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "*C(=O)/C=C/O",
+    "reactants": "O=C(O)/C=C/O",
+    "reaction_smiles": "O=C(O)/C=C/O>>*C(=O)/C=C/O",
+    "target_smiles": "O=C(O)CCO"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/1/routes/22/children/0/children/0/children/0/children/0/children/0/children/0/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "O=C(O)/C=C/O",
+    "reactants": "O=C(O)CCCO",
+    "reaction_smiles": "O=C(O)CCCO>>O=C(O)/C=C/O",
+    "target_smiles": "O=C(O)CCO"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/1/routes/23/children/0",
+    "native_template": null,
+    "products": "O=C(O)CCO",
+    "reactants": "*C(=O)CC[S+](C)C",
+    "reaction_smiles": "*C(=O)CC[S+](C)C>>O=C(O)CCO",
+    "target_smiles": "O=C(O)CCO"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/1/routes/23/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "*C(=O)CC[S+](C)C",
+    "reactants": "*C(=O)/C=C/OS(C)(C)C",
+    "reaction_smiles": "*C(=O)/C=C/OS(C)(C)C>>*C(=O)CC[S+](C)C",
+    "target_smiles": "O=C(O)CCO"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/1/routes/23/children/0/children/0/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "*C(=O)/C=C/OS(C)(C)C",
+    "reactants": "*C(=O)/C=C/O",
+    "reaction_smiles": "*C(=O)/C=C/O>>*C(=O)/C=C/OS(C)(C)C",
+    "target_smiles": "O=C(O)CCO"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/1/routes/23/children/0/children/0/children/0/children/0/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "*C(=O)/C=C/O",
+    "reactants": "O=C(O)/C=C/O",
+    "reaction_smiles": "O=C(O)/C=C/O>>*C(=O)/C=C/O",
+    "target_smiles": "O=C(O)CCO"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/1/routes/23/children/0/children/0/children/0/children/0/children/0/children/0/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "O=C(O)/C=C/O",
+    "reactants": "O=C(O)C[C@H](O)C(=O)O",
+    "reaction_smiles": "O=C(O)C[C@H](O)C(=O)O>>O=C(O)/C=C/O",
+    "target_smiles": "O=C(O)CCO"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/1/routes/24/children/0",
+    "native_template": null,
+    "products": "O=C(O)CCO",
+    "reactants": "*C(=O)CC[S+](C)C",
+    "reaction_smiles": "*C(=O)CC[S+](C)C>>O=C(O)CCO",
+    "target_smiles": "O=C(O)CCO"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/1/routes/24/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "*C(=O)CC[S+](C)C",
+    "reactants": "*C(=O)/C=C/OS(C)(C)C",
+    "reaction_smiles": "*C(=O)/C=C/OS(C)(C)C>>*C(=O)CC[S+](C)C",
+    "target_smiles": "O=C(O)CCO"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/1/routes/24/children/0/children/0/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "*C(=O)/C=C/OS(C)(C)C",
+    "reactants": "*C(=O)/C=C/O",
+    "reaction_smiles": "*C(=O)/C=C/O>>*C(=O)/C=C/OS(C)(C)C",
+    "target_smiles": "O=C(O)CCO"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/1/routes/24/children/0/children/0/children/0/children/0/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "*C(=O)/C=C/O",
+    "reactants": "O=C(O)/C=C/O",
+    "reaction_smiles": "O=C(O)/C=C/O>>*C(=O)/C=C/O",
+    "target_smiles": "O=C(O)CCO"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/1/routes/24/children/0/children/0/children/0/children/0/children/0/children/0/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "O=C(O)/C=C/O",
+    "reactants": "O=C1O[C@H]([C@@H](O)CO)C(O)=C1O",
+    "reaction_smiles": "O=C1O[C@H]([C@@H](O)CO)C(O)=C1O>>O=C(O)/C=C/O",
+    "target_smiles": "O=C(O)CCO"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/1/routes/25/children/0",
+    "native_template": null,
+    "products": "O=C(O)CCO",
+    "reactants": "*C(=O)CC[S+](C)C",
+    "reaction_smiles": "*C(=O)CC[S+](C)C>>O=C(O)CCO",
+    "target_smiles": "O=C(O)CCO"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/1/routes/25/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "*C(=O)CC[S+](C)C",
+    "reactants": "*C(=O)C=CO",
+    "reaction_smiles": "*C(=O)C=CO>>*C(=O)CC[S+](C)C",
+    "target_smiles": "O=C(O)CCO"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/1/routes/25/children/0/children/0/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "*C(=O)C=CO",
+    "reactants": "*C(=O)CCO",
+    "reaction_smiles": "*C(=O)CCO>>*C(=O)C=CO",
+    "target_smiles": "O=C(O)CCO"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/1/routes/25/children/0/children/0/children/0/children/0/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "*C(=O)CCO",
+    "reactants": "*C(=O)C=C",
+    "reaction_smiles": "*C(=O)C=C>>*C(=O)CCO",
+    "target_smiles": "O=C(O)CCO"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/1/routes/25/children/0/children/0/children/0/children/0/children/0/children/0/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "*C(=O)C=C",
+    "reactants": "*C(=O)CC",
+    "reaction_smiles": "*C(=O)CC>>*C(=O)C=C",
+    "target_smiles": "O=C(O)CCO"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/1/routes/25/children/0/children/0/children/0/children/0/children/0/children/0/children/0/children/0/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "*C(=O)CC",
+    "reactants": "CCC(=O)C(=O)O",
+    "reaction_smiles": "CCC(=O)C(=O)O>>*C(=O)CC",
+    "target_smiles": "O=C(O)CCO"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/1/routes/26/children/0",
+    "native_template": null,
+    "products": "O=C(O)CCO",
+    "reactants": "*C(=O)C=C",
+    "reaction_smiles": "*C(=O)C=C>>O=C(O)CCO",
+    "target_smiles": "O=C(O)CCO"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/1/routes/26/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "*C(=O)C=C",
+    "reactants": "*C(=O)CCO",
+    "reaction_smiles": "*C(=O)CCO>>*C(=O)C=C",
+    "target_smiles": "O=C(O)CCO"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/1/routes/26/children/0/children/0/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "*C(=O)CCO",
+    "reactants": "*C(=O)CC(C)=O",
+    "reaction_smiles": "*C(=O)CC(C)=O>>*C(=O)CCO",
+    "target_smiles": "O=C(O)CCO"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/1/routes/26/children/0/children/0/children/0/children/0/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "*C(=O)CC(C)=O",
+    "reactants": "*C(=O)/C=C/C",
+    "reaction_smiles": "*C(=O)/C=C/C>>*C(=O)CC(C)=O",
+    "target_smiles": "O=C(O)CCO"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/1/routes/26/children/0/children/0/children/0/children/0/children/0/children/0/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "*C(=O)/C=C/C",
+    "reactants": "*C(=O)CCC",
+    "reaction_smiles": "*C(=O)CCC>>*C(=O)/C=C/C",
+    "target_smiles": "O=C(O)CCO"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/1/routes/26/children/0/children/0/children/0/children/0/children/0/children/0/children/0/children/0/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "*C(=O)CCC",
+    "reactants": "CCCC(=O)O",
+    "reaction_smiles": "CCCC(=O)O>>*C(=O)CCC",
+    "target_smiles": "O=C(O)CCO"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/1/routes/27/children/0",
+    "native_template": null,
+    "products": "O=C(O)CCO",
+    "reactants": "*C(=O)C=C",
+    "reaction_smiles": "*C(=O)C=C>>O=C(O)CCO",
+    "target_smiles": "O=C(O)CCO"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/1/routes/27/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "*C(=O)C=C",
+    "reactants": "*C(=O)CCO",
+    "reaction_smiles": "*C(=O)CCO>>*C(=O)C=C",
+    "target_smiles": "O=C(O)CCO"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/1/routes/27/children/0/children/0/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "*C(=O)CCO",
+    "reactants": "*C(=O)CC(C)=O",
+    "reaction_smiles": "*C(=O)CC(C)=O>>*C(=O)CCO",
+    "target_smiles": "O=C(O)CCO"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/1/routes/27/children/0/children/0/children/0/children/0/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "*C(=O)CC(C)=O",
+    "reactants": "*C(=O)/C=C/C",
+    "reaction_smiles": "*C(=O)/C=C/C>>*C(=O)CC(C)=O",
+    "target_smiles": "O=C(O)CCO"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/1/routes/27/children/0/children/0/children/0/children/0/children/0/children/0/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "*C(=O)/C=C/C",
+    "reactants": "*C(=O)CCC",
+    "reaction_smiles": "*C(=O)CCC>>*C(=O)/C=C/C",
+    "target_smiles": "O=C(O)CCO"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/1/routes/27/children/0/children/0/children/0/children/0/children/0/children/0/children/0/children/0/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "*C(=O)CCC",
+    "reactants": "CCC(=O)C(=O)O",
+    "reaction_smiles": "CCC(=O)C(=O)O>>*C(=O)CCC",
+    "target_smiles": "O=C(O)CCO"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/2/routes/0/children/0",
+    "native_template": null,
+    "products": "CCCCCC(=O)O",
+    "reactants": "O=CCc1ccccc1",
+    "reaction_smiles": "O=CCc1ccccc1>>CCCCCC(=O)O",
+    "target_smiles": "CCCCCC(=O)O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/2/routes/1/children/0",
+    "native_template": null,
+    "products": "CCCCCC(=O)O",
+    "reactants": "CCCCCC=O",
+    "reaction_smiles": "CCCCCC=O>>CCCCCC(=O)O",
+    "target_smiles": "CCCCCC(=O)O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/2/routes/2/children/0",
+    "native_template": null,
+    "products": "CCCCCC(=O)O",
+    "reactants": "Nc1ncnc2c1ncn2[C@@H]1O[C@H](COP(=O)(O)O)[C@@H](O)[C@H]1O",
+    "reaction_smiles": "Nc1ncnc2c1ncn2[C@@H]1O[C@H](COP(=O)(O)O)[C@@H](O)[C@H]1O>>CCCCCC(=O)O",
+    "target_smiles": "CCCCCC(=O)O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/2/routes/3/children/0",
+    "native_template": null,
+    "products": "CCCCCC(=O)O",
+    "reactants": "CCCCCC(=O)OCC(COC(=O)CCCCC)OC(=O)CCCCC",
+    "reaction_smiles": "CCCCCC(=O)OCC(COC(=O)CCCCC)OC(=O)CCCCC>>CCCCCC(=O)O",
+    "target_smiles": "CCCCCC(=O)O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/2/routes/4/children/0",
+    "native_template": null,
+    "products": "CCCCCC(=O)O",
+    "reactants": "CCCCCC(=O)OC(=O)CCCCC",
+    "reaction_smiles": "CCCCCC(=O)OC(=O)CCCCC>>CCCCCC(=O)O",
+    "target_smiles": "CCCCCC(=O)O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/2/routes/5/children/0",
+    "native_template": null,
+    "products": "CCCCCC(=O)O",
+    "reactants": "O=C(O)Cc1ccc(O)cc1",
+    "reaction_smiles": "O=C(O)Cc1ccc(O)cc1>>CCCCCC(=O)O",
+    "target_smiles": "CCCCCC(=O)O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/2/routes/6/children/0",
+    "native_template": null,
+    "products": "CCCCCC(=O)O",
+    "reactants": "CCCCCC(=O)OCC",
+    "reaction_smiles": "CCCCCC(=O)OCC>>CCCCCC(=O)O",
+    "target_smiles": "CCCCCC(=O)O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/2/routes/7/children/0",
+    "native_template": null,
+    "products": "CCCCCC(=O)O",
+    "reactants": "O=C(O)CCCCCO",
+    "reaction_smiles": "O=C(O)CCCCCO>>CCCCCC(=O)O",
+    "target_smiles": "CCCCCC(=O)O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/2/routes/8/children/0",
+    "native_template": null,
+    "products": "CCCCCC(=O)O",
+    "reactants": "CCCCCCCC/C=C\\CCCCCCCC(=O)O",
+    "reaction_smiles": "CCCCCCCC/C=C\\CCCCCCCC(=O)O>>CCCCCC(=O)O",
+    "target_smiles": "CCCCCC(=O)O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/2/routes/9/children/0",
+    "native_template": null,
+    "products": "CCCCCC(=O)O",
+    "reactants": "CCCCCCC=O",
+    "reaction_smiles": "CCCCCCC=O>>CCCCCC(=O)O",
+    "target_smiles": "CCCCCC(=O)O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/2/routes/10/children/0",
+    "native_template": null,
+    "products": "CCCCCC(=O)O",
+    "reactants": "*C(=O)CCCCC",
+    "reaction_smiles": "*C(=O)CCCCC>>CCCCCC(=O)O",
+    "target_smiles": "CCCCCC(=O)O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/2/routes/10/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "*C(=O)CCCCC",
+    "reactants": "CCCCCCC(=O)O",
+    "reaction_smiles": "CCCCCCC(=O)O>>*C(=O)CCCCC",
+    "target_smiles": "CCCCCC(=O)O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/2/routes/11/children/0",
+    "native_template": null,
+    "products": "CCCCCC(=O)O",
+    "reactants": "CCCCCC(=O)Oc1ccc([N+](=O)O)cc1",
+    "reaction_smiles": "CCCCCC(=O)Oc1ccc([N+](=O)O)cc1>>CCCCCC(=O)O",
+    "target_smiles": "CCCCCC(=O)O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/2/routes/11/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "CCCCCC(=O)Oc1ccc([N+](=O)O)cc1",
+    "reactants": "OCc1ccc(O)cc1.O=C(O)[C@@H]1CCCN1.CCCCCC(=O)Cl",
+    "reaction_smiles": "OCc1ccc(O)cc1.O=C(O)[C@@H]1CCCN1.CCCCCC(=O)Cl>>CCCCCC(=O)Oc1ccc([N+](=O)O)cc1",
+    "target_smiles": "CCCCCC(=O)O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/2/routes/12/children/0",
+    "native_template": null,
+    "products": "CCCCCC(=O)O",
+    "reactants": "*C(=O)CCCCC",
+    "reaction_smiles": "*C(=O)CCCCC>>CCCCCC(=O)O",
+    "target_smiles": "CCCCCC(=O)O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/2/routes/12/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "*C(=O)CCCCC",
+    "reactants": "CCCCC(=O)O",
+    "reaction_smiles": "CCCCC(=O)O>>*C(=O)CCCCC",
+    "target_smiles": "CCCCCC(=O)O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/2/routes/13/children/0",
+    "native_template": null,
+    "products": "CCCCCC(=O)O",
+    "reactants": "CCCCCC(=O)OCC(O)CO",
+    "reaction_smiles": "CCCCCC(=O)OCC(O)CO>>CCCCCC(=O)O",
+    "target_smiles": "CCCCCC(=O)O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/2/routes/13/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "CCCCCC(=O)OCC(O)CO",
+    "reactants": "Nc1ncnc2c1ncn2[C@@H]1O[C@H](COP(=O)(O)O)[C@@H](O)[C@H]1O",
+    "reaction_smiles": "Nc1ncnc2c1ncn2[C@@H]1O[C@H](COP(=O)(O)O)[C@@H](O)[C@H]1O>>CCCCCC(=O)OCC(O)CO",
+    "target_smiles": "CCCCCC(=O)O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/2/routes/14/children/0",
+    "native_template": null,
+    "products": "CCCCCC(=O)O",
+    "reactants": "CCCCCC(=O)Oc1ccc([N+](=O)O)cc1",
+    "reaction_smiles": "CCCCCC(=O)Oc1ccc([N+](=O)O)cc1>>CCCCCC(=O)O",
+    "target_smiles": "CCCCCC(=O)O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/2/routes/14/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "CCCCCC(=O)Oc1ccc([N+](=O)O)cc1",
+    "reactants": "Oc1ccc(O)cc1.O=C(O)[C@@H]1CCCN1.CCCCCC(=O)Cl",
+    "reaction_smiles": "Oc1ccc(O)cc1.O=C(O)[C@@H]1CCCN1.CCCCCC(=O)Cl>>CCCCCC(=O)Oc1ccc([N+](=O)O)cc1",
+    "target_smiles": "CCCCCC(=O)O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/2/routes/15/children/0",
+    "native_template": null,
+    "products": "CCCCCC(=O)O",
+    "reactants": "CCCCCC(=O)OCC(O)CO",
+    "reaction_smiles": "CCCCCC(=O)OCC(O)CO>>CCCCCC(=O)O",
+    "target_smiles": "CCCCCC(=O)O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/2/routes/15/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "CCCCCC(=O)OCC(O)CO",
+    "reactants": "CCCCCC(=O)OCC(COC(=O)CCCCC)OC(=O)CCCCC",
+    "reaction_smiles": "CCCCCC(=O)OCC(COC(=O)CCCCC)OC(=O)CCCCC>>CCCCCC(=O)OCC(O)CO",
+    "target_smiles": "CCCCCC(=O)O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/2/routes/16/children/0",
+    "native_template": null,
+    "products": "CCCCCC(=O)O",
+    "reactants": "CCCCCC(=O)Oc1ccc([N+](=O)O)cc1",
+    "reaction_smiles": "CCCCCC(=O)Oc1ccc([N+](=O)O)cc1>>CCCCCC(=O)O",
+    "target_smiles": "CCCCCC(=O)O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/2/routes/16/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "CCCCCC(=O)Oc1ccc([N+](=O)O)cc1",
+    "reactants": "O=C(O)c1ccc([N+](=O)[O-])cc1.CCCCCC(=O)Cl",
+    "reaction_smiles": "O=C(O)c1ccc([N+](=O)[O-])cc1.CCCCCC(=O)Cl>>CCCCCC(=O)Oc1ccc([N+](=O)O)cc1",
+    "target_smiles": "CCCCCC(=O)O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/2/routes/17/children/0",
+    "native_template": null,
+    "products": "CCCCCC(=O)O",
+    "reactants": "CCCCCC(=O)Oc1ccc([N+](=O)O)cc1",
+    "reaction_smiles": "CCCCCC(=O)Oc1ccc([N+](=O)O)cc1>>CCCCCC(=O)O",
+    "target_smiles": "CCCCCC(=O)O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/2/routes/17/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "CCCCCC(=O)Oc1ccc([N+](=O)O)cc1",
+    "reactants": "[NH4+].O=C(O)c1ccc(O)cc1.CCCCCC(=O)Cl",
+    "reaction_smiles": "[NH4+].O=C(O)c1ccc(O)cc1.CCCCCC(=O)Cl>>CCCCCC(=O)Oc1ccc([N+](=O)O)cc1",
+    "target_smiles": "CCCCCC(=O)O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/2/routes/17/children/0/children/0/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "[NH4+]",
+    "reactants": "CN1CC(=O)NC1=O",
+    "reaction_smiles": "CN1CC(=O)NC1=O>>[NH4+]",
+    "target_smiles": "CCCCCC(=O)O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/2/routes/18/children/0",
+    "native_template": null,
+    "products": "CCCCCC(=O)O",
+    "reactants": "CCCCCCCCCCCCCCC[C@@H](O)[C@H](CO)NC(=O)CCCCC",
+    "reaction_smiles": "CCCCCCCCCCCCCCC[C@@H](O)[C@H](CO)NC(=O)CCCCC>>CCCCCC(=O)O",
+    "target_smiles": "CCCCCC(=O)O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/2/routes/18/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "CCCCCCCCCCCCCCC[C@@H](O)[C@H](CO)NC(=O)CCCCC",
+    "reactants": "CCCCCCCCCCCCCCCC(=O)Cl.CCCCCC(=O)N[C@@H](O)CO",
+    "reaction_smiles": "CCCCCCCCCCCCCCCC(=O)Cl.CCCCCC(=O)N[C@@H](O)CO>>CCCCCCCCCCCCCCC[C@@H](O)[C@H](CO)NC(=O)CCCCC",
+    "target_smiles": "CCCCCC(=O)O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/2/routes/18/children/0/children/0/children/0/children/1/children/0",
+    "native_template": null,
+    "products": "CCCCCC(=O)N[C@@H](O)CO",
+    "reactants": "OC[C@H]1OC(O)C[C@@H]1O.CCCCCC(=O)Cl",
+    "reaction_smiles": "OC[C@H]1OC(O)C[C@@H]1O.CCCCCC(=O)Cl>>CCCCCC(=O)N[C@@H](O)CO",
+    "target_smiles": "CCCCCC(=O)O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/2/routes/19/children/0",
+    "native_template": null,
+    "products": "CCCCCC(=O)O",
+    "reactants": "CCCCCC(=O)Oc1ccc([N+](=O)O)cc1",
+    "reaction_smiles": "CCCCCC(=O)Oc1ccc([N+](=O)O)cc1>>CCCCCC(=O)O",
+    "target_smiles": "CCCCCC(=O)O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/2/routes/19/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "CCCCCC(=O)Oc1ccc([N+](=O)O)cc1",
+    "reactants": "[NH4+].O=C(O)c1ccc(O)cc1.CCCCCC(=O)Cl",
+    "reaction_smiles": "[NH4+].O=C(O)c1ccc(O)cc1.CCCCCC(=O)Cl>>CCCCCC(=O)Oc1ccc([N+](=O)O)cc1",
+    "target_smiles": "CCCCCC(=O)O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/2/routes/19/children/0/children/0/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "[NH4+]",
+    "reactants": "COC(OC)N(C)C",
+    "reaction_smiles": "COC(OC)N(C)C>>[NH4+]",
+    "target_smiles": "CCCCCC(=O)O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/2/routes/20/children/0",
+    "native_template": null,
+    "products": "CCCCCC(=O)O",
+    "reactants": "CCCCCCCCCCCCCCC[C@@H](O)[C@H](CO)NC(=O)CCCCC",
+    "reaction_smiles": "CCCCCCCCCCCCCCC[C@@H](O)[C@H](CO)NC(=O)CCCCC>>CCCCCC(=O)O",
+    "target_smiles": "CCCCCC(=O)O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/2/routes/20/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "CCCCCCCCCCCCCCC[C@@H](O)[C@H](CO)NC(=O)CCCCC",
+    "reactants": "CCCCCCCCCCCCCCCC(=O)Cl.CCCCC(=O)N[C@@H](CO)C(=O)O",
+    "reaction_smiles": "CCCCCCCCCCCCCCCC(=O)Cl.CCCCC(=O)N[C@@H](CO)C(=O)O>>CCCCCCCCCCCCCCC[C@@H](O)[C@H](CO)NC(=O)CCCCC",
+    "target_smiles": "CCCCCC(=O)O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/2/routes/20/children/0/children/0/children/0/children/1/children/0",
+    "native_template": null,
+    "products": "CCCCC(=O)N[C@@H](CO)C(=O)O",
+    "reactants": "CCCCC(=O)Cl",
+    "reaction_smiles": "CCCCC(=O)Cl>>CCCCC(=O)N[C@@H](CO)C(=O)O",
+    "target_smiles": "CCCCCC(=O)O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/2/routes/21/children/0",
+    "native_template": null,
+    "products": "CCCCCC(=O)O",
+    "reactants": "CCCCCCCCCCCCCCC[C@@H](O)[C@H](CO)NC(=O)CCCCC",
+    "reaction_smiles": "CCCCCCCCCCCCCCC[C@@H](O)[C@H](CO)NC(=O)CCCCC>>CCCCCC(=O)O",
+    "target_smiles": "CCCCCC(=O)O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/2/routes/21/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "CCCCCCCCCCCCCCC[C@@H](O)[C@H](CO)NC(=O)CCCCC",
+    "reactants": "CCCCCCCCCCCCCCCC(=O)Cl.CCCCCC(=O)N[C@@H](O)CO",
+    "reaction_smiles": "CCCCCCCCCCCCCCCC(=O)Cl.CCCCCC(=O)N[C@@H](O)CO>>CCCCCCCCCCCCCCC[C@@H](O)[C@H](CO)NC(=O)CCCCC",
+    "target_smiles": "CCCCCC(=O)O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/2/routes/21/children/0/children/0/children/0/children/1/children/0",
+    "native_template": null,
+    "products": "CCCCCC(=O)N[C@@H](O)CO",
+    "reactants": "N[C@@H](CCO)C(=O)O.CCCCCC(=O)Cl",
+    "reaction_smiles": "N[C@@H](CCO)C(=O)O.CCCCCC(=O)Cl>>CCCCCC(=O)N[C@@H](O)CO",
+    "target_smiles": "CCCCCC(=O)O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/2/routes/22/children/0",
+    "native_template": null,
+    "products": "CCCCCC(=O)O",
+    "reactants": "CCCCCCCCCCCCCCC[C@@H](O)[C@H](CO)NC(=O)CCCCC",
+    "reaction_smiles": "CCCCCCCCCCCCCCC[C@@H](O)[C@H](CO)NC(=O)CCCCC>>CCCCCC(=O)O",
+    "target_smiles": "CCCCCC(=O)O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/2/routes/22/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "CCCCCCCCCCCCCCC[C@@H](O)[C@H](CO)NC(=O)CCCCC",
+    "reactants": "CCCCCCCCCCCCCCCC(=O)Cl.CCCCC(=O)N[C@@H](CO)C(=O)O",
+    "reaction_smiles": "CCCCCCCCCCCCCCCC(=O)Cl.CCCCC(=O)N[C@@H](CO)C(=O)O>>CCCCCCCCCCCCCCC[C@@H](O)[C@H](CO)NC(=O)CCCCC",
+    "target_smiles": "CCCCCC(=O)O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/2/routes/22/children/0/children/0/children/0/children/1/children/0",
+    "native_template": null,
+    "products": "CCCCC(=O)N[C@@H](CO)C(=O)O",
+    "reactants": "CCCCC(=O)O",
+    "reaction_smiles": "CCCCC(=O)O>>CCCCC(=O)N[C@@H](CO)C(=O)O",
+    "target_smiles": "CCCCCC(=O)O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/2/routes/23/children/0",
+    "native_template": null,
+    "products": "CCCCCC(=O)O",
+    "reactants": "CCCCCCCCCCCCC/C=C/[C@@H](O)[C@H](CO)NC(=O)CCCCC",
+    "reaction_smiles": "CCCCCCCCCCCCC/C=C/[C@@H](O)[C@H](CO)NC(=O)CCCCC>>CCCCCC(=O)O",
+    "target_smiles": "CCCCCC(=O)O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/2/routes/23/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "CCCCCCCCCCCCC/C=C/[C@@H](O)[C@H](CO)NC(=O)CCCCC",
+    "reactants": "CCCCCCCCCCCCC/C=C/[C@@H](O)[C@@H](NC(=O)CCCCC)C(=O)O",
+    "reaction_smiles": "CCCCCCCCCCCCC/C=C/[C@@H](O)[C@@H](NC(=O)CCCCC)C(=O)O>>CCCCCCCCCCCCC/C=C/[C@@H](O)[C@H](CO)NC(=O)CCCCC",
+    "target_smiles": "CCCCCC(=O)O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/2/routes/23/children/0/children/0/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "CCCCCCCCCCCCC/C=C/[C@@H](O)[C@@H](NC(=O)CCCCC)C(=O)O",
+    "reactants": "CCCCC(=O)O",
+    "reaction_smiles": "CCCCC(=O)O>>CCCCCCCCCCCCC/C=C/[C@@H](O)[C@@H](NC(=O)CCCCC)C(=O)O",
+    "target_smiles": "CCCCCC(=O)O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/2/routes/24/children/0",
+    "native_template": null,
+    "products": "CCCCCC(=O)O",
+    "reactants": "CCCCCCCCCCCCCCC[C@@H](O)[C@H](CO)NC(=O)CCCCC",
+    "reaction_smiles": "CCCCCCCCCCCCCCC[C@@H](O)[C@H](CO)NC(=O)CCCCC>>CCCCCC(=O)O",
+    "target_smiles": "CCCCCC(=O)O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/2/routes/24/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "CCCCCCCCCCCCCCC[C@@H](O)[C@H](CO)NC(=O)CCCCC",
+    "reactants": "CCCCCCCCCCCCCCCC(=O)Cl.CCCCC(=O)N[C@@H](CO)C(=O)O",
+    "reaction_smiles": "CCCCCCCCCCCCCCCC(=O)Cl.CCCCC(=O)N[C@@H](CO)C(=O)O>>CCCCCCCCCCCCCCC[C@@H](O)[C@H](CO)NC(=O)CCCCC",
+    "target_smiles": "CCCCCC(=O)O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/2/routes/24/children/0/children/0/children/0/children/1/children/0",
+    "native_template": null,
+    "products": "CCCCC(=O)N[C@@H](CO)C(=O)O",
+    "reactants": "N[C@@H](CC(=O)O)C(=O)O.CCCCC(=O)Cl",
+    "reaction_smiles": "N[C@@H](CC(=O)O)C(=O)O.CCCCC(=O)Cl>>CCCCC(=O)N[C@@H](CO)C(=O)O",
+    "target_smiles": "CCCCCC(=O)O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/2/routes/25/children/0",
+    "native_template": null,
+    "products": "CCCCCC(=O)O",
+    "reactants": "CCCCCCCCCCCCCCC[C@@H](O)[C@H](CO)NC(=O)CCCCC",
+    "reaction_smiles": "CCCCCCCCCCCCCCC[C@@H](O)[C@H](CO)NC(=O)CCCCC>>CCCCCC(=O)O",
+    "target_smiles": "CCCCCC(=O)O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/2/routes/25/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "CCCCCCCCCCCCCCC[C@@H](O)[C@H](CO)NC(=O)CCCCC",
+    "reactants": "CCCCCCCCCCCCCCCC(=O)O.CCCCCC(=O)N[C@@H](CO)C(=O)O",
+    "reaction_smiles": "CCCCCCCCCCCCCCCC(=O)O.CCCCCC(=O)N[C@@H](CO)C(=O)O>>CCCCCCCCCCCCCCC[C@@H](O)[C@H](CO)NC(=O)CCCCC",
+    "target_smiles": "CCCCCC(=O)O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/2/routes/25/children/0/children/0/children/0/children/1/children/0",
+    "native_template": null,
+    "products": "CCCCCC(=O)N[C@@H](CO)C(=O)O",
+    "reactants": "N[C@@H](CC(=O)O)C(=O)O.CCCCCC(=O)Cl",
+    "reaction_smiles": "N[C@@H](CC(=O)O)C(=O)O.CCCCCC(=O)Cl>>CCCCCC(=O)N[C@@H](CO)C(=O)O",
+    "target_smiles": "CCCCCC(=O)O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/2/routes/26/children/0",
+    "native_template": null,
+    "products": "CCCCCC(=O)O",
+    "reactants": "CCCCCCCCCCCCCCC[C@@H](O)[C@H](CO)NC(=O)CCCCC",
+    "reaction_smiles": "CCCCCCCCCCCCCCC[C@@H](O)[C@H](CO)NC(=O)CCCCC>>CCCCCC(=O)O",
+    "target_smiles": "CCCCCC(=O)O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/2/routes/26/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "CCCCCCCCCCCCCCC[C@@H](O)[C@H](CO)NC(=O)CCCCC",
+    "reactants": "CCCCCCCCCCCCCCCC(=O)Cl.CCCCCC(=O)N[C@@H](CO)C(=O)O",
+    "reaction_smiles": "CCCCCCCCCCCCCCCC(=O)Cl.CCCCCC(=O)N[C@@H](CO)C(=O)O>>CCCCCCCCCCCCCCC[C@@H](O)[C@H](CO)NC(=O)CCCCC",
+    "target_smiles": "CCCCCC(=O)O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/2/routes/26/children/0/children/0/children/0/children/1/children/0",
+    "native_template": null,
+    "products": "CCCCCC(=O)N[C@@H](CO)C(=O)O",
+    "reactants": "N[C@@H](CC(=O)O)C(=O)O.CCCCCC(=O)Cl",
+    "reaction_smiles": "N[C@@H](CC(=O)O)C(=O)O.CCCCCC(=O)Cl>>CCCCCC(=O)N[C@@H](CO)C(=O)O",
+    "target_smiles": "CCCCCC(=O)O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/2/routes/27/children/0",
+    "native_template": null,
+    "products": "CCCCCC(=O)O",
+    "reactants": "CCCCCCCCCCCCCCC[C@@H](O)[C@H](CO)NC(=O)CCCCC",
+    "reaction_smiles": "CCCCCCCCCCCCCCC[C@@H](O)[C@H](CO)NC(=O)CCCCC>>CCCCCC(=O)O",
+    "target_smiles": "CCCCCC(=O)O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/2/routes/27/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "CCCCCCCCCCCCCCC[C@@H](O)[C@H](CO)NC(=O)CCCCC",
+    "reactants": "CCCCCCCCCCCCCCCC(=O)Cl.CCCCC(=O)N[C@@H](CO)C(=O)O",
+    "reaction_smiles": "CCCCCCCCCCCCCCCC(=O)Cl.CCCCC(=O)N[C@@H](CO)C(=O)O>>CCCCCCCCCCCCCCC[C@@H](O)[C@H](CO)NC(=O)CCCCC",
+    "target_smiles": "CCCCCC(=O)O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/2/routes/27/children/0/children/0/children/0/children/1/children/0",
+    "native_template": null,
+    "products": "CCCCC(=O)N[C@@H](CO)C(=O)O",
+    "reactants": "O=C(O)[C@@H]1CCCN1.CCCCC(=O)Cl",
+    "reaction_smiles": "O=C(O)[C@@H]1CCCN1.CCCCC(=O)Cl>>CCCCC(=O)N[C@@H](CO)C(=O)O",
+    "target_smiles": "CCCCCC(=O)O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/2/routes/28/children/0",
+    "native_template": null,
+    "products": "CCCCCC(=O)O",
+    "reactants": "*C(=O)CCCCC",
+    "reaction_smiles": "*C(=O)CCCCC>>CCCCCC(=O)O",
+    "target_smiles": "CCCCCC(=O)O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/2/routes/28/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "*C(=O)CCCCC",
+    "reactants": "*C(C)=O",
+    "reaction_smiles": "*C(C)=O>>*C(=O)CCCCC",
+    "target_smiles": "CCCCCC(=O)O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/2/routes/28/children/0/children/0/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "*C(C)=O",
+    "reactants": "*C(=O)/C=C/C",
+    "reaction_smiles": "*C(=O)/C=C/C>>*C(C)=O",
+    "target_smiles": "CCCCCC(=O)O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/2/routes/28/children/0/children/0/children/0/children/0/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "*C(=O)/C=C/C",
+    "reactants": "*C(=O)CCC",
+    "reaction_smiles": "*C(=O)CCC>>*C(=O)/C=C/C",
+    "target_smiles": "CCCCCC(=O)O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/2/routes/28/children/0/children/0/children/0/children/0/children/0/children/0/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "*C(=O)CCC",
+    "reactants": "CCCC(=O)O",
+    "reaction_smiles": "CCCC(=O)O>>*C(=O)CCC",
+    "target_smiles": "CCCCCC(=O)O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/2/routes/29/children/0",
+    "native_template": null,
+    "products": "CCCCCC(=O)O",
+    "reactants": "*C(=O)CCCCC",
+    "reaction_smiles": "*C(=O)CCCCC>>CCCCCC(=O)O",
+    "target_smiles": "CCCCCC(=O)O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/2/routes/29/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "*C(=O)CCCCC",
+    "reactants": "*C(C)=O",
+    "reaction_smiles": "*C(C)=O>>*C(=O)CCCCC",
+    "target_smiles": "CCCCCC(=O)O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/2/routes/29/children/0/children/0/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "*C(C)=O",
+    "reactants": "*C(=O)/C=C/C",
+    "reaction_smiles": "*C(=O)/C=C/C>>*C(C)=O",
+    "target_smiles": "CCCCCC(=O)O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/2/routes/29/children/0/children/0/children/0/children/0/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "*C(=O)/C=C/C",
+    "reactants": "*C(=O)CCC",
+    "reaction_smiles": "*C(=O)CCC>>*C(=O)/C=C/C",
+    "target_smiles": "CCCCCC(=O)O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/2/routes/29/children/0/children/0/children/0/children/0/children/0/children/0/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "*C(=O)CCC",
+    "reactants": "CCC(=O)C(=O)O",
+    "reaction_smiles": "CCC(=O)C(=O)O>>*C(=O)CCC",
+    "target_smiles": "CCCCCC(=O)O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/2/routes/30/children/0",
+    "native_template": null,
+    "products": "CCCCCC(=O)O",
+    "reactants": "*C(=O)CCCCC",
+    "reaction_smiles": "*C(=O)CCCCC>>CCCCCC(=O)O",
+    "target_smiles": "CCCCCC(=O)O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/2/routes/30/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "*C(=O)CCCCC",
+    "reactants": "*C(=O)/C=C/CCC",
+    "reaction_smiles": "*C(=O)/C=C/CCC>>*C(=O)CCCCC",
+    "target_smiles": "CCCCCC(=O)O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/2/routes/30/children/0/children/0/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "*C(=O)/C=C/CCC",
+    "reactants": "*C(=O)C[C@@H](O)CCC",
+    "reaction_smiles": "*C(=O)C[C@@H](O)CCC>>*C(=O)/C=C/CCC",
+    "target_smiles": "CCCCCC(=O)O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/2/routes/30/children/0/children/0/children/0/children/0/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "*C(=O)C[C@@H](O)CCC",
+    "reactants": "*C(=O)CC(=O)CCC",
+    "reaction_smiles": "*C(=O)CC(=O)CCC>>*C(=O)C[C@@H](O)CCC",
+    "target_smiles": "CCCCCC(=O)O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/2/routes/30/children/0/children/0/children/0/children/0/children/0/children/0/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "*C(=O)CC(=O)CCC",
+    "reactants": "*C(=O)C[C@H](O)CCC",
+    "reaction_smiles": "*C(=O)C[C@H](O)CCC>>*C(=O)CC(=O)CCC",
+    "target_smiles": "CCCCCC(=O)O"
+  },
+  {
+    "direction": "precursors_to_target",
+    "native_pointer": "/2/routes/30/children/0/children/0/children/0/children/0/children/0/children/0/children/0/children/0/children/0/children/0/children/0",
+    "native_template": null,
+    "products": "*C(=O)C[C@H](O)CCC",
+    "reactants": "CCCC(=O)C(O)CCC",
+    "reaction_smiles": "CCCC(=O)C(O)CCC>>*C(=O)C[C@H](O)CCC",
+    "target_smiles": "CCCCCC(=O)O"
+  }
+]

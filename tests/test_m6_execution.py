@@ -51,6 +51,33 @@ class M6ExecutionTests(unittest.TestCase):
             self.assertEqual(first.run_id,second.run_id)
             self.assertEqual(len(second.candidates),1)
 
+    def test_resume_retries_failed_backend_without_rerunning_completed_backend(self):
+        class RecoveringBackend:
+            backend_id = "recovering"
+            attempts = 0
+
+            def available(self):
+                return True
+
+            def generate(self, target_smiles, *, options=None):
+                self.attempts += 1
+                if self.attempts == 1:
+                    raise RuntimeError("native worker unavailable")
+                return []
+
+        recovering = RecoveringBackend()
+        engine = SynBioCrowEngine(backends=BackendRegistry([recovering, FakeBackend()]))
+        request = DesignRequest("CCO", backend_ids=("recovering", "fake"))
+        with tempfile.TemporaryDirectory() as td:
+            first = design(request, engine=engine, state_root=td)
+            self.assertEqual(first.backend_status["recovering"]["status"], "ERROR")
+            self.assertEqual(first.backend_status["fake"]["status"], "COMPLETE")
+            second = design(request, engine=engine, state_root=td)
+            self.assertEqual(second.backend_status["recovering"]["status"], "COMPLETE")
+            self.assertEqual(len(second.candidates), 1)
+            self.assertEqual(recovering.attempts, 2)
+            self.assertEqual(FakeBackend.calls, 1)
+
     def test_run_id_is_deterministic(self):
         with tempfile.TemporaryDirectory() as a, tempfile.TemporaryDirectory() as b:
             req=DesignRequest("CCO",backend_ids=("fake",))

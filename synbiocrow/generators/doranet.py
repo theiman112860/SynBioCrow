@@ -3,8 +3,11 @@ from __future__ import annotations
 import hashlib
 import importlib
 import importlib.util
+import json
+import subprocess
+import sys
 import tempfile
-from dataclasses import dataclass
+from dataclasses import asdict, dataclass
 from importlib import metadata as importlib_metadata
 from pathlib import Path
 from typing import Any, Mapping, Sequence
@@ -194,38 +197,72 @@ class DORAnetBackend:
                 "Unsupported DORAnet options: " + ", ".join(sorted(options))
             )
 
-        try:
-            module = importlib.import_module("doranet.modules.enzymatic")
-            generate_network = module.generate_network
-        except Exception as exc:
-            raise BackendUnavailableError(
-                f"DORAnet enzymatic API could not be imported: {exc!r}"
-            ) from exc
-
-        try:
-            version = importlib_metadata.version("doranet")
-        except importlib_metadata.PackageNotFoundError:
-            version = "unknown"
-
+        request = {
+            "job_name": "direct_rule_probe",
+            "starters": [target_smiles],
+            "gen": generations,
+            "direction": direction,
+            "rxn_thermo_calculator": None,
+            "max_rxn_thermo_change": max_rxn_thermo_change,
+            "max_atoms": max_atoms,
+            "allow_multiple_reactants": allow_multiple_reactants,
+            "targets": None,
+            "ruleset": ruleset,
+        }
+        # 0.5.7a1 prepends a dot to its temporary filename. Give it a
+        # basename in a private cwd so it never changes this process's cwd.
         with tempfile.TemporaryDirectory(prefix="synbiocrow_doranet_") as tmp:
-            job_name = str(Path(tmp) / "direct_rule_probe")
-            network = generate_network(
-                job_name=job_name,
-                starters=[target_smiles],
-                gen=1,
-                direction=direction,
-                rxn_thermo_calculator=None,
-                max_rxn_thermo_change=max_rxn_thermo_change,
-                max_atoms=max_atoms,
-                allow_multiple_reactants=allow_multiple_reactants,
-                targets=None,
-                ruleset=ruleset,
-            )
+            return _run_native(request, Path(tmp))
 
-        return _network_to_candidates(
-            network,
-            target_smiles=target_smiles,
-            doranet_version=version,
-            ruleset=ruleset,
-            direction=direction,
+
+def _run_native(request: Mapping[str, Any], workdir: Path) -> list[PathwayCandidate]:
+    adapter_root = Path(__file__).resolve().parents[2]
+    code = (
+        "import json, sys; sys.path.insert(0, sys.argv[1]); "
+        "from synbiocrow.generators.doranet import _native_worker; "
+        "_native_worker(json.loads(sys.argv[2]))"
+    )
+    subprocess.run(
+        [sys.executable, "-c", code, str(adapter_root), json.dumps(request)],
+        cwd=workdir,
+        timeout=300,
+        check=True,
+    )
+    records = json.loads((workdir / "candidates.json").read_text())
+    return [
+        PathwayCandidate(
+            candidate_id=record["candidate_id"],
+            target_smiles=record["target_smiles"],
+            steps=tuple(ReactionStep(**step) for step in record["steps"]),
+            source_backends=tuple(record["source_backends"]),
+            provenance={
+                **record["provenance"],
+                "raw_reactant_indices": tuple(record["provenance"]["raw_reactant_indices"]),
+                "raw_product_indices": tuple(record["provenance"]["raw_product_indices"]),
+            },
         )
+        for record in records
+    ]
+
+
+def _native_worker(request: Mapping[str, Any]) -> None:
+    module = importlib.import_module("doranet.modules.enzymatic")
+    network = module.generate_network(**request)
+    network_file = Path(f"{request['job_name']}__{request['direction']}_saved_network.pgnet")
+    with network_file.open("rb") as stream:
+        digest = hashlib.sha256()
+        for chunk in iter(lambda: stream.read(1024 * 1024), b""):
+            digest.update(chunk)
+    candidates = _network_to_candidates(
+        network,
+        target_smiles=request["starters"][0],
+        doranet_version=importlib_metadata.version("doranet"),
+        ruleset=request["ruleset"],
+        direction=request["direction"],
+    )
+    records = []
+    for candidate in candidates:
+        record = asdict(candidate)
+        record["provenance"]["native_network_sha256"] = digest.hexdigest()
+        records.append(record)
+    Path("candidates.json").write_text(json.dumps(records))

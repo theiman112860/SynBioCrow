@@ -1,0 +1,99 @@
+{
+  "aizynthfinder": {
+    "CCCC=O": 16,
+    "O=C(O)CCO": 15
+  },
+  "biopks": {
+    "exact_released_targets": {
+      "CCCCCC(=O)O": 1
+    },
+    "native_designs": 113,
+    "native_release_calls": 113
+  },
+  "chemenzy_master_hexanoic": {
+    "native_reaction_nodes": 73,
+    "native_routes": 31
+  },
+  "chemenzyretroplanner": {
+    "CCCC=O": 150,
+    "O=C(O)CCO": 119
+  },
+  "combined_graph": {
+    "composite_edges": 7,
+    "edges": 429,
+    "engines": [
+      "aizynthfinder",
+      "chemenzyretroplanner",
+      "doranet",
+      "retrobiocat2"
+    ],
+    "placeholder_rows_quarantined": {
+      "chemenzyretroplanner": 114,
+      "doranet": 1
+    },
+    "scope": "direction-explicit candidate output and provenance only"
+  },
+  "doranet": {
+    "CCCC=O": {
+      "candidates": 75,
+      "reproducible_identity_sha256": "2c6a03eae668cc2645010c0ff88f9bb3c18ecdcd3264fc3bd8d2649f4cf4a130"
+    },
+    "O=C(O)CCO": {
+      "candidates": 98,
+      "reproducible_identity_sha256": "8cec421d1ab17fed9ebc3d13f053af58f7533a142401e4fce19dcd9c6e6a6eb6"
+    }
+  },
+  "explicit_atom_and_charge_balance": {
+    "aizynthfinder": {
+      "balanced": 0,
+      "unbalanced": 31
+    },
+    "chemenzyretroplanner": {
+      "balanced": 31,
+      "unbalanced": 124
+    },
+    "doranet": {
+      "balanced": 138,
+      "unbalanced": 34
+    },
+    "retrobiocat2": {
+      "balanced": 0,
+      "unbalanced": 16
+    }
+  },
+  "master_campaign": {
+    "engines_completed": [
+      "AiZynthFinder",
+      "BioPKS",
+      "ChemEnzyRetroPlanner",
+      "DORAnet",
+      "RetroBioCat2",
+      "RetroPath2",
+      "RetroTide"
+    ],
+    "execution": "PASSED_AFTER_ISOLATED_RETRY",
+    "multi_engine_target_pathway": false,
+    "native_candidate_rows": 1961
+  },
+  "retrobiocat2": {
+    "CCCC=O": 7,
+    "O=C(O)CCO": 9
+  },
+  "retropath2_source_expansion": {
+    "3_hydroxypropionic_acid": {
+      "compound_transitions": 973,
+      "rule_attributions_only_in_run_1": 150,
+      "rule_attributions_only_in_run_2": 150
+    },
+    "butanal": {
+      "compound_transitions": 426,
+      "rule_attributions_only_in_run_1": 39,
+      "rule_attributions_only_in_run_2": 39
+    }
+  },
+  "retrotide": {
+    "exact_released_targets": {},
+    "native_designs": 113,
+    "native_release_calls": 0
+  }
+}

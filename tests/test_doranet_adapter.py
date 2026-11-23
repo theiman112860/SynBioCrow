@@ -83,21 +83,18 @@ class DORAnetAdapterTests(unittest.TestCase):
         with self.assertRaises(ContractViolation):
             DORAnetBackend().generate("CCO", options={"generations": 2})
 
-    def test_generate_calls_live_api_contract(self):
+    def test_generate_requests_isolated_native_expansion(self):
         backend = DORAnetBackend()
-
-        class FakeModule:
-            @staticmethod
-            def generate_network(**kwargs):
-                self.assertEqual(kwargs["starters"], ["CCO"])
-                self.assertEqual(kwargs["gen"], 1)
-                self.assertEqual(kwargs["direction"], "retro")
-                return FakeNetwork()
-
-        with patch.object(backend, "available", return_value=True),              patch.object(doranet_module.importlib, "import_module", return_value=FakeModule),              patch.object(doranet_module.importlib_metadata, "version", return_value="0.5.7a1"):
-            out = backend.generate("CCO")
-        self.assertEqual(len(out), 1)
-        self.assertEqual(out[0].provenance["doranet_version"], "0.5.7a1")
+        with patch.object(backend, "available", return_value=True), patch.object(
+            doranet_module, "_run_native", return_value=[]
+        ) as native:
+            self.assertEqual(backend.generate("CCO"), [])
+        request, workdir = native.call_args.args
+        self.assertEqual(request["starters"], ["CCO"])
+        self.assertEqual(request["gen"], 1)
+        self.assertEqual(request["direction"], "retro")
+        self.assertEqual(request["job_name"], "direct_rule_probe")
+        self.assertFalse(workdir.exists())
 
 
 if __name__ == "__main__":

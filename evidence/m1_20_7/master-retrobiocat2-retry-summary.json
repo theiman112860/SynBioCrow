@@ -1,0 +1,46 @@
+{
+  "version": "M1_20_7_REVIEW",
+  "targets": [
+    "3_hydroxypropionic_acid",
+    "butanal",
+    "hexanoic_acid"
+  ],
+  "engine_states": {
+    "RetroBioCat2": {
+      "syntax": "PASS",
+      "run": {
+        "status": "PROCESS_PASS",
+        "exit_code": 0,
+        "seconds": 23.0,
+        "log": "logs/RetroBioCat2_native.log"
+      },
+      "parsed_reaction_records": 16,
+      "native_json_files": [
+        "native/RetroBioCat2/external_evidence/0_results.json"
+      ],
+      "external_evidence": {
+        "root": "/workspace/work/full-master/content/rbc2_native_verified/results",
+        "files": [
+          "/workspace/work/full-master/content/rbc2_native_verified/results/results.json"
+        ],
+        "diagnostics": [],
+        "collected": 16
+      },
+      "acceptance": "NATIVE_REACTIONS_EXPORTED"
+    }
+  },
+  "fresh_native_records": 16,
+  "replayed_records": 0,
+  "seven_engine_live_gate": "NOT_VERIFIED",
+  "limitations": [
+    "Separate operational adapters do not imply independent algorithms",
+    "ChemEnzyRetroPlanner local routes require a verified native artifact hash",
+    "Raw template hits and designs are not certified reactions",
+    "Automated hybrid candidates are structural only"
+  ],
+  "historical_hosted_reactions": 0,
+  "hybrid_candidates": 0,
+  "seven_engine_execution_gate": "NOT_PASSED",
+  "seven_engine_reaction_export_gate": "NOT_PASSED",
+  "retro_tide_output_type": "Native PKS designs, not reaction records"
+}

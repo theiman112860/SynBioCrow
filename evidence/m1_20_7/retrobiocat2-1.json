@@ -1,0 +1,201 @@
+{
+  "status": "COMPLETED",
+  "engine": "RetroBioCat2",
+  "source_commit": "c5f32561b1ed99d0701a6dbb472dc448d6c082e8",
+  "search_literature_precedent": false,
+  "targets": [
+    {
+      "name": "3-hydroxypropionic acid",
+      "smiles": "O=C(O)CCO",
+      "status": "NATIVE_EXECUTED",
+      "reactions": [
+        {
+          "target_name": "3-hydroxypropionic acid",
+          "target_smiles": "O=C(O)CCO",
+          "reaction_smiles": "N#CCCO>>O=C(O)CCO",
+          "reaction_name": "Nitrile hydrolysis (COOH)",
+          "native_score": "0.195",
+          "engine": "RetroBioCat2",
+          "source_commit": "c5f32561b1ed99d0701a6dbb472dc448d6c082e8",
+          "candidate_only": true,
+          "reaction_smiles_parseable": true
+        },
+        {
+          "target_name": "3-hydroxypropionic acid",
+          "target_smiles": "O=C(O)CCO",
+          "reaction_smiles": "O=C1CCO1>>O=C(O)CCO",
+          "reaction_name": "Lactone hydrolysis",
+          "native_score": "0.167",
+          "engine": "RetroBioCat2",
+          "source_commit": "c5f32561b1ed99d0701a6dbb472dc448d6c082e8",
+          "candidate_only": true,
+          "reaction_smiles_parseable": true
+        },
+        {
+          "target_name": "3-hydroxypropionic acid",
+          "target_smiles": "O=C(O)CCO",
+          "reaction_smiles": "COC(=O)CCO>>O=C(O)CCO",
+          "reaction_name": "Ester hydrolysis (COOH)",
+          "native_score": "0.004",
+          "engine": "RetroBioCat2",
+          "source_commit": "c5f32561b1ed99d0701a6dbb472dc448d6c082e8",
+          "candidate_only": true,
+          "reaction_smiles_parseable": true
+        },
+        {
+          "target_name": "3-hydroxypropionic acid",
+          "target_smiles": "O=C(O)CCO",
+          "reaction_smiles": "O=CCCO>>O=C(O)CCO",
+          "reaction_name": "Aldehyde oxidation",
+          "native_score": "0",
+          "engine": "RetroBioCat2",
+          "source_commit": "c5f32561b1ed99d0701a6dbb472dc448d6c082e8",
+          "candidate_only": true,
+          "reaction_smiles_parseable": true
+        },
+        {
+          "target_name": "3-hydroxypropionic acid",
+          "target_smiles": "O=C(O)CCO",
+          "reaction_smiles": "O=CCC(=O)O>>O=C(O)CCO",
+          "reaction_name": "Aldehyde reduction",
+          "native_score": "0",
+          "engine": "RetroBioCat2",
+          "source_commit": "c5f32561b1ed99d0701a6dbb472dc448d6c082e8",
+          "candidate_only": true,
+          "reaction_smiles_parseable": true
+        },
+        {
+          "target_name": "3-hydroxypropionic acid",
+          "target_smiles": "O=C(O)CCO",
+          "reaction_smiles": "CNC(=O)CCO>>O=C(O)CCO",
+          "reaction_name": "Amide hydrolysis (COOH)",
+          "native_score": "0",
+          "engine": "RetroBioCat2",
+          "source_commit": "c5f32561b1ed99d0701a6dbb472dc448d6c082e8",
+          "candidate_only": true,
+          "reaction_smiles_parseable": true
+        },
+        {
+          "target_name": "3-hydroxypropionic acid",
+          "target_smiles": "O=C(O)CCO",
+          "reaction_smiles": "O=C(O)C=CO>>O=C(O)CCO",
+          "reaction_name": "Ene reduction",
+          "native_score": "0",
+          "engine": "RetroBioCat2",
+          "source_commit": "c5f32561b1ed99d0701a6dbb472dc448d6c082e8",
+          "candidate_only": true,
+          "reaction_smiles_parseable": true
+        },
+        {
+          "target_name": "3-hydroxypropionic acid",
+          "target_smiles": "O=C(O)CCO",
+          "reaction_smiles": "CC(=O)OCCC(=O)O>>O=C(O)CCO",
+          "reaction_name": "Ester hydrolysis (OH)",
+          "native_score": "0",
+          "engine": "RetroBioCat2",
+          "source_commit": "c5f32561b1ed99d0701a6dbb472dc448d6c082e8",
+          "candidate_only": true,
+          "reaction_smiles_parseable": true
+        },
+        {
+          "target_name": "3-hydroxypropionic acid",
+          "target_smiles": "O=C(O)CCO",
+          "reaction_smiles": "O=C(O)CCOP(=O)([O-])O>>O=C(O)CCO",
+          "reaction_name": "Phosphate hydrolysis",
+          "native_score": "0",
+          "engine": "RetroBioCat2",
+          "source_commit": "c5f32561b1ed99d0701a6dbb472dc448d6c082e8",
+          "candidate_only": true,
+          "reaction_smiles_parseable": true
+        }
+      ],
+      "count": 9
+    },
+    {
+      "name": "butanal",
+      "smiles": "CCCC=O",
+      "status": "NATIVE_EXECUTED",
+      "reactions": [
+        {
+          "target_name": "butanal",
+          "target_smiles": "CCCC=O",
+          "reaction_smiles": "CCCCO>>CCCC=O",
+          "reaction_name": "Primary alcohol oxidation",
+          "native_score": "0.259",
+          "engine": "RetroBioCat2",
+          "source_commit": "c5f32561b1ed99d0701a6dbb472dc448d6c082e8",
+          "candidate_only": true,
+          "reaction_smiles_parseable": true
+        },
+        {
+          "target_name": "butanal",
+          "target_smiles": "CCCC=O",
+          "reaction_smiles": "CC=CC=O>>CCCC=O",
+          "reaction_name": "Ene reduction",
+          "native_score": "0.09",
+          "engine": "RetroBioCat2",
+          "source_commit": "c5f32561b1ed99d0701a6dbb472dc448d6c082e8",
+          "candidate_only": true,
+          "reaction_smiles_parseable": true
+        },
+        {
+          "target_name": "butanal",
+          "target_smiles": "CCCC=O",
+          "reaction_smiles": "CCCCN>>CCCC=O",
+          "reaction_name": "Primary amine deamination",
+          "native_score": "0.03",
+          "engine": "RetroBioCat2",
+          "source_commit": "c5f32561b1ed99d0701a6dbb472dc448d6c082e8",
+          "candidate_only": true,
+          "reaction_smiles_parseable": true
+        },
+        {
+          "target_name": "butanal",
+          "target_smiles": "CCCC=O",
+          "reaction_smiles": "CCCCN>>CCCC=O",
+          "reaction_name": "Amine oxidation and hydrolysis",
+          "native_score": "0.03",
+          "engine": "RetroBioCat2",
+          "source_commit": "c5f32561b1ed99d0701a6dbb472dc448d6c082e8",
+          "candidate_only": true,
+          "reaction_smiles_parseable": true
+        },
+        {
+          "target_name": "butanal",
+          "target_smiles": "CCCC=O",
+          "reaction_smiles": "CCCC(=O)O>>CCCC=O",
+          "reaction_name": "Carboxylic acid reduction",
+          "native_score": "0",
+          "engine": "RetroBioCat2",
+          "source_commit": "c5f32561b1ed99d0701a6dbb472dc448d6c082e8",
+          "candidate_only": true,
+          "reaction_smiles_parseable": true
+        },
+        {
+          "target_name": "butanal",
+          "target_smiles": "CCCC=O",
+          "reaction_smiles": "CCCC(=O)C(=O)O>>CCCC=O",
+          "reaction_name": "Decarboxylation",
+          "native_score": "0",
+          "engine": "RetroBioCat2",
+          "source_commit": "c5f32561b1ed99d0701a6dbb472dc448d6c082e8",
+          "candidate_only": true,
+          "reaction_smiles_parseable": true
+        },
+        {
+          "target_name": "butanal",
+          "target_smiles": "CCCC=O",
+          "reaction_smiles": "CCCC=N>>CCCC=O",
+          "reaction_name": "Imine Hydrolysis",
+          "native_score": "0",
+          "engine": "RetroBioCat2",
+          "source_commit": "c5f32561b1ed99d0701a6dbb472dc448d6c082e8",
+          "candidate_only": true,
+          "reaction_smiles_parseable": true
+        }
+      ],
+      "count": 7
+    }
+  ],
+  "timestamp": 1795408156.6139622
+}

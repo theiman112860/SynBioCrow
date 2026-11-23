@@ -1,0 +1,10 @@
+{
+  "upstream_git": "7dbab354189db9edc7aea9c0aedc2f1b1659f906",
+  "metadata_revision": "b9ef6049d341bfc62d835f09ad6ce33b6f86b047",
+  "files": {
+    "retro_planner_env.tar.gz": "10d5029b8660c52eaf0c8c047ceac277b88e3930843e6162b4115c05eeda06bd",
+    "building_block_dataset.zip": "87fd03d502cf75b558871b8adda89b6e4918288922ad66c84ca15880958cc1e0",
+    "onmt_metadata.zip": "b5922a639eb387a815374c2e069c8c76b51a4b2bb5fb0bf9cf9cf91ccbbe7adb",
+    "value_fun_metadata.zip": "085b0364ff07af10e577eae523ea2f05e795d2a62f4262d10587cc96a6504087"
+  }
+}

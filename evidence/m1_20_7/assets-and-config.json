@@ -1,0 +1,48 @@
+{
+  "aizynthfinder": {
+    "asset_distributor": "AiZynthFinder download_public_data",
+    "assets": {
+      "config.yml": "5b21d3fdeb98db1eb8fda95f9f0ed4005e8d3194e7e2f8ebf928718d020cc877",
+      "uspto_filter_model.onnx": "ad29aa32bdfcbe37065045546493806cf04899c55386c438905d83fb14bb6320",
+      "uspto_model.onnx": "bd0a3cb74cd7068de474c8fb789a00a66bc42c75636d66510ccac585ebe928f8",
+      "uspto_ringbreaker_model.onnx": "1bf0690352d9e9212d7dbe8b35649caf74f73ef0b30edefdfdac37fce38085be",
+      "uspto_ringbreaker_templates.csv.gz": "5616a056454b10a2f044e69e027422128986856ebd958541a3bf9f837e3a0d14",
+      "uspto_templates.csv.gz": "a4f1945e90cfa195538320833d68aed38f14e2fcc2f8afb5d958bc920edcafbe",
+      "zinc_stock.hdf5": "99d39a6f807c3e815487500bafc2b4a9dc66a31af189e3b1776874fb0d4a188d"
+    },
+    "config_note": "config.yml uses absolute asset paths and is hashed for the captured run",
+    "policy": "uspto",
+    "python": "3.11.18",
+    "stock": "zinc",
+    "version": "4.4.1"
+  },
+  "retropath2": {
+    "files": {
+      "retropath_1.0.0-alpha_linux-x64.zip": "0cf49589334c99750bfd1d495ad47356498ab4205cf5b227c2c3c28212238755",
+      "retrorules_rr02_rp2_hs.tar.gz": "4e4ed15c6980e4a24f7c908d8b0284df47b4d060a1445b93bbf225ddabe732ec",
+      "rr02_rules/rules_d2_4_max4500.csv": "1d8d2b94d04b6ede52a2874ff7a763b1982fa95b79b3a79ac04557cc75cb4a14",
+      "upstream.zip": "23f91eee118e2c9043db1b85a5c8205eea433605d4963e7203ce229a028c5b37",
+      "upstream/example_data/sink.csv": "18426748adef4f4401ff9b113801f0753a2b95a7b73d5247337fa655a4a62267"
+    },
+    "run_inputs": {
+      "3_hydroxypropionic_acid": {
+        "sink_target_filtered.csv": "9519606c66e2cf002e96552cfbe9242c04efb57f46c6af65b9596f5aef3c10ef",
+        "source.csv": "8d6c6108a18a8dca93022a559d47355f264459bb06c1c62307cd091475f08d1c"
+      },
+      "butanal": {
+        "sink_target_filtered.csv": "6faef98dfd67d6290e6e03617304f226c62dd6bfb065c6126d36104b7f2a6f29",
+        "source.csv": "a24fa52fff96ab838d6f53f018a576dd5564f00cd8f816193cb159d48a1f678b"
+      }
+    },
+    "source_archive_commit": "a8fe50c8da283d99688462c6eb828a9b65a7e00f"
+  },
+  "specialist_pks": {
+    "python": "3.10.22",
+    "python_hash_seed": 0,
+    "runners": {
+      "biopks": "db43a06fc7bd9541079c24b205280bd263183c7c7b965ab37a7e4cbce89ba886",
+      "retrotide": "77387a0ecd0ae31e69247f49af3ab0a54d39c82c108abdaa4084f6895a94e4af"
+    },
+    "source_git": "372cbfe9caf452fdf83976e6d0f32511dd28fccb"
+  }
+}
